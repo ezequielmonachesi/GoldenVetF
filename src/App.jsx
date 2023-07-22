@@ -1,10 +1,11 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Inicio from "./components/views/Inicio";
 
 function App() {
   return (
     <>
-    <h1>Hello World!</h1>
+    <Inicio></Inicio>
     </>
   );
 }
