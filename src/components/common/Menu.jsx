@@ -1,13 +1,13 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 const Menu = () => {
-    return (
-       <Navbar expand="lg" className="bg-navBar">
+  return (
+    <Navbar expand="lg" className="bg-navBar">
       <Container>
         <Navbar.Brand href="#home">GoldenVet</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navBarGoldenVet"/>
+        <Navbar.Toggle aria-controls="navBarGoldenVet" />
         <Navbar.Collapse id="navBarGoldenVet">
           <Nav className="ms-auto">
             <Nav.Link href="#">Inicio</Nav.Link>
@@ -19,7 +19,7 @@ const Menu = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    );
+  );
 };
 
 export default Menu;
