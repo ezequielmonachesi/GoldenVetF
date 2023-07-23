@@ -7,8 +7,8 @@ const Menu = () => {
        <Navbar expand="lg" className="bg-navBar">
       <Container>
         <Navbar.Brand href="#home">GoldenVet</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="navBarGoldenVet"/>
+        <Navbar.Collapse id="navBarGoldenVet">
           <Nav className="ms-auto">
             <Nav.Link href="#">Inicio</Nav.Link>
             <Nav.Link href="#">Productos</Nav.Link>
