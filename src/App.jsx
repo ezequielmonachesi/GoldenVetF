@@ -1,11 +1,15 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Inicio from "./components/views/Inicio";
+import Menu from "./components/common/Menu";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
     <>
-    <h1>Hello World!</h1>
-    <h2>Se agrega Rama Dev</h2>
+          <Menu></Menu>
+          <Inicio></Inicio>
+          <Footer></Footer>
     </>
   );
 }
