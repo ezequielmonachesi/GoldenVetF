@@ -3,9 +3,9 @@ import "../../css/Inicio.css"
 
 const Inicio = () => {
     return (
-        <>
-            Inicio
-        </>
+        <section className='mainSection'>
+          
+        </section>
     );
 };
 
