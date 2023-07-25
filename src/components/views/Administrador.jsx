@@ -4,6 +4,7 @@ import "../../css/Administrador.css";
 import { Offcanvas } from "react-bootstrap";
 import { useState } from "react";
 import Sidebar from "../layouts/Sidebar";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const Administrador = () => {
 
@@ -11,10 +12,11 @@ const Administrador = () => {
     <>
       <section className="mainSection">
           <h1 className="my-4">Bienvenido Admin</h1>
-      
+          
         
           <div className="layout">
             <div className="sidebar h-100">
+                
             <Sidebar></Sidebar>
             </div>
             <div className="body">

@@ -1,7 +1,7 @@
 .layout {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 0.25fr 1fr;
+  grid-template-columns: 0.20fr 1fr;
   gap: 8px;
   flex-grow: 1;
   box-sizing: border-box;  
