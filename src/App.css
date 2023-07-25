@@ -7,3 +7,17 @@
 .mainSection{
   flex-grow: 1;
 }
+/* Footer */
+.bg-footer{
+  background-color: #c58940;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: large;
+  font-weight: 400;
+}
+
+.bg-footer a{
+  text-decoration: none;
+  color: white;
+  
+}
