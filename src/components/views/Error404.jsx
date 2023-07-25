@@ -3,8 +3,9 @@ import error404Img from "../../assets/error404.jpg";
 import "./error404.css";
 
 const Error404 = () => {
+    //<Row className="justify-content-around text-center text-md-start border shadow mt-5 pb-4 pb-md-0 rounded-3 mx-2">
     return (
-        <Container className="error-404 bg-light rounded my-5">
+        <Container className="error-404 bg-light border shadow rounded my-5">
             <Row className="my-5 justify-content-center align-items-center p-5 bg-light">
                 <Col sm={6} className="text-center">
                     <h1 className="error-title mb-4 text-danger bold">Error 404</h1>

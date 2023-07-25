@@ -7,3 +7,7 @@
 .mainSection{
   flex-grow: 1;
 }
+
+body {
+  background: url('./assets/fondo-pagina.jpg') no-repeat;
+}
