@@ -23,7 +23,7 @@
     font-size: larger;
 }
 
-.SidebarList .fila:hover {
+.SidebarList .fila:hover, .fila:active {
     cursor: pointer;
     background-color: #E5BA73;
 }
@@ -36,6 +36,11 @@
 }
 .fila .titulo{
     flex: 70%;
+}
+
+.SidebarList #active{
+    background-color: #E5BA73;
+    border-left: solid 0.5em #faeab1;
 }
 
 @media screen and (max-width: 600px) {

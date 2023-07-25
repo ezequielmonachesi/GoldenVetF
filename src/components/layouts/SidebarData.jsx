@@ -9,17 +9,17 @@ import CommentIcon from '@mui/icons-material/Comment';
     {
         titulo: "Turnos",
         icono: <AccessTimeIcon/>,
-        link:"admin/turnos/"
+        link:"/admin/turnos/"
     },
     {
         titulo: "Pacientes",
         icono: <PetsIcon/> ,
-        link:"admin/pacientes/"
+        link:"/admin/pacientes/"
     },
     {
         titulo: "Comentarios",
         icono: <CommentIcon/> ,
-        link:"admin/comentarios/"
+        link:"/admin/comentarios/"
     }
 ]
 export default SidebarData;

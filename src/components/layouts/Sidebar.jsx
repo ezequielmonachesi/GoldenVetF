@@ -12,6 +12,7 @@ const Sidebar = () => {
         {SidebarData.map((val, key) => {
           return (
             <li className="fila"
+            id={window.location.pathname == val.link ? "active" : ""}
               key={key}
               onClick={() => {
                 window.location.pathname = val.link;
