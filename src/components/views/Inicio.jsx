@@ -33,47 +33,73 @@ const Inicio = () => {
                   >
                     <Form.Label>
                       <div className="d-flex align-items-center">
-                        Puntuación <StarFill className="ms-2"></StarFill>
-                        <StarFill></StarFill>
-                        <StarFill></StarFill>
-                        <StarFill></StarFill>
-                        <StarFill></StarFill>
+                        Puntuación
                       </div>
                     </Form.Label>
                     {["radio"].map((type) => (
                       <div key={`inline-${type}`} className="mb-3">
                         <Form.Check
                           inline
-                          label="1"
-                          name="star1"
+                          label={
+                            <>
+                              <StarFill></StarFill>
+                            </>
+                          }
+                          name="estrellas"
                           type={type}
                           id={`inline-${type}-1`}
                         />
                         <Form.Check
                           inline
-                          label="2"
-                          name="star2"
+                          label={
+                            <>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                            </>
+                          }
+                          name="estrellas"
                           type={type}
                           id={`inline-${type}-2`}
                         />
                         <Form.Check
                           inline
-                          label="3"
-                          name="star3"
+                          label={
+                            <>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                            </>
+                          }
+                          name="estrellas"
                           type={type}
                           id={`inline-${type}-3`}
                         />
                         <Form.Check
                           inline
-                          label="4"
-                          name="star4"
+                          label={
+                            <>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                            </>
+                          }
+                          name="estrellas"
                           type={type}
                           id={`inline-${type}-4`}
                         />
                         <Form.Check
                           inline
-                          label="5"
-                          name="star5"
+                          label={
+                            <>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                              <StarFill></StarFill>
+                            </>
+                          }
+                          name="estrellas"
                           type={type}
                           id={`inline-${type}-5`}
                         />
