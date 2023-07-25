@@ -1,21 +1,23 @@
 import React from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
-import { EnvelopeFill } from "react-bootstrap-icons";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { EnvelopeFill, StarFill } from "react-bootstrap-icons";
 
 const Inicio = () => {
   return (
     <section className="mainSection">
       {/* Formulario Testimonios */}
-      <Container className=" d-flex justify-content-center">
+      <Container className="d-flex justify-content-center">
         <Col md={8}>
           <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 rounded-3 shadow">
             <Row>
+              {/* Titulo Formulario */}
               <Col xs={12}>
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <h5>Envíanos tu comentario</h5>
                   <EnvelopeFill></EnvelopeFill>
                 </div>
               </Col>
+              {/* Formulario */}
               <Col className="mt-3">
                 <Form>
                   <Form.Group
@@ -29,8 +31,54 @@ const Inicio = () => {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Puntuación</Form.Label>
-                    <Form.Control type="text" />
+                    <Form.Label>
+                      <div className="d-flex align-items-center">
+                        Puntuación <StarFill className="ms-2"></StarFill>
+                        <StarFill></StarFill>
+                        <StarFill></StarFill>
+                        <StarFill></StarFill>
+                        <StarFill></StarFill>
+                      </div>
+                    </Form.Label>
+                    {["radio"].map((type) => (
+                      <div key={`inline-${type}`} className="mb-3">
+                        <Form.Check
+                          inline
+                          label="1"
+                          name="star1"
+                          type={type}
+                          id={`inline-${type}-1`}
+                        />
+                        <Form.Check
+                          inline
+                          label="2"
+                          name="star2"
+                          type={type}
+                          id={`inline-${type}-2`}
+                        />
+                        <Form.Check
+                          inline
+                          label="3"
+                          name="star3"
+                          type={type}
+                          id={`inline-${type}-3`}
+                        />
+                        <Form.Check
+                          inline
+                          label="4"
+                          name="star4"
+                          type={type}
+                          id={`inline-${type}-4`}
+                        />
+                        <Form.Check
+                          inline
+                          label="5"
+                          name="star5"
+                          type={type}
+                          id={`inline-${type}-5`}
+                        />
+                      </div>
+                    ))}
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
@@ -39,6 +87,15 @@ const Inicio = () => {
                     <Form.Label>Comentario</Form.Label>
                     <Form.Control as="textarea" rows={3} />
                   </Form.Group>
+                  <div className="text-end">
+                    <Button
+                      variant="dark"
+                      type="submit"
+                      className="width-button-responsive"
+                    >
+                      Enviar
+                    </Button>
+                  </div>
                 </Form>
               </Col>
             </Row>
