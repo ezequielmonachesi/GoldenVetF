@@ -17,7 +17,7 @@ import CommentIcon from '@mui/icons-material/Comment';
         link:"/#"
     },
     {
-        titulo: "Inicio",
+        titulo: "Comentarios",
         icono: <CommentIcon/> ,
         link:"/#"
     }

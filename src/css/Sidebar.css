@@ -4,3 +4,36 @@
     background: #C68940;
 }
 
+.SidebarList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.SidebarList .fila{
+    width: 100%;
+    height: 3em;
+    list-style-type: none;    
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.SidebarList .fila:hover {
+    cursor: pointer;
+    background-color: #E5BA73;
+}
+
+
+.fila .icono{
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+.fila .titulo{
+    flex: 70%;
+}
