@@ -11,6 +11,7 @@ const Menu = () => {
         <Navbar.Collapse id="navBarGoldenVet">
           <Nav className="ms-auto">
             <Nav.Link href="#">Inicio</Nav.Link>
+            <Nav.Link href="#">Planes</Nav.Link>
             <Nav.Link href="#">Productos</Nav.Link>
             <Nav.Link href="#">Servicios</Nav.Link>
             <Nav.Link href="#">Registro</Nav.Link>
