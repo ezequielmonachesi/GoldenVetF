@@ -13,10 +13,9 @@ const Servicios = () => {
         })
     },[]);
     console.log(servicios)
-    const listado = servicios.map(servicio => {
+    const listado = servicios.map(servicio => 
         <CardServicio nombreServicio={servicio.nombreServicio}
-        imagen={servicio.imagen} key={servicio.id}/>
-    });
+        imagen={servicio.imagen} key={servicio.id}/>);
     
     return (
         <>
