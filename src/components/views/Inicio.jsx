@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { EnvelopeFill, StarFill } from "react-bootstrap-icons";
+import { ChatHeartFill, StarFill } from "react-bootstrap-icons";
 
 const Inicio = () => {
   return (
@@ -14,7 +14,7 @@ const Inicio = () => {
               <Col xs={12}>
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <h5>Envíanos tu comentario</h5>
-                  <EnvelopeFill></EnvelopeFill>
+                  <ChatHeartFill className="fs-2"></ChatHeartFill>
                 </div>
               </Col>
               {/* Formulario */}
