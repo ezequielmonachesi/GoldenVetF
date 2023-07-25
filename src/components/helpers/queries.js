@@ -1,4 +1,4 @@
-const URL_SERVICIOS = impor.meta.env.VITE_API_SERVICIOS;
+const URL_SERVICIOS = import.meta.env.VITE_API_SERVICIOS;
 
 export const obtenerServicios = async ()=>{
     try {

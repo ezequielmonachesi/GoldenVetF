@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 
-const CardServicio = () => {
+const CardServicio = ({id, nombreServicio, imagen}) => {
     return (
         <Col md={4} ld={3} className="mb-3">
             <Card className='bg-card-servicio'>
-                <Card.Img src='https://media.gettyimages.com/id/1312146776/es/vector/emblema-del-salón-de-mascotas.jpg?s=612x612&w=gi&k=20&c=3SwiNDWBomwQTEWoqMFA-_bA6MWztGiYFIzQ8nm0f6o='/>
+                <Card.Img src={imagen} placeholder={nombreServicio}/>
                 <Card.Body>
-                    <Card.Title>Peluqueria canina</Card.Title>
+                    <Card.Title>{nombreServicio}</Card.Title>
                     <button className='bg-boton-servicio btn'>Ver mas</button>
                 </Card.Body>
             </Card>
