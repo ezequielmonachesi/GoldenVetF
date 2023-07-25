@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 
 const CardServicio = () => {
     return (
@@ -8,7 +8,7 @@ const CardServicio = () => {
                 <Card.Img src='https://media.gettyimages.com/id/1312146776/es/vector/emblema-del-salón-de-mascotas.jpg?s=612x612&w=gi&k=20&c=3SwiNDWBomwQTEWoqMFA-_bA6MWztGiYFIzQ8nm0f6o='/>
                 <Card.Body>
                     <Card.Title>Peluqueria canina</Card.Title>
-                    <Button className='bg-boton-servicio'>Ver mas</Button>
+                    <button className='bg-boton-servicio btn'>Ver mas</button>
                 </Card.Body>
             </Card>
         </Col>
