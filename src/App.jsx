@@ -10,8 +10,7 @@ function App() {
   return (
     <>
       <Menu></Menu>
-      {/* <Inicio></Inicio> */}
-      <Administrador></Administrador>
+      <Inicio></Inicio>
       <Footer></Footer>
     </>
   );
