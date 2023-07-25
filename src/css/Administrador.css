@@ -4,8 +4,9 @@
   grid-template-columns: 0.20fr 1fr;
   gap: 8px;
   flex-grow: 1;
-  box-sizing: border-box;  
-  
+  box-sizing: border-box;
+  border-top: 2px solid #C68940;
+
 }
 
 .mainSection{
@@ -14,18 +15,11 @@
 }
 
 
-.sidebarButtons{
-  display: flex;
-  flex-direction: column;  
-  gap: 8px;  
-  
-}
-
-.sideBarButton{
-  height: 100%;
-}
-
-.sidebarButtons button{  
-  height: 4em;
+.sidebar-wrapper {
+  position: sticky;
+  top: 0; 
+  height: 100vh; 
+  overflow-y: auto;
+ 
 
 }

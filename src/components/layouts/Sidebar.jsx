@@ -7,7 +7,7 @@ import SidebarData from "./sidebarData";
 
 const Sidebar = () => {
   return (
-    <div className="Sidebar">
+    <div className="Sidebar pt-5">
       <ul className="SidebarList">
         {SidebarData.map((val, key) => {
           return (

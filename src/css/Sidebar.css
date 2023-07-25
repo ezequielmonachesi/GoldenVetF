@@ -1,7 +1,7 @@
 .Sidebar{
     width: 100%;
     height: 100%;
-    background: #C68940;
+    background: #C68940;    
 }
 
 .SidebarList {
@@ -20,7 +20,7 @@
     color: white;
     justify-content: center;
     align-items: center;
-    
+    font-size: larger;
 }
 
 .SidebarList .fila:hover {
