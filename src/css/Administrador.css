@@ -3,8 +3,14 @@
   grid-template-rows: 1fr;
   grid-template-columns: 0.25fr 1fr;
   gap: 8px;
-  height: 100%;
+  flex-grow: 1;
+  box-sizing: border-box;  
+  
+}
 
+.mainSection{
+  display: flex;
+  flex-direction: column;
 }
 
 
