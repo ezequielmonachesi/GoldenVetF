@@ -1,10 +1,12 @@
 import React from 'react';
+import "../../css/Inicio.css"
+
 
 const Inicio = () => {
     return (
-        <div>
-            Inicio
-        </div>
+        <section className='mainSection'>
+        
+        </section>
     );
 };
 
