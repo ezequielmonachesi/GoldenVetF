@@ -1,6 +1,6 @@
 import React from "react";
-import "../../css/Administrador.css";
-import Sidebar from "../layouts/Sidebar";
+import "../../../css/Administrador.css";
+import Sidebar from "./Sidebar";
 
 const Administrador = () => {
   return (

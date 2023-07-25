@@ -1,6 +1,6 @@
 import React from "react";
-import "../../css/Sidebar.css";
-import SidebarData from "./sidebarData";
+import "../../../css/Sidebar.css";
+import SidebarData from "./SidebarData";
 
 const Sidebar = () => {
   return (
@@ -18,7 +18,7 @@ const Sidebar = () => {
             >
               {" "}
               <div className="icono">{val.icono}</div>{" "}
-              <div className="titulo">{val.titulo}</div>
+              <div className="titulo fs-5">{val.titulo}</div>
             </li>
           );
         })}
