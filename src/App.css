@@ -7,3 +7,15 @@
 .mainSection{
   flex-grow: 1;
 }
+
+.btn-registro{
+background-color: #e5ba73;
+color: white;
+font-size: 18px;
+}
+.inicia-sesion{
+color: #e5ba73;
+}
+.registro{
+  color: #e5ba73;
+}
