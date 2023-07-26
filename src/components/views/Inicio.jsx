@@ -2,9 +2,9 @@ import React from 'react';
 
 const Inicio = () => {
     return (
-        <div>
-            Inicio
-        </div>
+        <section className='mainSection'>
+          
+        </section>
     );
 };
 
