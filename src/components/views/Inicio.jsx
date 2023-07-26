@@ -2,9 +2,13 @@ import React from "react";
 import FormularioTestimonios from "../shared/formularioTestimonios/FormularioTestimonios";
 
 const Inicio = () => {
-  return <section className="mainSection">
-    {/* <FormularioTestimonios></FormularioTestimonios> */}
-  </section>;
+
+    return (
+        <section className='mainSection'>
+          
+        </section>
+    );
+
 };
 
 export default Inicio;

@@ -1,0 +1,13 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    max-width: 800px;
+    width: 100%;
+}
+
+.card-header-bg {
+    background: #FAEAB1;
+}
