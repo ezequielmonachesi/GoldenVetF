@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Button, Modal } from 'react-bootstrap';
+import './servicios.css'
 
 const CardPlan = ({nombrePlan, rangoEdad, descripcion, serviciosPlan, imagenes}) => {
     const [show, setShow] = useState(false);
