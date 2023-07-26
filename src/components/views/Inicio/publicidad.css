@@ -1,0 +1,9 @@
+.img-altura{
+    height: 400px;
+}
+
+@media all and (max-width: 576px){
+    .img-altura{
+        height: 200px;
+    }
+}
