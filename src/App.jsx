@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Error404 from "./components/views/Error404";
 
 function App() {
   return (
