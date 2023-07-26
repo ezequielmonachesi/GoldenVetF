@@ -13,12 +13,21 @@ body {
   flex-grow: 1;
 }
 
+.bg-footer{
+  background-color: #c58940;
+}
+
 .bg-navBar {
   background-color: #e5ba73;
 }
 
 .bg-navBar a {
   color: white;
+}
+
+.logo{
+  height: 40;
+  width: auto;
 }
 
 @media all and (max-width: 768px) {
