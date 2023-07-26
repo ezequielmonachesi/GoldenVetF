@@ -1,10 +1,11 @@
 import React from 'react';
+import Publicidad from './Inicio/Publicidad';
 
 const Inicio = () => {
     return (
-        <div>
-            Inicio
-        </div>
+        <section className='mainSection'>
+            <Publicidad></Publicidad>
+        </section>
     );
 };
 
