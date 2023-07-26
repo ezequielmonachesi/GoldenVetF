@@ -12,3 +12,17 @@ body {
 .mainSection {
   flex-grow: 1;
 }
+
+.bg-navBar {
+  background-color: #e5ba73;
+}
+
+.bg-navBar a {
+  color: white;
+}
+
+@media all and (max-width: 768px) {
+  .logo {
+    height: 65px;
+  }
+}
