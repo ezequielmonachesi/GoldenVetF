@@ -16,3 +16,9 @@
 .bg-navBar a {
   color: white;
 }
+
+@media all and (max-width: 768px) {
+  .logo {
+    height: 65px;
+  }
+}
