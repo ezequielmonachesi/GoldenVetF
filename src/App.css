@@ -1,14 +1,14 @@
-#root{
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.mainSection{
-  flex-grow: 1;
+body {
+  background: url("./assets/fondo-pagina.jpg") no-repeat;
+  background-attachment: fixed;
 }
 
-body {
-  background: url('./assets/fondo-pagina.jpg') no-repeat;
-  background-attachment: fixed;
+.mainSection {
+  flex-grow: 1;
 }
