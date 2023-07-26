@@ -1,10 +1,10 @@
-#root{
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.mainSection{
+.mainSection {
   flex-grow: 1;
 }
 
@@ -12,3 +12,18 @@ body {
   background: url('./assets/fondo-pagina.jpg') no-repeat;
   background-attachment: fixed;
 }
+
+.bg-navBar {
+  background-color: #e5ba73;
+}
+
+.bg-navBar a {
+  color: white;
+}
+
+@media all and (max-width: 768px) {
+  .logo {
+    height: 65px;
+  }
+}
+
