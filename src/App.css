@@ -4,10 +4,14 @@
   min-height: 100vh;
 }
 
+body {
+  background: url("./assets/fondo-pagina.jpg") no-repeat;
+  background-attachment: fixed;
+}
+
 .mainSection {
   flex-grow: 1;
 }
-
 
 .bg-navBar {
   background-color: #e5ba73;
