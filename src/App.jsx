@@ -1,10 +1,9 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Servicios from "./components/views/Servicios/Servicios";
-
 import Inicio from "./components/views/Inicio";
 import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
+
 
 function App() {
   return (
