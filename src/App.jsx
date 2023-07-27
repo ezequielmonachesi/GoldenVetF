@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -9,6 +10,7 @@ import Error404 from "./components/views/error404/Error404";
 import Servicios from "./components/views/Servicios/Servicios";
 import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
+
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
