@@ -1,5 +1,5 @@
 import React from 'react';
-import Publicidad from './Inicio/Publicidad';
+import Publicidad from '../shared/Inicio/Publicidad'
 
 const Inicio = () => {
     return (

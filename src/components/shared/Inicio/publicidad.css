@@ -4,6 +4,16 @@
 
 @media all and (max-width: 576px){
     .img-altura{
+        height: 150px;
+    }
+}
+@media all and (max-width: 767px){
+    .img-altura{
         height: 200px;
+    }
+}
+@media all and (min-width: 992px){
+    .img-altura{
+        height: 450px;
     }
 }
