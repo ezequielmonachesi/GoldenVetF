@@ -2,6 +2,7 @@ import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { registrarUsuarios } from "../helpers/queries";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 // import { useNavigate } from "react-router-dom"; //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
 
@@ -103,13 +104,13 @@ const Registro = () => {
                 Registrar
               </button>
             </div>
-          </Form>
           <div className="d-flex justify-content-end contenedor-inicia-sesion">
             <p>
               ¿Ya tienes cuenta?{" "}
               <span className="inicia-sesion">Inicia sesión</span> {/* CAMBIAR POR Link CUANDO HAYA RUTAS */}
             </p>
           </div>
+          </Form>
         </div>
       </div>
     </div>

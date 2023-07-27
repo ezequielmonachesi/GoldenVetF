@@ -9,8 +9,8 @@ import Footer from "./components/common/Footer";
 function App() {
   return (
     <>
-    <Registro/>
           <Menu></Menu>
+          <Registro/>
           <Inicio></Inicio>
           <Footer></Footer>
     </>
