@@ -1,7 +1,12 @@
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { registrarUsuarios } from "../helpers/queries";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Registro = () => {
+  const [errores,setErrores] = useState("")
+  const navegacion = useNavigate()
   const {
     formState: { errors },
     handleSubmit,
@@ -9,11 +14,29 @@ const Registro = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    registrarUsuarios(data).then(respuesta =>{
+    if(respuesta && respuesta.status === 201){
+      Swal.fire(
+        'Bien Hecho!',
+        'Te registraste correctamente',
+        'success'
+      )
+      navegacion('/login')
+    }else if(respuesta && respuesta.status === 400){
+      setErrores(respuesta.data.mensaje)
+    }else{
+      Swal.fire(
+        'Error',
+        'Hubo un error al registrarse intenta nuevamente en unos minutos',
+        'error'
+      )
+    }
+    })
   };
   return (
     <div className="mt-5 mainSection">
       <div className="row justify-content-center">
-        <div className="col-12 col-sm-8 col-md-6 col-xl-4">
+        <div className="col-12 col-sm-8 col-md-6 col-xl-4">  
           <Form
             className="form-registro mx-auto p-2 border shadow p-3 mb-5 bg-body-tertiary rounded"
             onSubmit={handleSubmit(onSubmit)}
@@ -31,7 +54,7 @@ const Registro = () => {
                   maxLength: {
                     value: 16,
                     message:
-                      "La cantidad maximo de caracteres es de 16 digitos",
+                      "La cantidad máximo de caracteres es de 16 digitos",
                   },
                   required: "El nombre de usuario es requerido",
                 })}
@@ -75,7 +98,8 @@ const Registro = () => {
                 {errors.password?.message}
               </Form.Text>
             </Form.Group>
-            <div className="row w-75 d-flex justify-content-center text-center ms-5 ps-lg-5">
+            {errores && <Form.Text className="text-danger">{errores}</Form.Text>}
+            <div className="row w-75 d-flex justify-content-center text-center ms-5 ps-lg-5 mt-2">
               <button className="btn-registro mb-2 rounded" type="submit">
                 Registrar
               </button>
