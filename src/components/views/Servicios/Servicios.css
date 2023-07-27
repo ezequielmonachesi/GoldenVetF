@@ -6,6 +6,7 @@
 
 .bg-card-servicio{
     background-color: #faeab1;
+    filter: opacity(0.90) grayscale(.2);
 }
 
 .bg-boton-servicio{
@@ -29,11 +30,7 @@
     max-height: 100px;    
   }
 
-  .card{
-    filter: opacity(0.90) grayscale(.2);
-  }
-
-  .card:hover{
+.bg-card-servicio:hover{
     cursor: pointer;
     transition: .3s;
     scale: 1.02;
