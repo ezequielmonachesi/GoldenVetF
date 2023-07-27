@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CardServicio from './CardServicio';
-import '../../../css/servicios.css'
+import './Servicios.css'
 import { obtenerServicios } from '../../helpers/queries';
 
 

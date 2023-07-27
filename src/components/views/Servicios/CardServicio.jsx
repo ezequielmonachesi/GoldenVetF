@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Button, Modal } from 'react-bootstrap';
-import './CardServicio.css'
+import './Servicios.css'
 const CardServicio = ({descripcion, nombreServicio, imagen}) => {
 
     const [show, setShow] = useState(false);
