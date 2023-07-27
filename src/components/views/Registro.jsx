@@ -13,12 +13,14 @@ const Registro = () => {
     formState: { errors },
     handleSubmit,
     register,
+    reset
   } = useForm();
 
   const onSubmit = (data) => {
     registrarUsuarios(data).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire("Bien Hecho!", "Te registraste correctamente", "success");
+        reset()
         // navegacion("/login"); //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
       } else if (respuesta && respuesta.status === 400) {
         setErrores(respuesta.data.mensaje);
@@ -107,7 +109,7 @@ const Registro = () => {
           <div className="d-flex justify-content-end contenedor-inicia-sesion">
             <p>
               ¿Ya tienes cuenta?{" "}
-              <span className="inicia-sesion">Inicia sesión</span> {/* CAMBIAR POR Link CUANDO HAYA RUTAS */}
+              <span className="inicia-sesion fw-semibold">Inicia sesión</span> {/* CAMBIAR POR Link CUANDO HAYA RUTAS */}
             </p>
           </div>
           </Form>
