@@ -5,6 +5,16 @@
   }
   /* Estilo para mostrar la descripción */
 .description.active {
-    max-height: 100px;
-     
+    max-height: 100px;    
+  }
+
+  .card{
+    filter: opacity(0.90) grayscale(.2);
+  }
+
+  .card:hover{
+    cursor: pointer;
+    transition: .3s;
+    scale: 1.02;
+    filter: opacity(1) grayscale(0);
   }
