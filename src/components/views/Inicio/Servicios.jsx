@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardServicio from './CardServicio';
 import '../../../css/servicios.css'
 import { obtenerServicios } from '../../helpers/queries';
-import { Spinner } from 'react-bootstrap';
+
 
 const Servicios = () => {
     const [servicios, setServicios] = useState([]);
@@ -13,10 +13,11 @@ const Servicios = () => {
         })
     },[]);
     console.log(servicios)
-    const listado = servicios.map(servicio => (
+    const listado = servicios.map(servicio => 
         <CardServicio nombreServicio={servicio.nombreServicio}
-        imagen={servicio.imagen} key={servicio.id}/>
-    ));
+        imagen={servicio.imagen} 
+        descripcion={servicio.descripcion}
+        key={servicio.id }/>);
     
     return (
         <>
