@@ -30,3 +30,20 @@ body {
 .bg-footer{
   background-color: #C58940;
 }
+
+.boton-verMas-producto{
+  background-color: #e5ba73;
+  padding: 3px 15px;
+  width: 150px;
+}
+.boton-verMas-producto:hover{
+  background-color: #caa467;
+  color: white;
+}
+.limite-texto {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
