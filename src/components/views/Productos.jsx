@@ -1,10 +1,16 @@
-import React from "react";
 import { Container, Row } from "react-bootstrap";
 import CardProducto from "./Producto/CardProducto";
 import {obtenerProductos} from '../helpers/queries'
-
+import { useState,useEffect } from "react";
 const Productos = () => {
-  obtenerProductos()
+  const [productos,setProductos] = useState([])
+ useEffect(()=>{
+  obtenerProductos().then(respuesta => {
+    if(respuesta){
+      setProductos(respuesta)
+    }
+    })
+},[])
   return (
     <Container className="mt-3">
       <h1 className="text-center texto-productos fw-bold mt-1">
@@ -12,13 +18,7 @@ const Productos = () => {
       </h1>
       <hr />
       <Row>
-        <CardProducto />
-        <CardProducto />
-        <CardProducto />
-        <CardProducto />
-        <CardProducto />
-        <CardProducto />
-        <CardProducto />
+      {productos.map(producto => <CardProducto key={producto.id}/>)}
       </Row>
     </Container>
   );
