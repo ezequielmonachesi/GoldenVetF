@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { registrarUsuarios } from "../helpers/queries";
 import { useState } from "react";
@@ -17,7 +17,12 @@ const Registro = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    registrarUsuarios(data).then((respuesta) => {
+    const {confirmPassword,...restoData} = data
+    if(data.password !== data.confirmPassword){
+    setErrores("Las contraseñas no coinciden")
+    return
+    }
+    registrarUsuarios(restoData).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire("Bien Hecho!", "Te registraste correctamente", "success");
         reset()
@@ -34,7 +39,7 @@ const Registro = () => {
     });
   };
   return (
-    <div className="mt-5 mainSection">
+    <Container className="mt-5 mainSection">
       <div className="row justify-content-center">
         <div className="col-12 col-sm-8 col-md-6 col-xl-4">
           <Form
@@ -68,7 +73,7 @@ const Registro = () => {
                 type="text"
                 placeholder="Ingrese un email"
                 {...register("email", {
-                  required: "El email es obligatorio",
+                  required: "El email es requerido",
                   pattern: {
                     value: /\S+@\S+\.\S+/,
                     message:
@@ -83,9 +88,25 @@ const Registro = () => {
             <Form.Group className="mb-2">
               <Form.Control
                 type="password"
-                placeholder="Ingrese un password"
+                placeholder="Ingrese una contraseña"
                 {...register("password", {
-                  required: "La contraseña es obligatoria",
+                  required: "La contraseña es requerida",
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.password?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Control
+                type="password"
+                placeholder="Confirmar contraseña"
+                {...register("confirmPassword", {
+                  required: "Debe confirmar su contraseña",
                   pattern: {
                     value:
                       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,
@@ -95,7 +116,7 @@ const Registro = () => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.password?.message}
+                {errors.confirmPassword?.message}
               </Form.Text>
             </Form.Group>
             {errores && (
@@ -115,7 +136,7 @@ const Registro = () => {
           </Form>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
