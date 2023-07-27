@@ -2,12 +2,16 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Servicios from "./components/views/Servicios/Servicios";
 
+import Inicio from "./components/views/Inicio";
+import Menu from "./components/common/Menu";
+import Footer from "./components/common/Footer";
+
 function App() {
   return (
     <>
-    {/* <h1>Hello World!</h1>
-    <h2>Se agrega Rama Dev</h2> */}
-    <Servicios></Servicios>
+          <Menu></Menu>
+          <Inicio></Inicio>
+          <Footer></Footer>
     </>
   );
 }
