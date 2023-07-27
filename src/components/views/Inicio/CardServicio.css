@@ -1,0 +1,10 @@
+.description {
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.3s; 
+  }
+  /* Estilo para mostrar la descripción */
+.description.active {
+    max-height: 100px;
+     
+  }

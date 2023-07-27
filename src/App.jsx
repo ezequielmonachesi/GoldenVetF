@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Servicios from "./components/views/components_inicio/Servicios";
+import Servicios from "./components/views/inicio/Servicios";
 
 function App() {
   return (
