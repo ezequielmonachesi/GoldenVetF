@@ -2,22 +2,23 @@ import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { registrarUsuarios } from "../helpers/queries";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+// import { useNavigate } from "react-router-dom"; //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
 
 const Registro = () => {
   const [errores, setErrores] = useState("");
-  const navegacion = useNavigate();
+  // const navegacion = useNavigate(); //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
   const {
     formState: { errors },
     handleSubmit,
     register,
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
     registrarUsuarios(data).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire("Bien Hecho!", "Te registraste correctamente", "success");
-        navegacion("/login");
+        // navegacion("/login"); //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
       } else if (respuesta && respuesta.status === 400) {
         setErrores(respuesta.data.mensaje);
       } else {
@@ -106,7 +107,7 @@ const Registro = () => {
           <div className="d-flex justify-content-end contenedor-inicia-sesion">
             <p>
               ¿Ya tienes cuenta?{" "}
-              <span className="inicia-sesion">Inicia sesión</span>
+              <span className="inicia-sesion">Inicia sesión</span> {/* CAMBIAR POR Link CUANDO HAYA RUTAS */}
             </p>
           </div>
         </div>
