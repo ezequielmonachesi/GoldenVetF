@@ -21,7 +21,7 @@ const Productos = () => {
       <hr />
       <Row>
         {productos.map((producto) => (
-          <CardProducto key={producto.id} />
+          <CardProducto key={producto.id} producto={producto}/>
         ))}
       </Row>
     </Container>
