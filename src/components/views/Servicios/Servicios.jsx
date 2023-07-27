@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardServicio from './CardServicio';
 import './Servicios.css'
 import { obtenerServicios } from '../../helpers/queries';
+import { Link } from 'react-router-dom';
 
 
 const Servicios = () => {
@@ -17,7 +18,8 @@ const Servicios = () => {
         <CardServicio nombreServicio={servicio.nombreServicio}
         imagen={servicio.imagen} 
         descripcion={servicio.descripcion}
-        key={servicio.id }/>);
+        key={servicio.id }
+        id={servicio.id}/>);
     
     return (
         <>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DetallesServicios.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import { useParams } from "react-router";
 
 const DetalleServicios = () => {
+
   return (
     <Container className="align-items-center">
       <Row className="m-1 grilla justify-content-center">

@@ -22,7 +22,7 @@
 .description {
     max-height: 0; 
     overflow: hidden;
-    transition: max-height 0.3s; 
+    transition: max-height 0.3s;     
   }
   /* Estilo para mostrar la descripción */
 .description.active {
@@ -38,6 +38,10 @@
     transition: .3s;
     scale: 1.02;
     filter: opacity(1) grayscale(0);
+  }
+
+  a {
+    text-decoration: none ;
   }
 
 /* fin */

@@ -2,12 +2,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from '../../assets/logo.png'
+import { NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
     <Navbar expand="lg" className="bg-navBar py-0">
       <Container>
-        <Navbar.Brand href="#home" className="brandNavBar">
+        <Navbar.Brand href="home" className="brandNavBar">
         <img src={logo} alt="" height="55px" width="75px" className="logo"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navBarGoldenVet" />
@@ -16,7 +17,7 @@ const Menu = () => {
             <Nav.Link href="#">Inicio</Nav.Link>
             <Nav.Link href="#">Planes</Nav.Link>
             <Nav.Link href="#">Productos</Nav.Link>
-            <Nav.Link href="#">Servicios</Nav.Link>
+            <NavLink className='nav-link'  to="/servicios">Servicios</NavLink>
             <Nav.Link href="#">Registro</Nav.Link>
             <Nav.Link href="#">Login</Nav.Link>
           </Nav>
