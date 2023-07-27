@@ -1,5 +1,5 @@
 import React from "react";
-import "./Servicios.css";
+import "./DetallesServicios.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 
 const DetalleServicios = () => {
