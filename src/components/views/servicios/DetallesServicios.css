@@ -22,7 +22,7 @@ h1 {
 }
 
 .grilla {
-  background: rgba(255, 255, 255, 0.69);
+  background: rgba(255, 255, 255, 0.80);
 }
 
 @media all and (min-width: 1200px) {
