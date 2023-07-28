@@ -4,7 +4,7 @@ import FormularioTestimonios from "../shared/formularioTestimonios/FormularioTes
 const Inicio = () => {
 
     return (
-        <section className='mainSection'>
+        <section>
           
         </section>
     );

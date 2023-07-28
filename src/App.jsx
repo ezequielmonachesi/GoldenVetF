@@ -20,12 +20,14 @@ function App() {
     <>
       <BrowserRouter>
         <Menu/>
-        <Routes>
+        <section className='mainSection'>
+        <Routes>          
           <Route exact path="/" element={<Inicio></Inicio> }></Route>
           <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
+          </section>
         <Footer/>
       </BrowserRouter>
     </>
