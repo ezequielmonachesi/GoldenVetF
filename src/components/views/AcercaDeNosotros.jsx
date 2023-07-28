@@ -8,12 +8,11 @@ const AcercaDeNosotros = () => {
   return (
     <>
       <Container fluid>
-        {/* paradax */}
         <Row>
           <div className="bgimg-1">
             <div className="caption">
               <span>
-                <h3 className="display-3">Queremos cuidar tu mascota</h3>
+                <h3 className="display-3">Queremos cuidar de tu mascota</h3>
               </span>
             </div>
           </div>
@@ -75,13 +74,13 @@ const AcercaDeNosotros = () => {
           <p>Nuestro equipo</p>
           <h2>Equipo Profesional</h2>
           <Col md={4} lg={3} className="mt-3">
-            <Card className="border shadow rounded-4 card">
+            <Card className="border shadow rounded-4 tarjeta">
               <Card.Img
                 variant="top"
                 src="http://127.0.0.1:5500/img/EzeequielAvatarMaker.png"
-                className="card-img-top"
+                className="tarjeta-img-top"
               />
-              <Card.Body className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+              <Card.Body className="tarjeta-body d-flex flex-column justify-content-center align-items-center text-center">
                 <Card.Title>Ezequiel Monahcesi</Card.Title>
                 <Card.Text className="mt-2">
                   <div className="d-flex">
@@ -109,13 +108,13 @@ const AcercaDeNosotros = () => {
             </Card>
           </Col>
           <Col md={4} lg={3} className="mt-3">
-            <Card className="border shadow rounded-4 card">
+            <Card className="border shadow rounded-4 tarjeta">
               <Card.Img
                 variant="top"
                 src="http://127.0.0.1:5500/img/EzeequielAvatarMaker.png"
-                className="card-img-top"
+                className="tarjeta-img-top"
               />
-              <Card.Body className="card-body d-flex flex-column justify-content-center align-items-center  text-center">
+              <Card.Body className="tarjeta-body d-flex flex-column justify-content-center align-items-center  text-center">
                 <Card.Title>Ezequiel Monahcesi</Card.Title>
                 <Card.Text className="mt-2">
                   <div className="d-flex">
@@ -143,13 +142,13 @@ const AcercaDeNosotros = () => {
             </Card>
           </Col>
           <Col md={4} lg={3} className="mt-3">
-            <Card className="border shadow rounded-4 card">
+            <Card className="border shadow rounded-4 tarjeta">
               <Card.Img
                 variant="top"
                 src="http://127.0.0.1:5500/img/EzeequielAvatarMaker.png"
-                className="card-img-top"
+                className="tarjeta-img-top"
               />
-              <Card.Body className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+              <Card.Body className="tarjeta-body d-flex flex-column justify-content-center align-items-center text-center">
                 <Card.Title>Ezequiel Monahcesi</Card.Title>
                 <Card.Text className="mt-2">
                   <div className="d-flex">
@@ -177,13 +176,13 @@ const AcercaDeNosotros = () => {
             </Card>
           </Col>
           <Col md={4} lg={3} className="mt-3">
-            <Card className="border shadow rounded-4 card">
+            <Card className="border shadow rounded-4 tarjeta">
               <Card.Img
                 variant="top"
                 src="http://127.0.0.1:5500/img/EzeequielAvatarMaker.png"
-                className="card-img-top"
+                className="tarjeta-img-top"
               />
-              <Card.Body className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+              <Card.Body className="tarjeta-body d-flex flex-column justify-content-center align-items-center text-center">
                 <Card.Title>Ezequiel Monahcesi</Card.Title>
                 <Card.Text className="mt-2">
                   <div className="d-flex">
@@ -211,13 +210,13 @@ const AcercaDeNosotros = () => {
             </Card>
           </Col>
           <Col md={4} lg={3} className="mt-3">
-            <Card className="border shadow rounded-4 card">
+            <Card className="border shadow rounded-4 tarjeta">
               <Card.Img
                 variant="top"
                 src="http://127.0.0.1:5500/img/EzeequielAvatarMaker.png"
-                className="card-img-top"
+                className="tarjeta-img-top"
               />
-              <Card.Body className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+              <Card.Body className="tarjeta-body d-flex flex-column justify-content-center align-items-center text-center">
                 <Card.Title>Ezequiel Monahcesi</Card.Title>
                 <Card.Text className="mt-2">
                   <div className="d-flex">

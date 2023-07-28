@@ -39,16 +39,16 @@
   color: #fff;
 }
 
-.card {
+.tarjeta {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
 }
-.card-img-top {
+.tarjeta-img-top {
   border-radius: 0;
   object-fit: cover;
 }
-.card-body {
+.tarjeta-body {
   position: absolute;
   height: 100%;
   width: 100%;
