@@ -46,9 +46,4 @@ body {
   background-color: #c58940;
 }
 
-@media all and (max-width: 768px) {
-  .logo {
-    height: 65px;
-  }
-}
 
