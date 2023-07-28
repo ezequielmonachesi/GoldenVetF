@@ -1,11 +1,11 @@
-import React from 'react';
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
 import "../../App.css"
+
 
 const Footer = () => {
     return (
         <>
-        <footer className='bg-footer text-light text-center'>
+        <footer className='bg-footer text-light text-center p-5'>
             <article className='row w-100'>
                 <section className='col-md-4'>
                     <h3>Nuestas redes</h3>
