@@ -10,10 +10,10 @@ const DetallePlan = () => {
             <div className='my-5'>
                 <p className='plan-description'>Este plan está diseñado para atender a las mascotas en sus etapas más jóvenes, desde el nacimiento hasta los 5 años de edad. Sabemos lo importante que es brindarles un cuidado óptimo durante su desarrollo temprano para asegurar una vida saludable y feliz</p>
                 <Row className='my-5'>
-                    <Col sm={6}>
+                    <Col lg={6}>
                         <CarouselPlanImg />
                     </Col>
-                    <Col sm={6}>
+                    <Col lg={6}>
                         <h3 className='text-center mb-3'>Este plan cuenta con los siguientes servicios:</h3>
                         <ul>
                             <li className='plan-description'>Vacunación y desparasitación: Mantenemos al día las vacunas y tratamientos contra parásitos para proteger a tu mascota contra enfermedades comunes.</li>
