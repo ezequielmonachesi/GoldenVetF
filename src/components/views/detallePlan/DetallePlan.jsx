@@ -23,6 +23,9 @@ const DetallePlan = () => {
                         </ul>
                     </Col>
                 </Row>
+                <hr className='mb-5' />
+                <p className='plan-description'>Debido a que nuestra filosofía dicta que cada mascota debe tener una atención personalizada, preferimos proporcionar un servicio de calidad que esté plenamente ajustado a las características individuales de cada mascota. Así, garantizamos que recibirán la atención adecuada y los cuidados que merecen.</p>
+                <p className='plan-description'>Para contratar un plan te invitamos a acercarte a nuestra veterinaria para descubrir cómo podemos brindarle a tu amado amigo una vida plena y saludable. ¡Esperamos ansiosamente conocerte a ti y a tu peludo compañero!</p>
             </div>
         </Container>
     );
