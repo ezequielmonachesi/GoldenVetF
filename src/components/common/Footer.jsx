@@ -1,4 +1,6 @@
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
+import "../../App.css"
+
 
 const Footer = () => {
     return (
