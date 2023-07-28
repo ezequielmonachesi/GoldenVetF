@@ -1,4 +1,3 @@
-import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "./publicidad.css";
 import { Col, Container, Row } from "react-bootstrap";
