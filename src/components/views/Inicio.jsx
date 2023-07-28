@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import FormularioTestimonios from "../shared/formularioTestimonios/FormularioTestimonios";
 
 const Inicio = () => {
+
     return (
-        <section className='mainSection'>
+        <section>
           
         </section>
     );
+
 };
 
 export default Inicio;
