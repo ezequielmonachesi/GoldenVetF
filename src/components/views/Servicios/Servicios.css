@@ -37,4 +37,13 @@
     filter: opacity(1) grayscale(0);
   }
 
+  
 /* fin */
+@media all and (min-width: 768px){
+  .bg-card-servicio{
+    position: absolute;    
+  }
+  .col-servicios{
+    height: 21em;
+  }
+}
