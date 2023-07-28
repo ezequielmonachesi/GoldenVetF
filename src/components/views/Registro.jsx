@@ -39,11 +39,11 @@ const Registro = () => {
     });
   };
   return (
-    <Container className="mt-5 mainSection">
+    <Container className="mt-5">
       <div className="row justify-content-center">
         <div className="col-12 col-sm-8 col-md-6 col-xl-4">
           <Form
-            className="form-registro mx-auto p-2 border shadow p-3 mb-5 bg-body-tertiary rounded"
+            className="mx-auto p-2 border shadow p-3 mb-5 bg-body-tertiary rounded"
             onSubmit={handleSubmit(onSubmit)}
           >
             <h3 className="text-center registro">Registro</h3>

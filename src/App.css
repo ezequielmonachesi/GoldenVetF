@@ -4,10 +4,13 @@
   min-height: 100vh;
 }
 
+
+
 body {
   background: url("./assets/fondo-pagina.jpg") no-repeat;
   background-attachment: fixed;
 }
+
 
 .mainSection {
   flex-grow: 1;
@@ -24,18 +27,28 @@ color: #e5ba73;
 .registro{
   color: #e5ba73;
 }
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .width-button-responsive {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .width-button-responsive {
+    width: 100%;
+  }
+    .logo {
+    height: 65px;
+  }
+}
+
 .bg-navBar {
   background-color: #e5ba73;
 }
 
 .bg-navBar a {
   color: white;
-}
-
-@media all and (max-width: 768px) {
-  .logo {
-    height: 65px;
-  }
 }
 
 .bg-footer{
