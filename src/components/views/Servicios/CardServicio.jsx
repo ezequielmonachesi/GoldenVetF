@@ -11,8 +11,8 @@ const CardServicio = ({descripcion, nombreServicio, imagen,id}) => {
 
     return (
         <>
-        <Col md={4} ld={3} className="mb-3">
-            <Card as={Link} to={"/servicios/"+id} className='bg-card-servicio'     onMouseEnter={handleShow} /* Agrega el evento onMouseEnter para mostrar el elemento */
+        <Col md={4} ld={3} as={Link} to={"/servicios/"+id} className="mb-3 position-relative col-servicios">
+            <Card className='bg-card-servicio'     onMouseEnter={handleShow} /* Agrega el evento onMouseEnter para mostrar el elemento */
     onMouseLeave={handleClose} /* Agrega el evento onMouseLeave para ocultar el elemento */
   >
                 <Card.Img src={imagen} placeholder={nombreServicio}/>

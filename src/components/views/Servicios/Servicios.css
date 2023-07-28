@@ -6,6 +6,7 @@
 
 .bg-card-servicio{
     background-color: #faeab1;
+    filter: opacity(0.90) grayscale(.2);
 }
 
 .bg-boton-servicio{
@@ -29,19 +30,22 @@
     max-height: 100px;    
   }
 
-  .card{
-    filter: opacity(0.90) grayscale(.2);
-  }
-
-  .card:hover{
+.bg-card-servicio:hover{
     cursor: pointer;
     transition: .3s;
     scale: 1.02;
     filter: opacity(1) grayscale(0);
   }
-
-  a {
-    text-decoration: none ;
-  }
-
+a{
+  text-decoration: none;
+}
+  
 /* fin */
+@media all and (min-width: 768px){
+  .bg-card-servicio{
+    position: absolute;    
+  }
+  .col-servicios{
+    height: 21em;
+  }
+}
