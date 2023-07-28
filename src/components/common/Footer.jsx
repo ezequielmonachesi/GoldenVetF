@@ -1,10 +1,10 @@
-import React from 'react';
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <>
-        <footer className='bg-footer text-light text-center'>
+        <footer className='bg-footer text-light text-center p-5'>
             <article className='row w-100'>
                 <section className='col-md-4'>
                     <h3>Nuestas redes</h3>
@@ -29,6 +29,9 @@ const Footer = () => {
                         </li>
                         <li>
                             <a href="#">Login</a>
+                        </li>
+                        <li>
+                            <Link to={"/sobre-nosotros"}>Sobre Nosotros</Link>
                         </li>
                     </ul>
                 </section>

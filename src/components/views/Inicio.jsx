@@ -1,13 +1,12 @@
-import React from 'react';
-import AcercaDeNosotros from './AcercaDeNosotros';
+import React from "react";
 
 const Inicio = () => {
+
     return (
-        <section className='mainSection'>
-          
-          <AcercaDeNosotros></AcercaDeNosotros>
+        <section>
         </section>
     );
+
 };
 
 export default Inicio;
