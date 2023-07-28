@@ -4,10 +4,13 @@
   min-height: 100vh;
 }
 
+
+
 body {
   background: url("./assets/fondo-pagina.jpg") no-repeat;
   background-attachment: fixed;
 }
+
 
 .mainSection {
   flex-grow: 1;
@@ -15,6 +18,20 @@ body {
 
 .bg-footer{
   background-color: #c58940;
+}
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .width-button-responsive {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .width-button-responsive {
+    width: 100%;
+  }
+    .logo {
+    height: 65px;
+  }
 }
 
 .bg-navBar {
@@ -34,4 +51,7 @@ body {
   .logo {
     height: 65px;
   }
+.bg-footer{
+  background-color: #C58940;
+}
 }
