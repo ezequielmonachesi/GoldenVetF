@@ -1,8 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "./sobreNosotros.css";
-import imagenPrincipal from "../../assets/sobreNosotros.jpg";
-import { Link } from "react-router-dom";
 
 const AcercaDeNosotros = () => {
   return (
