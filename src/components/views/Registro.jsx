@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import { registrarUsuarios } from "../helpers/queries";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom";
 
-// import { useNavigate } from "react-router-dom"; //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
 
 const Registro = () => {
   const [errores, setErrores] = useState("");
-  // const navegacion = useNavigate(); //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
+  const navegacion = useNavigate();
   const {
     formState: { errors },
     handleSubmit,
@@ -26,7 +26,7 @@ const Registro = () => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire("Bien Hecho!", "Te registraste correctamente", "success");
         reset()
-        // navegacion("/login"); //CUANDO FUNCIONE LAS RUTAS DESCOMENTAR
+       navegacion("/login");
       } else if (respuesta && respuesta.status === 400) {
         setErrores(respuesta.data.mensaje);
       } else {
@@ -130,7 +130,7 @@ const Registro = () => {
           <div className="d-flex justify-content-end contenedor-inicia-sesion">
             <p>
               ¿Ya tienes cuenta?{" "}
-              <span className="inicia-sesion fw-semibold">Inicia sesión</span> {/* CAMBIAR POR Link CUANDO HAYA RUTAS */}
+              <Link to={'/login'} className="inicia-sesion fw-semibold">Inicia sesión</Link>
             </p>
           </div>
           </Form>
