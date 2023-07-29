@@ -1,8 +1,6 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ChatHeartFill, StarFill } from "react-bootstrap-icons";
 
-import React from "react";
-
 const FormularioTestimonios = () => {
   return (
     <Container className="d-flex justify-content-center">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, Col, Button, Modal } from 'react-bootstrap';
 import './Servicios.css'
 const CardServicio = ({descripcion, nombreServicio, imagen}) => {

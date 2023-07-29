@@ -1,10 +1,9 @@
 import { Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { registrarUsuarios } from "../helpers/queries";
+import { crearUsuario } from "../helpers/queriesUsuarios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
-
 
 const Registro = () => {
   const [errores, setErrores] = useState("");
@@ -17,16 +16,16 @@ const Registro = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const {confirmPassword,...restoData} = data
-    if(data.password !== data.confirmPassword){
-    setErrores("Las contraseñas no coinciden")
-    return
+    const { confirmPassword, ...restoData } = data
+    if (data.password !== data.confirmPassword) {
+      setErrores("Las contraseñas no coinciden")
+      return
     }
-    registrarUsuarios(restoData).then((respuesta) => {
+    crearUsuario(restoData).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire("Bien Hecho!", "Te registraste correctamente", "success");
         reset()
-       navegacion("/login");
+        navegacion("/login");
       } else if (respuesta && respuesta.status === 400) {
         setErrores(respuesta.data.mensaje);
       } else {
@@ -127,12 +126,12 @@ const Registro = () => {
                 Registrar
               </button>
             </div>
-          <div className="d-flex justify-content-end contenedor-inicia-sesion">
-            <p>
-              ¿Ya tienes cuenta?{" "}
-              <Link to={'/login'} className="inicia-sesion fw-semibold">Inicia sesión</Link>
-            </p>
-          </div>
+            <div className="d-flex justify-content-end contenedor-inicia-sesion">
+              <p>
+                ¿Ya tienes cuenta?{" "}
+                <Link to={'/login'} className="inicia-sesion fw-semibold">Inicia sesión</Link>
+              </p>
+            </div>
           </Form>
         </div>
       </div>
