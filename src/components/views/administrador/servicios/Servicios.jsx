@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Servicios = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 
 export default Servicios;

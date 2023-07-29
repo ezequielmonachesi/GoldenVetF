@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Productos = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 
 export default Productos;

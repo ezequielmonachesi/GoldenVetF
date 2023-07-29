@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Turnos = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 
 export default Turnos;

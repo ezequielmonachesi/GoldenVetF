@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Comentarios = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 
 export default Comentarios;

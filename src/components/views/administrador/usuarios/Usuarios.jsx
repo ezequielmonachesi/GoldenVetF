@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Usuarios = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 
 export default Usuarios;

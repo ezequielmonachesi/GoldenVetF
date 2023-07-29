@@ -1,7 +1,6 @@
-import React from "react";
 import "./Administrador.css";
 import Sidebar from "./Sidebar";
-import { BrowserRouter, Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Pacientes from "./pacientes/Pacientes";
 import Comentarios from "./comentarios/Comentarios";
 import Productos from "./productos/Productos";
@@ -13,28 +12,27 @@ const Administrador = () => {
   return (
     <>
       <h1 className="my-4 mx-5">Bienvenido Admin(nombre de usuario) </h1>
-    
+
       <div className="layout">
         <div className="sidebar-wrapper">
           <Sidebar></Sidebar>
         </div>
         <div className="body-admin">
-         
           <Routes>
-          <Route path="comentarios/*" element={<Comentarios></Comentarios> }></Route>
-          <Route path="pacientes/*" element={<Pacientes></Pacientes> }></Route>
-          <Route path="productos/*" element={<Productos></Productos> }></Route>
-          <Route path="servicios/*" element={<Servicios></Servicios> }></Route>
-          <Route path="usuarios/*" element={<Usuarios></Usuarios> }></Route>
-          <Route path="turnos/*" element={<Turnos></Turnos> }></Route>
+            <Route
+              path="comentarios/*"
+              element={<Comentarios></Comentarios>}
+            ></Route>
+            <Route path="pacientes/*" element={<Pacientes></Pacientes>}></Route>
+            <Route path="productos/*" element={<Productos></Productos>}></Route>
+            <Route path="servicios/*" element={<Servicios></Servicios>}></Route>
+            <Route path="turnos/*" element={<Turnos></Turnos>}></Route>
+            <Route path="usuarios/*" element={<Usuarios></Usuarios>}></Route>
           </Routes>
-          
-            {/* Aqui se colocan los componentes 
-                administrador de turnos, pacientes y comentarios */}
-            <div className="w-100"></div>
-            </div>
+
+          <div className="w-100"></div>
+        </div>
       </div>
-    
     </>
   );
 };

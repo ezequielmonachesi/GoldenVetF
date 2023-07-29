@@ -1,11 +1,5 @@
-import React from 'react';
-
 const Pacientes = () => {
-    return (
-        <>
-        
-        </>
-    );
+  return <></>;
 };
 
 export default Pacientes;

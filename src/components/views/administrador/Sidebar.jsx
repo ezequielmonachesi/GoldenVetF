@@ -1,4 +1,3 @@
-import React from "react";
 import "./Sidebar.css";
 import SidebarData from "./SidebarData";
 import { NavLink } from "react-router-dom";
@@ -10,10 +9,10 @@ const Sidebar = () => {
         {SidebarData.map((val, key) => {
           return (
             <li>
-             <NavLink
+              <NavLink
                 key={key}
                 to={val.link}
-                id={({isActive})=> isActive ? 'active' : ''}
+                id={({ isActive }) => (isActive ? "active" : "")}
                 className="text-white fila"
               >
                 <div className="icono">{val.icono}</div>
