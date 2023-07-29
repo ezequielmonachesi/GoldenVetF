@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import CardServicio from './CardServicio';
 import './Servicios.css'
 import { useFetchData } from '../../hooks/useFetchData';
@@ -15,7 +14,7 @@ const Servicios = () => {
 
     const { data, isLoading, error } = useFetchData('servicios');
     
-    const listado = data.map(servicio => 
+    const listado = data?.map(servicio => 
         <CardServicio nombreServicio={servicio.nombreServicio}
         imagen={servicio.imagen} 
         descripcion={servicio.descripcion}
@@ -26,7 +25,7 @@ const Servicios = () => {
         <section className='container text-center bg-container-servicios'>
             <h2 className='m-5'>Nuestros Servicios</h2>
             <div className='row justify-content-center'>
-                {listado}
+                {listado.length >= 1 ? listado : <h3>Hubo un error al cargar los servicios</h3>}
             </div>
         </section>
         </>
