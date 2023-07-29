@@ -28,7 +28,7 @@ const AcercaDeNosotros = () => {
           >
             <h5 className="text-center display-5">Acerca de Nosotros</h5>
             <hr />
-            <p className="lead">
+            <p className="lead text-descripcion">
               En nuestra clínica veterinaria, no solo somos amantes apasionados
               de los animales, sino también dedicados programadores que hemos
               fusionado nuestra pasión por la tecnología con nuestro profundo
