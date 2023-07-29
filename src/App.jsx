@@ -14,6 +14,7 @@ import Footer from "./components/common/Footer";
 import Productos from './components/views/Productos'
 import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
+import DetalleProducto from './components/views/DetalleProducto'
 
 
 
@@ -31,8 +32,9 @@ function App() {
           <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
-          <Route exact path="/productos" element={<Productos/>}></Route>
           <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
+          <Route exact path="/productos" element={<Productos/>}></Route>
+          <Route exact path="/productos/:id" element={<DetalleProducto/>}></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
         </Routes>
