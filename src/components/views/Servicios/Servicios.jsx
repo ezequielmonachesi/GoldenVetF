@@ -29,10 +29,8 @@ const Servicios = () => {
     />
   ));
   
-    // Split the listado into smaller arrays of three elements each
     const chunksOfThree = chunkArray(listado, 3);
   
-    // Map over the chunks and create a new container for each group of three elements
     const serviciosContainers = chunksOfThree.map((chunk, index) => (
       <div className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 " key={index}>
         {chunk}
@@ -61,8 +59,9 @@ const Servicios = () => {
 
   return (
     <>
-      <section className="container text-center bg-container-servicios position-relative">
-        <h2 className="m-5">Nuestros Servicios</h2>
+      <section className="container text-center bg-container-servicios position-relative p-3 my-5 rounded shadow">
+        <h2 className="display-4">Nuestros Servicios</h2>
+        <hr />
         <div className="row justify-content-center">{showComponent()}</div>
       </section>
     </>
