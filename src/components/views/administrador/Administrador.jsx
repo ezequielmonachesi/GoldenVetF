@@ -1,6 +1,13 @@
 import React from "react";
 import "./Administrador.css";
 import Sidebar from "./Sidebar";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+import Pacientes from "./pacientes/Pacientes";
+import Comentarios from "./comentarios/Comentarios";
+import Productos from "./productos/Productos";
+import Servicios from "./servicios/Servicios";
+import Usuarios from "./usuarios/Usuarios";
+import Turnos from "./turnos/Turnos";
 
 const Administrador = () => {
   return (
@@ -11,7 +18,17 @@ const Administrador = () => {
         <div className="sidebar-wrapper">
           <Sidebar></Sidebar>
         </div>
-        <div className="body">
+        <div className="body-admin">
+         
+          <Routes>
+          <Route path="comentarios/*" element={<Comentarios></Comentarios> }></Route>
+          <Route path="pacientes/*" element={<Pacientes></Pacientes> }></Route>
+          <Route path="productos/*" element={<Productos></Productos> }></Route>
+          <Route path="servicios/*" element={<Servicios></Servicios> }></Route>
+          <Route path="usuarios/*" element={<Usuarios></Usuarios> }></Route>
+          <Route path="turnos/*" element={<Turnos></Turnos> }></Route>
+          </Routes>
+          
             {/* Aqui se colocan los componentes 
                 administrador de turnos, pacientes y comentarios */}
             <div className="w-100"></div>
