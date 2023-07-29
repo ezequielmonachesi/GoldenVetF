@@ -1,0 +1,27 @@
+.img-altura {
+  height: 400px;
+  object-fit: cover;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: none;
+}
+.border-up{
+    border-top: 3px solid #e5ba73;
+}
+
+@media all and (max-width: 576px) {
+  .img-altura {
+    height: 150px;
+  }
+}
+@media all and (max-width: 767px) {
+  .img-altura {
+    height: 200px;
+  }
+}
+@media all and (max-width: 992px) {
+  .img-altura {
+    height: 256px;
+  }
+}
