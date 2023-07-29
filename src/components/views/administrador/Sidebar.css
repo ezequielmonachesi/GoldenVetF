@@ -39,7 +39,7 @@
   flex: 70%;
 }
 
-.SidebarList #active {
+.SidebarList .active {
   background-color: #e5ba73;
   border-left: solid 0.5em #faeab1;
 }

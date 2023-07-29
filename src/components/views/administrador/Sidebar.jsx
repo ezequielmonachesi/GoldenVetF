@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import SidebarData from "./SidebarData";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -9,14 +9,16 @@ const Sidebar = () => {
       <ul className="SidebarList">
         {SidebarData.map((val, key) => {
           return (
-            <li key={key}>
-             <Link
+            <li>
+             <NavLink
+                key={key}
                 to={val.link}
-                className={window.location.pathname === val.link ? "active text-white fila" : "text-white fila"}
+                id={({isActive})=> isActive ? 'active' : ''}
+                className="text-white fila"
               >
                 <div className="icono">{val.icono}</div>
                 <div className="titulos-sidebar fs-5">{val.titulo}</div>
-              </Link>
+              </NavLink>
             </li>
           );
         })}
