@@ -25,6 +25,7 @@ const Servicios = () => {
       imagen={servicio.imagen}
       descripcion={servicio.descripcion}
       key={servicio.id}
+      id={servicio.id}
     />
   ));
   
@@ -33,7 +34,7 @@ const Servicios = () => {
   
     // Map over the chunks and create a new container for each group of three elements
     const serviciosContainers = chunksOfThree.map((chunk, index) => (
-      <div className="row position-relative mb-lg-5 pb-lg-5 " key={index}>
+      <div className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 " key={index}>
         {chunk}
       </div>
     ));

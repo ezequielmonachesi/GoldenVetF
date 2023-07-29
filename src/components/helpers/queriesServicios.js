@@ -10,7 +10,7 @@ export const obtenerServicios = async ()=>{
     }
 };
 
-export const obtenerServicio = async (id)=>{
+export const obtenerUnServicio = async (id)=>{
     try{
         const respuesta = await fetch(URL_SERVICIOS+'/'+id);
         const servicio = await respuesta.json();

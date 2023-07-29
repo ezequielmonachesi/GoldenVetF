@@ -41,7 +41,7 @@ a{
 }
   
 /* fin */
-@media all and (min-width: 768px){
+@media all and (min-width: 1400px){
   .bg-card-servicio{
     position: absolute;    
   }
@@ -49,3 +49,12 @@ a{
     height: 21em;
   }
 }
+@media all and (min-width: 768px) and (max-width: 1399px){
+  .bg-card-servicio{
+    position: absolute;    
+  }
+  .col-servicios{
+    height: 16em;
+  }
+}
+

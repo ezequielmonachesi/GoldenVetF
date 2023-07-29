@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./DetallesServicios.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useParams } from "react-router";
-import { obtenerUnServicio } from "../../helpers/queries";
+import { obtenerUnServicio } from "../../helpers/queriesServicios";
 import { useState } from "react";
 const DetalleServicios = () => {
 
