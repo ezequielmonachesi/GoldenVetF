@@ -5,13 +5,6 @@ import { Spinner } from 'react-bootstrap';
 
 
 const Servicios = () => {
-    // const [servicios, setServicios] = useState([]);
-    // useEffect(()=>{
-    //     obtenerServicios().then(res=>{
-    //         setServicios(res);
-            
-    //     })
-    // },[]);
 
     const { data, isLoading, error } = useFetchData('servicios');
     
@@ -30,7 +23,7 @@ const Servicios = () => {
             );
         }
 
-        if (isLoading && listado?.length >= 0) {
+        if (!isLoading && listado?.length <= 0) {
             return <h3 className='text-danger border p-3'>Hubo un error al cargar los servicios</h3>;
         }
 
