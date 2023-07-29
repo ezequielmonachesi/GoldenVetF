@@ -3,19 +3,14 @@
   grid-template-rows: 1fr;
   grid-template-columns: 0.2fr 1fr;
   gap: 8px;
-  flex-grow: 1;
   box-sizing: border-box;
   border-top: 2px solid #c68940;
+  height: 100vh;
 }
 
-.mainSection {
-  display: flex;
-  flex-direction: column;
-}
+
 
 .sidebar-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
+ background-color: #c68940;
+  height: 100%;
 }

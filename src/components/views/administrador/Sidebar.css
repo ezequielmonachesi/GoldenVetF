@@ -1,7 +1,8 @@
 .Sidebar {
-  width: 100%;
-  height: 100%;
   background: #c68940;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
 }
 
 .SidebarList {
@@ -34,7 +35,7 @@
   display: grid;
   place-items: center;
 }
-.fila .titulo {
+.fila .titulos-sidebar {
   flex: 70%;
 }
 
@@ -43,8 +44,14 @@
   border-left: solid 0.5em #faeab1;
 }
 
-@media screen and (max-width: 600px) {
-  .fila .titulo {
+@media screen and (max-width: 768px) {
+  .fila .titulos-sidebar {
     display: none;
+  }
+}
+@media all and (min-width: 769px) and (max-width: 991px) {
+  .SidebarList .fila {
+    flex-direction: column;
+    padding: 2em 0em;    
   }
 }
