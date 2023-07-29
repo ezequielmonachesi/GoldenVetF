@@ -11,6 +11,7 @@ import Error404 from "./components/views/error404/Error404";
 import Servicios from "./components/views/Servicios/Servicios";
 import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
+import DetalleServicios from "./components/views/servicios/DetalleServicios";
 
 
 function App() {
@@ -27,10 +28,12 @@ function App() {
           <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
+          <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
           </section>
         <Footer/>
+
       </BrowserRouter>
     </>
   );
