@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, Col, Button, Modal } from 'react-bootstrap';
 import './Servicios.css'
-const CardServicio = ({descripcion, nombreServicio, imagen}) => {
+import { Link } from 'react-router-dom';
+const CardServicio = ({descripcion, nombreServicio, imagen,id}) => {
 
     const [show, setShow] = useState(false);
 
@@ -10,7 +11,7 @@ const CardServicio = ({descripcion, nombreServicio, imagen}) => {
 
     return (
         <>
-        <Col md={4} ld={3} className="mb-3">
+        <Col md={4} ld={3} as={Link} to={"/servicios/"+id} className="mb-3 position-relative col-servicios">
             <Card className='bg-card-servicio'     onMouseEnter={handleShow} /* Agrega el evento onMouseEnter para mostrar el elemento */
     onMouseLeave={handleClose} /* Agrega el evento onMouseLeave para ocultar el elemento */
   >

@@ -1,5 +1,7 @@
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import "../../App.css"
+
 
 const Footer = () => {
     return (
