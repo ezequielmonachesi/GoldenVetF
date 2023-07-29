@@ -1,11 +1,10 @@
-import React from "react";
-import FormularioTestimonios from "../shared/formularioTestimonios/FormularioTestimonios";
+import Publicidad from '../shared/Inicio/Publicidad'
 
 const Inicio = () => {
 
     return (
-        <section>
-          
+        <section className='mainSection'>
+        <Publicidad></Publicidad>
         </section>
     );
 

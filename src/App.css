@@ -40,14 +40,18 @@ body {
   color: white;
 }
 
+
+/* Footer */
 .bg-footer{
-  background-color: #C58940;
+  background-color: #c58940;
 }
 
 .boton-verMas-producto{
+  text-decoration: none;
   background-color: #e5ba73;
-  padding: 3px 15px;
-  width: 150px;
+  padding: 10px 15px;
+  width: 120px;
+  color:black
 }
 .boton-verMas-producto:hover{
   background-color: #caa467;
@@ -66,3 +70,4 @@ color: #caa467;
 .img-productos{
 object-fit: contain;
 }
+

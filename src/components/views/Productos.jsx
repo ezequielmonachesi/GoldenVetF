@@ -3,7 +3,6 @@ import CardProducto from "./Producto/CardProducto";
 import { obtenerProductos } from "../helpers/queries";
 import { useState, useEffect } from "react";
 
-
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   useEffect(() => {
@@ -20,9 +19,13 @@ const Productos = () => {
       </h1>
       <hr />
       <Row>
-        {productos.map((producto) => (
-          <CardProducto key={producto.id} producto={producto}/>
-        ))}
+        {productos.length > 0 ? (
+          productos.map((producto) => (
+            <CardProducto producto={producto} key={producto.id} />
+          ))
+        ) : (
+          <h2>Hubo un error al cargar los productos</h2>
+        )}
       </Row>
     </Container>
   );
