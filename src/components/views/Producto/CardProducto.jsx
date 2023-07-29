@@ -28,7 +28,7 @@ const CardProducto = ({ producto }) => {
               <Cart4 className="mb-1" /> Comprar
             </Link>
             <Link
-              to={"/detalleProducto" + producto.id}
+              to={"/detalleProducto/" + producto.id}
               className="boton-verMas-producto fw-semibold rounded-pill"
             >
               <Eye className="mb-1" /> Ver más
