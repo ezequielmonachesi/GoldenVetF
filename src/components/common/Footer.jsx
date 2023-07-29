@@ -1,4 +1,5 @@
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 import "../../App.css"
 
 
@@ -30,6 +31,9 @@ const Footer = () => {
                         </li>
                         <li>
                             <a href="#">Login</a>
+                        </li>
+                        <li>
+                            <Link to={"/sobre-nosotros"}>Sobre Nosotros</Link>
                         </li>
                     </ul>
                 </section>
