@@ -25,7 +25,7 @@ const Servicios = () => {
             <section className='container text-center bg-container-servicios'>
                 <h2 className='m-5'>Nuestros Servicios</h2>
                 <div className='row justify-content-center'>
-                    {listado.length >= 1 ? listado : <h3>Hubo un error al cargar los servicios</h3>}
+                    {listado?.length >= 1 ? listado : <h3>Hubo un error al cargar los servicios</h3>}
                 </div>
             </section>
         </>
