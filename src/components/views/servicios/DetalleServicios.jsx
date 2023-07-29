@@ -16,9 +16,9 @@ const DetalleServicios = () => {
   },[])
 
   return (
-    <Container className="align-items-center">
-      <Row className="m-1 grilla justify-content-center">
-        <h1 className="text-center">{servicio.nombreServicio}</h1>
+    <Container className="align-items-center container-detalles-servicio">
+      <Row className="m-1 grilla-detalle-servicio justify-content-center">
+        <h1 className="text-center titulo-detalle-servicio">{servicio.nombreServicio}</h1>
     <p>{servicio.descripcion}</p>
     <h2 className="text-center">Servicios</h2>
        {servicio.subservicios && servicio.subservicios.map((subservicio,index) =>(
@@ -30,7 +30,7 @@ const DetalleServicios = () => {
                 <Col
                   xs={7}
                   sm={6}
-                  className="d-flex flex-column align-items-left justify-content-end texto"
+                  className="d-flex flex-column align-items-left justify-content-end texto-detalle-servicio"
                 >
                   <h6 className="fw-bold">{subservicio.nombreSubservicio}</h6>
                   <p className="text-black">              
