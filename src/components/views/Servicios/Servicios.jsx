@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import CardServicio from './CardServicio';
 import './Servicios.css'
-import { obtenerServicios } from '../../helpers/queries';
+import { useFetchData } from '../../hooks/useFetchData';
 
 
 const Servicios = () => {
-    const [servicios, setServicios] = useState([]);
-    useEffect(()=>{
-        obtenerServicios().then(res=>{
-            setServicios(res);
+    // const [servicios, setServicios] = useState([]);
+    // useEffect(()=>{
+    //     obtenerServicios().then(res=>{
+    //         setServicios(res);
             
-        })
-    },[]);
+    //     })
+    // },[]);
+
+    const { data, isLoading, error } = useFetchData('servicios');
     
-    const listado = servicios.map(servicio => 
+    const listado = data.map(servicio => 
         <CardServicio nombreServicio={servicio.nombreServicio}
         imagen={servicio.imagen} 
         descripcion={servicio.descripcion}
