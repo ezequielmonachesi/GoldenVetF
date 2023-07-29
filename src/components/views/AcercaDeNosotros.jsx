@@ -233,6 +233,13 @@ const AcercaDeNosotros = () => {
             </Col>
           </Row>
         </div>
+        <Row>
+          <div className="bgimg-3">
+            <div className="caption">
+              <h2 className="display-2">Golden Vet</h2>
+            </div>
+          </div>
+        </Row>
       </Container>
     </>
   );
