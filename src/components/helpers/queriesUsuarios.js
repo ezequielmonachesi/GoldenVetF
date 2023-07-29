@@ -20,20 +20,21 @@ export const obtenerUsuario = async (id)=>{
     }
 }
 
-export const crearUsuario = async (usuario)=>{
-    try{
-        const respuesta = await fetch(URL_USUARIOS,{
+export const crearUsuario = async (usuario) => {
+    try {
+        const respuesta = await fetch(URL_USUARIOS, {
             method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(usuario)
+            body: JSON.stringify(usuario),
         });
-        return respuesta;
-    }catch (error){
-        console.log(error)
+        const data = await respuesta.json();
+        return { status: respuesta.status, data };
+    } catch (error) {
+        console.log(error.mensaje);
     }
-}
+};
 
 export const borrarUsuario= async (id)=>{
     try{

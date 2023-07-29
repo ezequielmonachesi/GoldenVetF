@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Registro from "./components/views/Registro";
 
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
         <Routes>          
           <Route exact path="/" element={<Inicio></Inicio> }></Route>
           <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}></Route>
+          <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>

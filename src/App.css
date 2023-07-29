@@ -16,6 +16,17 @@ body {
   flex-grow: 1;
 }
 
+.btn-registro{
+background-color: #e5ba73;
+color: white;
+font-size: 18px;
+}
+.inicia-sesion{
+color: #e5ba73;
+}
+.registro{
+  color: #e5ba73;
+}
 
 @media all and (min-width: 768px) and (max-width: 991px) {
   .width-button-responsive {
