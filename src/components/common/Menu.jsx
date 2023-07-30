@@ -27,7 +27,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <NavLink  end to={'/productos'} className={'nav-item nav-link'}>Productos</NavLink>
             <NavLink  end to={'/servicios'} className={'nav-item nav-link'}>Servicios</NavLink>
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'administrador' && (
-              <NavLink end to={'/administrador'} className={'nav-item nav-link'}>Administrador</NavLink>
+              <NavLink end to={'/admin'} className={'nav-item nav-link'}>Administrador</NavLink>
             )}
 
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'usuario' && (
