@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Button, Modal } from 'react-bootstrap';
-import './servicios.css'
+import './planes.css'
 
 const CardPlan = ({nombrePlan, rangoEdad, descripcion, serviciosPlan, imagenes}) => {
     const [show, setShow] = useState(false);
@@ -13,12 +13,12 @@ const CardPlan = ({nombrePlan, rangoEdad, descripcion, serviciosPlan, imagenes})
     return (
         <>
         <Col md={4} ld={3} className="mb-3">
-            <Card className='bg-card-servicio'>
+            <Card className='bg-card-planes'>
                 <Card.Img src={imagenes[1]} placeholder={nombrePlan}/>
                 <Card.Body>
                     <Card.Title>{nombrePlan}</Card.Title>
                     <p>rango de edad: {rangoEdad}</p>
-                    <button className='bg-boton-servicio btn' onClick={handleShow}>Ver mas</button>
+                    <button className='bg-boton-planes btn' onClick={handleShow}>Ver mas</button>
                 </Card.Body>
             </Card>
         </Col>

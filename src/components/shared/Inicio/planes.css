@@ -1,17 +1,17 @@
-.bg-container-servicios{
+.bg-container-planes{
     background-color: #faf8f1;
 }
 
-.bg-card-servicio{
+.bg-card-planes{
     background-color: #faeab1;
 }
 
-.bg-boton-servicio{
+.bg-boton-planes{
     background-color: #c58940;
     border-color: #c58940;
 }
 
-.bg-boton-servicio:hover{
+.bg-boton-planes:hover{
     background-color: #92652f;
     border-color: #92652f;
 }
