@@ -1,18 +1,19 @@
-import imagenPrimerosPasos1 from "../../../assets/plan-primeros.pasos-1.jpg";
-import imagenPrimerosPasos2 from "../../../assets/plan-primeros.pasos-2.jpg";
-import imagenPrimerosPasos3 from "../../../assets/plan-primeros.pasos-3.jpg";
-import imagenPrimerosPasos4 from "../../../assets/plan-primeros.pasos-4.jpg";
+import imagenPrimerosPasos1 from "../../../assets/plan-primeros-pasos-1.jpg";
+import imagenPrimerosPasos2 from "../../../assets/plan-primeros-pasos-2.jpg";
+import imagenPrimerosPasos3 from "../../../assets/plan-primeros-pasos-3.jpg";
+import imagenPrimerosPasos4 from "../../../assets/plan-primeros-pasos-4.jpg";
 import imagenMadurando1 from "../../../assets/plan-madurando-1.jpg";
 import imagenMadurando2 from "../../../assets/plan-madurando-2.jpg";
 import imagenMadurando3 from "../../../assets/plan-madurando-3.jpg";
 import imagenMadurando4 from "../../../assets/plan-madurando-4.jpg";
-import imagenAdulto1 from "../../../assets/plan-adulto-1.jpg";
-import imagenAdulto2 from "../../../assets/plan-adulto-2.jpg";
-import imagenAdulto3 from "../../../assets/plan-adulto-3.jpg";
-import imagenAdulto4 from "../../../assets/plan-adulto-4.jpg";
+import imagenAdulto1 from "../../../assets/plan-adultos-1.jpg";
+import imagenAdulto2 from "../../../assets/plan-adultos-2.jpg";
+import imagenAdulto3 from "../../../assets/plan-adultos-3.jpg";
+import imagenAdulto4 from "../../../assets/plan-adultos-4.jpg";
 
 export const planData = [
     {
+        id: "plan-primeros-pasos",
         nombrePlan: "Primeros pasos",
         rangoEdad: "0-5 años",
         descripcion: "Este plan está diseñado para atender a las mascotas en sus etapas más jóvenes, desde el nacimiento hasta los 5 años de edad. Sabemos lo importante que es brindarles un cuidado óptimo durante su desarrollo temprano para asegurar una vida saludable y feliz",
@@ -31,6 +32,7 @@ export const planData = [
         ]
     },
     {
+        id: "plan-madurando",
         nombrePlan: "Madurando",
         rangoEdad: "5-10 años",
         descripcion: 'Nuestro plan "Madurando" se enfoca en las mascotas que tienen entre 5 y 10 años de edad. Comprendemos que esta etapa puede requerir un cuidado especial para mantener la vitalidad y el bienestar de tu compañero en plena madurez.',
@@ -49,6 +51,7 @@ export const planData = [
         ]
     },
     {
+        id: "plan-adultos",
         nombrePlan: "Adultos",
         rangoEdad: "Mas de 10 años",
         descripcion: 'Nuestro plan "Adultos" se enfoca en las mascotas que han superado los 10 años de edad. En esta etapa, el cuidado y la atención adecuada son esenciales para garantizar una calidad de vida óptima.',
