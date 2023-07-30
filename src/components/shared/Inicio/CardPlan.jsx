@@ -1,52 +1,21 @@
-import React, { useState } from 'react';
-import { Card, Col, Button, Modal } from 'react-bootstrap';
+import { Card, Col, Button } from 'react-bootstrap';
 import './planes.css'
+import { Link } from 'react-router-dom';
 
-const CardPlan = ({nombrePlan, rangoEdad, descripcion, serviciosPlan, imagenes}) => {
-    const [show, setShow] = useState(false);
+const CardPlan = ({id, nombrePlan, rangoEdad, descripcion, serviciosPlan, imagenes}) => {
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    
-    const listado = serviciosPlan.map(servicio=><li>{servicio}</li>);
-    
     return (
         <>
-        <Col md={4} ld={3} className="mb-3">
-            <Card className='bg-card-planes'>
-                <Card.Img src={imagenes[1]} placeholder={nombrePlan}/>
-                <Card.Body>
-                    <Card.Title>{nombrePlan}</Card.Title>
-                    <p>rango de edad: {rangoEdad}</p>
-                    <button className='bg-boton-planes btn' onClick={handleShow}>Ver mas</button>
-                </Card.Body>
-            </Card>
-        </Col>
-
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>{nombrePlan}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <article>
-                    <img src={imagenes[1]} alt={nombrePlan} className='img-fluid'/>
-                </article>
-                <article>
-                    {descripcion}
-                </article>
-                <article>
-                    <h3>Servicios que les ofrecemos</h3>
-                    <ul>
-                        {listado}
-                    </ul>
-                </article>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
-                    Solicitar
-                </Button>
-            </Modal.Footer>
-        </Modal>
+            <Col md={4} ld={3} className="mb-3">
+                <Card className='bg-card-planes'>
+                    <Card.Img src={imagenes[1]} placeholder={nombrePlan}/>
+                    <Card.Body>
+                        <Card.Title>{nombrePlan}</Card.Title>
+                        <p>rango de edad: {rangoEdad}</p>
+                        <Button as={Link} to={"/planes/"+id} className='bg-boton-planes btn'>Ver mas</Button>
+                    </Card.Body>
+                </Card>
+            </Col>
         </>
     );
 };
