@@ -1,9 +1,9 @@
 const URL_USUARIOS = import.meta.env.VITE_API_USUARIOS;
+const URL_LOGIN = import.meta.env.VITE_API_BASE;
 
 export const login = async (usuario)=>{
     try{
-        //pedir a la api la lista de usuarios
-        const respuesta = await fetch(URL_USUARIOS,{
+        const respuesta = await fetch(URL_LOGIN,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

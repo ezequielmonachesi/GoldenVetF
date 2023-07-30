@@ -2,9 +2,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from '../../assets/logo.png'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Menu = () => {
+const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
+  const navegacion = useNavigate();
+
+  const logout = ()=>{
+    sessionStorage.removeItem('usuario');
+    setUsuarioLogueado({});
+    navegacion('/');
+  }
+
   return (
     <Navbar expand="lg" className="bg-navBar py-0">
       <Container>
@@ -18,8 +26,24 @@ const Menu = () => {
             <NavLink  end to={'/planes'} className={'nav-item nav-link'}>Planes</NavLink>
             <NavLink  end to={'/productos'} className={'nav-item nav-link'}>Productos</NavLink>
             <NavLink  end to={'/servicios'} className={'nav-item nav-link'}>Servicios</NavLink>
-            <NavLink  end to={'/registro'} className={'nav-item nav-link'}>Registro</NavLink>
-            <NavLink  end to={'/login'} className={'nav-item nav-link'}>Login</NavLink>
+            {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'administrador' && (
+              <NavLink end to={'/administrador'} className={'nav-item nav-link'}>Administrador</NavLink>
+            )}
+
+            {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'usuario' && (
+              <NavLink end to={'/usuario'} className={'nav-item nav-link'}>Usuario</NavLink>
+            )}
+
+            {!usuarioLogueado.nombreUsuario && (
+              <>
+                <NavLink end to={'/registro'} className={'nav-item nav-link'}>Registro</NavLink>
+                <NavLink end to={'/login'} className={'nav-item nav-link'}>Login</NavLink>
+              </>
+            )}
+
+            {usuarioLogueado.nombreUsuario && (
+              <NavLink onClick={logout} className={'nav-item nav-link'}>Cerrar Sesión</NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
