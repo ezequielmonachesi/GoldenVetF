@@ -51,7 +51,6 @@ const Contacto = () => {
                   <Form.Control
                     type="email"
                     placeholder="nombre@mail.com"
-                    id="email"
                     name="email"
                   />
                 </Form.Group>
@@ -64,7 +63,6 @@ const Contacto = () => {
                     type="text"
                     placeholder="Juan Diaz"
                     required
-                    id="nombre"
                     name="nombre"
                   />
                 </Form.Group>
@@ -78,7 +76,6 @@ const Contacto = () => {
                     rows={5}
                     required
                     minLength={10}
-                    id="mensaje"
                     name="mensaje"
                   />
                 </Form.Group>
