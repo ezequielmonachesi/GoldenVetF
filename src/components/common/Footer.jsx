@@ -1,3 +1,4 @@
+
 import {
   Facebook,
   GeoAltFill,
@@ -7,6 +8,7 @@ import {
 } from "react-bootstrap-icons";
 import { Link, useLocation } from "react-router-dom";
 import "../../App.css";
+
 
 const Footer = ({ path }) => {
   const { pathname } = useLocation();
