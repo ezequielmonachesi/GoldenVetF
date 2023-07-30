@@ -9,9 +9,7 @@ const Inicio = () => {
         <section className='mainSection'>
         <Planes/>
         <Publicidad/>
-        <div className='ms-lg-5'>
-            <Productos/>
-        </div>
+        <Productos/>
         </section>
     );
 };
