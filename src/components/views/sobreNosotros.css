@@ -1,0 +1,92 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+.bgimg-1,
+.bgimg-2,
+.bgimg-3 {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgimg-1 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("../../assets/sobreNosotros.jpg");
+  min-height: calc(100vh - 65px);
+}
+
+.bgimg-2 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("../../assets/sobreNosotros2.jpg");
+  min-height: 100vh;
+}
+.bgimg-3 {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("../../assets/goldenVetSobreNostros.png");
+  min-height: 100vh;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.tarjeta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.tarjeta-img-top {
+  border-radius: 0;
+  object-fit: cover;
+}
+.tarjeta-body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: -600px;
+  background: linear-gradient(#fffefeb4, #ca873471);
+  backdrop-filter: blur(1px);
+  transition: ease-in-out 1s;
+  color: #0a0a0ae1;
+}
+
+.card:hover .card-body {
+  bottom: 0;
+  transition: all 0.8s;
+}
+
+.iconColor {
+  color: #111111be;
+}
+.circle {
+  background-color: #ffffff8e;
+  padding: 10px 10px 9px 10px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.circle:hover {
+  background-color: #c58940;
+  box-shadow: 0px 0px 10px #c58940;
+}
+
+@media all and (min-width: 1400px) {
+}
