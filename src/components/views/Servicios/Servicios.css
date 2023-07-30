@@ -6,6 +6,7 @@
 
 .bg-card-servicio{
     background-color: #faeab1;
+    filter: opacity(0.90) grayscale(.2);
 }
 
 .bg-boton-servicio{
@@ -22,22 +23,38 @@
 .description {
     max-height: 0; 
     overflow: hidden;
-    transition: max-height 0.3s; 
+    transition: max-height 0.3s;     
   }
   /* Estilo para mostrar la descripción */
 .description.active {
     max-height: 100px;    
   }
 
-  .card{
-    filter: opacity(0.90) grayscale(.2);
-  }
-
-  .card:hover{
+.bg-card-servicio:hover{
     cursor: pointer;
     transition: .3s;
     scale: 1.02;
     filter: opacity(1) grayscale(0);
   }
-
+a{
+  text-decoration: none;
+}
+  
 /* fin */
+@media all and (min-width: 1400px){
+  .bg-card-servicio{
+    position: absolute;    
+  }
+  .col-servicios{
+    height: 21em;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1399px){
+  .bg-card-servicio{
+    position: absolute;    
+  }
+  .col-servicios{
+    height: 16em;
+  }
+}
+

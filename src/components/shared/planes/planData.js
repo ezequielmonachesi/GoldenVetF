@@ -1,15 +1,15 @@
-import imagenPrimerosPasos1 from "../../../assets/plan-primeros.pasos-1.jpg";
-import imagenPrimerosPasos2 from "../../../assets/plan-primeros.pasos-2.jpg";
-import imagenPrimerosPasos3 from "../../../assets/plan-primeros.pasos-3.jpg";
-import imagenPrimerosPasos4 from "../../../assets/plan-primeros.pasos-4.jpg";
+import imagenPrimerosPasos1 from "../../../assets/plan-primeros-pasos-1.jpg";
+import imagenPrimerosPasos2 from "../../../assets/plan-primeros-pasos-2.jpg";
+import imagenPrimerosPasos3 from "../../../assets/plan-primeros-pasos-3.jpg";
+import imagenPrimerosPasos4 from "../../../assets/plan-primeros-pasos-4.jpg";
 import imagenMadurando1 from "../../../assets/plan-madurando-1.jpg";
 import imagenMadurando2 from "../../../assets/plan-madurando-2.jpg";
 import imagenMadurando3 from "../../../assets/plan-madurando-3.jpg";
 import imagenMadurando4 from "../../../assets/plan-madurando-4.jpg";
-import imagenAdulto1 from "../../../assets/plan-adulto-1.jpg";
-import imagenAdulto2 from "../../../assets/plan-adulto-2.jpg";
-import imagenAdulto3 from "../../../assets/plan-adulto-3.jpg";
-import imagenAdulto4 from "../../../assets/plan-adulto-4.jpg";
+import imagenAdulto1 from "../../../assets/plan-adultos-1.jpg";
+import imagenAdulto2 from "../../../assets/plan-adultos-2.jpg";
+import imagenAdulto3 from "../../../assets/plan-adultos-3.jpg";
+import imagenAdulto4 from "../../../assets/plan-adultos-4.jpg";
 
 export const planData = [
     {
