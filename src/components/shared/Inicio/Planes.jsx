@@ -14,7 +14,7 @@ const Planes = () => {
         key={i+1}/>);
 
     return (
-        <section className='container text-center bg-container-servicios'>
+        <section className='container text-center bg-container-planes'>
             <h2 className='m-5'>Nuestros Planes para su mascota</h2>
             <div className='row justify-content-center'>
                 {listado}
