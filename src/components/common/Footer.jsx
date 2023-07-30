@@ -1,9 +1,11 @@
 import { Facebook, GeoAltFill, Instagram, TelephoneFill, Twitter } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import "../../App.css"
 
 
-const Footer = () => {
+const Footer = ({ path }) => {
+    const { pathname } = useLocation();
+    if (pathname === "/admin/*"||"/admin") return null;
     return (
         <>
         <footer className='bg-footer text-light text-center p-5'>
