@@ -5,7 +5,9 @@ import "../../App.css"
 
 const Footer = ({ path }) => {
     const { pathname } = useLocation();
-    if (pathname === "/admin/*"||"/admin") return null;
+    console.log(pathname.slice(0,6))
+    if (pathname.slice(0, 6) ==='/admin') return null;
+
     return (
         <>
         <footer className='bg-footer text-light text-center p-5'>
