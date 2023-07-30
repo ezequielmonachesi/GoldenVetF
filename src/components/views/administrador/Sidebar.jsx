@@ -8,11 +8,10 @@ const Sidebar = () => {
       <ul className="SidebarList">
         {SidebarData.map((val, key) => {
           return (
-            <li>
+            <li key={key}>
               <NavLink
                 key={key}
                 to={val.link}
-                id={({ isActive }) => (isActive ? "active" : "")}
                 className="text-white fila"
               >
                 <div className="icono">{val.icono}</div>
