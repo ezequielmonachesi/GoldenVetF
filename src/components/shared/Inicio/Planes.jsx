@@ -1,9 +1,7 @@
-import React from 'react';
 import { planData } from '../planes/planData';
 import CardPlan from './CardPlan';
 
 const Planes = () => {
-    let i = 0;
     const planes = planData;
     const listado = planes.map(plan => 
         <CardPlan nombrePlan={plan.nombrePlan}
@@ -11,7 +9,8 @@ const Planes = () => {
         descripcion={plan.descripcion}
         serviciosPlan={plan.serviciosPlan}
         imagenes={plan.imagenes}
-        key={i+1}/>);
+        id={plan.id}
+        key={plan.id}/>);
 
     return (
         <section className='container text-center bg-container-planes'>
