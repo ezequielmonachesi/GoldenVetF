@@ -1,10 +1,12 @@
-import React from 'react';
 import Planes from '../shared/Inicio/Planes';
+import Publicidad from '../shared/Inicio/Publicidad'
 
 const Inicio = () => {
+
     return (
         <section className='mainSection'>
-            <Planes/>
+        <Planes/>
+        <Publicidad/>
         </section>
     );
 };

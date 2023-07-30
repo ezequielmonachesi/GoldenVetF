@@ -1,13 +1,30 @@
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import './style.css';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { login } from "../../helpers/queriesUsuarios";
 
-const Login = () => {
+const Login = ({ setUsuarioLogueado }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navegacion = useNavigate();
 
     const onSubmit = (usuario) => {
-        console.log(usuario);
+        login(usuario).then((respuesta) => {
+            console.log(respuesta);
+            if(respuesta && respuesta.nombreUsuario){
+                sessionStorage.setItem('usuario', JSON.stringify(respuesta));
+                setUsuarioLogueado(respuesta);
+                navegacion('/');
+            } else {
+                Swal.fire(
+                    "Error",
+                    "Hubo un error al logearse intenta nuevamente en unos minutos",
+                    "error"
+                );
+            }
+        });
     }
 
     return (
