@@ -32,10 +32,10 @@ const Producto = () => {
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Comida para perro</td>
+                        <td className='truncarTexto'>Comida para perro</td>
                         <td>$200</td>
                         <td>20</td>
-                        <td>es solo comida para perro</td>
+                        <td className='truncarTexto'>es solo comida para perro</td>
                         <td>una imagen</td>
                         <td>
                             <Button variant="warning" className='me-2 my-2' onClick={handleShow}>

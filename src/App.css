@@ -40,6 +40,11 @@ body {
   color: white;
 }
 
+.truncarTexto {
+  max-width: 150px;
+  max-height: 150px;
+  overflow-x: auto;
+}
 
 /* Footer */
 .bg-footer{
