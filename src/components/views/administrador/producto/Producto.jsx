@@ -5,10 +5,47 @@ import { useState } from 'react';
 
 const Producto = () => {
     
+    const productoInicial = {
+        id:'',
+        nombreProducto: '',
+        descripcion:'',
+        precio:'',
+        stock:'',
+        imagen:''
+    }
+    const [producto, setProducto] = useState(productoInicial);
+    const [modificar, setModificar] = useState(false);
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const modificarProducto = (producto) => {
+        setModificar(true);
+        setProducto(producto);
+        handleShow();
+    }
+
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setProducto((prevProducto) => ({
+          ...prevProducto,
+          [id]: value,
+        }));
+      };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(modificar){
+            a
+            // cuando termina de modificar el producto setea la bandera
+            setModificar(false);
+        }
+        else{
+            a
+        }
+    }
 
     return (
         <Container className='bg-white'>
@@ -38,7 +75,7 @@ const Producto = () => {
                         <td className='truncarTexto'>es solo comida para perro</td>
                         <td>una imagen</td>
                         <td>
-                            <Button variant="warning" className='me-2 my-2' onClick={handleShow}>
+                            <Button variant="warning" className='me-2 my-2' onClick={modificarProducto}>
                                 Editar
                             </Button>
                             <Button variant="danger">
@@ -54,13 +91,14 @@ const Producto = () => {
                 <Modal.Title></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="nombreProducto">
                     <Form.Label>Producto</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Nombre del producto"
-                        autoFocus
+                        value={producto.nombreProducto}
+                        onChange={handleInputChange}
                     />
                     </Form.Group>
                     <Form.Group
@@ -72,29 +110,35 @@ const Producto = () => {
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
-                    controlId='precioProducto'>
+                    controlId='descripcion'>
                         <Form.Label>Precio</Form.Label>
                         <Form.Control
                         type="number"
                         placeholder="Ej: 50"
+                        value={producto.descripcion}
+                        onChange={handleInputChange}
                         />
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
-                    controlId='stockProducto'>
+                    controlId='stock'>
                         <Form.Label>Stock</Form.Label>
                         <Form.Control
                         type="number"
                         placeholder="Ej: 50"
+                        value={producto.stock}
+                        onChange={handleInputChange}
                         />
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
-                    controlId='imagenProducto'>
+                    controlId='imagen'>
                         <Form.Label>Imagen</Form.Label>
                         <Form.Control
                         type="text"
                         placeholder="Ej: imagen.com/imagen.jpg"
+                        value={producto.imagen}
+                        onChange={handleInputChange}
                         />
                     </Form.Group>
                 </Form>
@@ -103,7 +147,7 @@ const Producto = () => {
                 <Button variant="secondary" onClick={handleClose}>
                     Cancelar
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" type='submit'>
                     Guardar
                 </Button>
                 </Modal.Footer>
