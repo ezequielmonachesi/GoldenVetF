@@ -57,7 +57,9 @@ const Pacientes = () => {
           </tr>
         </thead>
         <tbody>
-          <RowPaciente></RowPaciente>
+          {
+            pacientes.map((paciente)=><RowPaciente paciente={paciente} key={paciente.id}></RowPaciente>)
+          }
         </tbody>
       </Table>
     </section>

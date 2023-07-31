@@ -2,14 +2,14 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const RowPaciente = () => {
+const RowPaciente = ({ paciente}) => {
   return (
     <tr>
-      <td>Algo</td>
-      <td>Algo</td>
-      <td>Algo</td>
-      <td>Algo</td>
-      <td>Algo</td>
+      <td>{paciente.mascota.nombre}</td>
+      <td>{paciente.mascota.especie}</td>
+      <td>{paciente.mascota.raza}</td>
+      <td>{paciente.nombreDuenio}</td>
+      <td>{paciente.telefono}</td>
       <td className="d-flex">
         <div>
           <Link className="bg-boton-planes btn text-white me-2" to={""}>
