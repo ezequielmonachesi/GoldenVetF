@@ -3,7 +3,7 @@ import { Button, Container, Table, Modal, Form } from 'react-bootstrap';
 import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
 
-const Producto = () => {
+const Productos = () => {
     
     const productoInicial = {
         id:'',
@@ -157,4 +157,4 @@ const Producto = () => {
     );
 };
 
-export default Producto;
+export default Productos;

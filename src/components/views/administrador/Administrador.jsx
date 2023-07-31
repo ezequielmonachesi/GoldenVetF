@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import { Routes, Route } from "react-router-dom";
 import Pacientes from "./pacientes/Pacientes";
 import Comentarios from "./comentarios/Comentarios";
-import Productos from "./productos/Productos";
+import Productos from "./producto/Productos";
 import Servicios from "./servicios/Servicios";
 import Usuarios from "./usuarios/Usuarios";
 import Turnos from "./turnos/Turnos";
