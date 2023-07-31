@@ -11,13 +11,13 @@ const RowPaciente = () => {
       <td>Algo</td>
       <td>Algo</td>
       <td>
-        <Link
-          className="bg-boton-planes btn text-white me-2"
-          to={""}
-        >
+        <Link className="bg-boton-planes btn text-white me-2" to={""}>
           Editar
         </Link>
-        <Button variant="danger">
+        <Link className="bg-boton-planes btn text-white me-2" to={""}>
+          Asignar Turno
+        </Link>
+        <Button variant="danger" className="me-2">
           Borrar
         </Button>
       </td>

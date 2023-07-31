@@ -5,7 +5,7 @@ import CrearPaciente from "./CrearPaciente";
 
 const Pacientes = () => {
   return (
-    <section className="container mainSection bg-white shadow my-5 py-4">
+    <section className="container mainSection bg-white shadow-lg my-5 py-4 rounded-3">
       <div className="">
         <h1 className="display-4 text-center">Administrador Pacientes</h1>
         <div className="text-end">
