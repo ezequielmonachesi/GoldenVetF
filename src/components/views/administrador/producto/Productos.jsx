@@ -20,7 +20,6 @@ const Productos = () => {
         })
     },[]);
     const productoInicial = {
-        id:'',
         nombreProducto: '',
         descripcion:'',
         precio:'',
@@ -31,44 +30,53 @@ const Productos = () => {
     const [id, setId] = useState('');
     const [modificar, setModificar] = useState(false);
 
-    const modificarProducto = (producto, id) => {
-        setModificar(true);
-        setProducto(producto);
-        setId(id)
-        handleShow();
-    }
-    
-    const limpiarForm = () => {
-        setProducto(productoInicial);
-        setModificar(false);
-        handleClose();
-    };
-
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setProducto((prevProducto) => ({
-          ...prevProducto,
-          [id]: value,
+        ...prevProducto,
+        [id]: value,
         }));
-      };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(modificar){
-            editarProducto(producto,id);
-            setId('');
-            setProducto(productoInicial);
-            setModificar(false);
-            handleClose();
+            editarProducto(producto,id).then((respuesta)=>{
+                if (respuesta && respuesta.status === 200) console.log('Se modifico el producto');
+                else console.log('no se pudo modificar el producto');
+                handleClose();
+                limpiarForm();
+                obtenerProductos().then((respuesta)=>{
+                    if (respuesta) setProductos(respuesta);
+                    else setProductos([]);
+                })
+            })
         }
         else{
-            console.log('lado del else')
-            crearProducto(producto).then((respuesta)=>{
-                if(respuesta && respuesta.status === 201) console.log('se creo el producto')
-                else console.log('no se creo el producto')
-            });
-            handleClose();
+            
+            obtenerProductos().then((respuesta)=>{
+                if (respuesta) setProductos(respuesta);
+                else setProductos([]);
+            })
+            insertarProducto(producto)
         }
+    }
+
+    const insertarProducto = (prod) => {
+        console.log('llamada desde insertarProducto')
+        crearProducto(prod).then((respuesta)=>{
+            if (respuesta && respuesta.status === 201) console.log('Se creo el producto');
+            else console.log('no se pudo crear el producto');
+            handleClose();
+        })
+    }
+
+    const modProducto = (prod, id) => {
+        setModificar(true);
+        setId(id);
+        setProducto(prod);
+        handleShow();
+        
     }
 
     const eliminarProducto = (id) => {
@@ -78,6 +86,13 @@ const Productos = () => {
         })
     }
 
+    const limpiarForm = () => {
+        setProducto(productoInicial);
+        setModificar(false);
+        handleClose();
+    };
+
+    
     return (
         <Container className='bg-white'>
             <h1 className='m-5'>Administrar Productos</h1>
@@ -108,7 +123,7 @@ const Productos = () => {
                                 <td className='truncarTexto'>{prod.imagen}</td>
                                 <td>
                                     <Button variant="warning" className='me-2 my-2' 
-                                    onClick={()=>modificarProducto(prod,prod.id)}>
+                                    onClick={()=>modProducto(prod,prod.id)}>
                                         Editar
                                     </Button>
                                     <Button variant="danger"
@@ -121,14 +136,13 @@ const Productos = () => {
                     }
                 </tbody>
             </Table>
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title></Modal.Title>
+                <Modal.Title>Agregar o modificar receta</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="nombreProducto">
+                <Form.Group className="mb-3" controlId="nombreProducto">
                     <Form.Label>Producto</Form.Label>
                     <Form.Control
                         type="text"
@@ -146,7 +160,8 @@ const Productos = () => {
                         as="textarea" 
                         rows={3}
                         value={producto.descripcion}
-                        onChange={handleInputChange}/>
+                        onChange={handleInputChange}
+                    />
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
@@ -181,18 +196,17 @@ const Productos = () => {
                         onChange={handleInputChange}
                         />
                     </Form.Group>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={limpiarForm}>
+                            Cancelar
+                        </Button>
+                        <Button variant="primary" type="submit">
+                            Guardar
+                        </Button>
+                    </Modal.Footer>
                 </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={limpiarForm}>
-                    Cancelar
-                </Button>
-                <Button variant="primary" type='submit'>
-                    Guardar
-                </Button>
-                </Modal.Footer>
             </Modal>
-
         </Container>
     );
 };
