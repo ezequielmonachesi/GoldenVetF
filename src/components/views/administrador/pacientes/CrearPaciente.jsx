@@ -31,10 +31,12 @@ const CrearPaciente = () => {
     });
   };
 
+  
+
   return (
-    <section className="container mainSection">
-      <Row className="justify-content-center my-5">
-        <Col md={6} className="bg-white shadow-lg rounded-3 py-4">
+    // <section className="container mainSection">
+      <Row className="justify-content-center">
+        <Col md={12} className="rounded-3">
           <h1 className="display-4">Crear Paciente</h1>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -206,7 +208,7 @@ const CrearPaciente = () => {
                 </Col>
               </Row>
             </Form.Group>
-            <div className="text-end mt-5">
+            <div className="text-center mt-5">
               <Button
                 variant="primary"
                 type="submit"
@@ -218,7 +220,7 @@ const CrearPaciente = () => {
           </Form>
         </Col>
       </Row>
-    </section>
+    // </section>
   );
 };
 
