@@ -1,5 +1,6 @@
 import Planes from '../shared/Inicio/Planes';
 import Publicidad from '../shared/Inicio/Publicidad'
+import Testimonios from '../shared/testimonios/Testimonios';
 
 const Inicio = () => {
 
@@ -7,6 +8,7 @@ const Inicio = () => {
         <section className='mainSection'>
         <Planes/>
         <Publicidad/>
+        <Testimonios/>
         </section>
     );
 };
