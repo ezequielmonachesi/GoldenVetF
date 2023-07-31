@@ -8,7 +8,7 @@ const Turnos = () => {
   <Container>
     <div className="text-center"><Button>Crear Turno</Button></div>
     <Row className="mt-5">
-      {data.map(turno => <CardTurnosAdministrador turno={turno}/>)}
+      {data.map(turno => <CardTurnosAdministrador turno={turno} key={turno.id}/>)}
     </Row>
   </Container>
   </>;

@@ -5,7 +5,13 @@ import {useForm} from 'react-hook-form'
 const CardTurnosAdministrador = ({turno}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    setValue('paciente',turno.paciente)
+    setValue('veterinario',turno.veterinario)
+    setValue('fechaYHora',turno.fechaYHora)
+    setValue('detalleVisita',turno.detalleVisita)
+}
 
   const {
     register,
@@ -14,7 +20,7 @@ const CardTurnosAdministrador = ({turno}) => {
     handleSubmit,
   } = useForm();
 
-  const ModalEditarTurno = () => {
+  const ModalEditarTurno = ({turno}) => {
     return (
       <>
         <Modal
@@ -30,19 +36,27 @@ const CardTurnosAdministrador = ({turno}) => {
             <Form>
               <Form.Group controlId="nombrePaciente">
                 <Form.Label>Nombre del Paciente</Form.Label>
-                <Form.Control type="text" placeholder="Nombre" />
+                <Form.Control type="text" placeholder="Nombre" 
+                {...register('paciente')}
+                />
               </Form.Group>
               <Form.Group controlId="veterinario">
                 <Form.Label>Veterinario</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text" 
+                {...register('veterinario')}
+                />
               </Form.Group>
               <Form.Group controlId="fechaHora">
                 <Form.Label>Fecha y Hora</Form.Label>
-                <Form.Control type="datetime-local" />
+                <Form.Control type="datetime-local"
+                {...register('fechaYHora')}
+                />
               </Form.Group>
               <Form.Group controlId="detalleVisita">
                 <Form.Label>Detalle de la Visita</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Control as="textarea" rows={3} 
+                {...register('detalleVisita')}
+                />
               </Form.Group>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
@@ -81,7 +95,7 @@ const CardTurnosAdministrador = ({turno}) => {
           </Card.Body>
         </Card>
       </Col>
-      <ModalEditarTurno />
+      <ModalEditarTurno turno={turno}/>
     </>
   );
 };
