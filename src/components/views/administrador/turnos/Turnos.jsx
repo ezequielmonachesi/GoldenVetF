@@ -1,16 +1,13 @@
-import { Container, Row,Col,Card, Button } from "react-bootstrap";
+import { Container, Row,Col,Card, Button,Form } from "react-bootstrap";
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-
-
-
 const Turnos = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const Example  =()=>{
+
+  const ModalEditarTurno  =()=>{
     return (
       <>
         <Modal
@@ -20,24 +17,43 @@ const Turnos = () => {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>Editar Turno</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            I will not close if you click outside me. Don not even try to press
-            escape key.
+          <Form>
+            <Form.Group controlId="nombrePaciente">
+              <Form.Label>Nombre del Paciente</Form.Label>
+              <Form.Control type="text" placeholder="Nombre" />
+            </Form.Group>
+            <Form.Group controlId="veterinario">
+              <Form.Label>Veterinario</Form.Label>
+              <Form.Control type="text" />
+            </Form.Group>
+            <Form.Group controlId="fechaHora">
+              <Form.Label>Fecha y Hora</Form.Label>
+              <Form.Control type="datetime-local" />
+            </Form.Group>
+            <Form.Group controlId="detalleVisita">
+              <Form.Label>Detalle de la Visita</Form.Label>
+              <Form.Control as="textarea" rows={3} />
+            </Form.Group>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cerrar
+              </Button>
+              <Button variant="primary" type="submit">
+                Guardar
+              </Button>
+            </Modal.Footer>
+          </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Understood</Button>
-          </Modal.Footer>
         </Modal>
       </>
     );
   }
   return <>
   <Container>
+   
     <div className="text-center"><Button>Crear Turno</Button></div>
     <Row className="mt-5">
       <Col>
@@ -159,7 +175,7 @@ const Turnos = () => {
       </Col>
     </Row>
   </Container>
-  <Example/>
+   <ModalEditarTurno/>
   </>;
 };
 
