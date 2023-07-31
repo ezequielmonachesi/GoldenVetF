@@ -114,7 +114,7 @@ const Contacto = () => {
                     rows={5}
                     minLength={20}
                     name="mensaje"
-                    required
+                    required                    
                     {...register("mensaje", {
                       required: true,
                       minLength: 20,
