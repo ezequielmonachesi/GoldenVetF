@@ -10,7 +10,6 @@ const Contacto = () => {
   const {
     register,
     formState: { errors },
-    watch,
     handleSubmit,
   } = useForm();
 
@@ -74,11 +73,8 @@ const Contacto = () => {
                     })}
                   />
 
-
                   {errors.email?.type === "required" && (
-                    <p className="text-danger">
-                      El campo email es requerido
-                    </p>
+                    <p className="text-danger">El campo email es requerido</p>
                   )}
                   {errors.email?.type === "pattern" && (
                     <p className="text-danger">
