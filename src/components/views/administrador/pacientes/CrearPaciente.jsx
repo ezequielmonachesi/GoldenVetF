@@ -34,8 +34,8 @@ const CrearPaciente = () => {
   return (
     <section className="container mainSection">
       <Row className="justify-content-center my-5">
-        <Col md={6} className="bg-white shadow-lg rounded-3 py-3">
-          <h1 className="display-4">Nuevo Paciente</h1>
+        <Col md={6} className="bg-white shadow-lg rounded-3 py-4">
+          <h1 className="display-4">Crear Paciente</h1>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
             <h6 className="mt-5 mb-3"> <span className="border-bottom border-warning">Due</span>ño</h6>
