@@ -2,7 +2,7 @@ import { Col, Card, Button,Modal,Form } from "react-bootstrap";
 import { useState } from "react";
 import {useForm} from 'react-hook-form'
 
-const CardTurnosAdministrador = () => {
+const CardTurnosAdministrador = ({turno}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -64,13 +64,11 @@ const CardTurnosAdministrador = () => {
         <Card style={{ width: "18rem",marginTop:"15px" }}>
           <Card.Body>
             <div className="d-flex justify-content-around">
-              <Card.Title>Card Title</Card.Title>
-              <Card.Title>9:30 hs</Card.Title>
+              <Card.Title>{turno.paciente}</Card.Title>
+              <Card.Title>{turno.fechaYHora}</Card.Title>
             </div>
             <Card.Text>
-              Aqui va la descripcion del turno Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Autem omnis distinctio molestiae
-              quaerat totam dolorem vero alias nostrum sunt tempore.
+             {turno.detalleVisita}
             </Card.Text>
             <div className="d-flex justify-content-around">
               <Button variant="primary" onClick={handleShow}>
