@@ -10,16 +10,22 @@ const RowPaciente = () => {
       <td>Algo</td>
       <td>Algo</td>
       <td>Algo</td>
-      <td>
-        <Link className="bg-boton-planes btn text-white me-2" to={""}>
-          Editar
-        </Link>
-        <Link className="bg-boton-planes btn text-white me-2" to={""}>
-          Asignar Turno
-        </Link>
-        <Button variant="danger" className="me-2">
-          Borrar
-        </Button>
+      <td className="d-flex">
+        <div>
+          <Link className="bg-boton-planes btn text-white me-2" to={""}>
+            Editar
+          </Link>
+        </div>
+        <div>
+          <Link className="bg-boton-planes btn text-white me-2" to={""}>
+            Turno
+          </Link>
+        </div>
+        <div>
+          <Button variant="danger" className="me-2">
+            Borrar
+          </Button>
+        </div>
       </td>
     </tr>
   );
