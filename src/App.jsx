@@ -17,6 +17,7 @@ import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";
 import Planes from "./components/shared/Inicio/Planes";
 import DetallePlan from "./components/views/detallePlan/DetallePlan";
+import Pacientes from "./components/views/administrador/pacientes/Pacientes";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
@@ -39,6 +40,7 @@ function App() {
           <Route path="/admin/*" element={<Administrador />} />
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
+          <Route path="/pacientes" element={<Pacientes></Pacientes>}></Route>
         </Routes>
           </section>
         <Footer/>
