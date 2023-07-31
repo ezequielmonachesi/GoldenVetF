@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Borel&family=Poppins&display=swap");
 
-.form-area {
-  padding-top: 7%;
-}
+
 
 .row.single-form {
   box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.5);
@@ -10,6 +8,7 @@
 .izquierda-contacto {
   background: #c58940;
   padding: 200px 98px;
+  height: 100%;
 }
 .izquierda-contacto h2 {
   font-family: "Poppins", sans-serif;
