@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 import Swal from "sweetalert2";
-import { Button, Table } from "react-bootstrap";
-
+import { Button, Container, Table } from "react-bootstrap";
+import "./usuarios.css";
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
 
@@ -18,7 +18,10 @@ const Usuarios = () => {
 
   return (
     <>
-      <Table className="table">
+      <Button variant="success my-4" className="boton-crearUsuario">
+        Crear Usuario
+      </Button>
+      <Table responsive className="tabla-usuario">
         <thead>
           <tr>
             <th>Nombre Usuario</th>
@@ -34,10 +37,10 @@ const Usuarios = () => {
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.rol}</td>
-                <td> 
+                <td>
                   <Button variant="warning">Editar</Button>
                   <Button variant="danger">Borrar</Button>
-                </td>                
+                </td>
               </tr>
             ))}
         </tbody>
