@@ -127,7 +127,7 @@ const CrearPaciente = () => {
                 <Form.Label>Dirección</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Ej: Ezequiel"
+                  placeholder="Ej: Lamadrid 700"
                   {...register("direccion", {
                     required: "La direccion del paciente es obligatorio",
                     minLength: {
@@ -179,13 +179,11 @@ const CrearPaciente = () => {
                     required: "La especie de la mascota es obligatorio.",
                     minLength: {
                       value: 2,
-                      message:
-                        "Cantidad mínima de 2 caracteres.",
+                      message: "Cantidad mínima de 2 caracteres.",
                     },
                     maxLength: {
                       value: 50,
-                      message:
-                        "Cantidad máxima de 50 caracteres.",
+                      message: "Cantidad máxima de 50 caracteres.",
                     },
                   })}
                 />
@@ -197,21 +195,22 @@ const CrearPaciente = () => {
                 <Form.Label>Raza</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Ej: Ezequiel"
-                  {...register("nombrePaciente", {
-                    required: "El nombre del paciente es obligatorio.",
+                  placeholder="Ej: Labrador"
+                  {...register("raza", {
+                    required: "El nombre de la raza es obligatorio.",
                     minLength: {
                       value: 2,
-                      message:
-                        "La cantidad minima de caracteres es de 2 dígitos",
+                      message: "Cantidad mínima de 50 caracteres.",
                     },
                     maxLength: {
                       value: 50,
-                      message:
-                        "La cantidad minima de caracteres es de 50 digitos",
+                      message: "Cantidad máxima de 50 caracteres.",
                     },
                   })}
                 />
+                <Form.Text className="text-danger">
+                  {errors.raza?.message}
+                </Form.Text>
               </Col>
             </Row>
           </Form.Group>
