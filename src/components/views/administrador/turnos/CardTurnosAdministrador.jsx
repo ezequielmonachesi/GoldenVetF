@@ -75,7 +75,7 @@ const CardTurnosAdministrador = ({turno}) => {
   return (
     <>
       <Col xs={12} md={6} lg={3}>
-        <Card style={{ width: "18rem",marginTop:"15px" }}>
+        <Card style={{ width: "19rem",marginTop:"15px" }}>
           <Card.Body>
             <div className="d-flex justify-content-around">
               <Card.Title>{turno.paciente}</Card.Title>
