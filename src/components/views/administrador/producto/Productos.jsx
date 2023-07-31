@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Container, Table, Modal, Form } from 'react-bootstrap';
 import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
+import { borrarProducto, crearProducto, editarProducto, obtenerProductos } from '../../../helpers/queriesProductos';
 
 const Productos = () => {
-    
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [productos, setProductos] = useState([]);
+
+    useEffect(()=>{
+        obtenerProductos().then((respuesta)=>{
+            if (respuesta) setProductos(respuesta);
+            else setProductos([]);
+        })
+    },[]);
     const productoInicial = {
         id:'',
         nombreProducto: '',
@@ -14,18 +28,21 @@ const Productos = () => {
         imagen:''
     }
     const [producto, setProducto] = useState(productoInicial);
+    const [id, setId] = useState('');
     const [modificar, setModificar] = useState(false);
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const modificarProducto = (producto) => {
+    const modificarProducto = (producto, id) => {
         setModificar(true);
         setProducto(producto);
+        setId(id)
         handleShow();
     }
+    
+    const limpiarForm = () => {
+        setProducto(productoInicial);
+        setModificar(false);
+        handleClose();
+    };
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -38,13 +55,27 @@ const Productos = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(modificar){
-            a
-            // cuando termina de modificar el producto setea la bandera
+            editarProducto(producto,id);
+            setId('');
+            setProducto(productoInicial);
             setModificar(false);
+            handleClose();
         }
         else{
-            a
+            console.log('lado del else')
+            crearProducto(producto).then((respuesta)=>{
+                if(respuesta && respuesta.status === 201) console.log('se creo el producto')
+                else console.log('no se creo el producto')
+            });
+            handleClose();
         }
+    }
+
+    const eliminarProducto = (id) => {
+        borrarProducto(id).then((respuesta)=>{
+            if (respuesta && respuesta.status === 200) console.log('Se elimino el producto')
+            else console.log('no se pudo eliminar el producto')
+        })
     }
 
     return (
@@ -67,22 +98,27 @@ const Productos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td className='truncarTexto'>Comida para perro</td>
-                        <td>$200</td>
-                        <td>20</td>
-                        <td className='truncarTexto'>es solo comida para perro</td>
-                        <td>una imagen</td>
-                        <td>
-                            <Button variant="warning" className='me-2 my-2' onClick={modificarProducto}>
-                                Editar
-                            </Button>
-                            <Button variant="danger">
-                                Eliminar
-                            </Button>
-                        </td>
-                    </tr>
+                    {productos.map((prod, index)=>(
+                            <tr key={index}>
+                                <td>{index+1}</td>
+                                <td className='truncarTexto'>{prod.nombreProducto}</td>
+                                <td>{prod.precio}</td>
+                                <td>{prod.stock}</td>
+                                <td className='truncarTexto'>{prod.descripcion}</td>
+                                <td className='truncarTexto'>{prod.imagen}</td>
+                                <td>
+                                    <Button variant="warning" className='me-2 my-2' 
+                                    onClick={()=>modificarProducto(prod,prod.id)}>
+                                        Editar
+                                    </Button>
+                                    <Button variant="danger"
+                                    onClick={()=>eliminarProducto(prod.id)}>
+                                        Eliminar
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </Table>
 
@@ -103,19 +139,23 @@ const Productos = () => {
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
-                    controlId="descripcionProducto"
+                    controlId="descripcion"
                     >
                     <Form.Label>Descripcion</Form.Label>
-                    <Form.Control as="textarea" rows={3}/>
+                    <Form.Control 
+                        as="textarea" 
+                        rows={3}
+                        value={producto.descripcion}
+                        onChange={handleInputChange}/>
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
-                    controlId='descripcion'>
+                    controlId='precio'>
                         <Form.Label>Precio</Form.Label>
                         <Form.Control
                         type="number"
                         placeholder="Ej: 50"
-                        value={producto.descripcion}
+                        value={producto.precio}
                         onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -144,7 +184,7 @@ const Productos = () => {
                 </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={limpiarForm}>
                     Cancelar
                 </Button>
                 <Button variant="primary" type='submit'>
