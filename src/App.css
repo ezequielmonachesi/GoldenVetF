@@ -75,6 +75,12 @@ color: #e5ba73;
   width: 120px;
   color:black
 }
+.boton-verMas-productoInicio{
+  text-decoration: none;
+  color:#c99e58;
+  font-weight: bold;
+  font-size: 18px;
+}
 .boton-verMas-producto:hover{
   background-color: #caa467;
   color: white;

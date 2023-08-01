@@ -1,7 +1,7 @@
-import { Container } from 'react-bootstrap';
 import Planes from '../shared/Inicio/Planes';
 import Publicidad from '../shared/Inicio/Publicidad'
-import Productos from './Productos';
+
+import ProductosInicio from '../shared/Inicio/ProductosInicio';
 
 const Inicio = () => {
 
@@ -9,7 +9,7 @@ const Inicio = () => {
         <section className='mainSection'>
         <Planes/>
         <Publicidad/>
-        <Productos/>
+        <ProductosInicio/>
         </section>
     );
 };
