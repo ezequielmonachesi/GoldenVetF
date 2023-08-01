@@ -14,16 +14,33 @@ const Pacientes = () => {
     obtenerPacientes().then((respuesta) => {
       if (respuesta) {
         setPacientes(respuesta);
-        console.log(respuesta)
+        console.log(respuesta);
       } else {
-        Swal.fire(
-          "Ocurrió un error",
-          "No se puede obtener pacientes",
-          "error"
-        );
+        Swal.fire("Ocurrió un error", "No se puede obtener pacientes", "error");
       }
     });
-  },[]);
+  }, []);
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <CrearPaciente></CrearPaciente>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={props.onHide}>
+            Salir
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   return (
     <section className="container mainSection bg-white shadow-lg my-md-5 py-4 rounded-3">
@@ -57,34 +74,13 @@ const Pacientes = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            pacientes.map((paciente)=><RowPaciente paciente={paciente} key={paciente.id}></RowPaciente>)
-          }
+          {pacientes.map((paciente) => (
+            <RowPaciente paciente={paciente} key={paciente.id}></RowPaciente>
+          ))}
         </tbody>
       </Table>
     </section>
   );
 };
-
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton></Modal.Header>
-      <Modal.Body>
-        <CrearPaciente></CrearPaciente>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="danger" onClick={props.onHide}>
-          Salir
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
 export default Pacientes;

@@ -1,8 +1,30 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import EditarPaciente from "./EditarPaciente";
 
-const RowPaciente = ({ paciente}) => {
+const RowPaciente = ({ paciente }) => {
+  const [modalShow, setModalShow] = useState(false);
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <EditarPaciente></EditarPaciente>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={props.onHide}>
+            Salir
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
   return (
     <tr>
       <td>{paciente.mascota.nombre}</td>
@@ -12,9 +34,17 @@ const RowPaciente = ({ paciente}) => {
       <td>{paciente.telefono}</td>
       <td className="d-flex">
         <div>
-          <Link className="bg-boton-planes btn text-white me-2" to={""}>
+          <Button
+            variant=""
+            className="bg-boton-planes text-white me-2"
+            onClick={() => setModalShow(true)}
+          >
             Editar
-          </Link>
+          </Button>
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
         </div>
         <div>
           <Link className="bg-boton-planes btn text-white me-2" to={""}>
