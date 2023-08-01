@@ -70,7 +70,10 @@ export const crearUsuario = async (usuario) => {
 export const borrarUsuario= async (id)=>{
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
-            method: "DELETE"
+            method: "DELETE",
+            headers: {                
+                "x-token": usuarioLogueado.token
+            },
         });
         return respuesta;
     }catch (error){

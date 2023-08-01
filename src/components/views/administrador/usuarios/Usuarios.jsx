@@ -1,13 +1,49 @@
 import { useEffect, useState } from "react";
-import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
+import { borrarUsuario, obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 import Swal from "sweetalert2";
 import { Button, Table, Modal } from "react-bootstrap";
 import "./usuarios.css";
 import CrearUsuario from "./CrearUsuario";
 import EditarUsuario from "./EditarUsuario";
 const Usuarios = () => {
+
+
   const [usuarios, setUsuarios] = useState([]);
   const [id, setId] = useState(null);
+  const handleBorrarUsuario = (usuario) =>{
+    borrarUsuario(usuario.id).then((respuesta)=>{
+      Swal.fire({
+        title: "Esta seguro?",
+        text: "No podrás ser capaz de revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borralo!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (respuesta && respuesta.status === 200) {
+            Swal.fire(
+              "Usuario eliminada",
+              `El usuario ${usuario.nombreUsuario} fue eliminado correctamente`,
+              "success"
+            );
+                obtenerUsuarios().then((respuesta)=> {
+                    if (respuesta){
+                        setUsuarios(respuesta)
+                    }
+                })
+          } else {
+            Swal.fire(
+              "A ocurrido un error",
+              `La usuario ${usuario.nombreUsuario} no pudo ser eliminada`,
+              "error"
+            );
+          }
+        }
+      });
+    })
+  }
 
   const handleEditarUsuario = (id) => {
     setId(id);
@@ -72,7 +108,9 @@ const Usuarios = () => {
                   >
                     Editar
                   </Button>
-                  <Button variant="danger">Borrar</Button>
+                  <Button 
+                  onClick={()=>handleBorrarUsuario(usuario)}
+                  variant="danger">Borrar</Button>
                 </td>
               </tr>
             ))}
