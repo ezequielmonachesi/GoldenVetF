@@ -22,7 +22,7 @@ const CrearPaciente = ({ usuarios }) => {
   const buscarUsuario = (usuarioBuscado) => {
     if (usuarioBuscado) {
       const usuarioEncontrado = usuarios.filter((usuario) => {
-        return usuario.nombreUsuario.includes(usuarioBuscado);
+        return usuario.nombreUsuario.toLowerCase().includes(usuarioBuscado);
       });
       setUsuarioEncontrado(usuarioEncontrado);
       console.log(usuarioEncontrado);
