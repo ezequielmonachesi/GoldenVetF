@@ -5,7 +5,7 @@ import { crearUsuario } from "../../../helpers/queriesUsuarios";
 import { useState } from "react";
 
 const CrearUsuario = () => {
-
+    const [errores, setErrores] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
@@ -18,7 +18,11 @@ const CrearUsuario = () => {
       } = useForm();
 
   const onSubmit = (usuarioNuevo) => {
-    console.log(usuarioNuevo);
+    const { confirmPassword, ...restoData } = usuarioNuevo
+    if (usuarioNuevo.password !== usuarioNuevo.confirmPassword) {
+        setErrores("Las contraseñas no coinciden")
+        return
+      }
     crearUsuario(usuarioNuevo).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
@@ -86,11 +90,16 @@ const CrearUsuario = () => {
                   {errors.email?.message} <br />
                 </Form.Text>
                 <Form.Label>Rol*</Form.Label>
-                <Form.Select>
-                    <option>Seleccione un rol</option>
+                <Form.Select required
+                           {...register("rol", {
+                            required: "el rol es obligatorio",
+                          })}>
+                    <option value="">Seleccione un rol</option>
                     <option value="usuario">Usuario</option>
                     <option value="administrador">Administrador</option>
+         
                 </Form.Select>
+                <Form.Text className="text-danger"> {errors.complejidad?.message}</Form.Text>
                 <Form.Label>Contraseña*</Form.Label>
                 <Form.Group className="mb-2">
               <Form.Control
@@ -109,7 +118,7 @@ const CrearUsuario = () => {
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-2">
-              {/* <Form.Control
+              <Form.Control
                 type={passwordShown ? "text" : "password"}
                 placeholder="Confirmar contraseña"
                 {...register("confirmPassword", {
@@ -124,7 +133,7 @@ const CrearUsuario = () => {
               />
               <Form.Text className="text-danger">
                 {errors.confirmPassword?.message}
-              </Form.Text> */}
+              </Form.Text>
               <div className="d-flex pt-3">
               <Form.Check type="checkbox" value="Mostrar Contraseña" id="flexCheckChecked" label="Mostrar contraseña" onClick={togglePassword}></Form.Check>              
               </div>
@@ -132,6 +141,9 @@ const CrearUsuario = () => {
               </Col>
             </Row>
           </Form.Group>
+          {errores && (
+              <Form.Text className="text-danger">{errores}</Form.Text>
+            )}
           <div className="text-center mt-5">
             <Button
               variant="primary"
