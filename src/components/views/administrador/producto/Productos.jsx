@@ -3,6 +3,7 @@ import { Button, Container, Table, Modal, Form } from 'react-bootstrap';
 import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
 import { borrarProducto, crearProducto, editarProducto, obtenerProductos } from '../../../helpers/queriesProductos';
+import Swal from 'sweetalert2';
 
 const Productos = () => {
 
@@ -42,8 +43,9 @@ const Productos = () => {
         e.preventDefault();
         if(modificar){
             editarProducto(producto,id).then((respuesta)=>{
-                if (respuesta && respuesta.status === 200) console.log('Se modifico el producto');
-                else console.log('no se pudo modificar el producto');
+                if (respuesta && respuesta.status === 200)  
+                    Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
+                else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
                 handleClose();
                 limpiarForm();
                 obtenerProductos().then((respuesta)=>{
@@ -53,21 +55,28 @@ const Productos = () => {
             })
         }
         else{
-            
             obtenerProductos().then((respuesta)=>{
                 if (respuesta) setProductos(respuesta);
                 else setProductos([]);
-            })
-            insertarProducto(producto)
+            });
+            insertarProducto(producto);
         }
     }
 
     const insertarProducto = (prod) => {
-        console.log('llamada desde insertarProducto')
         crearProducto(prod).then((respuesta)=>{
-            if (respuesta && respuesta.status === 201) console.log('Se creo el producto');
-            else console.log('no se pudo crear el producto');
-            handleClose();
+            if (respuesta && respuesta.status === 201){
+                Swal.fire("Producto agregado!","Se pudo ingresar el nuevo producto","success");
+                handleClose();
+            }
+            else {
+                Swal.fire("Ocurrio un error","No se logro modificar el producto","error")
+
+            }
+            obtenerProductos().then((respuesta)=>{
+                if (respuesta) setProductos(respuesta);
+                else setProductos([]);
+            }); 
         })
     }
 
@@ -81,9 +90,15 @@ const Productos = () => {
 
     const eliminarProducto = (id) => {
         borrarProducto(id).then((respuesta)=>{
-            if (respuesta && respuesta.status === 200) console.log('Se elimino el producto')
-            else console.log('no se pudo eliminar el producto')
-        })
+            if (respuesta && respuesta.status === 200){
+                Swal.fire("Producto Eliminado!","El producto fue eliminado correctamente","success");
+            }
+            else Swal.fire("Ocurrio un error","No logro eliminar el producto","error")
+        });
+        obtenerProductos().then((respuesta)=>{
+            if (respuesta) setProductos(respuesta);
+            else setProductos([]);
+        });
     }
 
     const limpiarForm = () => {
@@ -149,6 +164,7 @@ const Productos = () => {
                         placeholder="Nombre del producto"
                         value={producto.nombreProducto}
                         onChange={handleInputChange}
+                        
                     />
                     </Form.Group>
                     <Form.Group
