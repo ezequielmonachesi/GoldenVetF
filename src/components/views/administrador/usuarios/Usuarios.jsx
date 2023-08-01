@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
-import { borrarUsuario, obtenerUsuarios } from "../../../helpers/queriesUsuarios";
+import {useState } from "react";
+import {
+  borrarUsuario,
+} from "../../../helpers/queriesUsuarios";
 import Swal from "sweetalert2";
-import { Button, Table, Modal } from "react-bootstrap";
+import { Button, Table, Modal, Spinner } from "react-bootstrap";
 import "./usuarios.css";
 import CrearUsuario from "./CrearUsuario";
 import EditarUsuario from "./EditarUsuario";
+import { useFetchData } from "../../../hooks/useFetchData";
+
 const Usuarios = () => {
-
-
-  const [usuarios, setUsuarios] = useState([]);
+  const {data, isLoading,refetchData } = useFetchData('usuarios');
+  const [modalShow, setModalShow] = useState(false);
+  const [modalShowEditar, setModalShowEditar] = useState(false);
   const [id, setId] = useState(null);
-  const handleBorrarUsuario = (usuario) =>{
-    borrarUsuario(usuario.id).then((respuesta)=>{
+
+  const handleBorrarUsuario = (usuario) => {
+    borrarUsuario(usuario.id).then((respuesta) => {
       Swal.fire({
         title: "Esta seguro?",
         text: "No podrás ser capaz de revertir esto!",
@@ -28,11 +33,7 @@ const Usuarios = () => {
               `El usuario ${usuario.nombreUsuario} fue eliminado correctamente`,
               "success"
             );
-                obtenerUsuarios().then((respuesta)=> {
-                    if (respuesta){
-                        setUsuarios(respuesta)
-                    }
-                })
+                actualizarUsuarios();
           } else {
             Swal.fire(
               "A ocurrido un error",
@@ -42,39 +43,38 @@ const Usuarios = () => {
           }
         }
       });
-    })
-  }
+    });
+  };
+
+   const actualizarUsuarios = async () => {
+    await refetchData();
+  };
+
 
   const handleEditarUsuario = (id) => {
     setId(id);
     setModalShowEditar(true);
   };
 
-  useEffect(() => {
-    obtenerUsuarios().then((respuesta) => {
-      if (respuesta) {
-        setUsuarios(respuesta);
-      } else {
-        Swal.fire("Ocurrió un error", "Intente más tarde", "error");
-      }
-    });
-  }, []);
 
-  const [modalShow, setModalShow] = useState(false);
-  const [modalShowEditar, setModalShowEditar] = useState(false);
 
   return (
     <>
-      <Button
-        variant="success my-4"
-        className="boton-crearUsuario"
-        onClick={() => setModalShow(true)}
-      >
-        Crear Usuario
-      </Button>
+      <div className="container p-3 d-flex justify-content-end">
+        <Button
+          variant="success"
+          className="boton-crearUsuario"
+          onClick={() => setModalShow(true)}
+        >
+          Crear Usuario
+        </Button>
+      </div>
       <VentanaModalCrearUsuario
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => {
+            setModalShow(false)
+        }}
+        actualizarUsuarios={actualizarUsuarios}
       ></VentanaModalCrearUsuario>
       ;
       {id && (
@@ -82,8 +82,16 @@ const Usuarios = () => {
           show={modalShowEditar}
           onHide={() => setModalShowEditar(false)}
           id={id}
+          actualizarUsuarios={actualizarUsuarios}
         />
       )}
+
+    {isLoading ? (
+            <div className="d-flex justify-content-center">
+            <Spinner size="lg" variant="primary" />
+            </div>
+          ) :
+
       <Table responsive striped>
         <thead>
           <tr>
@@ -95,8 +103,8 @@ const Usuarios = () => {
           </tr>
         </thead>
         <tbody>
-          {usuarios &&
-            usuarios?.map((usuario) => (
+          {data &&
+            data?.map((usuario) => (
               <tr key={usuario.id}>
                 <td>{usuario.id}</td>
                 <td>{usuario.nombreUsuario}</td>
@@ -109,24 +117,29 @@ const Usuarios = () => {
                   >
                     Editar
                   </Button>
-                  <Button 
-                  onClick={()=>handleBorrarUsuario(usuario)}
-                  variant="danger">Borrar</Button>
+                  <Button
+                    onClick={() => handleBorrarUsuario(usuario)}
+                    variant="danger"
+                  >
+                    Borrar
+                  </Button>
                 </td>
               </tr>
             ))}
         </tbody>
       </Table>
+}
     </>
   );
 };
 
 function VentanaModalCrearUsuario(props) {
+    const { actualizarUsuarios, ...restProps } = props;
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <CrearUsuario></CrearUsuario>
+        <CrearUsuario actualizarUsuarios={actualizarUsuarios} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="danger" onClick={props.onHide}>
@@ -137,11 +150,12 @@ function VentanaModalCrearUsuario(props) {
   );
 }
 function VentanaModalEditarUsuario(props) {
+    const { actualizarUsuarios, ...restProps } = props;
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <EditarUsuario id={props.id} />
+        <EditarUsuario id={props.id} actualizarUsuarios={actualizarUsuarios}/>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="danger" onClick={props.onHide}>

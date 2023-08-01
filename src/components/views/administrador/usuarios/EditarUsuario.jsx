@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 
-const EditarUsuario = ({ id }) => {
+const EditarUsuario = ({ id, actualizarUsuarios }) => {
   const [errores, setErrores] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -44,6 +44,7 @@ const EditarUsuario = ({ id }) => {
           "success"
         );
         reset();
+        actualizarUsuarios();
       } else if (respuesta && respuesta.status === 400) {
         setErrores(respuesta.data.mensaje);
       } else {

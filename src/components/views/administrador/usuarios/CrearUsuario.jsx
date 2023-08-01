@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { crearUsuario } from "../../../helpers/queriesUsuarios";
 import { useState } from "react";
 
-const CrearUsuario = () => {
+const CrearUsuario = ({actualizarUsuarios}) => {
     const [errores, setErrores] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePassword = () => {
@@ -30,7 +30,10 @@ const CrearUsuario = () => {
           `El usuario ${usuarioNuevo.nombreUsuario} fue creado correctamente`,
           "success"
         );
+        actualizarUsuarios();
         reset();
+      } else if (respuesta && respuesta.status === 400) {
+        setErrores(respuesta.data.mensaje);
       } else {
         Swal.fire(
           "Ocurrio un error",
