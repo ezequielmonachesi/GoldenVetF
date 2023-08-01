@@ -58,13 +58,13 @@ const EditarUsuario = ({ id }) => {
 
   return (
     <Row className="justify-content-center">
-      <Col md={12} className="rounded-3">
+      <Col className="rounded-3">
         <h1 className="display-4">Editar usuario</h1>
         <hr />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3">
             <Row className="justify-content-start">
-              <Col xs={12} md={6}>
+              <Col >
                 <Form.Label>Nombre*</Form.Label>
 
                 <Form.Control
@@ -118,7 +118,7 @@ const EditarUsuario = ({ id }) => {
                   {" "}
                   {errors.rol?.message}
                 </Form.Text>
-                <Form.Label>Contraseña*</Form.Label>
+                <Form.Label>Contraseña *<span  className="text-warning">solo si desea cambiarla</span></Form.Label>
                 <Form.Group className="mb-2">
                   <Form.Control
                     type={passwordShown ? "text" : "password"}

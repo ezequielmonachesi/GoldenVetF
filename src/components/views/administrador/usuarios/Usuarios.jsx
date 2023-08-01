@@ -24,7 +24,7 @@ const Usuarios = () => {
         if (result.isConfirmed) {
           if (respuesta && respuesta.status === 200) {
             Swal.fire(
-              "Usuario eliminada",
+              "Usuario eliminado",
               `El usuario ${usuario.nombreUsuario} fue eliminado correctamente`,
               "success"
             );
@@ -36,7 +36,7 @@ const Usuarios = () => {
           } else {
             Swal.fire(
               "A ocurrido un error",
-              `La usuario ${usuario.nombreUsuario} no pudo ser eliminada`,
+              `El usuario ${usuario.nombreUsuario} no pudo ser eliminado`,
               "error"
             );
           }
@@ -98,6 +98,7 @@ const Usuarios = () => {
           {usuarios &&
             usuarios?.map((usuario) => (
               <tr key={usuario.id}>
+                <td>{usuario.id}</td>
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.rol}</td>
