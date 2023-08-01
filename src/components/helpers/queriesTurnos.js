@@ -1,8 +1,14 @@
 const URL_TURNOS = import.meta.env.VITE_API_TURNOS;
+const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
 
 export const obtenerTurnos = async ()=>{
     try {
-        const respuesta = await fetch(URL_TURNOS);
+        const respuesta = await fetch(URL_TURNOS,{
+            method: "GET",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
+        });
         const listadoTurnos = await respuesta.json();
         return listadoTurnos;
     } catch (error) {

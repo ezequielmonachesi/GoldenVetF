@@ -9,6 +9,7 @@ const Inicio = () => {
         <Publicidad></Publicidad>
         <Planes/>
         <Publicidad/>
+        <Usuario/>
         </section>
     );
 };
