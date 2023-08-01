@@ -60,7 +60,7 @@ const Usuarios = () => {
         </thead>
         <tbody>
           {usuarios &&
-            usuarios.map((usuario) => (
+            usuarios?.map((usuario) => (
               <tr key={usuario.id}>
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>

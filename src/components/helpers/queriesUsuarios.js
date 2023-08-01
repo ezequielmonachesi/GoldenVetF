@@ -23,7 +23,12 @@ export const login = async (usuario)=>{
 
 export const obtenerUsuarios = async ()=>{
     try {
-        const respuesta = await fetch(URL_USUARIOS);
+        const respuesta = await fetch(URL_USUARIOS, {
+            method: "GET",
+            headers: {               
+                "x-token": usuarioLogueado.token
+            }
+        });
         const listadoUsuarios = await respuesta.json();
         return listadoUsuarios;
     } catch (error) {
@@ -33,7 +38,12 @@ export const obtenerUsuarios = async ()=>{
 
 export const obtenerUsuario = async (id)=>{
     try{
-        const respuesta = await fetch(URL_USUARIOS+'/'+id);
+        const respuesta = await fetch(URL_USUARIOS+'/'+id,{
+            method: "GET",
+            headers: {               
+                "x-token": usuarioLogueado.token
+            }
+        });
         const usuario = await respuesta.json();
         return usuario;
     }catch (error){

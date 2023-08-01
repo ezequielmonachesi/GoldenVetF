@@ -14,7 +14,7 @@ const EditarUsuario = ({ id }) => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-   
+
   const {
     register,
     handleSubmit,
@@ -37,7 +37,7 @@ const EditarUsuario = ({ id }) => {
         delete usuarioViejo.password;
       }
     editarUsuario(usuarioViejo, id).then((respuesta) => {
-      if (respuesta && respuesta.status === 201) {
+      if (respuesta && respuesta.status === 200) {
         Swal.fire(
           "Usuario editado",
           `El usuario ${usuarioViejo.nombreUsuario} fue editado correctamente`,
