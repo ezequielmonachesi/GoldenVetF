@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Container, Row, Button, Spinner } from 'react-bootstrap';
+import { Container, Row, Button, Spinner,Modal } from 'react-bootstrap';
 import CardTurnosAdministrador from './CardTurnosAdministrador';
 import { useFetchData } from '../../../hooks/useFetchData';
+import FormularioTurno from '../../usuario/FormularioTurno';
 
 const Turnos = () => {
   const { data, isLoading } = useFetchData('turnos');
   const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -19,12 +23,30 @@ const Turnos = () => {
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
-
+  const ModalCrearTurno = () => {
+    return (
+      <>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Crear Turno</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+           <FormularioTurno/>
+          </Modal.Body>
+        </Modal>
+      </>
+    );
+  };
   return (
     <>
       <Container className='p-3'>
-        <div className="text-center">
-          <Button>Crear Turno</Button>
+        <div className="d-flex justify-content-end">
+          <Button onClick={handleShow}>Crear Turno</Button>
         </div>
         <Row className="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
           {isLoading ? (
@@ -44,6 +66,7 @@ const Turnos = () => {
           </Button>
         </div>
       </Container>
+      <ModalCrearTurno/>
     </>
   );
 };
