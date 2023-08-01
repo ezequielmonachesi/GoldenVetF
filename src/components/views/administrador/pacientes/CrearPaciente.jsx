@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
-import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 
 const CrearPaciente = ({ usuarios }) => {
   const {
@@ -12,6 +11,23 @@ const CrearPaciente = ({ usuarios }) => {
     formState: { errors },
     reset,
   } = useForm();
+
+  const [usuarioBuscado, setUsuarioBuscado] = useState([]);
+  const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
+
+  useEffect(() => {
+    buscarUsuario(usuarioBuscado);
+  }, [usuarioBuscado]);
+
+  const buscarUsuario = (usuarioBuscado) => {
+    if (usuarioBuscado) {
+      const usuarioEncontrado = usuarios.filter((usuario) => {
+        return usuario.nombreUsuario.includes(usuarioBuscado);
+      });
+      setUsuarioEncontrado(usuarioEncontrado);
+      console.log(usuarioEncontrado);
+    }
+  };
 
   const onSubmit = (pacienteNuevo) => {
     console.log(pacienteNuevo);
@@ -41,23 +57,44 @@ const CrearPaciente = ({ usuarios }) => {
         <hr />
         <Row>
           <Col>
-            <Form className="d-flex">
+            <Form
+              className="d-flex flex-column"
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <h6 className="mt-4 mb-3">
+                <span className="border-bottom border-warning">Bus</span>car usuarios
+              </h6>
               <Form.Control
-                type="search"
-                placeholder="Buscar usuario"
+                placeholder="Buscar"
                 className="me-2"
                 aria-label="Search"
+                value={usuarioBuscado}
+                onChange={(e) => {
+                  setUsuarioBuscado(e.target.value);
+                }}
               />
-              <Button variant="" className="bg-boton-planes btn text-white">
-                Buscar
-              </Button>
+              <p className="mb-1 mt-2">
+                <span className="border-bottom border-warning">Lis</span>tado de
+                usuarios
+              </p>
+              <Form.Select aria-label="Default select example">
+                {usuarioEncontrado.length > 0 ? (
+                  usuarioEncontrado.map((usuario) => (
+                    <option value={usuario.id} key={usuario.id}>
+                      {usuario.nombreUsuario}
+                    </option>
+                  ))
+                ) : (
+                  <option value="">No se encontraron usuarios</option>
+                )}
+              </Form.Select>
             </Form>
-            {usuarios.map((usuario) => console.log(usuario.nombreUsuario))}
           </Col>
         </Row>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h6 className="mt-4 mb-3">
-            {" "}
             <span className="border-bottom border-warning">Due</span>ño
           </h6>
           <Form.Group className="mb-3" controlId="formNombrePaciente">

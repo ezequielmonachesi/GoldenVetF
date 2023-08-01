@@ -17,7 +17,6 @@ const Pacientes = () => {
     obtenerUsuarios().then((respuesta) => {
       if (respuesta) {
         setUsuarios(respuesta);
-        console.log(respuesta);
       } else {
         Swal.fire("Ocurrió un error", "No se puede obtener usuarios", "error");
       }
@@ -28,7 +27,6 @@ const Pacientes = () => {
     obtenerPacientes().then((respuesta) => {
       if (respuesta) {
         setPacientes(respuesta);
-        console.log(respuesta);
       } else {
         Swal.fire("Ocurrió un error", "No se puede obtener pacientes", "error");
       }
