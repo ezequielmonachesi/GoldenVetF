@@ -4,11 +4,14 @@ import { Button, Card, Form } from "react-bootstrap";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
-import { setHours } from "date-fns";
+import { setHours,parseISO,format } from "date-fns";
+import { editarTurno } from "../../../helpers/queriesTurnos";
+import Swal from "sweetalert2";
 
 registerLocale("es", es);
 
-const FormularioEditarTurno = ({ turno, handleClose }) => {
+const FormularioEditarTurno = ({ turno, handleClose,actualizarTurnos }) => {
+  const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {}
   const {
     handleSubmit,
     control,
@@ -19,7 +22,7 @@ const FormularioEditarTurno = ({ turno, handleClose }) => {
       veterinario: turno.veterinario,
       detalleVisita: turno.detalleVisita,
       paciente: turno.paciente,
-      fechaYHora: new Date(turno.fechaYHora),
+      fechaYHora:new Date(turno.fechaYHora)
     },
   });
 
@@ -49,9 +52,25 @@ const FormularioEditarTurno = ({ turno, handleClose }) => {
 
     return true;
   };
+  const convertirFecha = (fechaISO) => {
+    const fechaObjeto = parseISO(fechaISO);
+    const fechaFormateada = format(fechaObjeto, "yyyy-MM-dd HH:mm");
+    return fechaFormateada;
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
+    data.idUsuario = usuario.id;
+    data.fechaYHora = data.fechaYHora.toISOString();
+    data.fechaYHora = convertirFecha(data.fechaYHora);
+    editarTurno(data,turno.id).then(res=>{
+      if(res && res.status === 200){
+        Swal.fire("Turno editado","El turno fue editado correctamente","success")
+        actualizarTurnos()
+        handleClose()
+      }else{
+        Swal.fire("Ocurrio un error","El turno no pudo ser editado","error")
+      }
+    })
   };
 
   return (
@@ -126,7 +145,23 @@ const FormularioEditarTurno = ({ turno, handleClose }) => {
             <Form.Select
               name="veterinario"
               {...register("veterinario", {
-                required: "Debe seleccionar un veterinario",
+                required: "El nombre del veterinario es un dato obligatorio",
+                minLength: {
+                  value: 3,
+                  message:
+                    "El nombre del veterinario debe tener al menos 3 caracteres",
+                },
+                maxLength: {
+                  value: 100,
+                  message:
+                    "El nombre del veterinario debe tener máximo 100 caracteres",
+                },
+                pattern: {
+                  value:
+                    /^[A-Za-zÀ-ÿ\u00f1\u00d1][A-Za-zÀ-ÿ\u00f1\u00d1' -]*[A-Za-zÀ-ÿ\u00f1\u00d1]$/,
+                  message:
+                    "Debe ingresar un nombre sin caracteres especiales ni numeros",
+                },
                 validate: (value) =>
                   value === "Ezequiel" ||
                   value === "Nahuel" ||
@@ -147,6 +182,7 @@ const FormularioEditarTurno = ({ turno, handleClose }) => {
               as="textarea"
               type="text"
               placeholder="Breve descripción de por qué trae a su mascota."
+              className="text-area-turnos"
               name="detalleVisita"
               {...register("detalleVisita", {
                 required: "El detalle de la visita es un dato obligatorio",

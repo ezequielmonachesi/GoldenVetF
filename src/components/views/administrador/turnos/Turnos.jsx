@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { Container, Row, Button, Spinner,Modal } from 'react-bootstrap';
 import CardTurnosAdministrador from './CardTurnosAdministrador';
 import { useFetchData } from '../../../hooks/useFetchData';
 import FormularioTurno from '../../usuario/FormularioTurno';
 
 const Turnos = () => {
-  const { data, isLoading } = useFetchData('turnos');
+  const { data, isLoading,refetchData } = useFetchData('turnos');
   const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const [show, setShow] = useState(false);
@@ -23,6 +23,11 @@ const Turnos = () => {
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
+
+  const actualizarTurnos = async () => {
+    await refetchData();
+  };
+
   const ModalCrearTurno = () => {
     return (
       <>
@@ -53,7 +58,7 @@ const Turnos = () => {
             <Spinner size="lg" variant="primary" />
           ) : (
             data.slice(startIndex, endIndex).map((turno) => (
-              <CardTurnosAdministrador turno={turno} key={turno.id} />
+              <CardTurnosAdministrador turno={turno} key={turno.id} actualizarTurnos={actualizarTurnos}/>
             ))
           )}
         </Row>

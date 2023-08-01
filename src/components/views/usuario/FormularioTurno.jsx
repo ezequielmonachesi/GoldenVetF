@@ -71,7 +71,6 @@ const FormularioTurno = () => {
     data.fechaYHora = formValues.fechaYHora.toISOString()
     data.fechaYHora = convertirFecha(data.fechaYHora)
     crearTurno(data).then((respuesta) => {
-        console.log(data)
         if (respuesta && respuesta.status === 201) {
         Swal.fire(
           "Turno creado",
@@ -79,10 +78,7 @@ const FormularioTurno = () => {
           "success"
         );
         reset();
-
-      } else if(respuesta && respuesta.status === 400){
-        console.log(respuesta)
-    }else {
+      } else {
         Swal.fire(
           "Ocurrio un error",
           `El turno no pudo ser creado, intente en unos minutos`,
@@ -206,6 +202,7 @@ const FormularioTurno = () => {
               type="text"
               placeholder="Breve descripción de por qué trae a su mascota."
               name="detalleVisita"
+              className="text-area-turnos"
               {...register("detalleVisita", {
                 required: "El detalle de la visita es un dato obligatorio",
                 minLength: {
