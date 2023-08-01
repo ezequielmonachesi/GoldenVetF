@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
+import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 
-const CrearPaciente = () => {
+const CrearPaciente = ({ usuarios }) => {
   const {
     register,
     handleSubmit,
@@ -35,12 +36,27 @@ const CrearPaciente = () => {
   return (
     // <section className="container mainSection">
     <Row className="justify-content-center">
-      
       <Col md={12} className="rounded-3">
         <h1 className="display-4">Crear Paciente</h1>
         <hr />
+        <Row>
+          <Col>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Buscar usuario"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="" className="bg-boton-planes btn text-white">
+                Buscar
+              </Button>
+            </Form>
+            {usuarios.map((usuario) => console.log(usuario.nombreUsuario))}
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h6 className="mt-5 mb-3">
+          <h6 className="mt-4 mb-3">
             {" "}
             <span className="border-bottom border-warning">Due</span>ño
           </h6>

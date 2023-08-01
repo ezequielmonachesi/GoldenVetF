@@ -5,10 +5,24 @@ import CrearPaciente from "./CrearPaciente";
 import { useEffect, useState } from "react";
 import { obtenerPacientes } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
+import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 
 const Pacientes = () => {
   const [modalShow, setModalShow] = useState(false);
   const [pacientes, setPacientes] = useState([]);
+
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    obtenerUsuarios().then((respuesta) => {
+      if (respuesta) {
+        setUsuarios(respuesta);
+        console.log(respuesta);
+      } else {
+        Swal.fire("Ocurrió un error", "No se puede obtener usuarios", "error");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     obtenerPacientes().then((respuesta) => {
@@ -31,7 +45,7 @@ const Pacientes = () => {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <CrearPaciente></CrearPaciente>
+          <CrearPaciente usuarios={usuarios}></CrearPaciente>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
