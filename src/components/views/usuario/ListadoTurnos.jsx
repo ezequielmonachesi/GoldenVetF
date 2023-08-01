@@ -14,9 +14,10 @@ const ListadoTurnos = () => {
 
     const listado = data?.map((turno) => (
         <CardTurnoUsuario
-          paciente={turno.nombreServicio}
+          paciente={turno.paciente}
           veterinario={turno.veterinario}
           fechaYhora={turno.fechaYhora}
+          detalleVisita={turno.detalleVisita}
           key={turno.id}
         />
     ));
