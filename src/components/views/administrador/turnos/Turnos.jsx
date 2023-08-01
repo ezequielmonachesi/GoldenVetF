@@ -5,7 +5,7 @@ import { useFetchData } from '../../../hooks/useFetchData';
 
 const Turnos = () => {
   const { data, isLoading } = useFetchData('turnos');
-  const itemsPerPage = 8; // Define la cantidad de elementos por página.
+  const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -36,7 +36,7 @@ const Turnos = () => {
           )}
         </Row>
         <div className="d-flex justify-content-center mt-3">
-          <Button variant="secondary" onClick={handlePrevPage} disabled={currentPage === 1}>
+          <Button variant="secondary" onClick={handlePrevPage} disabled={currentPage === 1} className='me-3'>
             Anterior
           </Button>
           <Button variant="secondary" onClick={handleNextPage} disabled={currentPage === totalPages}>
