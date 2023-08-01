@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 import Swal from "sweetalert2";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Table,Modal } from "react-bootstrap";
 import "./usuarios.css";
+import CrearUsuario from "./CrearUsuario";
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
 
@@ -16,12 +17,24 @@ const Usuarios = () => {
     });
   }, []);
 
+  const [modalShow, setModalShow] = useState(false);
+
+
+
   return (
     <>
-      <Button variant="success my-4" className="boton-crearUsuario">
+      <Button
+        variant="success my-4"
+        className="boton-crearUsuario"
+        onClick={() => setModalShow(true)}
+      >
         Crear Usuario
       </Button>
-      <Table responsive className="tabla-usuario">
+      <VentanaModalcentrada
+    show={modalShow}
+    onHide={() => setModalShow(false)}
+  ></VentanaModalcentrada>;
+      <Table striped>
         <thead>
           <tr>
             <th>Nombre Usuario</th>
@@ -48,5 +61,25 @@ const Usuarios = () => {
     </>
   );
 };
+
+function VentanaModalcentrada(props){
+  return(
+    <Modal
+    {...props}    
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+  >
+    <Modal.Header closeButton></Modal.Header>
+    <Modal.Body>
+      <CrearUsuario></CrearUsuario>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="danger" onClick={props.onHide}>
+        Salir
+      </Button>
+    </Modal.Footer>
+  </Modal>
+  )
+}
 
 export default Usuarios;
