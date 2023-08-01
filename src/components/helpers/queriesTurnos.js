@@ -3,12 +3,7 @@ const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
 
 export const obtenerTurnos = async ()=>{
     try {
-        const respuesta = await fetch(URL_TURNOS,{
-        headers:{
-        "Content-Type":"application/json",
-        "x-token":usuarioLogueado.token
-        }
-        });
+        const respuesta = await fetch(URL_TURNOS);
         const listadoTurnos = await respuesta.json();
         return listadoTurnos;
     } catch (error) {
@@ -18,12 +13,7 @@ export const obtenerTurnos = async ()=>{
 
 export const obtenerTurno = async (id) => {
   try {
-    const respuesta = await fetch(URL_TURNOS + "/" + id, {
-      headers: {
-        "Content-Type": "application/json",
-        "x-token": usuarioLogueado.token,
-      },
-    });
+    const respuesta = await fetch(URL_TURNOS + "/" + id);
     const turno = await respuesta.json();
     return turno;
   } catch (error) {

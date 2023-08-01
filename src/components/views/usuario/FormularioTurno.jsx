@@ -4,13 +4,14 @@ import { Button, Card, Form } from "react-bootstrap";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
-import { setHours } from "date-fns";
+import { setHours,format,parseISO } from "date-fns";
 import { crearTurno } from "../../helpers/queriesTurnos";
 import Swal from "sweetalert2";
 
 registerLocale("es", es);
 
 const FormularioTurno = () => {
+    const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {}
   const {
     handleSubmit,
     control,
@@ -25,6 +26,11 @@ const FormularioTurno = () => {
     paciente: "",
     fechaYHora: "",
   });
+  const convertirFecha = (fechaISO) => {
+    const fechaObjeto = parseISO(fechaISO);
+    const fechaFormateada = format(fechaObjeto, "yyyy-MM-dd HH:mm");
+    return fechaFormateada;
+  };
 
   const isWeekDay = (dia) => {
     const fechaHora = new Date(dia);
@@ -61,16 +67,22 @@ const FormularioTurno = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-    crearTurno().then((respuesta) => {
-      if (respuesta && respuesta.status === 201) {
+    data.idUsuario = usuario.id
+    data.fechaYHora = formValues.fechaYHora.toISOString()
+    data.fechaYHora = convertirFecha(data.fechaYHora)
+    crearTurno(data).then((respuesta) => {
+        console.log(data)
+        if (respuesta && respuesta.status === 201) {
         Swal.fire(
           "Turno creado",
           `El turno fue creado correctamente`,
           "success"
         );
         reset();
-      } else {
+
+      } else if(respuesta && respuesta.status === 400){
+        console.log(respuesta)
+    }else {
         Swal.fire(
           "Ocurrio un error",
           `El turno no pudo ser creado, intente en unos minutos`,
