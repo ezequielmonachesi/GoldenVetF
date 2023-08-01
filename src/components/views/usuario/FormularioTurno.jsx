@@ -5,6 +5,8 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
 import { setHours } from "date-fns";
+import { crearTurno } from "../../helpers/queriesTurnos";
+import Swal from "sweetalert2";
 
 registerLocale("es", es);
 
@@ -60,7 +62,22 @@ const FormularioTurno = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset()
+    crearTurno().then((respuesta) => {
+      if (respuesta && respuesta.status === 201) {
+        Swal.fire(
+          "Turno creado",
+          `El turno fue creado correctamente`,
+          "success"
+        );
+        reset();
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          `El turno no pudo ser creado, intente en unos minutos`,
+          "error"
+        );
+      }
+    });
   };
 
   return (
