@@ -6,7 +6,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useParams } from "react-router";
+
 
 const EditarUsuario = ({ id }) => {
   const [errores, setErrores] = useState("");
@@ -28,14 +28,14 @@ const EditarUsuario = ({ id }) => {
       setValue("nombreUsuario", respuesta.nombreUsuario);
       setValue("email", respuesta.email);
       setValue("rol", respuesta.rol);
-      setValue("password","");
+      setValue("password", "");
     });
   }, []);
 
   const onSubmit = (usuarioViejo) => {
     if (!usuarioViejo.password || usuarioViejo.password.trim() === "") {
-        delete usuarioViejo.password;
-      }
+      delete usuarioViejo.password;
+    }
     editarUsuario(usuarioViejo, id).then((respuesta) => {
       if (respuesta && respuesta.status === 200) {
         Swal.fire(
@@ -44,6 +44,8 @@ const EditarUsuario = ({ id }) => {
           "success"
         );
         reset();
+      } else if (respuesta && respuesta.status === 400) {
+        setErrores(respuesta.data.mensaje);
       } else {
         Swal.fire(
           "Ocurrio un error",
@@ -121,7 +123,7 @@ const EditarUsuario = ({ id }) => {
                   <Form.Control
                     type={passwordShown ? "text" : "password"}
                     placeholder="Ingrese una contraseña"
-                    {...register("password", {                      
+                    {...register("password", {
                       pattern: {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,
@@ -136,7 +138,7 @@ const EditarUsuario = ({ id }) => {
                   <Form.Control
                     type={passwordShown ? "text" : "password"}
                     placeholder="Confirmar contraseña"
-                    {...register("confirmPassword", {                      
+                    {...register("confirmPassword", {
                       pattern: {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,

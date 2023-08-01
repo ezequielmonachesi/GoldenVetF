@@ -88,7 +88,8 @@ export const editarUsuario = async (usuario, id)=>{
             },
             body: JSON.stringify(usuario)
         });
-        return respuesta;
+        const data = await respuesta.json();
+        return { status: respuesta.status, data };
     }catch (error){
         console.log(error)
     }
