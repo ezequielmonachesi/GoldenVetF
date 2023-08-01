@@ -14,9 +14,7 @@ const EditarUsuario = ({ id }) => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-  const [usuarioViejo, setUsuarioViejo] = useState({});
-
-  console.log(id);
+   
   const {
     register,
     handleSubmit,
@@ -30,11 +28,15 @@ const EditarUsuario = ({ id }) => {
       setValue("nombreUsuario", respuesta.nombreUsuario);
       setValue("email", respuesta.email);
       setValue("rol", respuesta.rol);
+      setValue("password","");
     });
   }, []);
 
   const onSubmit = (usuarioViejo) => {
-    editarUsuario(usuarioViejo, usuarioViejo.id).then((respuesta) => {
+    if (!usuarioViejo.password || usuarioViejo.password.trim() === "") {
+        delete usuarioViejo.password;
+      }
+    editarUsuario(usuarioViejo, id).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
           "Usuario editado",
@@ -112,15 +114,14 @@ const EditarUsuario = ({ id }) => {
                 </Form.Select>
                 <Form.Text className="text-danger">
                   {" "}
-                  {errors.complejidad?.message}
+                  {errors.rol?.message}
                 </Form.Text>
                 <Form.Label>Contraseña*</Form.Label>
                 <Form.Group className="mb-2">
                   <Form.Control
                     type={passwordShown ? "text" : "password"}
                     placeholder="Ingrese una contraseña"
-                    {...register("password", {
-                      required: "La contraseña es requerida",
+                    {...register("password", {                      
                       pattern: {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,
@@ -135,8 +136,7 @@ const EditarUsuario = ({ id }) => {
                   <Form.Control
                     type={passwordShown ? "text" : "password"}
                     placeholder="Confirmar contraseña"
-                    {...register("confirmPassword", {
-                      required: "Debe confirmar su contraseña",
+                    {...register("confirmPassword", {                      
                       pattern: {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,

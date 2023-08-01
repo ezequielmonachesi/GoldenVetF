@@ -10,9 +10,11 @@ import Turnos from "./turnos/Turnos";
 import { Col, Row } from "react-bootstrap";
 
 const Administrador = () => {
+  const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+  console.log(usuario)
   return (
     <>
-      <h1 className="my-4 mx-5">Bienvenido Admin(nombre de usuario) </h1>
+      <h1 className="my-4 mx-5">Bienvenido {usuario? usuario.nombreUsuario : "Usuario"} </h1>
       
       <Row className="layout gx-0">
         <Col xs={2} className="sidebar-wrapper ">

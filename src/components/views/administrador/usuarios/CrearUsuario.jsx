@@ -99,7 +99,7 @@ const CrearUsuario = () => {
                     <option value="administrador">Administrador</option>
          
                 </Form.Select>
-                <Form.Text className="text-danger"> {errors.complejidad?.message}</Form.Text>
+                <Form.Text className="text-danger"> {errors.rol?.message}</Form.Text>
                 <Form.Label>Contraseña*</Form.Label>
                 <Form.Group className="mb-2">
               <Form.Control
