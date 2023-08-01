@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Registro from "./components/views/Registro";
+
 
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,8 +13,10 @@ import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
 import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
-
-
+import Administrador from "./components/views/administrador/Administrador";
+import Registro from "./components/views/Registro";
+import Planes from "./components/shared/Inicio/Planes";
+import DetallePlan from "./components/views/detallePlan/DetallePlan";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
@@ -22,8 +24,9 @@ function App() {
 
   return (
     <>
+
       <BrowserRouter>
-        <Menu/>
+        <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
         <section className='mainSection'>
         <Routes>          
           <Route exact path="/" element={<Inicio></Inicio> }></Route>
@@ -31,6 +34,9 @@ function App() {
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
+          <Route exact path="/planes" element={<Planes/>}></Route>
+          <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
+          <Route path="/admin/*" element={<Administrador />} />
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
         </Routes>
@@ -38,6 +44,7 @@ function App() {
         <Footer/>
 
       </BrowserRouter>
+
     </>
   );
 }

@@ -1,0 +1,16 @@
+.layout {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.2fr 1fr;
+  gap: 8px;
+  box-sizing: border-box;
+  border-top: 2px solid #c68940;
+  height: 100vh;
+}
+
+
+
+.sidebar-wrapper {
+ background-color: #c68940;
+  height: 100%;
+}
