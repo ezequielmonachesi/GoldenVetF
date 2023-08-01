@@ -2,9 +2,14 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearUsuario } from "../../../helpers/queriesUsuarios";
+import { useState } from "react";
 
 const CrearUsuario = () => {
 
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
     const {
         register,
         handleSubmit,
@@ -39,10 +44,11 @@ const CrearUsuario = () => {
         <hr />
         <Form onSubmit={handleSubmit(onSubmit)}>
 
-          <Form.Group className="mb-3" controlId="formNombreUsuario">
+          <Form.Group className="mb-3">
             <Row className="justify-content-start">
               <Col xs={12} md={6}>
                 <Form.Label>Nombre*</Form.Label>
+                
                 <Form.Control
                   type="text"
                   placeholder="Ej: Nahuel"
@@ -85,6 +91,44 @@ const CrearUsuario = () => {
                     <option value="usuario">Usuario</option>
                     <option value="administrador">Administrador</option>
                 </Form.Select>
+                <Form.Label>Contraseña*</Form.Label>
+                <Form.Group className="mb-2">
+              <Form.Control
+                type= {passwordShown ? 'text' :'password'}
+                placeholder="Ingrese una contraseña"
+                {...register("password", {
+                  required: "La contraseña es requerida",
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.password?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-2">
+              {/* <Form.Control
+                type={passwordShown ? "text" : "password"}
+                placeholder="Confirmar contraseña"
+                {...register("confirmPassword", {
+                  required: "Debe confirmar su contraseña",
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,16}$/,
+                    message:
+                      "La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un carácter especial y un número. Además, la longitud máxima es de 16 caracteres.",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.confirmPassword?.message}
+              </Form.Text> */}
+              <div className="d-flex pt-3">
+              <Form.Check type="checkbox" value="Mostrar Contraseña" id="flexCheckChecked" label="Mostrar contraseña" onClick={togglePassword}></Form.Check>              
+              </div>
+            </Form.Group>
               </Col>
             </Row>
           </Form.Group>

@@ -34,7 +34,7 @@ const Usuarios = () => {
     show={modalShow}
     onHide={() => setModalShow(false)}
   ></VentanaModalcentrada>;
-      <Table striped>
+      <Table responsive striped>
         <thead>
           <tr>
             <th>Nombre Usuario</th>
