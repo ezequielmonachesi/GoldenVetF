@@ -4,6 +4,7 @@ import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
 import { borrarProducto, crearProducto, editarProducto, obtenerProductos } from '../../../helpers/queriesProductos';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
 const Productos = () => {
 
@@ -14,35 +15,27 @@ const Productos = () => {
 
     const [productos, setProductos] = useState([]);
 
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        setValue
+    } = useForm();
+
     useEffect(()=>{
         obtenerProductos().then((respuesta)=>{
             if (respuesta) setProductos(respuesta);
             else setProductos([]);
         })
     },[]);
-    const productoInicial = {
-        nombreProducto: '',
-        descripcion:'',
-        precio:'',
-        stock:'',
-        imagen:''
-    }
-    const [producto, setProducto] = useState(productoInicial);
+    
     const [id, setId] = useState('');
     const [modificar, setModificar] = useState(false);
 
-    const handleInputChange = (e) => {
-        const { id, value } = e.target;
-        setProducto((prevProducto) => ({
-        ...prevProducto,
-        [id]: value,
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = (prod) => {
         if(modificar){
-            editarProducto(producto,id).then((respuesta)=>{
+            editarProducto(prod,id).then((respuesta)=>{
                 if (respuesta && respuesta.status === 200)  
                     Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
                 else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
@@ -59,7 +52,7 @@ const Productos = () => {
                 if (respuesta) setProductos(respuesta);
                 else setProductos([]);
             });
-            insertarProducto(producto);
+            insertarProducto(prod);
         }
     }
 
@@ -83,7 +76,11 @@ const Productos = () => {
     const modProducto = (prod, id) => {
         setModificar(true);
         setId(id);
-        setProducto(prod);
+        setValue("nombreProducto", prod.nombreProducto);
+        setValue("descripcion", prod.descripcion);
+        setValue("precio", prod.precio);
+        setValue("stock", prod.stock);
+        setValue("imagen", prod.imagen);
         handleShow();
         
     }
@@ -102,7 +99,7 @@ const Productos = () => {
     }
 
     const limpiarForm = () => {
-        setProducto(productoInicial);
+        reset();
         setModificar(false);
         handleClose();
     };
@@ -156,16 +153,27 @@ const Productos = () => {
                 <Modal.Title>Agregar o modificar receta</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="nombreProducto">
                     <Form.Label>Producto</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Nombre del producto"
-                        value={producto.nombreProducto}
-                        onChange={handleInputChange}
-                        
+                        {...register("nombreProducto",{
+                            required:"El nombre del producto es obligatorio",
+                            minLength:{
+                                value:2,
+                                message:"El nombre deve de contener como minimo 2 caracteres"
+                            },
+                            maxLength:{
+                                value:100,
+                                message:"El nombre no deve de tener mas de 100 caracteres"
+                            }
+                        })}
                     />
+                    <Form.Text className="text-danger">
+                        {errors.nombreProducto?.message}
+                    </Form.Text>
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
@@ -175,9 +183,21 @@ const Productos = () => {
                     <Form.Control 
                         as="textarea" 
                         rows={3}
-                        value={producto.descripcion}
-                        onChange={handleInputChange}
+                        {...register("descripcion",{
+                            required:"La descripcion es obligatoria",
+                            minLength:{
+                                value:2,
+                                message:"La descripcion deve de contener como minimo 10 caracteres"
+                            },
+                            maxLength:{
+                                value:100,
+                                message:"La descripcion no deve de tener mas de 600 caracteres"
+                            }
+                        })}
                     />
+                    <Form.Text className="text-danger">
+                        {errors.descripcion?.message}
+                    </Form.Text>
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
@@ -186,9 +206,21 @@ const Productos = () => {
                         <Form.Control
                         type="number"
                         placeholder="Ej: 50"
-                        value={producto.precio}
-                        onChange={handleInputChange}
-                        />
+                        {...register("precio",{
+                            required:"El precio del producto es obligatorio",
+                            min:{
+                                value:0,
+                                message:"El precio minimo es de 0"
+                            },
+                            max:{
+                                value:100,
+                                message:"El precio maximo es de 100"
+                            }
+                        })}
+                    />
+                    <Form.Text className="text-danger">
+                        {errors.precio?.message}
+                    </Form.Text>
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
@@ -197,9 +229,21 @@ const Productos = () => {
                         <Form.Control
                         type="number"
                         placeholder="Ej: 50"
-                        value={producto.stock}
-                        onChange={handleInputChange}
-                        />
+                        {...register("stock",{
+                            required:"El stock del producto es obligatorio",
+                            min:{
+                                value:0,
+                                message:"El stock minimo es de 0"
+                            },
+                            max:{
+                                value:100,
+                                message:"El stock maximo es de 100"
+                            }
+                        })}
+                    />
+                    <Form.Text className="text-danger">
+                        {errors.stock?.message}
+                    </Form.Text>
                     </Form.Group>
                     <Form.Group
                     className="mb-3"
@@ -208,9 +252,17 @@ const Productos = () => {
                         <Form.Control
                         type="text"
                         placeholder="Ej: imagen.com/imagen.jpg"
-                        value={producto.imagen}
-                        onChange={handleInputChange}
-                        />
+                        {...register("imagen",{
+                            required:"La URL de la imagen es obligatorio",
+                            pattern:{
+                                value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)$/,
+                                message:"la URL deve de ser como 'imagen.com/imagen.jpg'"
+                            }
+                        })}
+                    />
+                    <Form.Text className="text-danger">
+                        {errors.imagen?.message}
+                    </Form.Text>
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={limpiarForm}>
