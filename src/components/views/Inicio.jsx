@@ -5,12 +5,11 @@ import Usuario from './usuario/Usuario';
 const Inicio = () => {
 
     return (
-        // <section className='mainSection'> 
-        // <Publicidad></Publicidad>
-        // <Planes/>
-        // <Publicidad/>
-        // </section>
-        <Usuario/>
+        <section className='mainSection'> 
+        <Publicidad></Publicidad>
+        <Planes/>
+        <Publicidad/>
+        </section>        
     );
 };
 
