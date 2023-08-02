@@ -70,6 +70,7 @@ const Servicios = () => {
         </Button>
       </div>
       <VentanaModalCrearServicio
+        className='modal-crud'
         show={modalShow}
         onHide={() => {
             setModalShow(false)
@@ -79,6 +80,7 @@ const Servicios = () => {
       ;
       {id && (
         <VentanaModalEditarServicio
+          className='modal-crud'
           show={modalShowEditar}
           onHide={() => setModalShowEditar(false)}
           id={id}
