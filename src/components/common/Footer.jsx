@@ -34,19 +34,19 @@ const Footer = ({ path }) => {
             <h3>A donde quieres ir?</h3>
             <ul className="list-unstyled">
               <li>
-                <a href="#">Inicio</a>
+                <Link to={"/"}>Inicio</Link>
               </li>
               <li>
-                <a href="#">Productos</a>
+                <Link to={"/productos"}>Productos</Link>
               </li>
               <li>
-                <a href="#">Servicios</a>
+                <Link to={"/servicios"}>Servicios</Link>
               </li>
               <li>
-                <a href="#">Registrarse</a>
+                <Link to={"/registro"}>Registrarse</Link>
               </li>
               <li>
-                <a href="#">Login</a>
+                <Link to={"/login"}>Login</Link>
               </li>
               <li>
                 <Link to={"/sobre-nosotros"}>Sobre Nosotros</Link>
