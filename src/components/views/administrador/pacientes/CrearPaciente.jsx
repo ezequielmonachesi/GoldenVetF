@@ -14,6 +14,12 @@ const CrearPaciente = ({ usuarios }) => {
 
   const [usuarioBuscado, setUsuarioBuscado] = useState([]);
   const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
+  const [usuarioElegido, setUsuarioElegido] = useState({});
+
+  const elegirUsuario = (event) => {
+    const usuarioElegido = event.target.value;
+    setUsuarioElegido(usuarioElegido);
+  };
 
   useEffect(() => {
     buscarUsuario(usuarioBuscado);
@@ -64,7 +70,8 @@ const CrearPaciente = ({ usuarios }) => {
               }}
             >
               <h6 className="mt-4 mb-3">
-                <span className="border-bottom border-warning">Bus</span>car usuarios
+                <span className="border-bottom border-warning">Bus</span>car
+                usuarios
               </h6>
               <Form.Control
                 placeholder="Buscar"
@@ -79,7 +86,11 @@ const CrearPaciente = ({ usuarios }) => {
                 <span className="border-bottom border-warning">Lis</span>tado de
                 usuarios
               </p>
-              <Form.Select aria-label="Default select example">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={elegirUsuario}
+              >
+                <option value="">Elegir usuario</option>
                 {usuarioEncontrado.length > 0 ? (
                   usuarioEncontrado.map((usuario) => (
                     <option value={usuario.id} key={usuario.id}>
@@ -89,6 +100,7 @@ const CrearPaciente = ({ usuarios }) => {
                 ) : (
                   <option value="">No se encontraron usuarios</option>
                 )}
+                {console.log(usuarioElegido)}
               </Form.Select>
             </Form>
           </Col>
