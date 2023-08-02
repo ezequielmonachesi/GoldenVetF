@@ -136,7 +136,7 @@ const Usuarios = () => {
 function VentanaModalCrearUsuario(props) {
     const { actualizarUsuarios, ...restProps } = props;
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <CrearUsuario actualizarUsuarios={actualizarUsuarios} />
@@ -152,7 +152,7 @@ function VentanaModalCrearUsuario(props) {
 function VentanaModalEditarUsuario(props) {
     const { actualizarUsuarios, ...restProps } = props;
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <EditarUsuario id={props.id} actualizarUsuarios={actualizarUsuarios}/>
