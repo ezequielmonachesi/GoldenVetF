@@ -12,8 +12,6 @@ const DetalleProducto = () => {
   useEffect(() => {
     obtenerProducto(id).then((respuesta) => setProducto(respuesta));
   }, []);
-  const text =
-    "Adulto Razas Medianas Provee nutrición de avanzada que ayuda a los perros de razas medianas a mantenerse fuertes y llenos de vitalidad. Esta fórmula ofrece, a través de sus sabrosas croquetas, un contenido rico en proteínas (26%) y grasas (15%), utilizando como ingrediente principal carne fresca de pollo, que ayuda a los perros a mantener la masa corporal magra y músculos fuertes. Descripción del producto BENEFICIOS: Refuerza el sistema inmune. Vitamina A y E, que ayuda a mantener las defensas naturales del sistema inmunológico, asegurando una mejor respuesta a los desafios externos. Fortalece la microflora intestinal. Ayuda a optimizar la absorción de nutrientes clave, fortaleciendo y estabilizando la microflora intestinal y, por lo tanto, mejorando la salud del sistema digestivo. Refuerza la barrera cutánea. Contiene ácidos grasos Omega 6 y vitamina A, que sumados a ácidos grasos Omega 3 y minerales, promueven una piel flexible y un pelaje resistente y brillante, actuando como la primera linea de defensa que tiene un perro contra amenazas externas.";
 
   return (
     <Container>
