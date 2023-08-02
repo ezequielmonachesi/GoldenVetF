@@ -4,7 +4,6 @@ import {
   Button,
   Col,
   Container,
-  Fade,
   Image,
   Row,
 } from "react-bootstrap";
