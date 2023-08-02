@@ -44,18 +44,25 @@ const EditarServicio = ({ id, actualizarServicios }) => {
     control,
     name: "subservicios",
   });
-
+  const [subserviciosLimitReached, setSubserviciosLimitReached] = useState(false);
   const agregarSubservicio = () => {
+    if(subserviciosFields.length<10){
     appendSubservicios({
       nombreSubservicio: "",
       descripcionSubservicio: "",
       imagenSubservicio: "",
     });
+    setSubserviciosLimitReached(false)
+  }else{
+    setSubserviciosLimitReached(true)
+  }
+
   };
   const borrarUltimoSubservicio = () => {
     if (subserviciosFields.length > 0) {
       const lastIndex = subserviciosFields.length - 1;
       removeSubservicios(lastIndex);
+      setIngredientesLimitReached(false);
     }
   };
 
@@ -149,8 +156,9 @@ const EditarServicio = ({ id, actualizarServicios }) => {
                 </Form.Text>
               </Col>
               <div className="d-flex">
-                <Form.Label>Subservicios</Form.Label>
+                <Form.Label>Subservicios ({subserviciosFields.length})</Form.Label>
                 <div className="ms-auto">
+                  
                   <Button variant="success" onClick={agregarSubservicio}>
                     +
                   </Button>
@@ -158,13 +166,19 @@ const EditarServicio = ({ id, actualizarServicios }) => {
                     -
                   </Button>
                 </div>
+                
               </div>
+              {subserviciosLimitReached && (
+<p className="text-danger">
+Se ha alcanzado el límite de inputs. No se pueden agregar más campos.
+</p>)}
               {subserviciosFields.map((field, index) => (
                 <div key={field.id}>
                   <Form.Group className="mb-3">
+                    <p className="">{index+1})</p>
                   <hr/>
-                                      
-                      <Col>
+                      <Row>
+                      <Col md={4}>
                         <Form.Label>Nombre del Subservicio*</Form.Label>
                         <Form.Control
                           {...register(
@@ -196,7 +210,7 @@ const EditarServicio = ({ id, actualizarServicios }) => {
                             )}
                         </Form.Text>
                       </Col>
-                      <Col>
+                      <Col md={4}>
                      
                       
                         <Form.Label>Descripción del Subservicio*</Form.Label>
@@ -234,7 +248,7 @@ const EditarServicio = ({ id, actualizarServicios }) => {
                             )}
                         </Form.Text>
                       </Col>
-                      <Col>
+                      <Col md={4}>
                         <Form.Label>URL Imagen del Subservicio*</Form.Label>
                         <Form.Control
                           type="text"
@@ -267,10 +281,11 @@ const EditarServicio = ({ id, actualizarServicios }) => {
                             )}
                         </Form.Text>
                       </Col>
-                    
+                      </Row>                
                   </Form.Group>
                 </div>
               ))}
+
             </Row>
           </Form.Group>
           {errores && <Form.Text className="text-danger">{errores}</Form.Text>}

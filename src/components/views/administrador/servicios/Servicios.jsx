@@ -132,7 +132,7 @@ const Servicios = () => {
 function VentanaModalCrearServicio(props) {
     const { actualizarServicios, ...restProps } = props;
   return (
-    <Modal{...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal{...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <CrearServicio actualizarServicios={actualizarServicios} />
@@ -148,7 +148,7 @@ function VentanaModalCrearServicio(props) {
 function VentanaModalEditarServicio(props) {
     const { actualizarServicios, ...restProps } = props;
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <EditarServicio id={props.id} actualizarServicios={actualizarServicios}/>
