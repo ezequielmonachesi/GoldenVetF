@@ -1,0 +1,7 @@
+ .modal-content,.modal-body,.modal-header,.modal-footer{
+    width: 70vw;    
+}
+
+.modal-dialog{
+    justify-content: center;
+}
