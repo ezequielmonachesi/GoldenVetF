@@ -99,3 +99,6 @@ color: #caa467;
 object-fit: contain;
 }
 
+.text-area-turnos{
+resize: none;
+}
