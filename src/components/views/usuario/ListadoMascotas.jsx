@@ -41,7 +41,7 @@ const ListadoMascotas = () => {
         if (!isLoading && listadoMascotas?.length <= 0) {
             return (
                 <h3 className="text-danger border p-3 text-center">
-                    Hubo un error al cargar las mascotas
+                    Aún no tienes mascotas registradas
                 </h3>
             );
         }

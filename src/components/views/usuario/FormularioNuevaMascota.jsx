@@ -20,14 +20,7 @@ const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
             } else {
                 Swal.fire('Ocurrió un error', `La mascota ${mascota.nombre} no pudo ser agregada, intente en unos minutos`, 'error');
             }
-        })
-        // try {
-        //     const respuesta = await editarPaciente(datosFormulario, dataPaciente.id);
-        //     console.log(respuesta);
-            
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        });
     }
 
     return (

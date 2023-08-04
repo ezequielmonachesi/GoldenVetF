@@ -32,7 +32,8 @@ export const crearPaciente = async (paciente)=>{
         const respuesta = await fetch(URL_PACIENTES,{
             method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token": usuarioLogueado.token
             },
             body: JSON.stringify(paciente)
         });
