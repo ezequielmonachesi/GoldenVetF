@@ -1,34 +1,22 @@
-import { Button, Col, Row, Modal, Spinner } from "react-bootstrap";
+import { Button, Row, Modal, Spinner } from "react-bootstrap";
 import CardMascotaUsuario from "./CardMascotaUsuario";
 import FormularioNuevaMascota from "./FormularioNuevaMascota";
 import { useEffect, useState } from "react";
-import { obtenerUsuario } from "../../helpers/queriesUsuarios";
+import { useFetchDataById } from "../../hooks/useFetchDataById";
 
 const ListadoMascotas = () => {
     const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
     const id = usuarioLogueado?.id;
-    const [usuario, setUsuario] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [listadoMascotas, setListadoMascotas] = useState([])
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
-    useEffect(() => {
-        const obtenerDatosUsuario = async () => {
-            try {
-                const usuario = await obtenerUsuario(id);
-                setUsuario(usuario);
-            } catch (error) {
-                // setError('Error al obtener el usuario.');
-            }
-        };
-
-        obtenerDatosUsuario();
-    }, [id]);
+    const { data, isLoading, error } = useFetchDataById("usuarios", id);
 
     useEffect(() => {
-        const mascotas = usuario?.paciente?.mascotas;
+        const mascotas = data?.paciente?.mascotas;
 
         setListadoMascotas(mascotas?.map((mascota) => (
             <CardMascotaUsuario
@@ -39,24 +27,24 @@ const ListadoMascotas = () => {
                 key={mascota.nombre}
             />
         )));
-    }, [usuario])
+    }, [data])
 
     const showComponent = () => {
-        // if (isLoading) {
-        //     return (
-        //         <div className="my-5">
-        //             <Spinner animation="border" variant="primary" />
-        //         </div>
-        //     );
-        // }
+        if (isLoading) {
+            return (
+                <div className="my-5 text-center">
+                    <Spinner animation="border" variant="primary" />
+                </div>
+            );
+        }
 
-        // if (!isLoading && listado?.length <= 0) {
-        //     return (
-        //         <h3 className="text-danger border p-3">
-        //             Hubo un error al cargar las mascotas
-        //         </h3>
-        //     );
-        // }
+        if (!isLoading && listadoMascotas?.length <= 0) {
+            return (
+                <h3 className="text-danger border p-3 text-center">
+                    Hubo un error al cargar las mascotas
+                </h3>
+            );
+        }
 
         return listadoMascotas;
     };
@@ -88,8 +76,6 @@ const ListadoMascotas = () => {
                 </Modal.Footer>
             </Modal>
         </>
-
-
     );
 };
 

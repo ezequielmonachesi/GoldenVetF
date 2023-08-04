@@ -25,7 +25,7 @@ const ListadoTurnos = () => {
     const showComponent = () => {
         if (isLoading) {
             return (
-                <div className="my-5">
+                <div className="my-5 text-center">
                     <Spinner animation="border" variant="primary" />
                 </div>
             );
