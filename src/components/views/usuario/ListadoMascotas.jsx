@@ -49,6 +49,10 @@ const ListadoMascotas = () => {
         return listadoMascotas;
     };
 
+    const handleFormSubmit = () => {
+        setShowModal(false);
+    };
+
 
     return (
         <>
@@ -65,7 +69,7 @@ const ListadoMascotas = () => {
                 <Modal.Header className="card-header-bg" closeButton>
                     <Modal.Title>Agregar nueva mascota</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormularioNuevaMascota /></Modal.Body>
+                <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Close

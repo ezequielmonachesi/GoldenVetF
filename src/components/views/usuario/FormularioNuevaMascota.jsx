@@ -1,12 +1,22 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { editarPaciente } from "../../helpers/queriesPacientes";
 
-const FormularioNuevaMascota = () => {
+const FormularioNuevaMascota = ({dataPaciente, onFormSubmit}) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (mascota) => {
-        console.log(mascota);
+    const onSubmit = async (mascota) => {
+        delete dataPaciente.mascotas;
+        const datosFormulario = {...dataPaciente, mascota};
+        console.log(datosFormulario)
+        try {
+            const respuesta = await editarPaciente(datosFormulario, dataPaciente.id);
+            console.log(respuesta);
+            onFormSubmit();
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -18,7 +28,7 @@ const FormularioNuevaMascota = () => {
                         <Form.Control
                             type="text"
                             placeholder="Ingrese el nombre de la mascota"
-                            {...register('mascota', {
+                            {...register('nombre', {
                                 required: 'El nombre de la mascota es obligatorio',
                                 minLength: {
                                     value: 3,

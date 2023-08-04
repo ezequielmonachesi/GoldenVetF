@@ -58,7 +58,8 @@ export const editarPaciente = async (paciente, id)=>{
         const respuesta = await fetch(URL_PACIENTES+'/'+id,{
             method: "PUT",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token": usuarioLogueado.token
             },
             body: JSON.stringify(paciente)
         });
