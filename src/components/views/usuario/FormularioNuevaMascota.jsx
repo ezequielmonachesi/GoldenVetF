@@ -1,22 +1,33 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { editarPaciente } from "../../helpers/queriesPacientes";
+import Swal from "sweetalert2";
 
-const FormularioNuevaMascota = ({dataPaciente, onFormSubmit}) => {
+const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = async (mascota) => {
         delete dataPaciente.mascotas;
         const datosFormulario = {...dataPaciente, mascota};
-        console.log(datosFormulario)
-        try {
-            const respuesta = await editarPaciente(datosFormulario, dataPaciente.id);
-            console.log(respuesta);
-            onFormSubmit();
-        } catch (error) {
-            console.log(error)
-        }
+        
+        editarPaciente(datosFormulario, dataPaciente.id).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+                Swal.fire('Mascota agregada', `La mascota ${mascota.nombre} fue agregada correctamente`, 'success');
+                reset();
+                onFormSubmit();
+                refetchData();
+            } else {
+                Swal.fire('Ocurrió un error', `La mascota ${mascota.nombre} no pudo ser agregada, intente en unos minutos`, 'error');
+            }
+        })
+        // try {
+        //     const respuesta = await editarPaciente(datosFormulario, dataPaciente.id);
+        //     console.log(respuesta);
+            
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
 
     return (

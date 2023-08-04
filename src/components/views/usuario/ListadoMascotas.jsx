@@ -13,7 +13,7 @@ const ListadoMascotas = () => {
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
-    const { data, isLoading, error } = useFetchDataById("usuarios", id);
+    const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", id);
 
     useEffect(() => {
         const mascotas = data?.paciente?.mascotas;
@@ -21,7 +21,7 @@ const ListadoMascotas = () => {
         setListadoMascotas(mascotas?.map((mascota) => (
             <CardMascotaUsuario
                 nombre={mascota.nombre}
-                especie={mascota.veterinario}
+                especie={mascota.especie}
                 raza={mascota.raza}
                 historialMedico={mascota.historialMedico}
                 key={mascota.nombre}
@@ -69,7 +69,7 @@ const ListadoMascotas = () => {
                 <Modal.Header className="card-header-bg" closeButton>
                     <Modal.Title>Agregar nueva mascota</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} /></Modal.Body>
+                <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} refetchData={refetchData} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Close

@@ -11,23 +11,23 @@ export const useFetchDataById = (dataType, id) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const fetchData = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await seleccionarDatosATraer(dataType, id);
+      setData(response);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+    }
+
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-
-      try {
-        const response = await seleccionarDatosATraer(dataType, id);
-        setData(response);
-        setError(null);
-      } catch (error) {
-        setError('Error al obtener el dato.');
-      }
-
-      setIsLoading(false);
-    };
-
     fetchData();
-  }, [dataType, id]);
+  }, [dataType]);
 
   async function seleccionarDatosATraer(dataType, id) {
     switch (dataType) {
@@ -48,9 +48,16 @@ export const useFetchDataById = (dataType, id) => {
     }
   }
 
+  const refetchData = async () => {
+    setIsLoading(true);
+    await fetchData();
+    setIsLoading(false);
+  };
+
   return {
     data,
     isLoading,
     error,
+    refetchData
   };
 };
