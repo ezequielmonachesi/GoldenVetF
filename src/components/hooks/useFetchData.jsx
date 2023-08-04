@@ -61,3 +61,4 @@ export const useFetchData = (dataType) => {
     refetchData,
   };
 };
+
