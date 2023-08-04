@@ -1,6 +1,5 @@
 import Planes from '../shared/Inicio/Planes';
 import Publicidad from '../shared/Inicio/Publicidad'
-import Usuario from './usuario/Usuario';
 
 const Inicio = () => {
 
@@ -9,7 +8,6 @@ const Inicio = () => {
         <Publicidad></Publicidad>
         <Planes/>
         <Publicidad/>
-        <Usuario/>
         </section>
     );
 };

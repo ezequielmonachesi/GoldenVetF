@@ -16,7 +16,7 @@ const ListadoTurnos = () => {
         <CardTurnoUsuario
           paciente={turno.paciente}
           veterinario={turno.veterinario}
-          fechaYhora={turno.fechaYhora}
+          fechaYHora={turno.fechaYHora}
           detalleVisita={turno.detalleVisita}
           key={turno.id}
         />
@@ -34,7 +34,7 @@ const ListadoTurnos = () => {
         if (!isLoading && listado?.length <= 0) {
             return (
                 <h3 className="text-danger border p-3">
-                    Hubo un error al cargar los servicios
+                    No tienes turnos registrados
                 </h3>
             );
         }

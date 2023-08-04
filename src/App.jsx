@@ -17,6 +17,7 @@ import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";
 import Planes from "./components/shared/Inicio/Planes";
 import DetallePlan from "./components/views/detallePlan/DetallePlan";
+import Usuario from "./components/views/usuario/Usuario";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/planes" element={<Planes/>}></Route>
           <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
           <Route path="/admin/*" element={<Administrador />} />
+          <Route path="/usuario" element={<Usuario />} />
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
         </Routes>

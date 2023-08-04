@@ -1,8 +1,15 @@
 const URL_PACIENTES = import.meta.env.VITE_API_PACIENTES;
+const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
 
 export const obtenerPacientes = async ()=>{
     try {
-        const respuesta = await fetch(URL_PACIENTES);
+        const respuesta = await fetch(URL_PACIENTES, {
+            method: "GET",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
+        });
+        console.log(respuesta);
         const listadoPacientes = await respuesta.json();
         return listadoPacientes;
     } catch (error) {
