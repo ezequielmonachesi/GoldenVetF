@@ -95,7 +95,7 @@ const Usuarios = () => {
       <Table responsive striped>
         <thead>
           <tr>
-            <th>id</th>
+            <th>N°</th>
             <th>Nombre Usuario</th>
             <th>Email</th>
             <th>Rol</th>
@@ -104,9 +104,9 @@ const Usuarios = () => {
         </thead>
         <tbody>
           {data &&
-            data?.map((usuario) => (
-              <tr key={usuario.id}>
-                <td>{usuario.id}</td>
+            data?.map((usuario, index) => (
+              <tr key={index+1}>
+                <td>{index+1}</td>
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.rol}</td>
