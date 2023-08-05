@@ -13,7 +13,7 @@ const Planes = () => {
         key={plan.id}/>);
 
     return (
-        <section className='container text-center bg-light p-5 rounded shadow bg-opacity-75'>
+        <section className='container text-center bg-light p-sm-2 p-md-5 rounded shadow bg-opacity-75'>
             <h2 className=''>Nuestros Planes para su mascota</h2>
             <hr />
             <div className='row justify-content-center mt-5'>

@@ -53,7 +53,7 @@ export const planData = [
     {
         id: "plan-adultos",
         nombrePlan: "Adultos",
-        rangoEdad: "Mas de 10 años",
+        rangoEdad: "10+ años",
         descripcion: 'Nuestro plan "Adultos" se enfoca en las mascotas que han superado los 10 años de edad. En esta etapa, el cuidado y la atención adecuada son esenciales para garantizar una calidad de vida óptima.',
         serviciosPlan: [
             "Exámenes médicos completos: Realizamos evaluaciones periódicas para monitorear la salud general y brindar tratamientos preventivos y paliativos según sea necesario.",
