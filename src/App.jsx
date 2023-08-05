@@ -11,8 +11,12 @@ import Error404 from "./components/views/error404/Error404";
 import Servicios from "./components/views/Servicios/Servicios";
 import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
+import Productos from './components/views/Productos'
 import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
+import DetalleProducto from './components/views/DetalleProducto'
+
+
 import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";
 import Planes from "./components/shared/Inicio/Planes";
@@ -34,6 +38,8 @@ function App() {
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
+          <Route exact path="/productos" element={<Productos/>}></Route>
+          <Route exact path="/productos/:id" element={<DetalleProducto/>}></Route>
           <Route exact path="/planes" element={<Planes/>}></Route>
           <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
           <Route path="/admin/*" element={<Administrador />} />
