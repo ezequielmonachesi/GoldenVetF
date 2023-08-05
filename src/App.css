@@ -9,7 +9,6 @@ body {
   background-attachment: fixed;
 }
 
-
 .mainSection {
   flex-grow: 1;
 }
@@ -72,9 +71,44 @@ body {
   .logo {
     height: 65px;
   }
-
+  
   /* Footer */
   .bg-footer {
     background-color: #c58940;
   }
+}
+
+.boton-verMas-producto{
+  text-decoration: none;
+  background-color: #e5ba73;
+  padding: 10px 15px;
+  width: 120px;
+  color:black
+}
+.boton-verMas-productoInicio{
+  text-decoration: none;
+  color:#c99e58;
+  font-weight: bold;
+  font-size: 18px;
+}
+.boton-verMas-producto:hover{
+  background-color: #caa467;
+  color: white;
+}
+.limite-texto {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.texto-productos{
+color: #caa467;
+}
+.img-productos{
+object-fit: contain;
+}
+
+.text-area-turnos{
+resize: none;
 }

@@ -22,9 +22,9 @@ export const login = async (usuario)=>{
 export const obtenerUsuarios = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
-        const respuesta = await fetch(URL_USUARIOS,{
+        const respuesta = await fetch(URL_USUARIOS, {
             method: "GET",
-            headers: {
+            headers: {               
                 "x-token": usuarioLogueado.token
             }
         });
@@ -40,7 +40,7 @@ export const obtenerUsuario = async (id)=>{
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "GET",
-            headers: {
+            headers: {               
                 "x-token": usuarioLogueado.token
             }
         });
@@ -95,7 +95,8 @@ export const editarUsuario = async (usuario, id)=>{
             },
             body: JSON.stringify(usuario)
         });
-        return respuesta;
+        const data = await respuesta.json();
+        return { status: respuesta.status, data };
     }catch (error){
         console.log(error)
     }

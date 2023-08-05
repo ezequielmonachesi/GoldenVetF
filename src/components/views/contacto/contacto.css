@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Poppins&display=swap");
+
+.formularioContacto textarea{
+  resize: none;
+}
+
+.row.single-form {
+  box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.5);
+}
+.izquierda-contacto {
+  background: #c58940;
+  padding: 200px 98px;
+  height: 100%;
+}
+.izquierda-contacto h2 {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-weight: 700;
+  font-size: 48px;
+}
+.izquierda-contacto h2 span {
+  font-weight: 100;
+}
+.single-form {
+  background: #fff;
+}
+.derecha-contacto {
+  padding: 70px 100px;
+  position: relative;
+}
+.derecha-contacto i {
+  position: absolute;
+  font-size: 90px;
+  left: -50px;
+  top: 40%;
+  color: #fff;
+}
+.formularioContacto .form-control {
+  border: 2px solid black;
+}
+.derecha-contacto button {
+  border: none;
+  border-radius: 0;
+  background: #252525;
+  width: 180px;
+  color: #fff;
+  padding: 15px 0;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.derecha-contacto button:hover {
+  background: #252525;
+}
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .derecha-contacto i {
+    top: -78px;
+    transform: rotate(90deg);
+    left: 43%;
+  }
+}
+@media all and (max-width: 767px) {
+  .izquierda-contacto {
+    padding: 90px 15 px;
+    text-align: center;
+  }
+  .izquierda-contacto h2 {
+    font-size: 25px;
+  }
+  .derecha-contacto {
+    padding: 25px;
+  }
+  .derecha-contacto i {
+    top: -65px;
+    transform: rotate(90deg);
+    left: 41%;
+  }
+  .derecha-contacto button {
+    width: 150px;
+    padding: 12px 0;
+  }
+}
