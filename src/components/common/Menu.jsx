@@ -8,13 +8,13 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
 
   const logout = () => {
-    sessionStorage.removeItem('usuario');
     setUsuarioLogueado({});
+    sessionStorage.removeItem('usuario');
     setTimeout(() => {
       navegacion('/');
-    }, 1);
+    }, 10);
   }
-
+  
   return (
     <Navbar expand="lg" className="bg-navBar py-0">
       <Container>

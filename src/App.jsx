@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Inicio from "./components/views/Inicio";
@@ -23,6 +23,10 @@ function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
 
+  useEffect(() => {
+    sessionStorage.setItem('usuario', JSON.stringify(usuarioLogueado));
+  }, [usuarioLogueado]);
+
   return (
     <>
 
@@ -38,7 +42,7 @@ function App() {
           <Route exact path="/planes" element={<PlanesVista/>}></Route>
           <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
           <Route path="/admin/*" element={<Administrador />} />
-          <Route path="/usuario" element={<Usuario />} />
+          <Route path="/usuario" element={<Usuario usuarioLogueado={usuarioLogueado} />} />
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
         </Routes>

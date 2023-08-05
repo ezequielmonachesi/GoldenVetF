@@ -1,7 +1,7 @@
 const URL_TURNOS = import.meta.env.VITE_API_TURNOS;
-const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
 
 export const obtenerTurnos = async ()=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_TURNOS,{
             method: "GET",
@@ -17,6 +17,7 @@ export const obtenerTurnos = async ()=>{
 };
 
 export const obtenerTurno = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id);
         const turno = await respuesta.json();
@@ -42,6 +43,7 @@ export const crearTurno = async (turno)=>{
 }
 
 export const borrarTurno = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "DELETE",

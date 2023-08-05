@@ -4,16 +4,14 @@ import FormularioNuevaMascota from "./FormularioNuevaMascota";
 import { useEffect, useState } from "react";
 import { useFetchDataById } from "../../hooks/useFetchDataById";
 
-const ListadoMascotas = () => {
-    const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
-    const id = usuarioLogueado?.id;
+const ListadoMascotas = ({usuarioLogueado}) => {
     const [showModal, setShowModal] = useState(false);
     const [listadoMascotas, setListadoMascotas] = useState([])
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
-    const { data, isLoading, error, agregarNuevoElemento } = useFetchDataById("usuarios", id);
+    const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 
     useEffect(() => {
         const mascotas = data?.paciente?.mascotas;
@@ -69,7 +67,7 @@ const ListadoMascotas = () => {
                 <Modal.Header className="card-header-bg" closeButton>
                     <Modal.Title>Agregar nueva mascota</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} agregarNuevoElemento={agregarNuevoElemento} /></Modal.Body>
+                <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} refetchData={refetchData} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={handleCloseModal}>
                         Cerrar

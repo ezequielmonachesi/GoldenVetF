@@ -60,11 +60,8 @@ const ListadoTurnos = () => {
                 </Modal.Header>
                 <Modal.Body><FormularioTurno /></Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleCloseModal}>
-                        Save Changes
+                    <Button variant="danger" onClick={handleCloseModal}>
+                        Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>

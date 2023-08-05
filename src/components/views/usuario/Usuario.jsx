@@ -4,13 +4,9 @@ import ListadoTurnos from "./ListadoTurnos";
 import FormularioNuevoUsuario from "./FormulariuoNuevoUsuario";
 import { useFetchDataById } from "../../hooks/useFetchDataById";
 
-const Usuario = () => {
+const Usuario = ({usuarioLogueado}) => {
 
-    const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
-    const id = usuarioLogueado?.id;
-
-    const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", id);
-
+    const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 
     const showComponent = () => {
 
@@ -28,7 +24,7 @@ const Usuario = () => {
                     <h2 className="text-center display-5 mb-4">Antes de comenzar</h2>
                     <hr />
                     <p className="text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
-                    <FormularioNuevoUsuario idUsuario={id}/>
+                    <FormularioNuevoUsuario idUsuario={usuarioLogueado.id}/>
                 </div>
             );
         } else {
@@ -37,7 +33,7 @@ const Usuario = () => {
                     <h1 className="text-center display-5 mb-4">Bienvenido a tu panel de administración</h1>
                     <hr />
                     <Row>
-                        <Col sm={8}><ListadoMascotas/></Col>
+                        <Col sm={8}><ListadoMascotas usuarioLogueado={usuarioLogueado}/></Col>
                         <Col sm={4}><ListadoTurnos/></Col>
                     </Row>
                 </>
