@@ -7,7 +7,7 @@ const CardPlan = ({id, nombrePlan, rangoEdad, descripcion, serviciosPlan, imagen
     return (
         <>
             <Col md={4} ld={3} className="mb-3">
-                <Card className='bg-card-planes'>
+                <Card className='bg-light shadow'>
                     <Card.Img src={imagenes[1]} placeholder={nombrePlan}/>
                     <Card.Body>
                         <Card.Title>{nombrePlan}</Card.Title>
