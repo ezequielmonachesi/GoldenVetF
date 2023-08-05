@@ -61,6 +61,7 @@ const Turnos = () => {
             ) : (
               data
                 .slice(startIndex, endIndex)
+                .sort((a, b) => new Date(a.fechaYHora) - new Date(b.fechaYHora))
                 .map((turno) => (
                   <CardTurnosAdministrador
                     turno={turno}
