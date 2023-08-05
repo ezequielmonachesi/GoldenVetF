@@ -44,7 +44,10 @@ export const crearTurno = async (turno)=>{
 export const borrarTurno = async (id)=>{
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
         });
         return respuesta;
     }catch (error){

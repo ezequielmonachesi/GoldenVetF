@@ -18,6 +18,7 @@ const ListadoTurnos = () => {
           veterinario={turno.veterinario}
           fechaYHora={turno.fechaYHora}
           detalleVisita={turno.detalleVisita}
+          id={turno.id}
           key={turno.id}
         />
     ));
