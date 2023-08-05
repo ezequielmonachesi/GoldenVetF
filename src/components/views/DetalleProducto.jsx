@@ -3,6 +3,7 @@ import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
 import { Heart } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
 import { obtenerProducto } from "../helpers/queriesProductos";
+import { Cart4 } from "react-bootstrap-icons";
 
 const DetalleProducto = () => {
   const [mostrarMas, setMostrarMas] = useState(false);
@@ -27,12 +28,15 @@ const DetalleProducto = () => {
               <Heart className="fs-5"></Heart>
             </Button>
           </div>
-          <h5 className="mt-1 border text-danger">{producto.nombreProducto}</h5>
+          <h5 className="mt-1 text-danger">{producto.nombreProducto}</h5>
           <h3 className=" mt-3">$ {producto.precio}</h3>
           <Badge bg="danger" className="px-2 py-2 mt-3">
             1 Cuota Sin Interés
           </Badge>
           <p className="mt-3 fw-bold">Stock: {producto.stock}</p>
+          <div className="my-4">
+            <Button variant="danger"><Cart4 className="mb-1"/> Agregar al carrito</Button>
+          </div>
         </Col>
         <Col sm={12} className=" px-4 p-md-5">
           <h4 className="text-start">Detalle del producto</h4>
