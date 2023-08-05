@@ -150,7 +150,7 @@ const Productos = () => {
             </Table>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Agregar o modificar receta</Modal.Title>
+                <Modal.Title>Agregar o modificar producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -190,7 +190,7 @@ const Productos = () => {
                                 message:"La descripcion deve de contener como minimo 10 caracteres"
                             },
                             maxLength:{
-                                value:100,
+                                value:600,
                                 message:"La descripcion no deve de tener mas de 600 caracteres"
                             }
                         })}
@@ -213,8 +213,8 @@ const Productos = () => {
                                 message:"El precio minimo es de 0"
                             },
                             max:{
-                                value:100,
-                                message:"El precio maximo es de 100"
+                                value:50000,
+                                message:"El precio maximo es de 50000"
                             }
                         })}
                     />
