@@ -56,10 +56,13 @@ const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
       <Col xs={12} md={6} lg={3}>
         <Card style={{ width: "19rem",marginTop:"15px" }}>
           <Card.Body>
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-between">
               <Card.Title>{turno.paciente}</Card.Title>
               <Card.Title>{turno.fechaYHora}</Card.Title>
             </div>
+            <Card.Text>
+             Veterinario: <span className="fw-bold">{turno.veterinario}</span>
+            </Card.Text>
             <Card.Text>
              {turno.detalleVisita}
             </Card.Text>

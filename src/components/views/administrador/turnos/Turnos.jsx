@@ -49,11 +49,11 @@ const Turnos = () => {
   };
   return (
     <>
-      <Container className='p-3'>
+      <Container>
         <div className="d-flex justify-content-end">
           <Button onClick={handleShow}>Crear Turno</Button>
         </div>
-        <Row className="mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+        <Row>
           {isLoading ? (
             <Spinner size="lg" variant="primary" />
           ) : (
