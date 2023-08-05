@@ -15,9 +15,9 @@ import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
 import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";
-import Planes from "./components/shared/Inicio/Planes";
 import DetallePlan from "./components/views/detallePlan/DetallePlan";
 import Usuario from "./components/views/usuario/Usuario";
+import PlanesVista from "./components/views/PlanesVista";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
-          <Route exact path="/planes" element={<Planes/>}></Route>
+          <Route exact path="/planes" element={<PlanesVista/>}></Route>
           <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
           <Route path="/admin/*" element={<Administrador />} />
           <Route path="/usuario" element={<Usuario />} />
