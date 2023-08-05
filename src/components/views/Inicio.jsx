@@ -8,8 +8,8 @@ const Inicio = () => {
 
     return (
         <section className='mainSection'>
-        <Planes/>
         <Publicidad/>
+        <Planes/>
         <ProductosInicio/>
         </section>
     );
