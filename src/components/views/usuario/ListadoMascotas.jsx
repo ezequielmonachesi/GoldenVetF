@@ -71,11 +71,8 @@ const ListadoMascotas = () => {
                 </Modal.Header>
                 <Modal.Body><FormularioNuevaMascota dataPaciente={data.paciente} onFormSubmit={handleFormSubmit} refetchData={refetchData} /></Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleCloseModal}>
-                        Save Changes
+                    <Button variant="danger" onClick={handleCloseModal}>
+                        Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -106,8 +106,8 @@ const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
                     </Form.Group>
 
                     
-                    <Button variant="primary" type="submit">
-                        Ingresar
+                    <Button variant="success" type="submit">
+                        Agregar
                     </Button>
                 </Form>
             </Card.Body>
