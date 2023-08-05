@@ -41,7 +41,7 @@ const Turnos = () => {
             <Modal.Title>Crear Turno</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           <FormularioTurno/>
+           <FormularioTurno actualizarTurnos={actualizarTurnos}/>
           </Modal.Body>
         </Modal>
       </>
