@@ -37,6 +37,7 @@ const Registro = () => {
       }
     });
   };
+
   return (
     <Container className="login-container my-5">
       <Card className="border shadow rounded my-5 login-card">
@@ -122,7 +123,7 @@ const Registro = () => {
               <Form.Text className="text-danger">{errores}</Form.Text>
             )}
             <div className="row w-75 d-flex justify-content-center text-center ms-5 ps-lg-5 mt-2">
-              <button className="btn-registro mb-2 rounded" type="submit">
+              <button className="btn-registro my-2 rounded p-2" type="submit">
                 Registrar
               </button>
             </div>
