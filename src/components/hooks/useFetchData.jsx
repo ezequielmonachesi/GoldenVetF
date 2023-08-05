@@ -8,6 +8,7 @@ import { obtenerUsuarios } from '../helpers/queriesUsuarios';
 
 export const useFetchData = (dataType) => {
   const [data, setData] = useState([]);
+  const [newElement, setNewElement] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -29,6 +30,12 @@ export const useFetchData = (dataType) => {
     fetchData();
   }, [dataType]);
 
+  useEffect(() => {
+    if (newElement) {
+      setData((prevData) => [...prevData, newElement]);
+    }
+  }, [newElement]);
+
   async function seleccionarDatosATraer(dataType) {
     switch (dataType) {
       case 'comentarios':
@@ -48,16 +55,14 @@ export const useFetchData = (dataType) => {
     }
   }
 
-  const refetchData = async () => {
-    setIsLoading(true);
-    await fetchData();
-    setIsLoading(false);
+  const agregarNuevoElemento = async (nuevoElemento) => {
+    setNewElement(nuevoElemento);
   };
 
   return {
     data,
     isLoading,
     error,
-    refetchData,
+    agregarNuevoElemento,
   };
 };
