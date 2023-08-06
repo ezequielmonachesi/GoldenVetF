@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import emailjs from "emailjs-com";
@@ -13,15 +13,17 @@ const Contacto = () => {
     handleSubmit,
   } = useForm();
 
+  const formRef = useRef(null);
+
   const onSubmit = () => {
-    if (Object.keys(errors.length > 0)) {
+    if (errors.length > 0) {
       Swal.fire("Formulario incompleto", "Te faltaron llenar datos!", "error");
     } else {
       emailjs
         .sendForm(
           "service_hvmsxxs",
           "template_iwyhz5o",
-          e.target,
+          formRef.current,
           "yZZ-NX-fStDQ5repd"
         )
         .then((res) => {
@@ -34,10 +36,9 @@ const Contacto = () => {
         });
     }
   };
-
   return (
     <div className="form-area">
-      <div className="container p-5 shadow bg-white rounded my-5">
+      <div className="container p-md-3 p-md-5 shadow bg-white rounded my-5">
         <Row className="single-form g-0">
           <Col lg={6}>
             <div className="izquierda-contacto">
@@ -52,6 +53,7 @@ const Contacto = () => {
             <div className="derecha-contacto">
               <i className="bi bi-caret-left-fill"></i>
               <Form
+                ref={formRef}
                 onSubmit={handleSubmit(onSubmit)}
                 className="formularioContacto"
               >
@@ -114,7 +116,7 @@ const Contacto = () => {
                     rows={5}
                     minLength={20}
                     name="mensaje"
-                    required                    
+                    required
                     {...register("mensaje", {
                       required: true,
                       minLength: 20,
