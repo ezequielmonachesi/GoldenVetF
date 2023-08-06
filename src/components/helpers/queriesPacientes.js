@@ -28,19 +28,21 @@ export const obtenerPaciente = async (id) => {
 };
 
 export const crearPaciente = async (paciente) => {
-    try {
-        const respuesta = await fetch(URL_PACIENTES, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(paciente),
-        });
-        const data = await respuesta.json();
-        return { status: respuesta.status, data };
-    } catch (error) {
-        console.log(error.mensaje);
-    }
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
+  try {
+    const respuesta = await fetch(URL_PACIENTES, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": usuarioLogueado.token,
+      },
+      body: JSON.stringify(paciente),
+    });
+    const data = await respuesta.json();
+    return { status: respuesta.status, data };
+  } catch (error) {
+    console.log(error.mensaje);
+  }
 };
 
 export const borrarPaciente = async (id) => {

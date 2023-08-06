@@ -27,9 +27,9 @@ const RowPaciente = ({ paciente }) => {
   }
   return (
     <tr>
-      <td>{paciente.mascota.nombre}</td>
-      <td>{paciente.mascota.especie}</td>
-      <td>{paciente.mascota.raza}</td>
+      <td>{paciente.mascotas[0]?.nombre}</td>
+      <td>{paciente.mascotas[0]?.especie}</td>
+      <td>{paciente.mascotas[0]?.raza}</td>
       <td>{paciente.nombreDuenio}</td>
       <td>{paciente.telefono}</td>
       <td className="d-flex">

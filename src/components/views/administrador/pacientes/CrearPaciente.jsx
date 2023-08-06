@@ -19,10 +19,13 @@ const CrearPaciente = ({ usuarios }) => {
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState("");
 
   useEffect(() => {
-    obtenerUsuario(usuarioSeleccionado.id).then((respuesta) => {
-      setValue("nombreDuenio", respuesta.nombreUsuario);
-      setValue("email", respuesta.email);
-    });
+    if (usuarioSeleccionado.id) {
+      console.log(usuarioSeleccionado.id);
+      obtenerUsuario(usuarioSeleccionado.id).then((respuesta) => {
+        setValue("nombreDuenio", respuesta.nombreUsuario);
+        setValue("email", respuesta.email);
+      });
+    }
   }, [usuarioSeleccionado]);
 
   const handleUsuarioChange = (e) => {
@@ -296,12 +299,12 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Historial Médico</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Ej: Labrador"
+                  placeholder="Ej: Está con fiebre"
                   {...register("mascota.historialMedico", {
                     required: "El historial médico es obligatorio.",
                     minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 50 caracteres.",
+                      value: 10,
+                      message: "Cantidad mínima de 10 caracteres.",
                     },
                     maxLength: {
                       value: 300,
