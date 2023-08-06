@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Container, Table, Modal, Form } from 'react-bootstrap';
 import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ const Productos = () => {
             if (respuesta) setProductos(respuesta);
             else setProductos([]);
         })
-    },[]);
+    },[productos]);
     
     const [id, setId] = useState('');
     const [modificar, setModificar] = useState(false);

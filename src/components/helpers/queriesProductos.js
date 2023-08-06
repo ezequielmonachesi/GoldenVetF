@@ -21,11 +21,13 @@ export const obtenerProducto = async (id)=>{
 }
 
 export const crearProducto = async (producto)=>{
+    const usuario = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PRODUCTOS,{
             method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token": usuario.token
             },
             body: JSON.stringify(producto)
         });
@@ -36,9 +38,13 @@ export const crearProducto = async (producto)=>{
 }
 
 export const borrarProducto = async (id)=>{
+    const usuario = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PRODUCTOS+'/'+id,{
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "x-token": usuario.token
+            }
         });
         return respuesta;
     }catch (error){
@@ -47,11 +53,13 @@ export const borrarProducto = async (id)=>{
 }
 
 export const editarProducto = async (producto, id)=>{
+    const usuario = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PRODUCTOS+'/'+id,{
             method: "PUT",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token": usuario.token
             },
             body: JSON.stringify(producto)
         });
