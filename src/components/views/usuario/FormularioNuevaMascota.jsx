@@ -1,12 +1,26 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { editarPaciente } from "../../helpers/queriesPacientes";
+import Swal from "sweetalert2";
 
-const FormularioNuevaMascota = () => {
+const FormularioNuevaMascota = ({ dataPaciente, onFormSubmit, refetchData }) => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = (mascota) => {
-        console.log(mascota);
+    const onSubmit = async (mascota) => {
+        delete dataPaciente.mascotas;
+        const datosFormulario = { ...dataPaciente, mascota };
+
+        editarPaciente(datosFormulario, dataPaciente.id).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+                Swal.fire('Mascota agregada', `La mascota ${mascota.nombre} fue agregada correctamente`, 'success');
+                reset();
+                refetchData();
+                onFormSubmit();
+            } else {
+                Swal.fire('Ocurrió un error', `La mascota ${mascota.nombre} no pudo ser agregada, intente en unos minutos`, 'error');
+            }
+        });
     }
 
     return (
@@ -18,7 +32,7 @@ const FormularioNuevaMascota = () => {
                         <Form.Control
                             type="text"
                             placeholder="Ingrese el nombre de la mascota"
-                            {...register('mascota', {
+                            {...register('nombre', {
                                 required: 'El nombre de la mascota es obligatorio',
                                 minLength: {
                                     value: 3,
@@ -35,7 +49,7 @@ const FormularioNuevaMascota = () => {
                             })}
                         />
                         <Form.Text className="text-danger">
-                            {errors.mascota?.message}
+                            {errors.nombre?.message}
                         </Form.Text>
                     </Form.Group>
 
@@ -91,9 +105,26 @@ const FormularioNuevaMascota = () => {
                         </Form.Text>
                     </Form.Group>
 
-                    
-                    <Button variant="primary" type="submit">
-                        Ingresar
+                    <Form.Group className="mb-3">
+                        <Form.Label>Url Imagen</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Ingrese la url de la imagen"
+                            {...register("imagen", {
+                                pattern: {
+                                    value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)$/,
+                                    message: "La URL de la imagen no es válida. Asegúrate de que esté correctamente escrita y que termine con una extensión de imagen válida. Ejemplo de formato válido: 'https://www.ejemplo.com/imagen.jpg' ",
+                                },
+                            })}
+                        />
+                        <Form.Text className="text-danger">
+                            {errors.imagen?.message}
+                        </Form.Text>
+                    </Form.Group>
+
+
+                    <Button variant="success" type="submit">
+                        Agregar
                     </Button>
                 </Form>
             </Card.Body>

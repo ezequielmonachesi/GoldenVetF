@@ -24,9 +24,9 @@ export const login = async (usuario)=>{
 export const obtenerUsuarios = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
-        const respuesta = await fetch(URL_USUARIOS, {
+        const respuesta = await fetch(URL_USUARIOS,{
             method: "GET",
-            headers: {               
+            headers: {
                 "x-token": usuarioLogueado.token
             }
         });
@@ -42,7 +42,7 @@ export const obtenerUsuario = async (id)=>{
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "GET",
-            headers: {               
+            headers: {
                 "x-token": usuarioLogueado.token
             }
         });
@@ -54,12 +54,12 @@ export const obtenerUsuario = async (id)=>{
 }
 
 export const crearUsuario = async (usuario) => {
-    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
+    // const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_USUARIOS, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(usuario),
         });
@@ -75,9 +75,9 @@ export const borrarUsuario= async (id)=>{
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "DELETE",
-            headers: {                
+            headers: {
                 "x-token": usuarioLogueado.token
-            },
+            }
         });
         return respuesta;
     }catch (error){
