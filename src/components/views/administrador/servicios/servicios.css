@@ -1,13 +1,20 @@
-.modal-crud .modal-content,.modal-body,.modal-header,.modal-footer{
-    width: 70vw;    
+.modal-crud .modal-content,
+.modal-crud .modal-body,
+.modal-crud .modal-header,
+.modal-crud .modal-footer {
+    width: 70vw;
 }
 
 @media all and (max-width: 420px) {
-    .modal-crud .modal-content,.modal-body,.modal-header,.modal-footer{
-        width: 90vw;    
+    .modal-crud .modal-content,
+    .modal-crud .modal-body,
+    .modal-crud .modal-header,
+    .modal-crud .modal-footer {
+        width: 90vw;
     }
 }
 
-.modal-crud .modal-dialog{
+.modal-crud .modal-dialog {
+    display: flex;
     justify-content: center;
 }
