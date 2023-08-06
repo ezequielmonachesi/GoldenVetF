@@ -1,7 +1,8 @@
 const URL_PACIENTES = import.meta.env.VITE_API_PACIENTES;
-const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
+
 
 export const obtenerPacientes = async ()=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_PACIENTES, {
             method: "GET",
@@ -18,6 +19,7 @@ export const obtenerPacientes = async ()=>{
 };
 
 export const obtenerPaciente = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PACIENTES+'/'+id);
         const paciente = await respuesta.json();
@@ -28,6 +30,7 @@ export const obtenerPaciente = async (id)=>{
 }
 
 export const crearPaciente = async (paciente)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PACIENTES,{
             method: "POST",
@@ -44,6 +47,7 @@ export const crearPaciente = async (paciente)=>{
 }
 
 export const borrarPaciente = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PACIENTES+'/'+id,{
             method: "DELETE"
@@ -55,6 +59,7 @@ export const borrarPaciente = async (id)=>{
 }
 
 export const editarPaciente = async (paciente, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_PACIENTES+'/'+id,{
             method: "PUT",
