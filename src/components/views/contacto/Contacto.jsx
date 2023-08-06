@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import emailjs from "emailjs-com";
@@ -30,14 +29,14 @@ const Contacto = () => {
             "Se ha enviado el mensaje exitosamente! Nos comunicaremos a la brevedad",
             "success"
           );
-          console.log(res);
+          console.log(res)
         });
     }
   };
 
   return (
     <div className="form-area">
-      <div className="container p-5 shadow bg-white rounded my-5">
+      <div className="container p-sm-3 p-md-5 shadow bg-white rounded my-5">
         <Row className="single-form g-0">
           <Col lg={6}>
             <div className="izquierda-contacto">
@@ -113,11 +112,13 @@ const Contacto = () => {
                     as="textarea"
                     rows={5}
                     minLength={20}
+                    maxLength={500}
                     name="mensaje"
                     required                    
                     {...register("mensaje", {
                       required: true,
                       minLength: 20,
+                      maxLength: 500,
                     })}
                   />
                   {errors.mensaje?.type === "required" && (
