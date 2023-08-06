@@ -1,5 +1,4 @@
-
-import  { useRef } from "react";
+import { useRef } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import emailjs from "emailjs-com";
@@ -17,25 +16,20 @@ const Contacto = () => {
   const formRef = useRef(null);
 
   const onSubmit = () => {
-    if (errors.length > 0) {
-      Swal.fire("Formulario incompleto", "Te faltaron llenar datos!", "error");
-    } else {
-      emailjs
-        .sendForm(
-          "service_hvmsxxs",
-          "template_iwyhz5o",
-          formRef.current,
-          "yZZ-NX-fStDQ5repd"
-        )
-        .then((res) => {
-          Swal.fire(
-            "Mensaje enviado",
-            "Se ha enviado el mensaje exitosamente! Nos comunicaremos a la brevedad",
-            "success"
-          );
-          console.log(res)
-        });
-    }
+    emailjs
+      .sendForm(
+        "service_hvmsxxs",
+        "template_iwyhz5o",
+        formRef.current,
+        "yZZ-NX-fStDQ5repd"
+      )
+      .then((res) => {
+        Swal.fire(
+          "Mensaje enviado",
+          "Se ha enviado el mensaje exitosamente! Nos comunicaremos a la brevedad",
+          "success"
+        );
+      });
   };
   return (
     <div className="form-area">
