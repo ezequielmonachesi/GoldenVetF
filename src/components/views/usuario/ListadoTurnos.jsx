@@ -10,7 +10,7 @@ const ListadoTurnos = () => {
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
-    const { data, isLoading, error } = useFetchData("turnos");
+    const { data, isLoading, error, refetchData } = useFetchData("turnos");
 
     const currentDate = new Date();
     const listado = data
@@ -23,6 +23,7 @@ const ListadoTurnos = () => {
                 detalleVisita={turno.detalleVisita}
                 id={turno.id}
                 key={turno.id}
+                refetchData={refetchData}
             />
         ));
 
@@ -61,7 +62,7 @@ const ListadoTurnos = () => {
                 <Modal.Header className="card-header-bg" closeButton>
                     <Modal.Title>Solicitar turno</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormularioTurno /></Modal.Body>
+                <Modal.Body><FormularioTurno refetchData={refetchData} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={handleCloseModal}>
                         Cerrar

@@ -11,6 +11,7 @@ const ListadoMascotas = ({usuarioLogueado}) => {
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
+
     const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 
     useEffect(() => {
@@ -29,7 +30,7 @@ const ListadoMascotas = ({usuarioLogueado}) => {
     }, [data])
 
     const showComponent = () => {
-        if (isLoading) {
+        if (isLoading && listadoMascotas?.length == 0) {
             return (
                 <div className="my-5 text-center">
                     <Spinner animation="border" variant="primary" />
