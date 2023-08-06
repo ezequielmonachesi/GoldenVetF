@@ -21,6 +21,7 @@ export const login = async (usuario) => {
 };
 
 export const obtenerUsuarios = async () => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_USUARIOS, {
       method: "GET",
@@ -36,8 +37,14 @@ export const obtenerUsuarios = async () => {
 };
 
 export const obtenerUsuario = async (id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
-    const respuesta = await fetch(URL_USUARIOS + "/" + id);
+    const respuesta = await fetch(URL_USUARIOS + "/" + id, {
+      method: "GET",
+      headers: {
+        "x-token": usuarioLogueado.token,
+      },
+    });
     const usuario = await respuesta.json();
     return usuario;
   } catch (error) {
@@ -46,6 +53,7 @@ export const obtenerUsuario = async (id) => {
 };
 
 export const crearUsuario = async (usuario) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_USUARIOS, {
       method: "POST",
@@ -62,9 +70,13 @@ export const crearUsuario = async (usuario) => {
 };
 
 export const borrarUsuario = async (id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_USUARIOS + "/" + id, {
       method: "DELETE",
+      headers: {
+        "x-token": usuarioLogueado.token,
+      },
     });
     return respuesta;
   } catch (error) {
@@ -73,15 +85,18 @@ export const borrarUsuario = async (id) => {
 };
 
 export const editarUsuario = async (usuario, id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_USUARIOS + "/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": usuarioLogueado.token,
       },
       body: JSON.stringify(usuario),
     });
-    return respuesta;
+    const data = await respuesta.json();
+    return { status: respuesta.status, data };
   } catch (error) {
     console.log(error);
   }

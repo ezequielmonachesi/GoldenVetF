@@ -3,10 +3,12 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
+import { obtenerUsuario } from "../../../helpers/queriesUsuarios";
 
 const CrearPaciente = ({ usuarios }) => {
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
     reset,
@@ -15,22 +17,23 @@ const CrearPaciente = ({ usuarios }) => {
   const [usuarioBuscado, setUsuarioBuscado] = useState([]);
   const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [nombreMascota, setNombreMascota] = useState("");
+
+  useEffect(() => {
+    obtenerUsuario(usuarioSeleccionado.id).then((respuesta) => {
+      setValue("nombrePaciente", respuesta.nombreUsuario);
+      setValue("email", respuesta.email);
+    });
+  }, [usuarioSeleccionado]);
 
   const handleUsuarioChange = (e) => {
     const usuarioIdSeleccionado = e.target.value;
     // Buscar el usuario correspondiente al usuarioIdSeleccionado
-    const usuarioElegido = usuarios.find(
+    const usuarioIdElegido = usuarios.find(
       (usuario) => usuario.id === usuarioIdSeleccionado
     );
     // Actualizar el estado con el usuario seleccionado
-    setUsuarioSeleccionado(usuarioElegido);
-  };
-
-  const elegirUsuario = (e) => {
-    const usuarioElegido = e.target.value;
-    setUsuarioElegido(usuarioElegido);
+    console.log(usuarioIdElegido.id);
+    setUsuarioSeleccionado(usuarioIdElegido);
   };
 
   useEffect(() => {
@@ -126,8 +129,6 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
                   placeholder="Ej: Ezequiel"
                   {...register("nombrePaciente", {
                     required: "El nombre del paciente es obligatorio.",
@@ -141,7 +142,6 @@ const CrearPaciente = ({ usuarios }) => {
                     },
                   })}
                 />
-                {console.log(firstName)}
                 <Form.Text className="text-danger">
                   {errors.nombrePaciente?.message} <br />
                 </Form.Text>
@@ -167,7 +167,6 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>E-mail*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={usuarioSeleccionado.email}
                   placeholder="Ingrese un email"
                   {...register("email", {
                     required: "El email es un dato obligatorio.",
@@ -236,8 +235,6 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={nombreMascota}
-                  onChange={(e) => setNombreMascota(e.target.value)}
                   placeholder="Ej: Tobi"
                   {...register("nombreMascota", {
                     required: "El nombre de la mascota es obligatorio.",
