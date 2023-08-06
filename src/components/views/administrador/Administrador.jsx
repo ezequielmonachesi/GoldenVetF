@@ -3,21 +3,23 @@ import Sidebar from "./Sidebar";
 import { Routes, Route } from "react-router-dom";
 import Pacientes from "./pacientes/Pacientes";
 import Comentarios from "./comentarios/Comentarios";
-import Productos from "./productos/Productos";
+import Productos from "./producto/Productos";
 import Servicios from "./servicios/Servicios";
 import Usuarios from "./usuarios/Usuarios";
 import Turnos from "./turnos/Turnos";
+import { Col, Row } from "react-bootstrap";
 
 const Administrador = () => {
+  const usuario = JSON.parse(sessionStorage.getItem("usuario"));
   return (
     <>
-      <h1 className="my-4 mx-5">Bienvenido Admin(nombre de usuario) </h1>
-
-      <div className="layout">
-        <div className="sidebar-wrapper">
+      <h1 className="my-4 mx-5">Bienvenido {usuario? usuario.nombreUsuario : "Usuario"} </h1>
+      
+      <Row className="layout gx-0">
+        <Col xs={2} className="sidebar-wrapper ">
           <Sidebar></Sidebar>
-        </div>
-        <div className="body-admin">
+        </Col>
+        <Col xs={10} className="body-admin p-3">
           <Routes>
             <Route
               path="comentarios/*"
@@ -28,11 +30,9 @@ const Administrador = () => {
             <Route path="servicios/*" element={<Servicios></Servicios>}></Route>
             <Route path="turnos/*" element={<Turnos></Turnos>}></Route>
             <Route path="usuarios/*" element={<Usuarios></Usuarios>}></Route>
-          </Routes>
-
-          <div className="w-100"></div>
-        </div>
-      </div>
+          </Routes>          
+        </Col>
+      </Row>
     </>
   );
 };
