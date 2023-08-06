@@ -20,7 +20,7 @@ const CrearPaciente = ({ usuarios }) => {
 
   useEffect(() => {
     obtenerUsuario(usuarioSeleccionado.id).then((respuesta) => {
-      setValue("nombrePaciente", respuesta.nombreUsuario);
+      setValue("nombreDuenio", respuesta.nombreUsuario);
       setValue("email", respuesta.email);
     });
   }, [usuarioSeleccionado]);
@@ -130,7 +130,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Control
                   type="text"
                   placeholder="Ej: Ezequiel"
-                  {...register("nombrePaciente", {
+                  {...register("nombreDuenio", {
                     required: "El nombre del paciente es obligatorio.",
                     minLength: {
                       value: 2,
@@ -143,13 +143,13 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.nombrePaciente?.message} <br />
+                  {errors.nombreDuenio?.message} <br />
                 </Form.Text>
                 <Form.Label>Apellido*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ej: Apellido"
-                  {...register("apellidoPaciente", {
+                  {...register("apellido", {
                     required: "El nombre del paciente es obligatorio.",
                     minLength: {
                       value: 2,
@@ -162,7 +162,7 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.apellidoPaciente?.message} <br />
+                  {errors.apellido?.message} <br />
                 </Form.Text>{" "}
                 <Form.Label>E-mail*</Form.Label>
                 <Form.Control
@@ -187,7 +187,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Control
                   type="number"
                   placeholder="Ej: 3816173184"
-                  {...register("numeroTelefonoPaciente", {
+                  {...register("telefono", {
                     required: "El número celular del paciente es obligatorio.",
                     minLength: {
                       value: 7,
@@ -202,7 +202,7 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.numeroTelefonoPaciente?.message} <br />
+                  {errors.telefono?.message} <br />
                 </Form.Text>
                 <Form.Label>Dirección</Form.Label>
                 <Form.Control
@@ -236,7 +236,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Control
                   type="text"
                   placeholder="Ej: Tobi"
-                  {...register("nombreMascota", {
+                  {...register("mascota.nombre", {
                     required: "El nombre de la mascota es obligatorio.",
                     minLength: {
                       value: 2,
@@ -249,13 +249,13 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.nombreMascota?.message} <br />
+                  {errors.mascota?.nombre?.message} <br />
                 </Form.Text>
                 <Form.Label>Especie*</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ej: Perro"
-                  {...register("especie", {
+                  {...register("mascota.especie", {
                     required: "La especie de la mascota es obligatorio.",
                     minLength: {
                       value: 2,
@@ -268,7 +268,7 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.nombrePaciente?.message}
+                  {errors.mascota?.especie?.message}
                 </Form.Text>
               </Col>
               <Col xs={12} md={6}>
@@ -276,7 +276,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Control
                   type="text"
                   placeholder="Ej: Labrador"
-                  {...register("raza", {
+                  {...register("mascota.raza", {
                     required: "El nombre de la raza es obligatorio.",
                     minLength: {
                       value: 2,
@@ -289,7 +289,28 @@ const CrearPaciente = ({ usuarios }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.raza?.message}
+                  {errors.mascota?.raza?.message}
+                </Form.Text>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Label>Historial Médico</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ej: Labrador"
+                  {...register("mascota.historialMedico", {
+                    required: "El historial médico es obligatorio.",
+                    minLength: {
+                      value: 2,
+                      message: "Cantidad mínima de 50 caracteres.",
+                    },
+                    maxLength: {
+                      value: 300,
+                      message: "Cantidad máxima de 300 caracteres.",
+                    },
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.mascota?.historialMedico?.message}
                 </Form.Text>
               </Col>
             </Row>
