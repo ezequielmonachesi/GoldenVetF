@@ -1,20 +1,24 @@
 import { Button, Modal, Row, Spinner } from "react-bootstrap";
 import CardTurnoUsuario from "./CardTurnoUsuario";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormularioTurno from "./FormularioTurno";
 import { useFetchData } from "../../hooks/useFetchData";
 
 const ListadoTurnos = () => {
     const [showModal, setShowModal] = useState(false);
+    const [listadoTurnos, setListadoTurnos] = useState([]);
+
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
 
     const { data, isLoading, error, refetchData } = useFetchData("turnos");
 
-    const currentDate = new Date();
-    const listado = data
-        ?.filter((turno) => new Date(turno.fechaYHora) >= currentDate)
+    useEffect(() => {
+        const turnos = data;
+
+        const currentDate = new Date();
+        setListadoTurnos(turnos?.filter((turno) => new Date(turno.fechaYHora) >= currentDate)
         .map((turno) => (
             <CardTurnoUsuario
                 paciente={turno.paciente}
@@ -25,10 +29,11 @@ const ListadoTurnos = () => {
                 key={turno.id}
                 refetchData={refetchData}
             />
-        ));
+        )));
+    }, [data]);
 
     const showComponent = () => {
-        if (isLoading) {
+        if (isLoading && listadoTurnos?.length == 0) {
             return (
                 <div className="my-5 text-center">
                     <Spinner animation="border" variant="primary" />
@@ -36,7 +41,7 @@ const ListadoTurnos = () => {
             );
         }
 
-        if (!isLoading && listado?.length <= 0) {
+        if (!isLoading && listadoTurnos?.length <= 0) {
             return (
                 <h3 className="text-danger border p-3">
                     No tienes turnos registrados
@@ -44,7 +49,7 @@ const ListadoTurnos = () => {
             );
         }
 
-        return listado;
+        return listadoTurnos;
     };
 
     return (

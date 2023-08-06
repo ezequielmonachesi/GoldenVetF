@@ -6,7 +6,7 @@ import { useFetchDataById } from "../../hooks/useFetchDataById";
 
 const ListadoMascotas = ({usuarioLogueado}) => {
     const [showModal, setShowModal] = useState(false);
-    const [listadoMascotas, setListadoMascotas] = useState([])
+    const [listadoMascotas, setListadoMascotas] = useState([]);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
@@ -27,7 +27,7 @@ const ListadoMascotas = ({usuarioLogueado}) => {
                 key={mascota.nombre}
             />
         )));
-    }, [data])
+    }, [data]);
 
     const showComponent = () => {
         if (isLoading && listadoMascotas?.length == 0) {
