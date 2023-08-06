@@ -15,7 +15,7 @@ const Productos = () => {
 
     const [productos, setProductos] = useState([]);
 
-    let nomProdPrev='';
+    const [nomProdPrev, setNomProdPrev]= useState('');
 
     const {
         register,
@@ -37,19 +37,35 @@ const Productos = () => {
 
     const onSubmit = (prod) => {
         if(modificar){
-            if(!buscarRepetido(prod.nombreProducto)) editarProducto(prod,id).then((respuesta)=>{
-                if (respuesta && respuesta.status === 200)  
-                    Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
-                else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
-                handleClose();
-                limpiarForm();
-                obtenerProductos().then((respuesta)=>{
-                    if (respuesta) setProductos(respuesta);
-                    else setProductos([]);
-                })
-            });
+            if(prod.nombreProducto==nomProdPrev){
+                editarProducto(prod,id).then((respuesta)=>{
+                    if (respuesta && respuesta.status === 200)  
+                        Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
+                    else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
+                    handleClose();
+                    limpiarForm();
+                    obtenerProductos().then((respuesta)=>{
+                        if (respuesta) setProductos(respuesta);
+                        else setProductos([]);
+                    })
+                });
+            }
             else{
-                Swal.fire("Ups producto repetido","El nombre del producto esta repetido y no se prodra agregar","error")
+                console.log('entra en el else')
+                if(!buscarRepetido(prod.nombreProducto)) editarProducto(prod,id).then((respuesta)=>{
+                    if (respuesta && respuesta.status === 200)  
+                        Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
+                    else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
+                    handleClose();
+                    limpiarForm();
+                    obtenerProductos().then((respuesta)=>{
+                        if (respuesta) setProductos(respuesta);
+                        else setProductos([]);
+                    })
+                });
+                else{
+                    Swal.fire("Ups producto repetido","El nombre del producto esta repetido y no se prodra agregar","error")
+                }
             }
         }
         else{
@@ -92,7 +108,6 @@ const Productos = () => {
     }
 
     const modProducto = (prod, id) => {
-        nomProdPrev=prod.nombreProducto;
         setModificar(true);
         setId(id);
         setValue("nombreProducto", prod.nombreProducto);
@@ -100,10 +115,11 @@ const Productos = () => {
         setValue("precio", prod.precio);
         setValue("stock", prod.stock);
         setValue("imagen", prod.imagen);
+        setNomProdPrev(prod.nombreProducto);
         handleShow();
         
     }
-
+    
     const eliminarProducto = (id) => {
         borrarProducto(id).then((respuesta)=>{
             if (respuesta && respuesta.status === 200){
@@ -159,7 +175,7 @@ const Productos = () => {
                                     </Button>
                                     <Button variant="danger"
                                     onClick={()=>eliminarProducto(prod.id)}>
-                                        Eliminar
+                                        Borrar
                                     </Button>
                                 </td>
                             </tr>
@@ -168,7 +184,7 @@ const Productos = () => {
                 </tbody>
             </Table>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton onClick={limpiarForm}>
                 <Modal.Title>Agregar o modificar producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
