@@ -107,3 +107,7 @@ object-fit: contain;
 .text-area-turnos{
 resize: none;
 }
+
+.detalle-producto {
+  font-size: 2rem;
+}

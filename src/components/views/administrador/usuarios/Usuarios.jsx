@@ -70,6 +70,7 @@ const Usuarios = () => {
         </Button>
       </div>
       <VentanaModalCrearUsuario
+      className='modal-crud'
         show={modalShow}
         onHide={() => {
             setModalShow(false)
@@ -79,6 +80,7 @@ const Usuarios = () => {
       ;
       {id && (
         <VentanaModalEditarUsuario
+          className='modal-crud'
           show={modalShowEditar}
           onHide={() => setModalShowEditar(false)}
           id={id}
@@ -136,7 +138,7 @@ const Usuarios = () => {
 function VentanaModalCrearUsuario(props) {
     const { actualizarUsuarios, ...restProps } = props;
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <CrearUsuario actualizarUsuarios={actualizarUsuarios} />
@@ -152,7 +154,7 @@ function VentanaModalCrearUsuario(props) {
 function VentanaModalEditarUsuario(props) {
     const { actualizarUsuarios, ...restProps } = props;
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <EditarUsuario id={props.id} actualizarUsuarios={actualizarUsuarios}/>

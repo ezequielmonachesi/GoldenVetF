@@ -57,7 +57,7 @@ const Turnos = () => {
           {isLoading ? (
             <Spinner size="lg" variant="primary" />
           ) : (
-            data.slice(startIndex, endIndex).map((turno) => (
+            data.slice(startIndex, endIndex).sort((a,b)=>{return new Date(a.fechaYHora) - new Date(b.fechaYHora)}).map((turno) => (
               <CardTurnosAdministrador turno={turno} key={turno.id} actualizarTurnos={actualizarTurnos}/>
             ))
           )}
