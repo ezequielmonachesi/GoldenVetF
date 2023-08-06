@@ -94,6 +94,7 @@ const Contacto = () => {
                     placeholder="Juan Diaz"
                     name="nombre"
                     required
+                    minLength={2}
                     maxLength={50}
                     aria-label="Nombre"
                     aria-describedby="nombre"
@@ -115,11 +116,13 @@ const Contacto = () => {
                     as="textarea"
                     rows={5}
                     minLength={20}
+                    maxLength={400}
                     name="mensaje"
                     required
                     {...register("mensaje", {
                       required: true,
                       minLength: 20,
+                      maxLength:400
                     })}
                   />
                   {errors.mensaje?.type === "required" && (
