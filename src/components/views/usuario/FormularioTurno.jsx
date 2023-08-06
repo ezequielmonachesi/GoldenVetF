@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 registerLocale("es", es);
 
-const FormularioTurno = ({refetchData}) => {
+const FormularioTurno = ({actualizarTurnos}) => {
     const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {}
   const {
     handleSubmit,
@@ -72,7 +72,7 @@ const FormularioTurno = ({refetchData}) => {
     data.fechaYHora = convertirFecha(data.fechaYHora)
     crearTurno(data).then((respuesta) => {
         if (respuesta && respuesta.status === 201) {
-        refetchData()
+        actualizarTurnos()
         Swal.fire(
           "Turno creado",
           `El turno fue creado correctamente`,

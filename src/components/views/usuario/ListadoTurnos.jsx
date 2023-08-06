@@ -14,6 +14,10 @@ const ListadoTurnos = () => {
 
     const { data, isLoading, error, refetchData } = useFetchData("turnos");
 
+    const actualizarTurnos = async () => {
+        await refetchData();
+    };
+
     useEffect(() => {
         const turnos = data;
 
@@ -67,7 +71,7 @@ const ListadoTurnos = () => {
                 <Modal.Header className="card-header-bg" closeButton>
                     <Modal.Title>Solicitar turno</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><FormularioTurno refetchData={refetchData} /></Modal.Body>
+                <Modal.Body><FormularioTurno actualizarTurnos={actualizarTurnos} /></Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={handleCloseModal}>
                         Cerrar
