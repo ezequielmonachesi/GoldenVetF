@@ -14,8 +14,9 @@ const CrearPaciente = ({ usuarios }) => {
 
   const [usuarioBuscado, setUsuarioBuscado] = useState([]);
   const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
-  const [usuarioElegido, setUsuarioElegido] = useState([]);
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [nombreMascota, setNombreMascota] = useState("");
 
   const handleUsuarioChange = (e) => {
     const usuarioIdSeleccionado = e.target.value;
@@ -111,7 +112,6 @@ const CrearPaciente = ({ usuarios }) => {
                 ) : (
                   <option value="">No se encontraron usuarios</option>
                 )}
-                {console.log(usuarioSeleccionado.nombreUsuario)}
               </Form.Select>
             </Form>
           </Col>
@@ -126,7 +126,8 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={usuarioSeleccionado.nombreUsuario}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   placeholder="Ej: Ezequiel"
                   {...register("nombrePaciente", {
                     required: "El nombre del paciente es obligatorio.",
@@ -140,6 +141,7 @@ const CrearPaciente = ({ usuarios }) => {
                     },
                   })}
                 />
+                {console.log(firstName)}
                 <Form.Text className="text-danger">
                   {errors.nombrePaciente?.message} <br />
                 </Form.Text>
@@ -234,6 +236,8 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
                   type="text"
+                  value={nombreMascota}
+                  onChange={(e) => setNombreMascota(e.target.value)}
                   placeholder="Ej: Tobi"
                   {...register("nombreMascota", {
                     required: "El nombre de la mascota es obligatorio.",
