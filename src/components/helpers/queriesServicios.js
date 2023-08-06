@@ -1,7 +1,5 @@
 const URL_SERVICIOS = import.meta.env.VITE_API_SERVICIOS;
 
-const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
-
 export const obtenerServicios = async () => {
   try {
     const respuesta = await fetch(URL_SERVICIOS);
@@ -23,6 +21,7 @@ export const obtenerUnServicio = async (id) => {
 };
 
 export const crearServicio = async (servicio) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_SERVICIOS, {
       method: "POST",
@@ -39,6 +38,7 @@ export const crearServicio = async (servicio) => {
 };
 
 export const borrarServicio = async (id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_SERVICIOS + "/" + id, {
       method: "DELETE",
@@ -53,6 +53,7 @@ export const borrarServicio = async (id) => {
 };
 
 export const editarServicio = async (servicio, id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_SERVICIOS + "/" + id, {
       method: "PUT",

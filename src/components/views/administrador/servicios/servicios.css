@@ -2,6 +2,12 @@
     width: 70vw;    
 }
 
+@media all and (max-width: 420px) {
+    .modal-crud .modal-content,.modal-body,.modal-header,.modal-footer{
+        width: 90vw;    
+    }
+}
+
 .modal-crud .modal-dialog{
     justify-content: center;
 }

@@ -1,8 +1,6 @@
 const URL_USUARIOS = import.meta.env.VITE_API_USUARIOS;
 const URL_LOGIN = import.meta.env.VITE_API_BASE;
 
-const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
-
 export const login = async (usuario)=>{
     try{
         const respuesta = await fetch(URL_LOGIN,{
@@ -22,6 +20,7 @@ export const login = async (usuario)=>{
 }
 
 export const obtenerUsuarios = async ()=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_USUARIOS, {
             method: "GET",
@@ -37,6 +36,7 @@ export const obtenerUsuarios = async ()=>{
 };
 
 export const obtenerUsuario = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "GET",
@@ -52,6 +52,7 @@ export const obtenerUsuario = async (id)=>{
 }
 
 export const crearUsuario = async (usuario) => {
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_USUARIOS, {
             method: "POST",
@@ -68,6 +69,7 @@ export const crearUsuario = async (usuario) => {
 };
 
 export const borrarUsuario= async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "DELETE",
@@ -82,6 +84,7 @@ export const borrarUsuario= async (id)=>{
 }
 
 export const editarUsuario = async (usuario, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_USUARIOS+'/'+id,{
             method: "PUT",
