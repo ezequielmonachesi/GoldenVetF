@@ -6,7 +6,6 @@ import { obtenerProducto } from "../helpers/queriesProductos";
 import { Cart4 } from "react-bootstrap-icons";
 
 const DetalleProducto = () => {
-  const [mostrarMas, setMostrarMas] = useState(false);
   const [producto, setProducto] = useState({});
   const { id } = useParams();
 
@@ -15,47 +14,33 @@ const DetalleProducto = () => {
   }, []);
 
   return (
-    <Container className="bg-light mb-2 mb-md-0 mb-lg-2">
-      <Row className="justify-content-center text-center text-md-start border shadow mt-2 pb-4 pb-md-0 rounded-3 mx-2">
+    <Container className="bg-light my-5 border shadow rounded p-sm-3 p-md-5">
+      <Row className="justify-content-between text-center text-md-start mt-2 pb-4 pb-md-0 mx-2">
         <Col sm={6}>
-          <div>
-            <Image src={producto.imagen} className="w-75" fluid></Image>
-          </div>
+          <Image src={producto.imagen} className="img-fluid"></Image>
         </Col>
-        <Col sm={4} className="py-2 py-md-1 py-lg-5 ">
+        <Col sm={4} className="py-2 py-md-1 py-lg-5">
           <div className="text-end">
             <Button variant="outline-danger border-0">
               <Heart className="fs-5"></Heart>
             </Button>
           </div>
-          <h5 className="mt-1 text-danger">{producto.nombreProducto}</h5>
-          <h3 className=" mt-3">$ {producto.precio}</h3>
-          <Badge bg="danger" className="px-2 py-2 mt-3">
+          <h2 className="mt-1 text-danger">{producto.nombreProducto}</h2>
+          <h3 className="mt-3">$ {producto.precio}</h3>
+          <Badge bg="danger" className="py-2 mt-3 ">
             1 Cuota Sin Interés
           </Badge>
-          <p className="mt-3 fw-bold">Stock: {producto.stock}</p>
+          <p className="plan-description mt-3 fw-bold">Stock: {producto.stock}</p>
           <div className="my-4">
-            <Button variant="danger"><Cart4 className="mb-1"/> Agregar al carrito</Button>
+            <Button className="p-2" variant="success"><Cart4 className="mb-1"/> Agregar al carrito</Button>
           </div>
         </Col>
-        <Col sm={12} className=" px-4 p-md-5">
-          <h4 className="text-start">Detalle del producto</h4>
-          <p className="small mt-1 text-start">
-            {mostrarMas
-              ? producto.descripcion.substring(0,100)
-              : `${producto.descripcion}...`}
+        <Col sm={12} className="text-center px-4 mt-5">
+          <h3 className="detalle-producto text-start">Detalle del producto</h3>
+          <p className="plan-description mt-1 text-start">
+            {producto.descripcion}
           </p>
           <div className="text-end">
-            <button
-              className="py-1 px-2 text-danger border-0 border-danger bg-danger bg-opacity-25 rounded-4"
-              onClick={() => setMostrarMas(!mostrarMas)}
-            >
-              {mostrarMas ? (
-                <p className="small m-0">Ver menos</p>
-              ) : (
-                <p className="small m-0">Ver más</p>
-              )}
-            </button>
           </div>
         </Col>
       </Row>
