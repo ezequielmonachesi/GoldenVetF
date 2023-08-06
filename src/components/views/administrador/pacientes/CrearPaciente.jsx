@@ -14,10 +14,21 @@ const CrearPaciente = ({ usuarios }) => {
 
   const [usuarioBuscado, setUsuarioBuscado] = useState([]);
   const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
-  const [usuarioElegido, setUsuarioElegido] = useState({});
+  const [usuarioElegido, setUsuarioElegido] = useState([]);
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState("");
 
-  const elegirUsuario = (event) => {
-    const usuarioElegido = event.target.value;
+  const handleUsuarioChange = (e) => {
+    const usuarioIdSeleccionado = e.target.value;
+    // Buscar el usuario correspondiente al usuarioIdSeleccionado
+    const usuarioElegido = usuarios.find(
+      (usuario) => usuario.id === usuarioIdSeleccionado
+    );
+    // Actualizar el estado con el usuario seleccionado
+    setUsuarioSeleccionado(usuarioElegido);
+  };
+
+  const elegirUsuario = (e) => {
+    const usuarioElegido = e.target.value;
     setUsuarioElegido(usuarioElegido);
   };
 
@@ -88,7 +99,7 @@ const CrearPaciente = ({ usuarios }) => {
               </p>
               <Form.Select
                 aria-label="Default select example"
-                onChange={elegirUsuario}
+                onChange={handleUsuarioChange}
               >
                 <option value="">Elegir usuario</option>
                 {usuarioEncontrado.length > 0 ? (
@@ -100,7 +111,7 @@ const CrearPaciente = ({ usuarios }) => {
                 ) : (
                   <option value="">No se encontraron usuarios</option>
                 )}
-                {console.log(usuarioElegido)}
+                {console.log(usuarioSeleccionado.nombreUsuario)}
               </Form.Select>
             </Form>
           </Col>
@@ -115,6 +126,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
                   type="text"
+                  value={usuarioSeleccionado.nombreUsuario}
                   placeholder="Ej: Ezequiel"
                   {...register("nombrePaciente", {
                     required: "El nombre del paciente es obligatorio.",
@@ -153,6 +165,7 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Label>E-mail*</Form.Label>
                 <Form.Control
                   type="text"
+                  value={usuarioSeleccionado.email}
                   placeholder="Ingrese un email"
                   {...register("email", {
                     required: "El email es un dato obligatorio.",
