@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Inicio from "./components/views/Inicio";
@@ -15,16 +15,22 @@ import Productos from './components/views/Productos'
 import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
 import DetalleProducto from './components/views/DetalleProducto'
-
+import Planes from "./components/shared/Inicio/Planes";
 
 import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";
-import Planes from "./components/shared/Inicio/Planes";
 import DetallePlan from "./components/views/detallePlan/DetallePlan";
+import Usuario from "./components/views/usuario/Usuario";
+import PlanesVista from "./components/views/PlanesVista";
+import Contacto from "./components/views/contacto/Contacto";
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+
+  useEffect(() => {
+    sessionStorage.setItem('usuario', JSON.stringify(usuarioLogueado));
+  }, [usuarioLogueado]);
 
   return (
     <>
@@ -38,13 +44,16 @@ function App() {
           <Route exact path="/registro" element={<Registro/>}></Route>
           <Route exact path="/servicios" element={<Servicios/>}></Route>
           <Route exact path="/servicios/:id" element={<DetalleServicios/>}></Route>
+          <Route exact path="/planes" element={<PlanesVista/>}></Route>
           <Route exact path="/productos" element={<Productos/>}></Route>
           <Route exact path="/productos/:id" element={<DetalleProducto/>}></Route>
           <Route exact path="/planes" element={<Planes/>}></Route>
           <Route exact path="/planes/:id" element={<DetallePlan/>}></Route>
           <Route path="/admin/*" element={<Administrador />} />
+          <Route path="/usuario" element={<Usuario usuarioLogueado={usuarioLogueado} />} />
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route path="/sobre-nosotros" element={<AcercaDeNosotros></AcercaDeNosotros>}></Route>
+          <Route path="/contacto" element={<Contacto></Contacto>}></Route>
         </Routes>
           </section>
         <Footer/>

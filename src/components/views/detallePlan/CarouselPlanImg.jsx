@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function CarouselPlanImg({ imagenes }) {
   return (
-    <Carousel fade>
+    <Carousel fade indicators={false} pause={false} controls={false}>
       {imagenes.map((imagen) => (        
         <Carousel.Item key={imagen}>
           <img

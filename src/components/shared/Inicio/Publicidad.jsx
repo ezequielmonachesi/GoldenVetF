@@ -6,12 +6,12 @@ const Publicidad = () => {
   return (
     <>
       <Container className="my-5">
-        <Row className="justify-content-center align-items-center h-75 shadow py-4 py-md-5 px-md-4 px-lg-0 border rounded-3 bg-opacity-75 bg-white">
+        <Row className="justify-content-center align-items-center h-75 shadow py-4 py-md-3 px-md-4 px-lg-0 border rounded-3 bg-opacity-75 bg-white">
           <Col lg={7}>
             <Carousel fade>
               <Carousel.Item>
                 <img
-                  src="https://www.petmania.com.ar/imgs/mcat/mcat-banner-perros-alimento.png?v=8"
+                  src="https://www.hipermania.com.ar/imgs/lcat/lcat-royalcanin.png"
                   alt="Publicidad de alimento para perro"
                   className=" w-100 img-altura rounded-3"
                 />
@@ -19,7 +19,7 @@ const Publicidad = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  src="https://www.whiskas.com.ar/cdn-cgi/image/format%3Dauto%2Cq%3D90/sites/g/files/fnmzdf2296/files/2022-12/Adult_hero_desktop-ar.png"
+                  src="https://pbs.twimg.com/media/D4nBsw5UYAAZwIh.jpg"
                   alt="Alimento para gatos Whiskas"
                   className=" w-100 img-altura rounded-3"
                 />

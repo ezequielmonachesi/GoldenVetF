@@ -14,18 +14,28 @@ body {
   flex-grow: 1;
 }
 
-.bg-footer{
+.bg-footer {
   background-color: #c58940;
 }
-.btn-registro{
-background-color: #e5ba73;
-color: white;
-font-size: 18px;
+
+.btn-registro {
+  background-color: #e5ba73;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s;
+  border: none;
 }
-.inicia-sesion{
-color: #e5ba73;
+
+.btn-registro:hover {
+  background-color: #b5925b;
+  color: white;
 }
-.registro{
+
+.inicia-sesion {
+  color: #e5ba73;
+}
+
+.registro {
   color: #e5ba73;
 }
 
@@ -39,7 +49,8 @@ color: #e5ba73;
   .width-button-responsive {
     width: 100%;
   }
-    .logo {
+
+  .logo {
     height: 65px;
   }
 }
@@ -52,7 +63,7 @@ color: #e5ba73;
   color: white;
 }
 
-.logo{
+.logo {
   height: 40;
   width: auto;
 }
@@ -61,11 +72,16 @@ color: #e5ba73;
   .logo {
     height: 65px;
   }
-
-/* Footer */
-.bg-footer{
-  background-color: #c58940;
+.truncarTexto {
+  max-width: 150px;
+  max-height: 150px;
+  overflow-x: auto;
 }
+
+  /* Footer */
+  .bg-footer {
+    background-color: #c58940;
+  }
 }
 
 .boton-verMas-producto{
@@ -101,4 +117,8 @@ object-fit: contain;
 
 .text-area-turnos{
 resize: none;
+}
+
+.detalle-producto {
+  font-size: 2rem;
 }

@@ -1,7 +1,7 @@
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import './style.css';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { login } from "../../helpers/queriesUsuarios";
 
@@ -12,8 +12,7 @@ const Login = ({ setUsuarioLogueado }) => {
 
     const onSubmit = (usuario) => {
         login(usuario).then((respuesta) => {
-            console.log(respuesta);
-            if(respuesta && respuesta.nombreUsuario){
+            if (respuesta && respuesta.nombreUsuario) {
                 sessionStorage.setItem('usuario', JSON.stringify(respuesta));
                 setUsuarioLogueado(respuesta);
                 navegacion('/');
@@ -70,9 +69,17 @@ const Login = ({ setUsuarioLogueado }) => {
                                 {errors.password?.message}
                             </Form.Text>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Ingresar
-                        </Button>
+                        <div className="row w-75 d-flex justify-content-center text-center ms-5 ps-lg-5 mt-2">
+                            <button className="btn-registro my-2 rounded p-2" type="submit">
+                                Iniciar sesión
+                            </button>
+                        </div>
+                        <div className="d-flex justify-content-end contenedor-inicia-sesion">
+                            <p>
+                                ¿No tienes cuenta?{" "}
+                                <Link to={'/registro'} className="inicia-sesion fw-semibold">Inicia sesión</Link>
+                            </p>
+                        </div>
                     </Form>
                 </Card.Body>
             </Card>
