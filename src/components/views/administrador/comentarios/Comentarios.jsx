@@ -90,7 +90,25 @@ const Comentarios = () => {
             <h3>No hay comentarios</h3>
           </div>
         )}
-        
+        {data.length > 0 && (
+          <div className="d-flex justify-content-center mt-3">
+            <Button
+              variant="secondary"
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className="me-3"
+            >
+              Anterior
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              Siguiente
+            </Button>
+          </div>
+        )}
       </Container>
       <ModalCrearComentario />
     </>
