@@ -52,13 +52,12 @@ export const obtenerUsuario = async (id)=>{
 }
 
 export const crearUsuario = async (usuario) => {
-    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
+    // const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
         const respuesta = await fetch(URL_USUARIOS, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "x-token": usuarioLogueado.token
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(usuario),
         });

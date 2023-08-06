@@ -1,4 +1,4 @@
-import { Button, Row, Modal, Spinner } from "react-bootstrap";
+import { Button, Row, Modal, Spinner, Col } from "react-bootstrap";
 import CardMascotaUsuario from "./CardMascotaUsuario";
 import FormularioNuevaMascota from "./FormularioNuevaMascota";
 import { useEffect, useState } from "react";
@@ -22,6 +22,7 @@ const ListadoMascotas = ({usuarioLogueado}) => {
                 especie={mascota.especie}
                 raza={mascota.raza}
                 historialMedico={mascota.historialMedico}
+                imagen={mascota.imagen}
                 key={mascota.nombre}
             />
         )));
@@ -57,10 +58,10 @@ const ListadoMascotas = ({usuarioLogueado}) => {
             <div className="bg-light border shadow rounded my-5 p-3">
                 <h2 className="text-center mb-4">Tus mascotas</h2>
                 <hr />
-                <Row>
+                <Row className="gy-5">
                     {showComponent()}
                 </Row>
-                <Button variant="primary" onClick={handleShowModal}>Agregar Mascota</Button>
+                <Button className="mt-5" variant="primary" onClick={handleShowModal}>Agregar Mascota</Button>
             </div>
 
             <Modal show={showModal} onHide={handleCloseModal}>

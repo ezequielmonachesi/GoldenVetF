@@ -3,14 +3,14 @@ import { useForm } from "react-hook-form";
 import { editarPaciente } from "../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 
-const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
+const FormularioNuevaMascota = ({ dataPaciente, onFormSubmit, refetchData }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = async (mascota) => {
         delete dataPaciente.mascotas;
-        const datosFormulario = {...dataPaciente, mascota};
-        
+        const datosFormulario = { ...dataPaciente, mascota };
+
         editarPaciente(datosFormulario, dataPaciente.id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Mascota agregada', `La mascota ${mascota.nombre} fue agregada correctamente`, 'success');
@@ -49,7 +49,7 @@ const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
                             })}
                         />
                         <Form.Text className="text-danger">
-                            {errors.mascota?.message}
+                            {errors.nombre?.message}
                         </Form.Text>
                     </Form.Group>
 
@@ -105,7 +105,24 @@ const FormularioNuevaMascota = ({dataPaciente, onFormSubmit, refetchData}) => {
                         </Form.Text>
                     </Form.Group>
 
-                    
+                    <Form.Group className="mb-3">
+                        <Form.Label>Url Imagen</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Ingrese la url de la imagen"
+                            {...register("imagen", {
+                                pattern: {
+                                    value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)$/,
+                                    message: "La URL de la imagen no es válida. Asegúrate de que esté correctamente escrita y que termine con una extensión de imagen válida. Ejemplo de formato válido: 'https://www.ejemplo.com/imagen.jpg' ",
+                                },
+                            })}
+                        />
+                        <Form.Text className="text-danger">
+                            {errors.imagen?.message}
+                        </Form.Text>
+                    </Form.Group>
+
+
                     <Button variant="success" type="submit">
                         Agregar
                     </Button>

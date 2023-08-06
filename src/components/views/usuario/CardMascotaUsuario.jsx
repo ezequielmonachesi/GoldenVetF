@@ -1,11 +1,10 @@
 import { Button, Card, Col } from 'react-bootstrap';
-import imagenPerro from '../../../assets/plan-madurando-1.jpg';
 
-const CardMascotaUsuario = ({nombre, especie, raza, historialMedico}) => {
+const CardMascotaUsuario = ({nombre, especie, raza, historialMedico, imagen}) => {
     return (
         <Col sm={6}>
-            <Card className='my-3'>
-                <Card.Img className='img-fluid' variant="top" src={imagenPerro} />
+            <Card className='my-3 h-100'>
+                <Card.Img className='img-fluid' variant="top" src={imagen} />
                 <Card.Body>
                     <Card.Title>{nombre}</Card.Title>
                         <ul>

@@ -13,6 +13,7 @@ const FormularioNuevoUsuario = ({ idUsuario }) => {
             if (respuesta && respuesta.status === 201) {
                 Swal.fire('Datos de contacto agregados', `gracias ${paciente.nombreDuenio} tus datos fueron agregados correctamente`, 'success');
                 reset();
+                location.reload();
             } else {
                 Swal.fire('Ocurrió un error', `No pudimos agregar tus datos, intente en unos minutos`, 'error');
             }
