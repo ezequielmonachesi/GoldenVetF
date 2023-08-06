@@ -12,16 +12,19 @@ const ListadoTurnos = () => {
 
     const { data, isLoading, error } = useFetchData("turnos");
 
-    const listado = data?.map((turno) => (
-        <CardTurnoUsuario
-          paciente={turno.paciente}
-          veterinario={turno.veterinario}
-          fechaYHora={turno.fechaYHora}
-          detalleVisita={turno.detalleVisita}
-          id={turno.id}
-          key={turno.id}
-        />
-    ));
+    const currentDate = new Date();
+    const listado = data
+        ?.filter((turno) => new Date(turno.fechaYHora) >= currentDate)
+        .map((turno) => (
+            <CardTurnoUsuario
+                paciente={turno.paciente}
+                veterinario={turno.veterinario}
+                fechaYHora={turno.fechaYHora}
+                detalleVisita={turno.detalleVisita}
+                id={turno.id}
+                key={turno.id}
+            />
+        ));
 
     const showComponent = () => {
         if (isLoading) {

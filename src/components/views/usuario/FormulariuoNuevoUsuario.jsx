@@ -21,7 +21,7 @@ const FormularioNuevoUsuario = ({ idUsuario }) => {
     }
 
     return (
-        <Card className="border shadow rounded my-3 p-5">
+        <Card className="border shadow rounded my-3 p-sm-3 p-md-5">
             <Card.Body className="bg-light">
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">

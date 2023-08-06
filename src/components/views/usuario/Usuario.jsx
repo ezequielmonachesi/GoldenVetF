@@ -23,7 +23,7 @@ const Usuario = ({usuarioLogueado}) => {
                 <div className="my-5">
                     <h2 className="text-center display-5 mb-4">Antes de comenzar</h2>
                     <hr />
-                    <p className="text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
+                    <p className="plan-description text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
                     <FormularioNuevoUsuario idUsuario={usuarioLogueado.id}/>
                 </div>
             );
