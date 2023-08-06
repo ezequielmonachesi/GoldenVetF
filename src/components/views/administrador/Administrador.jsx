@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import { Routes, Route } from "react-router-dom";
 import Pacientes from "./pacientes/Pacientes";
 import Comentarios from "./comentarios/Comentarios";
-import Productos from "./productos/Productos";
+import Productos from "./producto/Productos";
 import Servicios from "./servicios/Servicios";
 import Usuarios from "./usuarios/Usuarios";
 import Turnos from "./turnos/Turnos";
@@ -11,7 +11,6 @@ import { Col, Row } from "react-bootstrap";
 
 const Administrador = () => {
   const usuario = JSON.parse(sessionStorage.getItem("usuario"));
-  console.log(usuario)
   return (
     <>
       <h1 className="my-4 mx-5">Bienvenido {usuario? usuario.nombreUsuario : "Usuario"} </h1>

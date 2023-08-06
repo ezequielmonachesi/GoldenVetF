@@ -12,7 +12,6 @@ const Login = ({ setUsuarioLogueado }) => {
 
     const onSubmit = (usuario) => {
         login(usuario).then((respuesta) => {
-            console.log(respuesta);
             if(respuesta && respuesta.nombreUsuario){
                 sessionStorage.setItem('usuario', JSON.stringify(respuesta));
                 setUsuarioLogueado(respuesta);

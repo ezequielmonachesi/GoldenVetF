@@ -61,6 +61,11 @@ color: #e5ba73;
   .logo {
     height: 65px;
   }
+.truncarTexto {
+  max-width: 150px;
+  max-height: 150px;
+  overflow-x: auto;
+}
 
 /* Footer */
 .bg-footer{
