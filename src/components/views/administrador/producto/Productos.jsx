@@ -15,6 +15,8 @@ const Productos = () => {
 
     const [productos, setProductos] = useState([]);
 
+    let nomProdPrev='';
+
     const {
         register,
         handleSubmit,
@@ -35,7 +37,7 @@ const Productos = () => {
 
     const onSubmit = (prod) => {
         if(modificar){
-            editarProducto(prod,id).then((respuesta)=>{
+            if(!buscarRepetido(prod.nombreProducto)) editarProducto(prod,id).then((respuesta)=>{
                 if (respuesta && respuesta.status === 200)  
                     Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
                 else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
@@ -45,15 +47,31 @@ const Productos = () => {
                     if (respuesta) setProductos(respuesta);
                     else setProductos([]);
                 })
-            })
+            });
+            else{
+                Swal.fire("Ups producto repetido","El nombre del producto esta repetido y no se prodra agregar","error")
+            }
         }
         else{
             obtenerProductos().then((respuesta)=>{
-                if (respuesta) setProductos(respuesta);
+                if (respuesta) {
+                    setProductos(respuesta);
+                    if(!buscarRepetido(prod.nombreProducto)) insertarProducto(prod);
+                    else{
+                        Swal.fire("Ups producto repetido","El nombre del producto esta repetido y no se prodra agregar","error")
+                    }
+                }
                 else setProductos([]);
-            });
-            insertarProducto(prod);
+            });   
         }
+    }
+
+    const buscarRepetido = (nombreProd) => {
+        let repetido = false;
+        for(let i=0; i<productos.length; i++){
+            if(nombreProd==productos[i].nombreProducto) repetido=true;
+        }
+        return repetido
     }
 
     const insertarProducto = (prod) => {
@@ -74,6 +92,7 @@ const Productos = () => {
     }
 
     const modProducto = (prod, id) => {
+        nomProdPrev=prod.nombreProducto;
         setModificar(true);
         setId(id);
         setValue("nombreProducto", prod.nombreProducto);
