@@ -15,7 +15,7 @@ import Productos from './components/views/Productos'
 import AcercaDeNosotros from "./components/views/AcercaDeNosotros";
 import DetalleServicios from "./components/views/servicios/DetalleServicios";
 import DetalleProducto from './components/views/DetalleProducto'
-
+import Planes from "./components/shared/Inicio/Planes";
 
 import Administrador from "./components/views/administrador/Administrador";
 import Registro from "./components/views/Registro";

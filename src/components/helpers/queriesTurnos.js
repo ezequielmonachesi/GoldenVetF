@@ -18,7 +18,7 @@ export const obtenerTurnos = async ()=>{
 };
 
 
-export const obtenerTurno = async (id) = >{
+export const obtenerTurno = async (id) =>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id);
