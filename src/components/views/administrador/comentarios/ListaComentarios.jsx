@@ -64,7 +64,7 @@ const L = ({ comentario, actualizarComentarios }) => {
                 <td>{comentario.creado}</td>
                 <td>
                   <div className="d-flex justify-content-around">
-                    <Button variant="primary" onClick={handleShow}>
+                    <Button variant="warning" onClick={handleShow}>
                       Editar Comentario
                     </Button>
                     <Button variant="danger" onClick={eliminarComentario}>
