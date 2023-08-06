@@ -1,4 +1,5 @@
 const URL_TURNOS = import.meta.env.VITE_API_TURNOS;
+const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
 
 export const obtenerTurnos = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
@@ -16,7 +17,8 @@ export const obtenerTurnos = async ()=>{
     }
 };
 
-export const obtenerTurno = async (id)=>{
+
+export const obtenerTurno = async (id) = >{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id);
@@ -32,7 +34,8 @@ export const crearTurno = async (turno)=>{
         const respuesta = await fetch(URL_TURNOS,{
             method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token":usuarioLogueado.token
             },
             body: JSON.stringify(turno)
         });
@@ -47,8 +50,9 @@ export const borrarTurno = async (id)=>{
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "DELETE",
-            headers: {
-                "x-token": usuarioLogueado.token
+            headers:{
+            "Content-Type":"application/json",
+            "x-token":usuarioLogueado.token
             }
         });
         return respuesta;
@@ -62,7 +66,8 @@ export const editarTurno = async (turno, id)=>{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "PUT",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token":usuarioLogueado.token
             },
             body: JSON.stringify(turno)
         });

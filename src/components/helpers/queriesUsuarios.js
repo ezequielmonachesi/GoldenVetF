@@ -1,6 +1,8 @@
 const URL_USUARIOS = import.meta.env.VITE_API_USUARIOS;
 const URL_LOGIN = import.meta.env.VITE_API_BASE;
 
+const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
+
 export const login = async (usuario)=>{
     try{
         const respuesta = await fetch(URL_LOGIN,{
@@ -95,7 +97,8 @@ export const editarUsuario = async (usuario, id)=>{
             },
             body: JSON.stringify(usuario)
         });
-        return respuesta;
+        const data = await respuesta.json();
+        return { status: respuesta.status, data };
     }catch (error){
         console.log(error)
     }
