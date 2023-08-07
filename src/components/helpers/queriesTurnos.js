@@ -67,6 +67,7 @@ export const borrarTurno = async (id)=>{
 }
 
 export const editarTurno = async (turno, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "PUT",
