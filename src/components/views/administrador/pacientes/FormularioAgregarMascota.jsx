@@ -10,7 +10,8 @@ const FormularioAgregarMascota = ({ paciente, onFormSubmit }) => {
     const onSubmit = async (mascota) => {
         delete paciente.mascotas;
         const datosFormulario = { ...paciente, mascota };
-        console.log(datosFormulario);
+        
+        if(datosFormulario.mascota.imagen === "") delete datosFormulario.mascota.imagen;
 
         editarPaciente(datosFormulario, paciente.id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
