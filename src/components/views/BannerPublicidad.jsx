@@ -1,37 +1,21 @@
 import React from "react";
-import { Container, Carousel } from "react-bootstrap";
-import ExampleCarouselImage from "components/ExampleCarouselImage";
+import { Container, Carousel, Image } from "react-bootstrap";
+import images from "../../exports/images";
+import { motion } from "framer-motion";
 
 const BannerPublicidad = () => {
   return (
-    <Container fluid className="bg-white">
-      <h2>Marcas con las que trabajamos</h2>
-      <Carousel>
-        <Carousel.Item>
-          <ExampleCarouselImage text="First slide" />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <ExampleCarouselImage text="Second slide" />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <ExampleCarouselImage text="Third slide" />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    </Container>
+    <>
+      <motion.div className="slider-container">
+        <motion.div className="slider" drag="x" dragConstraints={{ right: 0, left: 0 }}>
+          {images.map((image, key) => (
+            <motion.div className="item">
+              <img src={image} id={key} className="w-100"></img>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </>
   );
 };
 
