@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import EditarComentario from "./EditarComentario";
 import { borrarComentario } from "../../../helpers/queriesComentarios";
 import Swal from "sweetalert2";
