@@ -54,7 +54,24 @@ export const obtenerUsuario = async (id)=>{
 }
 
 export const crearUsuario = async (usuario) => {
-    // const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
+    if (usuarioLogueado.token && usuarioLogueado?.rol == "administrador") {
+        try {
+            const respuesta = await fetch(URL_USUARIOS, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-token": usuarioLogueado.token
+                },
+                body: JSON.stringify(usuario),
+            });
+            const data = await respuesta.json();
+            return { status: respuesta.status, data };
+        } catch (error) {
+            console.log(error.mensaje);
+        }
+    }
+
     try {
         const respuesta = await fetch(URL_USUARIOS, {
             method: "POST",
@@ -68,6 +85,7 @@ export const crearUsuario = async (usuario) => {
     } catch (error) {
         console.log(error.mensaje);
     }
+    
 };
 
 export const borrarUsuario= async (id)=>{

@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { Button, Container, Table, Modal, Form } from 'react-bootstrap';
+
+import { useFetchData } from "../../../hooks/useFetchData";
+import { Button, Container, Table, Modal, Form, Spinner } from 'react-bootstrap';
 import { Clipboard2PlusFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
 import { borrarProducto, crearProducto, editarProducto, obtenerProductos } from '../../../helpers/queriesProductos';
@@ -7,61 +8,48 @@ import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 
 const Productos = () => {
-
+    const {data, isLoading,refetchData } = useFetchData('productos');
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const [productos, setProductos] = useState([]);
-
     const [nomProdPrev, setNomProdPrev]= useState('');
-
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
         setValue
-    } = useForm();
-
-    useEffect(()=>{
-        obtenerProductos().then((respuesta)=>{
-            if (respuesta) setProductos(respuesta);
-            else setProductos([]);
-        })
-    },[productos]);
-    
+    } = useForm();     
     const [id, setId] = useState('');
     const [modificar, setModificar] = useState(false);
 
-    const onSubmit = (prod) => {
+    const actualizarProductos = async () => {
+        await refetchData();
+      };
+
+    const onSubmit = (prod) => { 
         if(modificar){
             if(prod.nombreProducto==nomProdPrev){
                 editarProducto(prod,id).then((respuesta)=>{
-                    if (respuesta && respuesta.status === 200)  
+                    if (respuesta && respuesta.status === 200)  {
                         Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
+                        actualizarProductos();
+                    }
                     else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
                     handleClose();
                     limpiarForm();
-                    obtenerProductos().then((respuesta)=>{
-                        if (respuesta) setProductos(respuesta);
-                        else setProductos([]);
-                    })
                 });
             }
             else{
-                console.log('entra en el else')
                 if(!buscarRepetido(prod.nombreProducto)) editarProducto(prod,id).then((respuesta)=>{
-                    if (respuesta && respuesta.status === 200)  
+                    if (respuesta && respuesta.status === 200)  {
                         Swal.fire("Producto modificado!","El producto se modifico correctamente","success");
+                        actualizarProductos();
+                    }
                     else Swal.fire("Ocurrio un error","No se logro modificar el producto","error");
                     handleClose();
                     limpiarForm();
-                    obtenerProductos().then((respuesta)=>{
-                        if (respuesta) setProductos(respuesta);
-                        else setProductos([]);
-                    })
                 });
                 else{
                     Swal.fire("Ups producto repetido","El nombre del producto esta repetido y no se prodra agregar","error")
@@ -94,16 +82,13 @@ const Productos = () => {
         crearProducto(prod).then((respuesta)=>{
             if (respuesta && respuesta.status === 201){
                 Swal.fire("Producto agregado!","Se pudo ingresar el nuevo producto","success");
+                actualizarProductos();
                 handleClose();
             }
             else {
                 Swal.fire("Ocurrio un error","No se logro modificar el producto","error")
 
-            }
-            obtenerProductos().then((respuesta)=>{
-                if (respuesta) setProductos(respuesta);
-                else setProductos([]);
-            }); 
+            } 
         })
     }
 
@@ -124,12 +109,9 @@ const Productos = () => {
         borrarProducto(id).then((respuesta)=>{
             if (respuesta && respuesta.status === 200){
                 Swal.fire("Producto Eliminado!","El producto fue eliminado correctamente","success");
+                actualizarProductos();
             }
             else Swal.fire("Ocurrio un error","No logro eliminar el producto","error")
-        });
-        obtenerProductos().then((respuesta)=>{
-            if (respuesta) setProductos(respuesta);
-            else setProductos([]);
         });
     }
 
@@ -147,6 +129,11 @@ const Productos = () => {
                 Agregar nuevo producto: <Button variant="success" onClick={handleShow}><Clipboard2PlusFill/></Button>
             </h3>
             <hr/>
+            {isLoading ? (
+            <div className="d-flex justify-content-center">
+            <Spinner size="lg" variant="primary" />
+            </div>
+          ) :
             <Table responsive>
                 <thead>
                     <tr>
@@ -160,12 +147,12 @@ const Productos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {productos.map((prod, index)=>(
+                    {data.map((prod, index)=>(
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 <td className='truncarTexto'>{prod.nombreProducto}</td>
                                 <td>{prod.precio}</td>
-                                <td>{prod.stock}</td>
+                                <td className={prod.stock <= 5 ? 'text-danger fw-bold' : ''}>{prod.stock}</td>
                                 <td className='truncarTexto'>{prod.descripcion}</td>
                                 <td className='truncarTexto'>{prod.imagen}</td>
                                 <td>
@@ -183,6 +170,7 @@ const Productos = () => {
                     }
                 </tbody>
             </Table>
+}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton onClick={limpiarForm}>
                 <Modal.Title>Agregar o modificar producto</Modal.Title>
@@ -290,7 +278,7 @@ const Productos = () => {
                         {...register("imagen",{
                             required:"La URL de la imagen es obligatorio",
                             pattern:{
-                                value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)$/,
+                                value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg|webp\?[\w=&.]*)$/,
                                 message:"la URL deve de ser como 'imagen.com/imagen.jpg'"
                             }
                         })}

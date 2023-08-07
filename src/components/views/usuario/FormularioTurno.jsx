@@ -77,8 +77,8 @@ const FormularioTurno = ({actualizarTurnos}) => {
           `El turno fue creado correctamente`,
           "success"
         );
-        actualizarTurnos()
         reset();
+        actualizarTurnos()
       } else {
         Swal.fire(
           "Ocurrio un error",

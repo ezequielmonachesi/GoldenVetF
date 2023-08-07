@@ -1,5 +1,4 @@
 const URL_TURNOS = import.meta.env.VITE_API_TURNOS;
-const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
 
 export const obtenerTurnos = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
@@ -21,7 +20,12 @@ export const obtenerTurnos = async ()=>{
 export const obtenerTurno = async (id) =>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
-        const respuesta = await fetch(URL_TURNOS+'/'+id);
+        const respuesta = await fetch(URL_TURNOS+'/'+id,{
+            method: "GET",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
+        });
         const turno = await respuesta.json();
         return turno;
     }catch (error){
@@ -30,6 +34,7 @@ export const obtenerTurno = async (id) =>{
 }
 
 export const crearTurno = async (turno)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS,{
             method: "POST",
@@ -62,6 +67,7 @@ export const borrarTurno = async (id)=>{
 }
 
 export const editarTurno = async (turno, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "PUT",
