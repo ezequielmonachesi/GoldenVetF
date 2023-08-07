@@ -23,65 +23,46 @@ const Servicios = () => {
       id={servicio.id}
     />
   ));
-  
-    const chunksOfThree = chunkArray(listado || [], 3);
-  
-    const serviciosContainers = chunksOfThree.map((chunk, index) => (
-      <div className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 " key={index}>
-        {chunk}
-      </div>
-    ));
 
-    // const showComponent = () => {
-    //   if (isLoading) {
-    //     return (
-    //       <div className="my-5">
-    //         <Spinner animation="border" variant="primary" />
-    //       </div>
-    //     );
-    //   }
-    
-    //   if (typeof data === 'undefined' || data.length === 0) {
-    //     return (
-    //       <h3 className="text-danger border p-3">
-    //         Hubo un error al cargar los servicios
-    //       </h3>
-    //     );
-    //   }
-    
-    //   return serviciosContainers;
-    // };
-    
-    
+  const chunksOfThree = chunkArray(listado || [], 3);
+
+  const serviciosContainers = chunksOfThree.map((chunk, index) => (
+    <div
+      className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 "
+      key={index}
+    >
+      {chunk}
+    </div>
+  ));
 
   return (
     <>
-    <section className="container text-center bg-container-servicios position-relative p-3 my-5 rounded shadow">
-      <h2 className="display-4">Nuestros Servicios</h2>
-      <hr />
-      <div className="row justify-content-center">
-        {isLoading ? (
-          <div className="my-5 text-center">
-            <Spinner animation="border" variant="primary" />
-          </div>
-        ) : listado?.length ? (
-          chunksOfThree.map((chunk, index) => (
-            <div
-              className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 "
-              key={index}
-            >
-              {chunk}
+      <section className="container text-center bg-container-servicios position-relative p-3 my-5 rounded shadow">
+        <h2 className="display-4">Nuestros Servicios</h2>
+        <hr />
+        <div className="row justify-content-center">
+          {isLoading ? (
+            <div className="my-5 text-center">
+              <Spinner animation="border" variant="primary" />
             </div>
-          ))
-        ) : (
-          <h3 className="text-danger p-3">
-            Hubo un error al cargar los servicios. Por favor, inténtalo de
-            nuevo más tarde.
-          </h3>
-        )}
-      </div>
-    </section>
-  </>
+          ) : listado?.length ? (
+            chunksOfThree.map((chunk, index) => (
+              <div
+                className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 "
+                key={index}
+              >
+                {chunk}
+              </div>
+            ))
+          ) : (
+            <h3 className="text-danger p-3">
+              Hubo un error al cargar los servicios. Por favor, inténtalo de
+              nuevo más tarde.
+            </h3>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 export default Servicios;
