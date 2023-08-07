@@ -77,13 +77,13 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
       <tr>
         <td>{comentario.nombre}</td>
         <td className="truncarTexto">{comentario.comentario}</td>
-        <td>{comentario.puntuacion}</td>
+        <td className="text-center">{comentario.puntuacion}</td>
         <td>{formatoFecha(comentario.creado)}</td>
         <td>
           <Button variant="warning" onClick={handleShow}>
             Editar Comentario
           </Button>
-          <Button variant="danger" onClick={eliminarComentario}>
+          <Button variant="danger" onClick={eliminarComentario} className="mt-2 mt-lg-0">
             Borrar Comentario
           </Button>
         </td>
