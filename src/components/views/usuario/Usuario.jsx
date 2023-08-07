@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const Usuario = ({usuarioLogueado}) => {
     const {id} = useParams()
 
-    const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
+    const { data, isLoading } = useFetchDataById("usuarios", usuarioLogueado.id);
 
     const showComponent = () => {
 

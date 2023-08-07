@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Table, Button, Spinner, Modal } from "react-bootstrap";
 import ListaComentarios from "./ListaComentarios";
 import { useFetchData } from "../../../hooks/useFetchData";
@@ -27,7 +27,7 @@ const Comentarios = () => {
     await refetchData();
   };
 
-  const ModalCrearComentario = () => {
+  const ModalCrearComentario = ({actualizarComentarios}) => {
     return (
         <Modal
           show={show}
@@ -38,7 +38,7 @@ const Comentarios = () => {
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CrearComentario actualizarComentarios={actualizarComentarios} refetchData={refetchData}/>
+            <CrearComentario actualizarComentarios={actualizarComentarios}/>
           </Modal.Body>
         </Modal>
     );
@@ -109,7 +109,7 @@ const Comentarios = () => {
           </div>
         )}
       </Container>
-      <ModalCrearComentario />
+      <ModalCrearComentario actualizarComentarios={actualizarComentarios}/>
     </>
   );
 };
