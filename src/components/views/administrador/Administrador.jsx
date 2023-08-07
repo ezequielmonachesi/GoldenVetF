@@ -7,32 +7,32 @@ import Productos from "./productos/Productos";
 import Servicios from "./servicios/Servicios";
 import Usuarios from "./usuarios/Usuarios";
 import Turnos from "./turnos/Turnos";
+import { Col, Row } from "react-bootstrap";
 
 const Administrador = () => {
+  const usuario = JSON.parse(sessionStorage.getItem("usuario"));
   return (
     <>
-      <h1 className="my-4 mx-5">Bienvenido Admin(nombre de usuario) </h1>
+      <h1 className="my-4 mx-5">Bienvenido {usuario? usuario.nombreUsuario : "Usuario"} </h1>
 
-      <div className="layout">
-        <div className="sidebar-wrapper">
+      <Row className="layout gx-0">
+        <Col xs={2} className="sidebar-wrapper ">
           <Sidebar></Sidebar>
-        </div>
-        <div className="body-admin">
+        </Col>
+        <Col xs={10} className="body-admin p-3">
           <Routes>
             <Route
-              path="comentarios/*"
+              path="comentarios/"
               element={<Comentarios></Comentarios>}
             ></Route>
-            <Route path="pacientes/*" element={<Pacientes></Pacientes>}></Route>
-            <Route path="productos/*" element={<Productos></Productos>}></Route>
-            <Route path="servicios/*" element={<Servicios></Servicios>}></Route>
-            <Route path="turnos/*" element={<Turnos></Turnos>}></Route>
-            <Route path="usuarios/*" element={<Usuarios></Usuarios>}></Route>
+            <Route path="pacientes/" element={<Pacientes></Pacientes>}></Route>
+            <Route path="productos/" element={<Productos></Productos>}></Route>
+            <Route path="servicios/" element={<Servicios></Servicios>}></Route>
+            <Route path="turnos/" element={<Turnos></Turnos>}></Route>
+            <Route path="usuarios/" element={<Usuarios></Usuarios>}></Route>
           </Routes>
-
-          <div className="w-100"></div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 };

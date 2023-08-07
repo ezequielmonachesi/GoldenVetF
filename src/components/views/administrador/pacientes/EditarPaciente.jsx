@@ -2,8 +2,13 @@ import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
+import MascotaEditarPaciente from "./MascotaEditarPaciente";
+import { useEffect, useState } from "react";
 
 const EditarPaciente = ({ paciente, recargarData }) => {
+
+  const [listadoMascotas, setListadoMascotas] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -30,6 +35,14 @@ const EditarPaciente = ({ paciente, recargarData }) => {
       }
     });
   };
+
+  useEffect(() => {
+    if(paciente?.mascotas.length > 0) {
+      setListadoMascotas(paciente.mascotas.map((mascota) => {
+        return <MascotaEditarPaciente mascota={mascota} key={mascota.nombre}/>
+      }));
+    } 
+  }, [paciente]);
 
   return (
     // <section className="container mainSection">
@@ -126,7 +139,7 @@ const EditarPaciente = ({ paciente, recargarData }) => {
             </Button>
           </div>
         </Form>
-        
+        {listadoMascotas}
       </Col>
     </Row>
     // </section>
