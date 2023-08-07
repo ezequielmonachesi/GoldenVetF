@@ -53,6 +53,11 @@ body {
   font-family: italic;
 }
 
+.btn-dorado{
+  background-color: #c58940 !important;
+  color: white !important;
+}
+
 @media all and (min-width: 768px) and (max-width: 991px) {
   .width-button-responsive {
     width: 100%;
