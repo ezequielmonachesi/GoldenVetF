@@ -4,6 +4,7 @@ import DetalleProducto from './DetalleProducto';
 
 
 import ProductosInicio from '../shared/Inicio/ProductosInicio';
+import FormularioTestimonios from '../shared/formularioTestimonios/FormularioTestimonios';
 
 const Inicio = () => {
 
@@ -12,6 +13,7 @@ const Inicio = () => {
         <Publicidad/>
         <Planes/>     
         <ProductosInicio/>
+        <FormularioTestimonios/>
         </section>
     );
 };

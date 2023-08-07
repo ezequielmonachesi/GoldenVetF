@@ -1,11 +1,12 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ChatHeartFill, StarFill } from "react-bootstrap-icons";
+import ValoracionConEstrellas from "./ValoracionConEstrellas";
 
 const FormularioTestimonios = () => {
   return (
     <Container className="d-flex justify-content-center">
       <Col md={8}>
-        <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 rounded-3 shadow">
+        <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 rounded-3  bg-white">
           <Row>
             {/* Titulo Formulario */}
             <Col xs={12}>
@@ -31,75 +32,7 @@ const FormularioTestimonios = () => {
                   <Form.Label>
                     <div className="d-flex align-items-center">Puntuación</div>
                   </Form.Label>
-                  {["radio"].map((type) => (
-                    <div key={`inline-${type}`} className="mb-3">
-                      <Form.Check
-                        inline
-                        label={
-                          <>
-                            <StarFill></StarFill>
-                          </>
-                        }
-                        name="estrellas"
-                        type={type}
-                        id={`inline-${type}-1`}
-                      />
-                      <Form.Check
-                        inline
-                        label={
-                          <>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                          </>
-                        }
-                        name="estrellas"
-                        type={type}
-                        id={`inline-${type}-2`}
-                      />
-                      <Form.Check
-                        inline
-                        label={
-                          <>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                          </>
-                        }
-                        name="estrellas"
-                        type={type}
-                        id={`inline-${type}-3`}
-                      />
-                      <Form.Check
-                        inline
-                        label={
-                          <>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                          </>
-                        }
-                        name="estrellas"
-                        type={type}
-                        id={`inline-${type}-4`}
-                      />
-                      <Form.Check
-                        inline
-                        label={
-                          <>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                            <StarFill></StarFill>
-                          </>
-                        }
-                        name="estrellas"
-                        type={type}
-                        id={`inline-${type}-5`}
-                      />
-                    </div>
-                  ))}
+                  <ValoracionConEstrellas/>
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
