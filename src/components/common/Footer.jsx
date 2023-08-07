@@ -45,26 +45,32 @@ const Footer = ({ path }) => {
             <Col md={3}>
               <h5>¡Seguinos!</h5>
               <div className="d-flex flex-wrap justify-content-center">
-                <Link to={"pagina-no-encontrada"}>
+                <a
+                  href="https://www.instagram.com/rollingcodeschool/"
+                  target="_blank"
+                >
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Instagram className="fs-6 mx-2" />
                     <p className="m-0">Instagram</p>
                   </div>
-                </Link>
-                <Link to={"pagina-no-encontrada"}>
+                </a>
+                <a
+                  href="https://www.facebook.com/RollingCodeSchool"
+                  target="_blank"
+                >
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Facebook className="fs-6 mx-2" />
                     <p className="m-0">Facebook</p>
                   </div>
-                </Link>
-                <Link to={"pagina-no-encontrada"}>
+                </a>
+                <a href="https://twitter.com/rollingcodeok" target="_blank">
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Twitter className="fs-6 mx-2" />
                     <p className="m-0">
                       Twitter - <span className="italic">X</span>
                     </p>
                   </div>
-                </Link>
+                </a>
               </div>
             </Col>
             <Col md={3}>

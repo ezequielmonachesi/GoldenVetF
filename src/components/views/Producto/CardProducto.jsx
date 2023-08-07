@@ -6,7 +6,7 @@ import { Cart4, Eye } from "react-bootstrap-icons";
 const CardProducto = ({ producto }) => {
   return (
     <Col md={6} lg={3} xs={12} className="mb-1">
-      <Card className="shadow-lg p-3 mb-3 bg-body-tertiary rounded h-100">
+      <Card className="shadow p-3 mb-3 bg-body-tertiary rounded h-100">
         <Card.Img
           className="img-productos w-100 rounded"
           src={producto.imagen}
@@ -15,9 +15,6 @@ const CardProducto = ({ producto }) => {
           <Card.Title className="text-center">
             {producto.nombreProducto}
           </Card.Title>
-          {/* <Card.Text className="limite-texto text-center fw-bold h4">
-            $ {producto.precio}
-          </Card.Text> */}
         </Card.Body>
         <p className="limite-texto text-center fw-bold h4">$ {producto.precio}</p>
         <div className="text-center d-flex justify-content-around justify-content-center">
