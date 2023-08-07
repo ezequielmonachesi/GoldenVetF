@@ -1,8 +1,7 @@
 const URL_PACIENTES = import.meta.env.VITE_API_PACIENTES;
 
-const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
-
 export const obtenerPacientes = async () => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_PACIENTES, {
       method: "GET",
@@ -18,8 +17,14 @@ export const obtenerPacientes = async () => {
 };
 
 export const obtenerPaciente = async (id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
-    const respuesta = await fetch(URL_PACIENTES + "/" + id);
+    const respuesta = await fetch(URL_PACIENTES + "/" + id, {
+      method: "GET",
+      headers: {
+        "x-token": usuarioLogueado.token,
+      },
+    });
     const paciente = await respuesta.json();
     return paciente;
   } catch (error) {
@@ -46,9 +51,13 @@ export const crearPaciente = async (paciente) => {
 };
 
 export const borrarPaciente = async (id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_PACIENTES + "/" + id, {
       method: "DELETE",
+      headers: {
+        "x-token": usuarioLogueado.token,
+      }
     });
     return respuesta;
   } catch (error) {
@@ -57,11 +66,13 @@ export const borrarPaciente = async (id) => {
 };
 
 export const editarPaciente = async (paciente, id) => {
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
     const respuesta = await fetch(URL_PACIENTES + "/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": usuarioLogueado.token,
       },
       body: JSON.stringify(paciente),
     });
