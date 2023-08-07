@@ -38,7 +38,7 @@ const Comentarios = () => {
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CrearComentario actualizarComentarios={actualizarComentarios}/>
+            <CrearComentario actualizarComentarios={actualizarComentarios} refetchData={refetchData}/>
           </Modal.Body>
         </Modal>
     );

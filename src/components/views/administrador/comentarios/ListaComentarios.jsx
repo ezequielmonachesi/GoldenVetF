@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import EditarComentario from "./EditarComentario";
+import { Button } from "react-bootstrap";
 import { borrarComentario } from "../../../helpers/queriesComentarios";
 import Swal from "sweetalert2";
 
 const ListaComentarios = ({ comentario, actualizarComentarios }) => {
-  const [show, setShow] = useState(false);
 
   const eliminarComentario = () => {
     Swal.fire({
@@ -46,28 +43,6 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
     };
     return new Date(fecha).toLocaleString(undefined, options);
   };
-
-  const ModalEditarComentario = ({ comentario }) => {
-    return (
-      <>
-        <Modal
-          show={show}
-          onHide={()=>setShow(false)}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Editar Comentario</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <EditarComentario
-              comentario={comentario}
-              setShow={setShow}
-              actualizarComentarios={actualizarComentarios}
-            />
-          </Modal.Body>
-        </Modal>
-      </>
-    );
-  };
   return (
     <>
       <tr>
@@ -76,15 +51,11 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
         <td className="text-center">{comentario.puntuacion}</td>
         <td>{formatoFecha(comentario.creado)}</td>
         <td>
-          <Button variant="warning" onClick={()=>setShow(true)}>
-            Editar Comentario
-          </Button>
           <Button variant="danger" onClick={eliminarComentario} className="mt-2 mt-lg-0">
             Borrar Comentario
           </Button>
         </td>
       </tr>
-      <ModalEditarComentario comentario={comentario} />
     </>
   );
 };
