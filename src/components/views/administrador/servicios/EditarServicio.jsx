@@ -1,10 +1,8 @@
-
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { useForm,useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { obtenerUnServicio,editarServicio } from "../../../helpers/queriesServicios";
-
+import { obtenerUnServicio, editarServicio } from "../../../helpers/queriesServicios";
 
 const EditarServicio = ({ id, actualizarServicios }) => {
   const [errores, setErrores] = useState("");
@@ -18,24 +16,6 @@ const EditarServicio = ({ id, actualizarServicios }) => {
     control,
   } = useForm();
 
-  useEffect(() => {
-    obtenerUnServicio(id).then((respuesta) => {
-      setValue("nombreServicio", respuesta.nombreServicio);
-      setValue("imagen", respuesta.imagen);
-      setValue("descripcion", respuesta.descripcion);
-      respuesta.subservicios.forEach((subservicio, index) => {
-        // Aquí accedemos a los campos de subservicios y establecemos sus valores con setValue
-        setValue(`subservicios[${index}].nombreSubservicio`, subservicio.nombreSubservicio);
-        setValue(`subservicios[${index}].imagenSubservicio`, subservicio.imagenSubservicio);
-        setValue(`subservicios[${index}].descripcionSubservicio`, subservicio.descripcionSubservicio);
-        appendSubservicios({
-          nombreSubservicio: subservicio.nombreSubservicio,
-          imagenSubservicio: subservicio.imagenSubservicio,
-          descripcionSubservicio: subservicio.descripcionSubservicio,
-        });
-      });
-    });
-  }, []);
   const {
     fields: subserviciosFields,
     append: appendSubservicios,
@@ -44,27 +24,50 @@ const EditarServicio = ({ id, actualizarServicios }) => {
     control,
     name: "subservicios",
   });
-  const [subserviciosLimitReached, setSubserviciosLimitReached] = useState(false);
-  const agregarSubservicio = () => {
-    if(subserviciosFields.length<10){
-    appendSubservicios({
-      nombreSubservicio: "",
-      descripcionSubservicio: "",
-      imagenSubservicio: "",
-    });
-    setSubserviciosLimitReached(false)
-  }else{
-    setSubserviciosLimitReached(true)
-  }
 
+  const [subserviciosLimitReached, setSubserviciosLimitReached] = useState(false);
+
+  const agregarSubservicio = () => {
+    if (subserviciosFields.length < 10) {
+      appendSubservicios({
+        nombreSubservicio: "",
+        descripcionSubservicio: "",
+        imagenSubservicio: "",
+      });
+      setSubserviciosLimitReached(false);
+    } else {
+      setSubserviciosLimitReached(true);
+    }
   };
+
   const borrarUltimoSubservicio = () => {
     if (subserviciosFields.length > 0) {
       const lastIndex = subserviciosFields.length - 1;
       removeSubservicios(lastIndex);
-      setIngredientesLimitReached(false);
+      setSubserviciosLimitReached(false);
     }
   };
+
+  useEffect(() => {
+    obtenerUnServicio(id).then((respuesta) => {
+      setValue("nombreServicio", respuesta.nombreServicio);
+      setValue("imagen", respuesta.imagen);
+      setValue("descripcion", respuesta.descripcion);
+
+      // Remove existing subserviciosFields before appending new subservicios
+      while (subserviciosFields.length > 0) {
+        removeSubservicios(0);
+      }
+
+      respuesta.subservicios.forEach((subservicio) => {
+        appendSubservicios({
+          nombreSubservicio: subservicio.nombreSubservicio,
+          imagenSubservicio: subservicio.imagenSubservicio,
+          descripcionSubservicio: subservicio.descripcionSubservicio,
+        });
+      });
+    });
+  }, []);
 
   const onSubmit = (servicioViejo) => {
     if (!servicioViejo.password || servicioViejo.password.trim() === "") {

@@ -97,17 +97,21 @@ const Servicios = () => {
       <Table responsive striped>
         <thead>
           <tr>
-            <th>id</th>
+            <th>N°</th>
             <th>Nombre Servicio</th>
+            <th>imagen</th>           
             <th>Administrar</th>
           </tr>
         </thead>
         <tbody>
           {data &&
-            data?.map((servicio) => (
-              <tr key={servicio.id}>
-                <td>{servicio.id}</td>
+            data?.map((servicio,key) => (
+              <tr key={key}>
+                <td>{key+1}</td>
                 <td>{servicio.nombreServicio}</td>
+                <td>                
+                  {servicio.imagen}
+                  </td>
                 <td>
                   <Button
                     onClick={() => handleEditarServicio(servicio.id)}

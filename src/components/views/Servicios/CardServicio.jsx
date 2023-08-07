@@ -15,7 +15,7 @@ const CardServicio = ({descripcion, nombreServicio, imagen,id}) => {
             <Card className='bg-card-servicio'     onMouseEnter={handleShow} /* Agrega el evento onMouseEnter para mostrar el elemento */
     onMouseLeave={handleClose} /* Agrega el evento onMouseLeave para ocultar el elemento */
   >
-                <Card.Img src={imagen} placeholder={nombreServicio}/>
+                <Card.Img className='imagen-card-servicio' src={imagen} placeholder={nombreServicio}/>
                 <Card.Body>
                     <Card.Title>{nombreServicio}</Card.Title>                    
                     <div className={`description ${show ? 'active' : ''}`}>  
