@@ -6,10 +6,11 @@ import { useFetchDataById } from "../../hooks/useFetchDataById";
 
 const ListadoMascotas = ({usuarioLogueado}) => {
     const [showModal, setShowModal] = useState(false);
-    const [listadoMascotas, setListadoMascotas] = useState([])
+    const [listadoMascotas, setListadoMascotas] = useState([]);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
+
 
     const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 
@@ -26,10 +27,10 @@ const ListadoMascotas = ({usuarioLogueado}) => {
                 key={mascota.nombre}
             />
         )));
-    }, [data])
+    }, [data]);
 
     const showComponent = () => {
-        if (isLoading) {
+        if (isLoading && listadoMascotas?.length == 0) {
             return (
                 <div className="my-5 text-center">
                     <Spinner animation="border" variant="primary" />

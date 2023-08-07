@@ -72,6 +72,7 @@ const FormularioTurno = ({actualizarTurnos}) => {
     data.fechaYHora = convertirFecha(data.fechaYHora)
     crearTurno(data).then((respuesta) => {
         if (respuesta && respuesta.status === 201) {
+        actualizarTurnos()
         Swal.fire(
           "Turno creado",
           `El turno fue creado correctamente`,
