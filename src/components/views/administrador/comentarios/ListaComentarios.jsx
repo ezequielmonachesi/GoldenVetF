@@ -37,6 +37,19 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
     });
   };
 
+  const formatoFecha = (fecha) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    };
+    return new Date(fecha).toLocaleString(undefined, options);
+  }
+
   const ModalEditarComentario = ({ comentario }) => {
     return (
       <>
@@ -66,7 +79,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
         <td>{comentario.nombre}</td>
         <td className="truncarTexto">{comentario.comentario}</td>
         <td>{comentario.puntuacion}</td>
-        <td>{comentario.creado}</td>
+        <td>{formatoFecha(comentario.creado)}</td>
         <td>
           <Button variant="warning" onClick={handleShow}>
             Editar Comentario
