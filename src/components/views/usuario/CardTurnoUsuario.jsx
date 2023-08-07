@@ -2,10 +2,11 @@ import { Button, Card } from 'react-bootstrap';
 import { borrarTurno } from '../../helpers/queriesTurnos';
 import Swal from 'sweetalert2';
 
-const CardTurnoUsuario = ({ paciente, veterinario, fechaYHora, detalleVisita, id }) => {
+const CardTurnoUsuario = ({ paciente, veterinario, fechaYHora, detalleVisita, id, refetchData }) => {
     const eliminarTurno = () => {
         borrarTurno(id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
+                refetchData();
                 Swal.fire(
                     "Turno eliminado",
                     `El turno fue eliminado correctamente`,
