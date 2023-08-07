@@ -1,10 +1,7 @@
 import {
   Facebook,
-  GeoAltFill,
   Instagram,
-  TelephoneFill,
   Twitter,
-  X,
 } from "react-bootstrap-icons";
 import { Link, useLocation } from "react-router-dom";
 import "../../App.css";
