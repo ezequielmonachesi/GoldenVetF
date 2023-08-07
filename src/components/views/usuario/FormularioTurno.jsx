@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 registerLocale("es", es);
 
-const FormularioTurno = () => {
+const FormularioTurno = ({actualizarTurnos}) => {
     const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {}
   const {
     handleSubmit,
@@ -77,6 +77,7 @@ const FormularioTurno = () => {
           `El turno fue creado correctamente`,
           "success"
         );
+        actualizarTurnos()
         reset();
       } else {
         Swal.fire(

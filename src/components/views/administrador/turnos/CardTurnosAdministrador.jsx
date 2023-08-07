@@ -1,14 +1,14 @@
-import { Col, Card, Button,Modal} from "react-bootstrap";
-import { useState} from "react";
+import { Col, Card, Button, Modal } from "react-bootstrap";
+import { useState } from "react";
 import FormularioEditarTurno from "./FormularioEditarTurno";
 import { borrarTurno } from "../../../helpers/queriesTurnos";
 import Swal from "sweetalert2";
 
-const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
+const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   const eliminarTurno = () => {
     Swal.fire({
       title: "¿Estás seguro?",
@@ -22,7 +22,11 @@ const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
       if (result.isConfirmed) {
         borrarTurno(turno.id).then((respuesta) => {
           if (respuesta && respuesta.status === 200) {
-            Swal.fire("Turno eliminado", "El turno fue eliminado correctamente", "success");
+            Swal.fire(
+              "Turno eliminado",
+              "El turno fue eliminado correctamente",
+              "success"
+            );
             actualizarTurnos();
           } else {
             Swal.fire("Error", "El turno no pudo ser eliminado", "error");
@@ -32,7 +36,7 @@ const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
     });
   };
 
-  const ModalEditarTurno = ({turno}) => {
+  const ModalEditarTurno = ({ turno }) => {
     return (
       <>
         <Modal
@@ -45,7 +49,11 @@ const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
             <Modal.Title>Editar Turno</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           <FormularioEditarTurno turno={turno} handleClose={handleClose} actualizarTurnos={actualizarTurnos}/>
+            <FormularioEditarTurno
+              turno={turno}
+              handleClose={handleClose}
+              actualizarTurnos={actualizarTurnos}
+            />
           </Modal.Body>
         </Modal>
       </>
@@ -53,28 +61,21 @@ const CardTurnosAdministrador = ({turno,actualizarTurnos}) => {
   };
   return (
     <>
-      <Col xs={12} md={6} lg={3}>
-        <Card style={{ width: "19rem",marginTop:"15px" }}>
-          <Card.Body>
-            <div className="d-flex justify-content-around">
-              <Card.Title>{turno.paciente}</Card.Title>
-              <Card.Title>{turno.fechaYHora}</Card.Title>
-            </div>
-            <Card.Text>
-             {turno.detalleVisita}
-            </Card.Text>
-            <div className="d-flex justify-content-around">
-              <Button variant="primary" onClick={handleShow}>
-                Editar Turno
-              </Button>
-              <Button href="#" variant="danger" onClick={eliminarTurno}>
-                Borrar turno
-              </Button>
-            </div>
-          </Card.Body>
-        </Card>
-      </Col>
-      <ModalEditarTurno turno={turno}/>
+      <tr>
+        <td>{turno.paciente}</td>
+        <td>{turno.fechaYHora}</td>
+        <td>{turno.veterinario}</td>
+        <td>{turno.detalleVisita}</td>
+        <td>
+          <Button variant="warning" onClick={handleShow}>
+            Editar Turno
+          </Button>
+          <Button href="#" variant="danger" onClick={eliminarTurno}>
+            Borrar turno
+          </Button>
+        </td>
+      </tr>
+      <ModalEditarTurno turno={turno} />
     </>
   );
 };
