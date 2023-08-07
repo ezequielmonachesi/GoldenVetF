@@ -14,7 +14,7 @@ const ProductosInicio = () => {
                 <h4>Ofertas</h4>
                 <Link to={'/productos'} className='boton-verMas-productoInicio'>Ver más <ArrowRight/></Link>
             </div>
-            <Row>
+            <Row className='gy-3'>
                {productos.slice(0,4)}
             </Row>
         </Container>

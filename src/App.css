@@ -38,6 +38,25 @@ body {
 .registro {
   color: #e5ba73;
 }
+.hoverEffect{
+  transition: all 0.5s;
+}
+
+.hoverEffect:hover{
+  color: #e5ba73 !important;
+  text-shadow: black 1px 0px 5px !important;
+  transition: all 0.5s;
+  transform: scale(1.03);
+}
+
+.italic{
+  font-family: italic;
+}
+
+.btn-dorado{
+  background-color: #c58940 !important;
+  color: white !important;
+}
 
 .imgBanner{
   background-image: url(../src/assets/Banner.png);
