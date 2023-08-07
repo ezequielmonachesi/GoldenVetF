@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Table, Button, Spinner, Modal } from 'react-bootstrap';
-import CardComentarios from './CardComentarios';
+import ListaComentarios from './ListaComentarios'
 import { useFetchData } from '../../../hooks/useFetchData';
+import CrearComentario from './CrearComentario';
 
 const Comentarios = () => {
   const { data, isLoading, refetchData } = useFetchData('comentarios');
@@ -40,7 +41,7 @@ const Comentarios = () => {
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-         
+         <CrearComentario/>
           </Modal.Body>
         </Modal>
       </>
@@ -76,7 +77,7 @@ const Comentarios = () => {
                   .slice(startIndex, endIndex)
                   .sort((a, b) => new Date(a.creado) - new Date(b.creado))
                   .map((comentario) => (
-                    <CardComentarios
+                    <ListaComentarios
                       comentario={comentario}
                       key={comentario.id}
                       actualizarComentarios={actualizarComentarios}
