@@ -5,7 +5,7 @@ import { editarPaciente } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 import FormularioAgregarHistoriaMedica from "./FormularioAgregarHistoriaMedica";
 
-const MascotaEditarPaciente = ({ paciente, mascota }) => {
+const MascotaEditarPaciente = ({ paciente, mascota, refetchData }) => {
     const [modalShowEditarMascota, setModalShowEditarMascota] = useState(false);
     const [modalShowAgregarHistoriaMedica, setModalShowAgregarHistoriaMedica] = useState(false);
 
@@ -15,6 +15,7 @@ const MascotaEditarPaciente = ({ paciente, mascota }) => {
         editarPaciente(paciente, paciente.id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Mascota eliminada', `La mascota ${mascotaAEliminar.nombre} fue eliminada correctamente`, 'success');
+                refetchData();
             } else {
                 Swal.fire('Ocurrió un error', `La mascota ${mascotaAEliminar.nombre} no pudo ser eliminada, intente en unos minutos`, 'error');
             }
@@ -31,7 +32,7 @@ const MascotaEditarPaciente = ({ paciente, mascota }) => {
           >
             <Modal.Header closeButton>Agregar mascota</Modal.Header>
             <Modal.Body>
-              <FormularioEditarMascota paciente={paciente} mascota={mascota}></FormularioEditarMascota>
+              <FormularioEditarMascota refetchData={refetchData} paciente={paciente} mascota={mascota}></FormularioEditarMascota>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="danger" onClick={props.onHide}>
@@ -52,7 +53,7 @@ const MascotaEditarPaciente = ({ paciente, mascota }) => {
           >
             <Modal.Header closeButton>Agregar historia medica</Modal.Header>
             <Modal.Body>
-              <FormularioAgregarHistoriaMedica paciente={paciente} mascota={mascota}></FormularioAgregarHistoriaMedica>
+              <FormularioAgregarHistoriaMedica refetchData={refetchData} paciente={paciente} mascota={mascota}></FormularioAgregarHistoriaMedica>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="danger" onClick={props.onHide}>
@@ -82,7 +83,7 @@ const MascotaEditarPaciente = ({ paciente, mascota }) => {
                         </Col>
                     </Row>
                     <Button onClick={() => setModalShowEditarMascota(true)} className="m-2" variant="success">Editar</Button>
-                    <Button onClick={() => setModalShowAgregarHistoriaMedica(true)} variant="danger">Agregar historia</Button>
+                    <Button onClick={() => setModalShowAgregarHistoriaMedica(true)} variant="success">Agregar historia</Button>
                     <Button onClick={() => eliminarMascota(mascota)} className="m-2" variant="danger">borrar</Button>
                 </Card.Body>
             </Card>

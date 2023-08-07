@@ -4,8 +4,17 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
 import { obtenerUsuario } from "../../../helpers/queriesUsuarios";
+import { useFetchData } from "../../../hooks/useFetchData";
 
-const CrearPaciente = ({ usuarios, recargarData }) => {
+const CrearPaciente = () => {
+  const [usuarios, setUsuarios] = useState([]);
+
+  const { data, isLoading, error, refetchData } = useFetchData("usuarios");
+
+  useEffect(() => {
+    setUsuarios(data);
+  }, [data])
+
   const {
     register,
     setValue,

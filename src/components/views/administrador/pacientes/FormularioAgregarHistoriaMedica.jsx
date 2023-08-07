@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { editarPaciente } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 
-const FormularioAgregarHistoriaMedica = ({paciente, mascota}) => {
+const FormularioAgregarHistoriaMedica = ({paciente, mascota, refetchData}) => {
 
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
 
@@ -25,6 +25,7 @@ const FormularioAgregarHistoriaMedica = ({paciente, mascota}) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Historial medico agregado', `Se actualizó correctamente el historial medico de ${mascota.nombre}`, 'success');
                 reset();
+                refetchData();
             } else {
                 Swal.fire('Ocurrió un error', `No se pudo actualizar el historial medico, intente en unos minutos`, 'error');
             }

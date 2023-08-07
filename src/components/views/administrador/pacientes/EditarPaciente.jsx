@@ -1,11 +1,11 @@
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { crearPaciente } from "../../../helpers/queriesPacientes";
+import { editarPaciente } from "../../../helpers/queriesPacientes";
 import MascotaEditarPaciente from "./MascotaEditarPaciente";
 import { useEffect, useState } from "react";
 
-const EditarPaciente = ({ paciente, recargarData }) => {
+const EditarPaciente = ({ paciente, refetchData, onFormEditarPacienteSubmit }) => {
 
   const [listadoMascotas, setListadoMascotas] = useState([]);
 
@@ -14,22 +14,33 @@ const EditarPaciente = ({ paciente, recargarData }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue
   } = useForm();
 
-  const onSubmit = (editarPaciente) => {
-    console.log(editarPaciente);
-    crearPaciente(editarPaciente).then((respuesta) => {
-      if (respuesta && respuesta.status === 201) {
+  useEffect(() => {
+    setValue("nombreDuenio", paciente.nombreDuenio);
+    setValue("apellido", paciente.apellido);
+    setValue("direccion", paciente.direccion);
+    setValue("telefono", paciente.telefono);
+  })
+
+  const onSubmit = (datosEditar) => {
+    const pacienteActualizado = { ...paciente, ...datosEditar };
+    delete pacienteActualizado.mascotas;
+    editarPaciente(pacienteActualizado, paciente.id).then((respuesta) => {
+      if (respuesta && respuesta.status === 200) {
         Swal.fire(
           "Paciente editado",
-          `El paciente ${editarPaciente.nombrePaciente} fue editado correctamente`,
+          `El paciente ${paciente.nombreDuenio} fue editado correctamente`,
           "success"
         );
         reset();
+        refetchData();
+        onFormEditarPacienteSubmit();
       } else {
         Swal.fire(
           "Ocurrio un error",
-          `El paciente ${editarPaciente.nombrePaciente} no pudo ser editado, intente en unos minutos`,
+          `El paciente ${paciente.nombreDuenio} no pudo ser editado, intente en unos minutos`,
           "error"
         );
       }
@@ -39,7 +50,7 @@ const EditarPaciente = ({ paciente, recargarData }) => {
   useEffect(() => {
     if(paciente?.mascotas.length > 0) {
       setListadoMascotas(paciente.mascotas.map((mascota) => {
-        return <MascotaEditarPaciente paciente={paciente} mascota={mascota} key={mascota.nombre}/>
+        return <MascotaEditarPaciente refetchData={refetchData} paciente={paciente} mascota={mascota} key={mascota.nombre}/>
       }));
     } 
   }, [paciente]);
@@ -60,7 +71,19 @@ const EditarPaciente = ({ paciente, recargarData }) => {
               <Col xs={12} md={6}>
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
+                  type="text"
                   disabled={true}
+                  {...register("nombreDuenio", {
+                    required: "El nombre del paciente es obligatorio.",
+                    minLength: {
+                      value: 2,
+                      message: "Cantidad mínima de 2 caracteres.",
+                    },
+                    maxLength: {
+                      value: 20,
+                      message: "Cantidad máxima de 20 caracteres.",
+                    },
+                  })}
                 />
                 <Form.Text className="text-danger">
                   {errors.nombrePaciente?.message} <br />
@@ -68,8 +91,9 @@ const EditarPaciente = ({ paciente, recargarData }) => {
                 <Form.Label>Apellido*</Form.Label>
                 <Form.Control
                   type="text"
+                  disabled={true}
                   placeholder="Ej: Apellido"
-                  {...register("apellidoPaciente", {
+                  {...register("apellido", {
                     required: "El nombre del paciente es obligatorio.",
                     minLength: {
                       value: 2,
@@ -90,7 +114,7 @@ const EditarPaciente = ({ paciente, recargarData }) => {
                 <Form.Control
                   type="number"
                   placeholder="Ej: 3816173184"
-                  {...register("numeroTelefonoPaciente", {
+                  {...register("telefono", {
                     required: "El número celular del paciente es obligatorio.",
                     minLength: {
                       value: 7,

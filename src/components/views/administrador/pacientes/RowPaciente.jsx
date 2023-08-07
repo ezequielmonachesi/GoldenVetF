@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import EditarPaciente from "./EditarPaciente";
 import FormularioAgregarMascota from "./FormularioAgregarMascota";
 
-const RowPaciente = ({ paciente, recargarData }) => {
+const RowPaciente = ({ paciente, refetchData }) => {
   const [modalShowEditarPaciente, setModalShowEditarPaciente] = useState(false);
   const [modalShowAgregarMascota, setModalShowAgregarMascota] = useState(false);
 
   function onFormAgregarMascotaSubmit() {
     setModalShowAgregarMascota(false);
+  }
+
+  function onFormEditarPacienteSubmit() {
+    setModalShowEditarPaciente(false);
   }
 
   function MyVerticallyCenteredModal(props) {
@@ -22,7 +26,7 @@ const RowPaciente = ({ paciente, recargarData }) => {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <EditarPaciente paciente={paciente} recargarData={recargarData}></EditarPaciente>
+          <EditarPaciente paciente={paciente} refetchData={refetchData} onFormEditarPacienteSubmit={onFormEditarPacienteSubmit}></EditarPaciente>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
@@ -43,7 +47,7 @@ const RowPaciente = ({ paciente, recargarData }) => {
       >
         <Modal.Header closeButton>Agregar mascota</Modal.Header>
         <Modal.Body>
-          <FormularioAgregarMascota paciente={paciente} onFormSubmit={onFormAgregarMascotaSubmit} recargarData={recargarData}></FormularioAgregarMascota>
+          <FormularioAgregarMascota paciente={paciente} onFormAgregarMascotaSubmit={onFormAgregarMascotaSubmit} refetchData={refetchData}></FormularioAgregarMascota>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
@@ -57,10 +61,8 @@ const RowPaciente = ({ paciente, recargarData }) => {
   return (
     <>
       <tr>
-        <td>{paciente?.mascotas[0]?.nombre}</td>
-        <td>{paciente?.mascotas[0]?.especie}</td>
-        <td>{paciente?.mascotas[0]?.raza}</td>
-        <td>{paciente?.nombreDuenio}</td>
+        <td className="text-center">{paciente?.mascotas?.length}</td>
+        <td>{paciente?.nombreDuenio} {paciente?.apellido}</td>
         <td>{paciente?.telefono}</td>
         <td className="d-flex">
           <div>

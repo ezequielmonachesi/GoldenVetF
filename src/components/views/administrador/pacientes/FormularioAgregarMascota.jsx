@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { editarPaciente } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 
-const FormularioAgregarMascota = ({ paciente, onFormSubmit }) => {
+const FormularioAgregarMascota = ({ paciente, onFormAgregarMascotaSubmit, refetchData }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -17,7 +17,8 @@ const FormularioAgregarMascota = ({ paciente, onFormSubmit }) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Mascota agregada', `La mascota ${mascota.nombre} fue agregada correctamente`, 'success');
                 reset();
-                onFormSubmit();
+                onFormAgregarMascotaSubmit();
+                refetchData();
             } else {
                 Swal.fire('Ocurrió un error', `La mascota ${mascota.nombre} no pudo ser agregada, intente en unos minutos`, 'error');
             }

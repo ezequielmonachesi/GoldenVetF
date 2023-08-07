@@ -1,31 +1,19 @@
 import { Modal, Table, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import RowPaciente from "./RowPaciente";
 import CrearPaciente from "./CrearPaciente";
 import { useEffect, useState } from "react";
-import { obtenerPacientes } from "../../../helpers/queriesPacientes";
-import Swal from "sweetalert2";
-import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
 import { useFetchData } from "../../../hooks/useFetchData";
 
 const Pacientes = () => {
   const [modalShow, setModalShow] = useState(false);
 
-  const [usuarios, setUsuarios] = useState([]);
   const [pacientes, setPacientes] = useState([]);
 
-  const { data: pacientesData, isLoading: pacientesIsLoading, error: pacientesError, refetchData: refetchPacientes } = useFetchData("pacientes");
-  const { data: usuariosData, isLoading: usuariosIsLoading, error: usuariosError, refetchData: refetchUsuarios } = useFetchData("usuarios");
-  
+  const { data, isLoading, error, refetchData } = useFetchData("pacientes");  
 
   useEffect(() => {
-    setUsuarios(usuariosData);
-    setPacientes(pacientesData);
-  }, [pacientesData, usuariosData]);
-
-  function recargarData() {
-    refetchPacientes();
-  }
+    setPacientes(data);
+  }, [data]);
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -37,7 +25,7 @@ const Pacientes = () => {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <CrearPaciente usuarios={usuarios} recargarData={recargarData}></CrearPaciente>
+          <CrearPaciente refetchData={refetchData}></CrearPaciente>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
@@ -71,9 +59,7 @@ const Pacientes = () => {
       <Table responsive striped bordered hover className="mt-3">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Especie</th>
-            <th>Raza</th>
+            <th>N° Mascotas</th>
             <th>Dueño</th>
             <th>Teléfono</th>
             <th>Opciones</th>
@@ -81,7 +67,7 @@ const Pacientes = () => {
         </thead>
         <tbody>
           {pacientes.map((paciente) => (
-            <RowPaciente paciente={paciente} key={paciente.id} recargarData={recargarData}></RowPaciente>
+            <RowPaciente paciente={paciente} key={paciente.id} refetchData={refetchData}></RowPaciente>
           ))}
         </tbody>
       </Table>

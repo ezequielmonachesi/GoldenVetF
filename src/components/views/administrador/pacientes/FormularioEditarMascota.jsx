@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { editarPaciente } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 
-const FormularioEditarMascota = ({paciente, mascota}) => {
+const FormularioEditarMascota = ({paciente, mascota, refetchData}) => {
 
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
 
@@ -25,6 +25,7 @@ const FormularioEditarMascota = ({paciente, mascota}) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Mascota editada', `La mascota ${mascota.nombre} fue editada correctamente`, 'success');
                 reset();
+                refetchData();
             } else {
                 Swal.fire('Ocurrió un error', `La mascota ${mascota.nombre} no pudo ser editada, intente en unos minutos`, 'error');
             }
@@ -39,6 +40,7 @@ const FormularioEditarMascota = ({paciente, mascota}) => {
                         <Form.Label>Nombre</Form.Label>
                         <Form.Control
                             type="text"
+                            disabled={true}
                             placeholder="Ingrese el nombre de la mascota"
                             {...register('nombre', {
                                 required: 'El nombre de la mascota es obligatorio',
