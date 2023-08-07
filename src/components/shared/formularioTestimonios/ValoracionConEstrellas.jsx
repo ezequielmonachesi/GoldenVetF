@@ -1,53 +1,43 @@
 import { StarFill } from "react-bootstrap-icons";
 import { useState } from "react";
-import { useForm} from "react-hook-form";
 import "./FormularioTestimonios.css";
+import { Form } from "react-bootstrap";
 
-const ValoracionConEstrellas = () => {
+const ValoracionConEstrellas = ({register}) => {
   const [valoracion, setValoracion] = useState(null);
   const [hover, setHover] = useState(null);
-  const {
-    register,    
-    formState: { errors },        
-  } = useForm();
 
   return (
     <div>
-      {[...Array(5)].map((estrella, index) => {
-        const valoracionValue = index + 1;
+    {[...Array(5)].map((estrella, index) => {
+      const valoracionValue = index + 1;
 
-        return (
-          <label key={index}>
-            <input
-              type="radio"
-              name="valoracion"
-              className="radiobuton-formTestimonios"
-              value={valoracionValue}
-              onClick={() => setValoracion(valoracionValue)}
-              {...register("puntuacion", {
-                required: "El nombre del servicio es obligatorio.",
-                minLength: {
-                  value: 2,
-                  message: "Cantidad mínima de 2 caracteres.",
-                },
-                maxLength: {
-                  value: 50,
-                  message: "Cantidad máxima de 50 caracteres.",
-                },
-              })}
+      return (
+        <label key={index}>
+          <Form.Check
+            type="radio"             
+            className="radiobuton-formTestimonios"
+            name="puntuacion"
+            value={valoracionValue}
+            onClick={() => setValoracion(valoracionValue)}
+            {...register("puntuacion",{
+              required: "La puntuacion es requerida",
+              max: 5,
+              min: 1,
+            })}
 
-            />
-            <StarFill
-              className="estrella-testimonio"
-              size={30}
-              onMouseEnter={() => setHover(valoracionValue)}
-              onMouseLeave={() => setHover(null)}
-              color={valoracionValue <= (hover || valoracion) ? "#ffc107" : "#e4e5e9"}
-            />
-          </label>
-        );
-      })}
-    </div>
+          />
+          <StarFill
+            className="estrella-testimonio"
+            size={30}
+            onMouseEnter={() => setHover(valoracionValue)}
+            onMouseLeave={() => setHover(null)}
+            color={valoracionValue <= (hover || valoracion) ? "#ffc107" : "#e4e5e9"}
+          />
+        </label>
+      );
+    })}
+  </div>
   );
 };
 

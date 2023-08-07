@@ -1,12 +1,12 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ChatHeartFill } from "react-bootstrap-icons";
-import ValoracionConEstrellas from "./ValoracionConEstrellas";
+import Swal from "sweetalert2";
 import { useForm} from "react-hook-form";
-import { useState } from "react";
+import { crearComentario } from "../../helpers/queriesComentarios";
+import ValoracionConEstrellas from "./ValoracionConEstrellas";
+import './FormularioTestimonios.css'
 
 const FormularioTestimonios = () => {
-  const [errores, setErrores] = useState("");
-
   const {
     register,
     handleSubmit,
@@ -15,20 +15,18 @@ const FormularioTestimonios = () => {
   } = useForm();
 
   const onSubmit = (comentarioNuevo) => {
-    crearComentario(comentarioNuevo).then((respuesta) => {
+    crearComentario(comentarioNuevo).then((respuesta) => {      
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
-          "comentario creado",
-          `El comentario ${comentarioNuevo.nombreComentario} fue creado correctamente`,
+          "comentario enviado",
+          `El comentario fue enviado correctamente`,
           "success"
         );
         reset();
-      } else if (respuesta && respuesta.status === 400) {
-        setErrores(respuesta.data.mensaje);
-      } else {
+      }  else {
         Swal.fire(
           "Ocurrio un error",
-          `El comentario ${comentarioNuevo.nombreComentario} no pudo ser creado, intente en unos minutos`,
+          `El comentario no pudo ser enviado, intente en unos minutos`,
           "error"
         );
       }
@@ -36,9 +34,9 @@ const FormularioTestimonios = () => {
   };
 
   return (
-    <Container className="d-flex justify-content-center">
+    <Container className="d-flex justify-content-center bg-light mb-3 mb-md-5 shadow rounded bg-opacity-75">
       <Col md={8}>
-        <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 rounded-3  bg-white">
+        <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 shadow rounded-3 bg-light mb-3 mb-md-5">
           <Row>
             {/* Titulo Formulario */}
             <Col xs={12}>
@@ -49,7 +47,7 @@ const FormularioTestimonios = () => {
             </Col>
             {/* Formulario */}
             <Col className="mt-3">
-              <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form onSubmit={handleSubmit(onSubmit)} className="formulario-testimonios">
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
@@ -66,7 +64,7 @@ const FormularioTestimonios = () => {
                       },
                       maxLength: {
                         value: 50,
-                        message: "Cantidad máxima de 50 caracteres.",
+                        message: "Cantidad máxima de 16 caracteres.",
                       },
                     })}
                   />
@@ -81,7 +79,7 @@ const FormularioTestimonios = () => {
                   <Form.Label>
                     <div className="d-flex align-items-center">Puntuación</div>
                   </Form.Label>
-                  <ValoracionConEstrellas />
+                      <ValoracionConEstrellas register={register}/>
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
@@ -91,16 +89,26 @@ const FormularioTestimonios = () => {
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    minLength={20}
-                    maxLength={600}
+                    minLength={10}
+                    maxLength={200}
                     required
-                    {...register("descripcion", {
-                      required: "La descripcion es obligatoria",
+                    {...register("comentario", {
+                      required: "El comentario es requerido",
+                      minLength: {
+                        value: 10,
+                        message:
+                          "El comentario debe tener como mínimo 10 caracteres y como máximo 200",
+                      },
+                      maxLength: {
+                        value: 200,
+                        message:
+                          "El comentario debe tener como mínimo 10 caracteres y como máximo 200",
+                      },
                     })}
                   ></Form.Control>
                   <Form.Text className="text-danger">
                     {" "}
-                    {errors.descripcion?.message}
+                    {errors.comentario?.message}
                   </Form.Text>
                 </Form.Group>
                 <div className="text-end">
