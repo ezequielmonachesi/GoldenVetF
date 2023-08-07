@@ -22,14 +22,14 @@ const Administrador = () => {
         <Col xs={10} className="body-admin p-3">
           <Routes>
             <Route
-              path="comentarios/*"
+              path="comentarios"
               element={<Comentarios></Comentarios>}
             ></Route>
-            <Route path="pacientes/*" element={<Pacientes></Pacientes>}></Route>
-            <Route path="productos/*" element={<Productos></Productos>}></Route>
-            <Route path="servicios/*" element={<Servicios></Servicios>}></Route>
-            <Route path="turnos/*" element={<Turnos></Turnos>}></Route>
-            <Route path="usuarios/*" element={<Usuarios></Usuarios>}></Route>
+            <Route path="/pacientes" element={<Pacientes></Pacientes>}></Route>
+            <Route path="/productos" element={<Productos></Productos>}></Route>
+            <Route path="/servicios" element={<Servicios></Servicios>}></Route>
+            <Route path="/turnos" element={<Turnos></Turnos>}></Route>
+            <Route path="/usuarios" element={<Usuarios></Usuarios>}></Route>
           </Routes>          
         </Col>
       </Row>

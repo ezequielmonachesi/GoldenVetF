@@ -41,7 +41,7 @@ const Productos = () => {
                     limpiarForm();
                 });
             }
-            else{                
+            else{
                 if(!buscarRepetido(prod.nombreProducto)) editarProducto(prod,id).then((respuesta)=>{
                     if (respuesta && respuesta.status === 200)  {
                         Swal.fire("Producto modificado!","El producto se modifico correctamente","success");

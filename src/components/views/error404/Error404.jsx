@@ -14,7 +14,7 @@ const Error404 = () => {
                     </div>
                 </Col>
                 <Col sm={6}>
-                    <img className="img-fluid" src={error404Img} alt="" />
+                    <img className="img-fluid" src={error404Img} alt="imagen de error 404" />
                 </Col>
             </Row>
         </Container>
