@@ -7,14 +7,12 @@ const FormularioTestimonios = () => {
       <Col md={8}>
         <div className="border px-3 px-md-4 px-lg-5 mx-md-2 mx-lg-5 py-3 mt-5 rounded-3 shadow">
           <Row>
-            {/* Titulo Formulario */}
             <Col xs={12}>
               <div className="d-flex flex-row justify-content-between align-items-center">
                 <h5>Envíanos tu comentario</h5>
                 <ChatHeartFill className="fs-2"></ChatHeartFill>
               </div>
             </Col>
-            {/* Formulario */}
             <Col className="mt-3">
               <Form>
                 <Form.Group
