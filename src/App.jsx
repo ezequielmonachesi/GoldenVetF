@@ -28,7 +28,7 @@ function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
 
-    useEffect(() => {
+  useEffect(() => {
     sessionStorage.setItem('usuario', JSON.stringify(usuarioLogueado));
   }, [usuarioLogueado]);
 
