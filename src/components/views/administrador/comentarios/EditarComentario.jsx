@@ -29,8 +29,8 @@ const EditarComentario = ({
           "El comentario fue editado correctamente",
           "success"
         );
-        actualizarComentarios()
-        handleClose()
+        actualizarComentarios();
+        handleClose();
       }
     });
   };

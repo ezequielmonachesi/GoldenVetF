@@ -8,7 +8,6 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
 
   const eliminarComentario = () => {
     Swal.fire({
@@ -48,7 +47,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
       hour12: false,
     };
     return new Date(fecha).toLocaleString(undefined, options);
-  }
+  };
 
   const ModalEditarComentario = ({ comentario }) => {
     return (

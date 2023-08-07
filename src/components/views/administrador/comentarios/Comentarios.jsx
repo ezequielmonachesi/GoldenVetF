@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Container, Table, Button, Spinner, Modal } from 'react-bootstrap';
-import ListaComentarios from './ListaComentarios'
-import { useFetchData } from '../../../hooks/useFetchData';
-import CrearComentario from './CrearComentario';
+import React, { useState } from "react";
+import { Container, Table, Button, Spinner, Modal } from "react-bootstrap";
+import ListaComentarios from "./ListaComentarios";
+import { useFetchData } from "../../../hooks/useFetchData";
+import CrearComentario from "./CrearComentario";
 
 const Comentarios = () => {
-  const { data, isLoading, refetchData } = useFetchData('comentarios');
+  const { data, isLoading, refetchData } = useFetchData("comentarios");
   const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const [show, setShow] = useState(false);
@@ -41,7 +41,7 @@ const Comentarios = () => {
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-         <CrearComentario/>
+            <CrearComentario />
           </Modal.Body>
         </Modal>
       </>
@@ -50,9 +50,11 @@ const Comentarios = () => {
 
   return (
     <>
-      <Container className='mt-2'>
+      <Container className="mt-2">
         <div className="d-flex justify-content-end my-3">
-          <Button onClick={handleShow} variant='success'>Crear Comentario</Button>
+          <Button onClick={handleShow} variant="success">
+            Crear Comentario
+          </Button>
         </div>
         {data.length > 0 ? (
           <Table responsive striped bordered hover>
