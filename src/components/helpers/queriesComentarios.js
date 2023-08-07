@@ -36,9 +36,14 @@ export const crearComentario = async (comentario)=>{
 }
 
 export const borrarComentario = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
     try{
         const respuesta = await fetch(URL_COMENTARIOS+'/'+id,{
-            method: "DELETE"
+            method: "DELETE",
+            headers:{
+            "Content-Type":"application/json",
+            "x-token":usuarioLogueado.token
+            }
         });
         return respuesta;
     }catch (error){
@@ -47,11 +52,13 @@ export const borrarComentario = async (id)=>{
 }
 
 export const editarComentario = async (comentario, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
     try{
         const respuesta = await fetch(URL_COMENTARIOS+'/'+id,{
             method: "PUT",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token":usuarioLogueado.token
             },
             body: JSON.stringify(comentario)
         });

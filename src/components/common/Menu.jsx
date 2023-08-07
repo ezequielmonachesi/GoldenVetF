@@ -16,7 +16,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   }
   
   return (
-    <Navbar expand="lg" className="bg-navBar py-0">
+    <Navbar expand="lg" className="bg-navBar py-1">
       <Container>
         <Navbar.Brand as={NavLink} to={"/"} className="brandNavBar">
           <img src={logo} alt="" height="55px" width="75px" className="logo" />

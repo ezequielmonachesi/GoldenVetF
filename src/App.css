@@ -58,6 +58,10 @@ body {
   color: white !important;
 }
 
+.imgBanner{
+  background-image: url(../src/assets/Banner.png);
+}
+
 @media all and (min-width: 768px) and (max-width: 991px) {
   .width-button-responsive {
     width: 100%;

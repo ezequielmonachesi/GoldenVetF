@@ -3,8 +3,10 @@ import ListadoMascotas from "./ListadoMascotas";
 import ListadoTurnos from "./ListadoTurnos";
 import FormularioNuevoUsuario from "./FormulariuoNuevoUsuario";
 import { useFetchDataById } from "../../hooks/useFetchDataById";
+import { useParams } from "react-router-dom";
 
 const Usuario = ({usuarioLogueado}) => {
+    const {id} = useParams()
 
     const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 
@@ -23,8 +25,8 @@ const Usuario = ({usuarioLogueado}) => {
                 <div className="my-5">
                     <h2 className="text-center display-5 mb-4">Antes de comenzar</h2>
                     <hr />
-                    <p className="text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
-                    <FormularioNuevoUsuario idUsuario={usuarioLogueado.id}/>
+                    <p className="plan-description text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
+                    <FormularioNuevoUsuario idUsuario={id}/>
                 </div>
             );
         } else {

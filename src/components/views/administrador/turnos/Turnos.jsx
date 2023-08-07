@@ -28,7 +28,7 @@ const Turnos = () => {
     await refetchData();
   };
 
-  const ModalCrearTurno = () => {
+  const ModalCrearTurno = ({actualizarTurnos}) => {
     return (
       <>
         <Modal
@@ -54,41 +54,37 @@ const Turnos = () => {
         <div className="d-flex justify-content-end mb-4">
           <Button variant='success' onClick={handleShow}>Crear Turno</Button>
         </div>
-        {data.length > 0 ? (
-          <Table responsive striped bordered hover>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Fecha y Hora</th>
-                <th>Veterinario</th>
-                <th>Detalle de la Visita</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isLoading ? (
-                <div className='d-flex justify-content-center'>
-                    <Spinner animation="border" variant="primary" />
-                </div>
-              ) : (
-                data
-                  .slice(startIndex, endIndex)
-                  .sort((a, b) => new Date(a.fechaYHora) - new Date(b.fechaYHora))
-                  .map((turno) => (
-                    <CardTurnosAdministrador
-                      turno={turno}
-                      key={turno.id}
-                      actualizarTurnos={actualizarTurnos}
-                    />
-                  ))
-              )}
-            </tbody>
-          </Table>
-        ) : (
-          <div className="text-center">
-            <h3>No hay Turnos reservados</h3>
-          </div>
-        )}
+        {isLoading ? (
+  <div className="d-flex justify-content-center">
+    <Spinner size="lg" variant="primary" />
+  </div>
+) : (
+  <Table responsive striped bordered hover>
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Fecha y Hora</th>
+        <th>Veterinario</th>
+        <th>Detalle de la Visita</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {data && data
+        .slice(startIndex, endIndex)
+        .sort((a, b) => new Date(a.fechaYHora) - new Date(b.fechaYHora))
+        ?.map((turno) => (
+          <tr key={turno.id}>
+            <CardTurnosAdministrador
+            turno={turno}
+            key={turno.id}
+            actualizarTurnos={actualizarTurnos}
+            />
+          </tr>
+        ))}
+    </tbody>
+  </Table>
+)}
         {data.length > 0 && (
           <div className="d-flex justify-content-center mt-3">
             <Button
@@ -109,7 +105,7 @@ const Turnos = () => {
           </div>
         )}
       </Container>
-      <ModalCrearTurno />
+      <ModalCrearTurno actualizarTurnos={actualizarTurnos}/>
     </>
 
   );
