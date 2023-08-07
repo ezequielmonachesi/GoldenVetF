@@ -6,7 +6,7 @@ import { editarComentario } from "../../../helpers/queriesComentarios";
 
 const EditarComentario = ({
   comentario,
-  handleClose,
+  setShow,
   actualizarComentarios,
 }) => {
   const {
@@ -30,7 +30,7 @@ const EditarComentario = ({
           "success"
         );
         actualizarComentarios();
-        handleClose();
+        setShow(false);
       }
     });
   };

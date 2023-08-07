@@ -10,7 +10,6 @@ const Comentarios = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -30,21 +29,18 @@ const Comentarios = () => {
 
   const ModalCrearComentario = () => {
     return (
-      <>
         <Modal
           show={show}
           onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
+          aria-labelledby="contained-modal-title-vcenter" centered
         >
           <Modal.Header closeButton>
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CrearComentario />
+            <CrearComentario actualizarComentarios={actualizarComentarios}/>
           </Modal.Body>
         </Modal>
-      </>
     );
   };
 
@@ -52,7 +48,7 @@ const Comentarios = () => {
     <>
       <Container className="mt-2">
         <div className="d-flex justify-content-end my-3">
-          <Button onClick={handleShow} variant="success">
+          <Button onClick={()=>setShow(true)} variant="success">
             Crear Comentario
           </Button>
         </div>

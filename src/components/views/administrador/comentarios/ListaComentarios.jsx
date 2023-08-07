@@ -6,8 +6,6 @@ import Swal from "sweetalert2";
 
 const ListaComentarios = ({ comentario, actualizarComentarios }) => {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const eliminarComentario = () => {
     Swal.fire({
@@ -54,9 +52,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
       <>
         <Modal
           show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
+          onHide={()=>setShow(false)}
         >
           <Modal.Header closeButton>
             <Modal.Title>Editar Comentario</Modal.Title>
@@ -64,7 +60,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
           <Modal.Body>
             <EditarComentario
               comentario={comentario}
-              handleClose={handleClose}
+              setShow={setShow}
               actualizarComentarios={actualizarComentarios}
             />
           </Modal.Body>
@@ -80,7 +76,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
         <td className="text-center">{comentario.puntuacion}</td>
         <td>{formatoFecha(comentario.creado)}</td>
         <td>
-          <Button variant="warning" onClick={handleShow}>
+          <Button variant="warning" onClick={()=>setShow(true)}>
             Editar Comentario
           </Button>
           <Button variant="danger" onClick={eliminarComentario} className="mt-2 mt-lg-0">

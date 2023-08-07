@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { Form, Button } from "react-bootstrap";
 import { crearComentario } from "../../../helpers/queriesComentarios";
 
-const CrearComentario = () => {
+const CrearComentario = ({ actualizarComentarios }) => {
   const {
     register,
     handleSubmit,
@@ -18,6 +18,14 @@ const CrearComentario = () => {
           "Comentario creado",
           `El comentario fue creado correctamente`,
           "success"
+        );
+        actualizarComentarios();
+        reset();
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          `El comentario no pudo ser creado, intente en unos minutos`,
+          "error"
         );
       }
     });
