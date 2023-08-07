@@ -63,7 +63,7 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
     <>
       <tr>
         <td>{comentario.nombre}</td>
-        <td>{comentario.comentario}</td>
+        <td className="truncarTexto">{comentario.comentario}</td>
         <td>{comentario.puntuacion}</td>
         <td>{comentario.creado}</td>
         <td>

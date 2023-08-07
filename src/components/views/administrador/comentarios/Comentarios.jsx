@@ -51,8 +51,8 @@ const Comentarios = () => {
   return (
     <>
       <Container className='mt-2'>
-        <div className="d-flex justify-content-end">
-          <Button onClick={handleShow}>Crear Comentario</Button>
+        <div className="d-flex justify-content-end my-3">
+          <Button onClick={handleShow} variant='success'>Crear Comentario</Button>
         </div>
         {data.length > 0 ? (
           <Table responsive striped bordered hover>
