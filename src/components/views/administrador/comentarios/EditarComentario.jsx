@@ -3,9 +3,9 @@ import Swal from 'sweetalert2';
 import {useForm} from 'react-hook-form'
 
 const EditarComentario = ({comentario,handleClose,actualizarComentarios}) => {
-    
+    const {register,handleSubmit,setValue,formState:{errors}} = useForm()
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit}>
         <Form.Group controlId="nombre">
           <Form.Label>Nombre</Form.Label>
           <Form.Control
