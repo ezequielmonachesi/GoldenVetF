@@ -5,7 +5,6 @@ import { useFetchData } from "../../hooks/useFetchData";
 import { Spinner } from "react-bootstrap";
 
 const Servicios = () => {
-  const [servicios, setServicios] = useState([]);
   const { data, isLoading, error } = useFetchData("servicios");
 
   const chunkArray = (array, size) => {
