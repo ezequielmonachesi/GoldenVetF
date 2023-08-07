@@ -152,7 +152,7 @@ const Productos = () => {
                                 <td>{index+1}</td>
                                 <td className='truncarTexto'>{prod.nombreProducto}</td>
                                 <td>{prod.precio}</td>
-                                <td>{prod.stock}</td>
+                                <td className={prod.stock <= 5 ? 'text-danger fw-bold' : ''}>{prod.stock}</td>
                                 <td className='truncarTexto'>{prod.descripcion}</td>
                                 <td className='truncarTexto'>{prod.imagen}</td>
                                 <td>
