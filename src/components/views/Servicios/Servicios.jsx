@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
 import CardServicio from "./CardServicio";
 import "./Servicios.css";
 import { useFetchData } from "../../hooks/useFetchData";
 import { Spinner } from "react-bootstrap";
 
 const Servicios = () => {
-  const { data, isLoading, error } = useFetchData("servicios");
+  const { data, isLoading } = useFetchData("servicios");
 
   const chunkArray = (array, size) => {
     const chunks = [];
