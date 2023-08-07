@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import EditarPaciente from "./EditarPaciente";
 import FormularioAgregarMascota from "./FormularioAgregarMascota";
 
-const RowPaciente = ({ paciente }) => {
+const RowPaciente = ({ paciente, recargarData }) => {
   const [modalShowEditarPaciente, setModalShowEditarPaciente] = useState(false);
   const [modalShowAgregarMascota, setModalShowAgregarMascota] = useState(false);
 
@@ -22,7 +22,7 @@ const RowPaciente = ({ paciente }) => {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <EditarPaciente></EditarPaciente>
+          <EditarPaciente paciente={paciente} recargarData={recargarData}></EditarPaciente>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
@@ -43,7 +43,7 @@ const RowPaciente = ({ paciente }) => {
       >
         <Modal.Header closeButton>Agregar mascota</Modal.Header>
         <Modal.Body>
-          <FormularioAgregarMascota paciente={paciente} onFormSubmit={onFormAgregarMascotaSubmit}></FormularioAgregarMascota>
+          <FormularioAgregarMascota paciente={paciente} onFormSubmit={onFormAgregarMascotaSubmit} recargarData={recargarData}></FormularioAgregarMascota>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>

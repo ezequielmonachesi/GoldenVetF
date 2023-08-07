@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
 import { obtenerUsuario } from "../../../helpers/queriesUsuarios";
 
-const CrearPaciente = ({ usuarios }) => {
+const CrearPaciente = ({ usuarios, recargarData }) => {
   const {
     register,
     setValue,
@@ -67,7 +67,8 @@ const CrearPaciente = ({ usuarios }) => {
           "Paciente creado",
           `El paciente ${pacienteNuevo.nombrePaciente} fue creado correctamente`,
           "success"
-        );
+          );
+          recargarData();
         reset();
       } else {
         Swal.fire(

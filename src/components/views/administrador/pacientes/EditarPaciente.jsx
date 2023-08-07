@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { crearPaciente } from "../../../helpers/queriesPacientes";
 
-const EditarPaciente = () => {
+const EditarPaciente = ({ paciente, recargarData }) => {
   const {
     register,
     handleSubmit,
@@ -116,74 +116,6 @@ const EditarPaciente = () => {
               </Col>
             </Row>
           </Form.Group>
-          <h6 className="mt-5 mb-3">
-            <span className="border-bottom border-warning">Mas</span>cota
-          </h6>
-          <Form.Group className="mb-3" controlId="formNombrePaciente">
-            <Row className="justify-content-start">
-              <Col xs={12} md={6}>
-                <Form.Label>Nombre*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Tobi"
-                  {...register("nombreMascota", {
-                    required: "El nombre de la mascota es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 2 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.nombreMascota?.message} <br />
-                </Form.Text>
-                <Form.Label>Especie*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Perro"
-                  {...register("especie", {
-                    required: "La especie de la mascota es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 2 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.nombrePaciente?.message}
-                </Form.Text>
-              </Col>
-              <Col xs={12} md={6}>
-                <Form.Label>Raza</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Labrador"
-                  {...register("raza", {
-                    required: "El nombre de la raza es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 50 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.raza?.message}
-                </Form.Text>
-              </Col>
-            </Row>
-          </Form.Group>
           <div className="text-center mt-5">
             <Button
               variant="primary"
@@ -194,6 +126,7 @@ const EditarPaciente = () => {
             </Button>
           </div>
         </Form>
+        
       </Col>
     </Row>
     // </section>

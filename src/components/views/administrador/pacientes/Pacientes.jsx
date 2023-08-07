@@ -6,32 +6,26 @@ import { useEffect, useState } from "react";
 import { obtenerPacientes } from "../../../helpers/queriesPacientes";
 import Swal from "sweetalert2";
 import { obtenerUsuarios } from "../../../helpers/queriesUsuarios";
+import { useFetchData } from "../../../hooks/useFetchData";
 
 const Pacientes = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [pacientes, setPacientes] = useState([]);
 
   const [usuarios, setUsuarios] = useState([]);
+  const [pacientes, setPacientes] = useState([]);
+
+  const { data: pacientesData, isLoading: pacientesIsLoading, error: pacientesError, refetchData: refetchPacientes } = useFetchData("pacientes");
+  const { data: usuariosData, isLoading: usuariosIsLoading, error: usuariosError, refetchData: refetchUsuarios } = useFetchData("usuarios");
+  
 
   useEffect(() => {
-    obtenerUsuarios().then((respuesta) => {
-      if (respuesta) {
-        setUsuarios(respuesta);
-      } else {
-        Swal.fire("Ocurrió un error", "No se puede obtener usuarios", "error");
-      }
-    });
-  }, []);
+    setUsuarios(usuariosData);
+    setPacientes(pacientesData);
+  }, [pacientesData, usuariosData]);
 
-  useEffect(() => {
-    obtenerPacientes().then((respuesta) => {
-      if (respuesta) {
-        setPacientes(respuesta);
-      } else {
-        Swal.fire("Ocurrió un error", "No se puede obtener pacientes", "error");
-      }
-    });
-  }, []);
+  function recargarData() {
+    refetchPacientes();
+  }
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -43,7 +37,7 @@ const Pacientes = () => {
       >
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <CrearPaciente usuarios={usuarios}></CrearPaciente>
+          <CrearPaciente usuarios={usuarios} recargarData={recargarData}></CrearPaciente>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={props.onHide}>
@@ -87,7 +81,7 @@ const Pacientes = () => {
         </thead>
         <tbody>
           {pacientes.map((paciente) => (
-            <RowPaciente paciente={paciente} key={paciente.id}></RowPaciente>
+            <RowPaciente paciente={paciente} key={paciente.id} recargarData={recargarData}></RowPaciente>
           ))}
         </tbody>
       </Table>
