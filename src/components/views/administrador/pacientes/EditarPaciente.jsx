@@ -1,4 +1,3 @@
-import React from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -17,15 +16,15 @@ const EditarPaciente = () => {
     crearPaciente(editarPaciente).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
-          "Paciente creado",
-          `El paciente ${editarPaciente.nombrePaciente} fue creado correctamente`,
+          "Paciente editado",
+          `El paciente ${editarPaciente.nombrePaciente} fue editado correctamente`,
           "success"
         );
         reset();
       } else {
         Swal.fire(
           "Ocurrio un error",
-          `El paciente ${editarPaciente.nombrePaciente} no pudo ser creado, intente en unos minutos`,
+          `El paciente ${editarPaciente.nombrePaciente} no pudo ser editado, intente en unos minutos`,
           "error"
         );
       }
@@ -48,7 +47,7 @@ const EditarPaciente = () => {
               <Col xs={12} md={6}>
                 <Form.Label>Nombre*</Form.Label>
                 <Form.Control
-                  disabled="true"
+                  disabled={true}
                 />
                 <Form.Text className="text-danger">
                   {errors.nombrePaciente?.message} <br />
@@ -72,23 +71,6 @@ const EditarPaciente = () => {
                 <Form.Text className="text-danger">
                   {errors.apellidoPaciente?.message} <br />
                 </Form.Text>{" "}
-                <Form.Label>E-mail*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ingrese un email"
-                  {...register("email", {
-                    required: "El email es un dato obligatorio.",
-                    pattern: {
-                      value:
-                        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                      message:
-                        "El email debe tener un formato valido (mail@dominio.com)",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.email?.message} <br />
-                </Form.Text>
               </Col>
               <Col xs={12} md={6}>
                 <Form.Label>Telefono*</Form.Label>

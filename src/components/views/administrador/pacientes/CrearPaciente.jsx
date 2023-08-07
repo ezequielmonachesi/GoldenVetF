@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -17,6 +17,12 @@ const CrearPaciente = ({ usuarios }) => {
   const [usuarioBuscado, setUsuarioBuscado] = useState([]);
   const [usuarioEncontrado, setUsuarioEncontrado] = useState([]);
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState("");
+  const [usuariosSinPaciente, setUsuariosSinPaciente] = useState([]);
+
+  useEffect(() => {
+    const usuariosFiltrados = usuarios.filter((usuario) => !usuario.paciente);
+    setUsuariosSinPaciente(usuariosFiltrados);
+  }, [usuarios]);
 
   useEffect(() => {
     if (usuarioSeleccionado.id) {
@@ -31,7 +37,7 @@ const CrearPaciente = ({ usuarios }) => {
   const handleUsuarioChange = (e) => {
     const usuarioIdSeleccionado = e.target.value;
     // Buscar el usuario correspondiente al usuarioIdSeleccionado
-    const usuarioIdElegido = usuarios.find(
+    const usuarioIdElegido = usuariosSinPaciente.find(
       (usuario) => usuario.id === usuarioIdSeleccionado
     );
     // Actualizar el estado con el usuario seleccionado
@@ -45,12 +51,12 @@ const CrearPaciente = ({ usuarios }) => {
 
   const buscarUsuario = (usuarioBuscado) => {
     if (usuarioBuscado) {
-      const usuarioEncontrado = usuarios.filter((usuario) => {
+      const usuarioEncontrado = usuariosSinPaciente.filter((usuario) => {
         return usuario.nombreUsuario.toLowerCase().includes(usuarioBuscado);
       });
       setUsuarioEncontrado(usuarioEncontrado);
       console.log(usuarioEncontrado);
-    }
+    } 
   };
 
   const onSubmit = (pacienteNuevo) => {
@@ -105,6 +111,7 @@ const CrearPaciente = ({ usuarios }) => {
                 usuarios
               </p>
               <Form.Select
+                {...register("idUsuario")}
                 aria-label="Default select example"
                 onChange={handleUsuarioChange}
               >
@@ -167,23 +174,6 @@ const CrearPaciente = ({ usuarios }) => {
                 <Form.Text className="text-danger">
                   {errors.apellido?.message} <br />
                 </Form.Text>{" "}
-                <Form.Label>E-mail*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ingrese un email"
-                  {...register("email", {
-                    required: "El email es un dato obligatorio.",
-                    pattern: {
-                      value:
-                        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                      message:
-                        "El email debe tener un formato valido (mail@dominio.com)",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.email?.message} <br />
-                </Form.Text>
               </Col>
               <Col xs={12} md={6}>
                 <Form.Label>Telefono*</Form.Label>
@@ -225,95 +215,6 @@ const CrearPaciente = ({ usuarios }) => {
                 />
                 <Form.Text className="text-danger">
                   {errors.direccion?.message} <br />
-                </Form.Text>
-              </Col>
-            </Row>
-          </Form.Group>
-          <h6 className="mt-5 mb-3">
-            <span className="border-bottom border-warning">Mas</span>cota
-          </h6>
-          <Form.Group className="mb-3" controlId="formNombrePaciente">
-            <Row className="justify-content-start">
-              <Col xs={12} md={6}>
-                <Form.Label>Nombre*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Tobi"
-                  {...register("mascota.nombre", {
-                    required: "El nombre de la mascota es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 2 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.mascota?.nombre?.message} <br />
-                </Form.Text>
-                <Form.Label>Especie*</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Perro"
-                  {...register("mascota.especie", {
-                    required: "La especie de la mascota es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 2 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.mascota?.especie?.message}
-                </Form.Text>
-              </Col>
-              <Col xs={12} md={6}>
-                <Form.Label>Raza</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Labrador"
-                  {...register("mascota.raza", {
-                    required: "El nombre de la raza es obligatorio.",
-                    minLength: {
-                      value: 2,
-                      message: "Cantidad mínima de 50 caracteres.",
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: "Cantidad máxima de 50 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.mascota?.raza?.message}
-                </Form.Text>
-              </Col>
-              <Col xs={12} md={6}>
-                <Form.Label>Historial Médico</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ej: Está con fiebre"
-                  {...register("mascota.historialMedico", {
-                    required: "El historial médico es obligatorio.",
-                    minLength: {
-                      value: 10,
-                      message: "Cantidad mínima de 10 caracteres.",
-                    },
-                    maxLength: {
-                      value: 300,
-                      message: "Cantidad máxima de 300 caracteres.",
-                    },
-                  })}
-                />
-                <Form.Text className="text-danger">
-                  {errors.mascota?.historialMedico?.message}
                 </Form.Text>
               </Col>
             </Row>
