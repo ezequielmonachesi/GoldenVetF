@@ -24,7 +24,6 @@ const EditarServicio = ({ id, actualizarServicios }) => {
       setValue("imagen", respuesta.imagen);
       setValue("descripcion", respuesta.descripcion);
       respuesta.subservicios.forEach((subservicio, index) => {
-        // Aquí accedemos a los campos de subservicios y establecemos sus valores con setValue
         setValue(`subservicios[${index}].nombreSubservicio`, subservicio.nombreSubservicio);
         setValue(`subservicios[${index}].imagenSubservicio`, subservicio.imagenSubservicio);
         setValue(`subservicios[${index}].descripcionSubservicio`, subservicio.descripcionSubservicio);

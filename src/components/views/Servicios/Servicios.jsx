@@ -6,11 +6,8 @@ import { Spinner } from "react-bootstrap";
 
 const Servicios = () => {
   const [servicios, setServicios] = useState([]);
-
   const { data, isLoading, error } = useFetchData("servicios");
 
-
-  // Function to split the servicios array into smaller arrays of three elements each
   const chunkArray = (array, size) => {
     const chunks = [];
     for (let i = 0; i < array.length; i += size) {
