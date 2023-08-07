@@ -1,4 +1,4 @@
-import { Col, Card, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import FormularioEditarTurno from "./FormularioEditarTurno";
 import { borrarTurno } from "../../../helpers/queriesTurnos";
@@ -36,7 +36,7 @@ const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
     });
   };
 
-  const ModalEditarTurno = ({ turno }) => {
+  const ModalEditarTurno = ({ turno,actualizarTurnos }) => {
     return (
       <>
         <Modal
@@ -61,7 +61,6 @@ const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
   };
   return (
     <>
-      <tr>
         <td>{turno.paciente}</td>
         <td>{turno.fechaYHora}</td>
         <td>{turno.veterinario}</td>
@@ -70,12 +69,11 @@ const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
           <Button variant="warning" onClick={handleShow}>
             Editar Turno
           </Button>
-          <Button href="#" variant="danger" onClick={eliminarTurno}>
+          <Button variant="danger" onClick={eliminarTurno}>
             Borrar turno
           </Button>
         </td>
-      </tr>
-      <ModalEditarTurno turno={turno} />
+      <ModalEditarTurno turno={turno} actualizarTurnos={actualizarTurnos}/>
     </>
   );
 };

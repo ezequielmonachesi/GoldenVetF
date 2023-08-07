@@ -33,7 +33,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
             )}
 
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'usuario' && (
-              <NavLink end to={'/usuario'} className={'nav-item nav-link'}>Usuario</NavLink>
+              <NavLink end to={'/usuario/'+usuarioLogueado.id} className={'nav-item nav-link'}>Usuario</NavLink>
             )}
 
             {!usuarioLogueado.nombreUsuario && (
