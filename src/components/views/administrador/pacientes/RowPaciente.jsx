@@ -3,6 +3,8 @@ import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import EditarPaciente from "./EditarPaciente";
 import FormularioAgregarMascota from "./FormularioAgregarMascota";
+import { borrarPaciente } from "../../../helpers/queriesPacientes";
+import Swal from "sweetalert2";
 
 const RowPaciente = ({ paciente, refetchData }) => {
   const [modalShowEditarPaciente, setModalShowEditarPaciente] = useState(false);
@@ -14,6 +16,17 @@ const RowPaciente = ({ paciente, refetchData }) => {
 
   function onFormEditarPacienteSubmit() {
     setModalShowEditarPaciente(false);
+  }
+
+  function borrar() {
+    borrarPaciente(paciente.id).then((respuesta) => {
+      if (respuesta && respuesta.status === 200) {
+        Swal.fire('Paciente eliminado', `El paciente ${paciente.nombreDuenio} fue eliminada correctamente`, 'success');
+        refetchData();
+      } else {
+        Swal.fire('Ocurrió un error', `El paciente ${paciente.nombreDuenio} no pudo ser eliminado, intente en unos minutos`, 'error');
+      }
+    })
   }
 
   function MyVerticallyCenteredModal(props) {
@@ -89,7 +102,7 @@ const RowPaciente = ({ paciente, refetchData }) => {
             </Link>
           </div>
           <div>
-            <Button variant="danger" className="me-2">
+            <Button onClick={() => borrar()} variant="danger" className="me-2">
               Borrar
             </Button>
           </div>
