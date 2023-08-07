@@ -3,8 +3,12 @@ import ListadoMascotas from "./ListadoMascotas";
 import ListadoTurnos from "./ListadoTurnos";
 import FormularioNuevoUsuario from "./FormulariuoNuevoUsuario";
 import { useFetchDataById } from "../../hooks/useFetchDataById";
+import { Navigate } from "react-router-dom";
 
 const Usuario = ({usuarioLogueado}) => {
+    if(!usuarioLogueado){
+    return <Navigate to="/login"/>
+    }
 
     const { data, isLoading, error, refetchData } = useFetchDataById("usuarios", usuarioLogueado.id);
 

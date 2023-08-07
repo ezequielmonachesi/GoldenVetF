@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Usuario from "../views/usuario/Usuario";
 
-const RutasAdministrador = () => {
+const RutaUsuario = (usuarioLogueado) => {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Usuario/>}/>
+        <Route exact path="/*" element={<Usuario usuarioLogueado={usuarioLogueado}/>}/>
       </Routes>
     </>
   );
 };
 
-export default RutasAdministrador;
+export default RutaUsuario;
