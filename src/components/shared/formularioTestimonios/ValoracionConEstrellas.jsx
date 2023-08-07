@@ -1,10 +1,15 @@
 import { StarFill } from "react-bootstrap-icons";
 import { useState } from "react";
+import { useForm} from "react-hook-form";
 import "./FormularioTestimonios.css";
 
 const ValoracionConEstrellas = () => {
   const [valoracion, setValoracion] = useState(null);
   const [hover, setHover] = useState(null);
+  const {
+    register,    
+    formState: { errors },        
+  } = useForm();
 
   return (
     <div>
@@ -19,6 +24,17 @@ const ValoracionConEstrellas = () => {
               className="radiobuton-formTestimonios"
               value={valoracionValue}
               onClick={() => setValoracion(valoracionValue)}
+              {...register("puntuacion", {
+                required: "El nombre del servicio es obligatorio.",
+                minLength: {
+                  value: 2,
+                  message: "Cantidad mínima de 2 caracteres.",
+                },
+                maxLength: {
+                  value: 50,
+                  message: "Cantidad máxima de 50 caracteres.",
+                },
+              })}
 
             />
             <StarFill
