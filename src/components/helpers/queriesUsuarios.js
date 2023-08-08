@@ -1,26 +1,16 @@
 const URL_USUARIOS = import.meta.env.VITE_API_USUARIOS;
 const URL_LOGIN = import.meta.env.VITE_API_BASE;
 
-const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'))
-
-export const login = async (usuario)=>{
-    try{
-        const respuesta = await fetch(URL_LOGIN,{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(usuario)
-        });
-
-        const usuarioLogueado = await respuesta.json();
-        return usuarioLogueado
-       
-    }catch(error){
-        console.log(error)
-    }
-}
-
+export const login = async (usuario) => {
+  try {
+    const respuesta = await fetch(URL_LOGIN, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    
 export const obtenerUsuarios = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {

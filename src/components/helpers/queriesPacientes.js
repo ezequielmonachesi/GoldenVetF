@@ -1,6 +1,5 @@
 const URL_PACIENTES = import.meta.env.VITE_API_PACIENTES;
 
-
 export const obtenerPacientes = async ()=>{
     const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
