@@ -12,3 +12,11 @@
     border: 2px solid black;
     resize: none;
   }
+
+  .formulario-testimonios button {
+    background-color: #c58940 ;
+    
+  }
+  .icono-formulario-testimonio{
+    color: #c58940;
+  }

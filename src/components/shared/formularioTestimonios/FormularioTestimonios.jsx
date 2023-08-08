@@ -41,7 +41,7 @@ const FormularioTestimonios = () => {
             <Col xs={12}>
               <div className="d-flex flex-row justify-content-between align-items-center">
                 <h5>Envíanos tu comentario</h5>
-                <ChatHeartFill className="fs-2"></ChatHeartFill>
+                <ChatHeartFill className="fs-2 icono-formulario-testimonio"></ChatHeartFill>
               </div>
             </Col>
             <Col className="mt-3">

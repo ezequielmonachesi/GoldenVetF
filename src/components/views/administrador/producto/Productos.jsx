@@ -1,71 +1,72 @@
 import { useFetchData } from "../../../hooks/useFetchData";
-import {
-  Button,
-  Container,
-  Table,
-  Modal,
-  Spinner,
-} from "react-bootstrap";
-import { Clipboard2PlusFill } from "react-bootstrap-icons";
+import { Button, Container, Table, Modal, Spinner } from "react-bootstrap";
 import { useState } from "react";
 import ListaProductos from "./ListaProductos";
 import CrearProducto from "./CrearProducto";
 
 const Productos = () => {
-    const { data, isLoading, refetchData } = useFetchData("productos");
-    const [modalShow, setModalShow] = useState(false);
-
-
+  const { data, isLoading, refetchData } = useFetchData("productos");
+  const [modalShow, setModalShow] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredData = data.filter((producto) =>
+    producto.nombreProducto.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const actualizarProductos = async () => {
     await refetchData();
   };
 
   return (
-    <Container className="bg-white">
-      <h1 className="m-5">Administrar Productos</h1>
-      <h3>
-        Agregar nuevo producto:{" "}
+    <Container>
+      <input
+        type="text"
+        placeholder="Buscar producto..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <div className="p-3 d-flex justify-content-end">
         <Button variant="success" onClick={() => setModalShow(true)}>
-          <Clipboard2PlusFill />
+          Crear Producto
         </Button>
-        <VentanaModalCrearProducto
-        className='modal-crud'
+      </div>
+      <VentanaModalCrearProducto
+        className="modal-crud"
         show={modalShow}
         onHide={() => {
-            setModalShow(false)
+          setModalShow(false);
         }}
         actualizarProductos={actualizarProductos}
       ></VentanaModalCrearProducto>
-      </h3>
+
       <hr />
       {isLoading ? (
         <div className="d-flex justify-content-center">
           <Spinner size="lg" variant="primary" />
         </div>
       ) : (
-        <Table responsive>
+        <Table responsive striped bordered hover>
           <thead>
             <tr>
-              <th>N°</th>
               <th>Producto</th>
               <th>Precio</th>
               <th>Stock</th>
               <th>Descripcion</th>
               <th>Imagen</th>
-              <th>Opciones</th>
+              <th className="col-1">Opciones</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((producto, index) => (
-              <tr key={producto.id}>
-                <ListaProductos
-                  producto={producto}
-                  index={index}
-                  actualizarProductos={actualizarProductos}
-                />
-              </tr>
-            ))}
+            {data &&
+              filteredData.map((producto, index) => (
+                <tr key={producto.id}>
+                  <ListaProductos
+                    producto={producto}
+                    index={index}
+                    actualizarProductos={actualizarProductos}
+                  />
+                </tr>
+              ))}
           </tbody>
         </Table>
       )}
@@ -73,9 +74,13 @@ const Productos = () => {
   );
 };
 function VentanaModalCrearProducto(props) {
-    const { actualizarProductos, ...restProps } = props;
+  const { actualizarProductos, ...restProps } = props;
   return (
-    <Modal{...restProps} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal
+      {...restProps}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <CrearProducto actualizarProductos={actualizarProductos} />
@@ -88,6 +93,5 @@ function VentanaModalCrearProducto(props) {
     </Modal>
   );
 }
-
 
 export default Productos;
