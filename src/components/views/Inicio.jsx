@@ -3,6 +3,7 @@ import Publicidad from "../shared/Inicio/Publicidad";
 import FormularioTestimonios from '../shared/formularioTestimonios/FormularioTestimonios';
 import ProductosInicio from "../shared/Inicio/ProductosInicio";
 import BannerPrincipal from "./BannerPrincipal";
+import TestimoniosPaginaInicio from "./TestimoniosPaginaInicio";
 import BannerPublicidad from "./BannerPublicidad";
 
 const Inicio = () => {
@@ -11,8 +12,9 @@ const Inicio = () => {
       <BannerPrincipal />
       <Publicidad />
       <Planes />
-      <BannerPublicidad></BannerPublicidad>
+      <BannerPublicidad />
       <ProductosInicio />
+      <TestimoniosPaginaInicio />
       <FormularioTestimonios/>
     </section>
   );

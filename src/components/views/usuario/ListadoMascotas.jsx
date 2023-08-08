@@ -22,11 +22,7 @@ const ListadoMascotas = ({ usuarioLogueado }) => {
     setListadoMascotas(
       mascotas?.map((mascota) => (
         <CardMascotaUsuario
-          nombre={mascota.nombre}
-          especie={mascota.especie}
-          raza={mascota.raza}
-          historialMedico={mascota.historialMedico}
-          imagen={mascota.imagen}
+          mascota={mascota}
           key={mascota.nombre}
         />
       ))
