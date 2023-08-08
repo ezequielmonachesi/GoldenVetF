@@ -48,7 +48,7 @@ const DetalleMascota = ({ mascota }) => {
                             <h2 className="text-center">No hay historial médico disponible.</h2>
                         ) : (
                             listadoHistorialMedico.map((historial) => {
-                                return <CardHistorialMedico historial={historial} key={historial.id} />;
+                                return <CardHistorialMedico historial={historial} key={historial._id} />;
                             })
                         )}
                     </Col>
