@@ -60,7 +60,7 @@ const Comentarios = () => {
                 <th>Comentario</th>
                 <th>Puntuación</th>
                 <th>Creado</th>
-                <th>Acciones</th>
+                <th className="col-1">Acciones</th>
               </tr>
             </thead>
             <tbody>

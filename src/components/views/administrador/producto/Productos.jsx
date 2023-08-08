@@ -123,40 +123,45 @@ const Productos = () => {
 
     
     return (
-        <Container className='bg-white'>
-            <h1 className='m-5'>Administrar Productos</h1>
-            <h3>
-                Agregar nuevo producto: <Button variant="success" onClick={handleShow}><Clipboard2PlusFill/></Button>
-            </h3>
-            <hr/>
+        <Container>
+      <div className="p-3 d-flex justify-content-end">
+        <Button
+          variant="success"
+          
+          onClick={() => handleShow(true)}
+        >
+          Crear Producto
+        </Button>
+      </div>
+           
             {isLoading ? (
             <div className="d-flex justify-content-center">
             <Spinner size="lg" variant="primary" />
             </div>
           ) :
-            <Table responsive>
+            <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>N°</th>
+                        
                         <th>Producto</th>
                         <th>Precio</th>
                         <th>Stock</th>
                         <th>Descripcion</th>
                         <th>Imagen</th>
-                        <th>Opciones</th>
+                        <th className="col-1">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((prod, index)=>(
                             <tr key={index}>
-                                <td>{index+1}</td>
+                                
                                 <td className='truncarTexto'>{prod.nombreProducto}</td>
                                 <td>{prod.precio}</td>
                                 <td className={prod.stock <= 5 ? 'text-danger fw-bold' : ''}>{prod.stock}</td>
-                                <td className='truncarTexto'>{prod.descripcion}</td>
-                                <td className='truncarTexto'>{prod.imagen}</td>
-                                <td>
-                                    <Button variant="warning" className='me-2 my-2' 
+                                <td className="text-truncate truncarTexto">{prod.descripcion}</td>
+                                <td className='text-truncate truncarTexto'>{prod.imagen}</td>
+                                <td className="d-flex justify-content-end">
+                                    <Button variant="warning" 
                                     onClick={()=>modProducto(prod,prod.id)}>
                                         Editar
                                     </Button>

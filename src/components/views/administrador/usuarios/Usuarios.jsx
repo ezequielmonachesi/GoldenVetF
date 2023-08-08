@@ -3,7 +3,7 @@ import {
   borrarUsuario,
 } from "../../../helpers/queriesUsuarios";
 import Swal from "sweetalert2";
-import { Button, Table, Modal, Spinner } from "react-bootstrap";
+import { Button, Table, Modal, Spinner, Container } from "react-bootstrap";
 import "./usuarios.css";
 import CrearUsuario from "./CrearUsuario";
 import EditarUsuario from "./EditarUsuario";
@@ -59,16 +59,16 @@ const Usuarios = () => {
 
 
   return (
-    <>
-      <div className="container p-3 d-flex justify-content-end">
+    <Container>
+      <div className="p-3 d-flex justify-content-end">
         <Button
-          variant="success"
-          className="boton-crearUsuario"
+          variant="success"         
           onClick={() => setModalShow(true)}
         >
           Crear Usuario
         </Button>
       </div>
+     
       <VentanaModalCrearUsuario
       className='modal-crud'
         show={modalShow}
@@ -77,8 +77,7 @@ const Usuarios = () => {
         }}
         actualizarUsuarios={actualizarUsuarios}
       ></VentanaModalCrearUsuario>
-      ;
-      {id && (
+       {id && (
         <VentanaModalEditarUsuario
           className='modal-crud'
           show={modalShowEditar}
@@ -94,25 +93,23 @@ const Usuarios = () => {
             </div>
           ) :
 
-      <Table responsive striped>
+      <Table responsive striped bordered hover>
         <thead>
-          <tr>
-            <th>N°</th>
+          <tr>            
             <th>Nombre Usuario</th>
             <th>Email</th>
             <th>Rol</th>
-            <th>Administrar</th>
+            <th className="col-1">Opciones</th>
           </tr>
         </thead>
         <tbody>
           {data &&
             data?.map((usuario, index) => (
-              <tr key={index+1}>
-                <td>{index+1}</td>
+              <tr key={index}>                
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>
                 <td>{usuario.rol}</td>
-                <td>
+                <td className="d-flex justify-content-end">
                   <Button
                     onClick={() => handleEditarUsuario(usuario.id)}
                     variant="warning"
@@ -131,7 +128,7 @@ const Usuarios = () => {
         </tbody>
       </Table>
 }
-    </>
+    </Container>
   );
 };
 

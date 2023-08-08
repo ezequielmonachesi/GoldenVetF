@@ -3,7 +3,7 @@ import {
   borrarServicio,  
 } from "../../../helpers/queriesServicios";
 import Swal from "sweetalert2";
-import { Button, Table, Modal, Spinner } from "react-bootstrap";
+import { Button, Table, Modal, Spinner, Container } from "react-bootstrap";
 import "./servicios.css";
 import CrearServicio from "../servicios/CrearServicio";
 import EditarServicio from "./EditarServicio";
@@ -59,7 +59,7 @@ const Servicios = () => {
 
 
   return (
-    <>
+    <Container>
       <div className="container p-3 d-flex justify-content-end">
         <Button
           variant="success"
@@ -77,8 +77,7 @@ const Servicios = () => {
         }}
         actualizarServicios={actualizarServicios}
       ></VentanaModalCrearServicio>
-      ;
-      {id && (
+        {id && (
         <VentanaModalEditarServicio
           className='modal-crud'
           show={modalShowEditar}
@@ -94,25 +93,24 @@ const Servicios = () => {
             </div>
           ) :
 
-      <Table responsive striped>
+      <Table responsive striped bordered hover>
         <thead>
-          <tr>
-            <th>N°</th>
+          <tr>            
             <th>Nombre Servicio</th>
             <th>imagen</th>           
-            <th>Administrar</th>
+            <th className="col-1">Opciones</th>
           </tr>
         </thead>
         <tbody>
           {data &&
             data?.map((servicio,key) => (
               <tr key={key}>
-                <td>{key+1}</td>
+                
                 <td>{servicio.nombreServicio}</td>
-                <td>                
+                <td className='text-truncate truncarTexto'>                
                   {servicio.imagen}
                   </td>
-                <td>
+                <td className="d-flex justify-content-end">
                   <Button
                     onClick={() => handleEditarServicio(servicio.id)}
                     variant="warning"
@@ -131,7 +129,7 @@ const Servicios = () => {
         </tbody>
       </Table>
 }
-    </>
+    </Container>
   );
 };
 

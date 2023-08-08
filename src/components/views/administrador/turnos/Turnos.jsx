@@ -50,8 +50,8 @@ const Turnos = () => {
 
   return (
     <>
-      <Container >
-        <div className="d-flex justify-content-end mb-4">
+      <Container>
+        <div className="container p-3 d-flex justify-content-end">
           <Button variant='success' onClick={handleShow}>Crear Turno</Button>
         </div>
         {isLoading ? (
@@ -66,7 +66,7 @@ const Turnos = () => {
         <th>Fecha y Hora</th>
         <th>Veterinario</th>
         <th>Detalle de la Visita</th>
-        <th>Acciones</th>
+        <th className="col-1">Opciones</th>
       </tr>
     </thead>
     <tbody>
