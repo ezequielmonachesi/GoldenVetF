@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Table, Button, Spinner, Modal } from "react-bootstrap";
 import ListaComentarios from "./ListaComentarios";
 import { useFetchData } from "../../../hooks/useFetchData";
@@ -10,6 +10,11 @@ const Comentarios = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((comentario) =>
+  comentario.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -27,7 +32,7 @@ const Comentarios = () => {
     await refetchData();
   };
 
-  const ModalCrearComentario = () => {
+  const ModalCrearComentario = ({actualizarComentarios}) => {
     return (
         <Modal
           show={show}
@@ -38,7 +43,7 @@ const Comentarios = () => {
             <Modal.Title>Crear Comentario</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CrearComentario actualizarComentarios={actualizarComentarios} refetchData={refetchData}/>
+            <CrearComentario actualizarComentarios={actualizarComentarios}/>
           </Modal.Body>
         </Modal>
     );
@@ -47,6 +52,15 @@ const Comentarios = () => {
   return (
     <>
       <Container className="mt-2">
+
+      <input
+  type="text"
+  placeholder="Buscar comentario de..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
+
         <div className="d-flex justify-content-end my-3">
           <Button onClick={()=>setShow(true)} variant="success">
             Crear Comentario
@@ -60,7 +74,7 @@ const Comentarios = () => {
                 <th>Comentario</th>
                 <th>Puntuación</th>
                 <th>Creado</th>
-                <th>Acciones</th>
+                <th className="col-1">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +85,7 @@ const Comentarios = () => {
                   </td>
                 </tr>
               ) : (
-                data
+                data && filteredData 
                   .slice(startIndex, endIndex)
                   .sort((a, b) => new Date(a.creado) - new Date(b.creado))
                   .map((comentario) => (
@@ -109,7 +123,7 @@ const Comentarios = () => {
           </div>
         )}
       </Container>
-      <ModalCrearComentario />
+      <ModalCrearComentario actualizarComentarios={actualizarComentarios}/>
     </>
   );
 };

@@ -26,9 +26,9 @@ export const crearServicio = async (servicio) => {
     const respuesta = await fetch(URL_SERVICIOS, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",        
-          "x-token": usuarioLogueado.token,
-        },      
+        "Content-Type": "application/json",
+        "x-token": usuarioLogueado.token,
+      },
       body: JSON.stringify(servicio),
     });
     return respuesta;
