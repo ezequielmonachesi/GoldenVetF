@@ -66,8 +66,17 @@ body {
   background-image: url(../src/assets/Banner.png);
 }
 
-.react-multiple-carousel__arrow{
-background: rgba(206, 159, 3, 0.603) !important;
+.react-multiple-carousel__arrow {
+  background: rgba(206, 159, 3, 0.603) !important;
+}
+.border-card-testimonios {
+  border: 1px solid rgba(206, 159, 3, 0.603) !important;
+}
+.estrella-dorada{
+  color: #e5ba73;
+}
+.cuerpo-comentario{
+  min-height: 12rem;
 }
 
 @media all and (min-width: 768px) and (max-width: 991px) {
@@ -103,7 +112,7 @@ background: rgba(206, 159, 3, 0.603) !important;
   .logo {
     height: 65px;
   }
-  
+
   .truncarTexto {
     max-width: 150px;
     max-height: 150px;
@@ -113,6 +122,9 @@ background: rgba(206, 159, 3, 0.603) !important;
   /* Footer */
   .bg-footer {
     background-color: #c58940;
+  }
+  .cuerpo-comentario{
+    min-height: 14rem;
   }
 }
 
