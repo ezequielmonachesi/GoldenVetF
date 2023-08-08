@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useFetchData } from "../hooks/useFetchData";
 import { obtenerComentarios } from "../helpers/queriesComentarios";
 import Swal from "sweetalert2";
 
@@ -85,10 +84,10 @@ const TestimoniosPaginaInicio = () => {
                 <Card.Body>
                   <Card.Title>{testimonio.nombre}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    xxxx
+                    {testimonio.creado}
                   </Card.Subtitle>
                   <Card.Text>
-                    Muy buena atención siempre llevo a mi perrito y son geniales
+                    {testimonio.comentario}
                   </Card.Text>
                 </Card.Body>
               </Card>
