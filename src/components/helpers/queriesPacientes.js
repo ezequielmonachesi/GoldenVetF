@@ -15,7 +15,7 @@ export const obtenerPacientes = async () => {
   } catch (error) {
     console.log(error);
   }
-
+}
 
 export const obtenerPaciente = async (id) => {
   const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
