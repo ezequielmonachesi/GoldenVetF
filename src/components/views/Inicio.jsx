@@ -4,6 +4,7 @@ import DetalleProducto from "./DetalleProducto";
 
 import ProductosInicio from "../shared/Inicio/ProductosInicio";
 import BannerPrincipal from "./BannerPrincipal";
+import TestimoniosPaginaInicio from "./TestimoniosPaginaInicio";
 
 const Inicio = () => {
   return (
@@ -12,6 +13,7 @@ const Inicio = () => {
       <Publicidad />
       <Planes />
       <ProductosInicio />
+      <TestimoniosPaginaInicio />
     </section>
   );
 };
