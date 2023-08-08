@@ -19,7 +19,7 @@ const DetalleServicios = () => {
     <Container className="align-items-center container-detalles-servicio">
       <Row className="m-1 grilla-detalle-servicio justify-content-center">
         <h1 className="text-center titulo-detalle-servicio">{servicio.nombreServicio}</h1>
-    <p>{servicio.descripcion}</p>
+    <p className="text-center plan-description">{servicio.descripcion}</p>
     <h2 className="text-center">Servicios</h2>
        {servicio.subservicios && servicio.subservicios.map((subservicio,index) =>(
                 <Col key={index} xs={12} md={6} lg={6} className="py-5 row">

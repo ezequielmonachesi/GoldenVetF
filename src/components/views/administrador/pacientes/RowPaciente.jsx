@@ -77,11 +77,11 @@ const RowPaciente = ({ paciente, refetchData }) => {
         <td className="text-center">{paciente?.mascotas?.length}</td>
         <td>{paciente?.nombreDuenio} {paciente?.apellido}</td>
         <td>{paciente?.telefono}</td>
-        <td className="d-flex">
+        <td className="d-flex justify-content-end">
           <div>
             <Button
-              variant=""
-              className="bg-boton-planes text-white me-2"
+              variant="warning"
+              className=" me-2"
               onClick={() => setModalShowEditarPaciente(true)}
             >
               Editar
@@ -89,15 +89,15 @@ const RowPaciente = ({ paciente, refetchData }) => {
           </div>
           <div>
             <Button
-              variant=""
-              className="bg-boton-planes text-white me-2"
+              variant="success"
+              className="me-2"
               onClick={() => setModalShowAgregarMascota(true)}
             >
-              Agregar Mascota
+              +Mascota
             </Button>
           </div>
           <div>
-            <Link className="bg-boton-planes btn text-white me-2" to={""}>
+            <Link className="bg-info btn me-2" to={""}>
               Turno
             </Link>
           </div>

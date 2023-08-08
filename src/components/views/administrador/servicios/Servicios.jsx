@@ -3,7 +3,7 @@ import {
   borrarServicio,  
 } from "../../../helpers/queriesServicios";
 import Swal from "sweetalert2";
-import { Button, Table, Modal, Spinner } from "react-bootstrap";
+import { Button, Table, Modal, Spinner, Container } from "react-bootstrap";
 import "./servicios.css";
 import CrearServicio from "../servicios/CrearServicio";
 import EditarServicio from "./EditarServicio";
@@ -14,6 +14,10 @@ const Servicios = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalShowEditar, setModalShowEditar] = useState(false);
   const [id, setId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((servicio) =>
+  servicio.nombreServicio.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   const handleBorrarServicio = (servicio) => {
     borrarServicio(servicio.id).then((respuesta) => {
@@ -59,7 +63,15 @@ const Servicios = () => {
 
 
   return (
-    <>
+    <Container>
+
+<input
+  type="text"
+  placeholder="Buscar servicio..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
       <div className="container p-3 d-flex justify-content-end">
         <Button
           variant="success"
@@ -77,8 +89,7 @@ const Servicios = () => {
         }}
         actualizarServicios={actualizarServicios}
       ></VentanaModalCrearServicio>
-      ;
-      {id && (
+        {id && (
         <VentanaModalEditarServicio
           className='modal-crud'
           show={modalShowEditar}
@@ -94,21 +105,24 @@ const Servicios = () => {
             </div>
           ) :
 
-      <Table responsive striped>
+      <Table responsive striped bordered hover>
         <thead>
-          <tr>
-            <th>id</th>
+          <tr>            
             <th>Nombre Servicio</th>
-            <th>Administrar</th>
+            <th>imagen</th>           
+            <th className="col-1">Opciones</th>
           </tr>
         </thead>
         <tbody>
           {data &&
-            data?.map((servicio) => (
-              <tr key={servicio.id}>
-                <td>{servicio.id}</td>
+            filteredData?.map((servicio,key) => (
+              <tr key={key}>
+                
                 <td>{servicio.nombreServicio}</td>
-                <td>
+                <td className='text-truncate truncarTexto'>                
+                  {servicio.imagen}
+                  </td>
+                <td className="d-flex justify-content-end">
                   <Button
                     onClick={() => handleEditarServicio(servicio.id)}
                     variant="warning"
@@ -127,7 +141,7 @@ const Servicios = () => {
         </tbody>
       </Table>
 }
-    </>
+    </Container>
   );
 };
 

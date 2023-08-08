@@ -1,4 +1,4 @@
-import { Modal, Table, Button } from "react-bootstrap";
+import { Modal, Table, Button, Container,Spinner } from "react-bootstrap";
 import RowPaciente from "./RowPaciente";
 import CrearPaciente from "./CrearPaciente";
 import { useEffect, useState } from "react";
@@ -10,6 +10,11 @@ const Pacientes = () => {
   const [pacientes, setPacientes] = useState([]);
 
   const { data, isLoading, error, refetchData } = useFetchData("pacientes");  
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((paciente) =>
+  paciente.nombreDuenio.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 
   useEffect(() => {
     setPacientes(data);
@@ -37,13 +42,19 @@ const Pacientes = () => {
   }
 
   return (
-    <section className="container mainSection bg-white shadow-lg my-md-5 py-4 rounded-3">
+    <Container>
+      <input
+  type="text"
+  placeholder="Buscar dueño..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
       <div className="">
-        <h1 className="display-4 text-center">Administrador Pacientes</h1>
-        <div className="text-end">
+        
+        <div className="p-3 d-flex justify-content-end">
           <Button
-            variant=""
-            className="bg-boton-planes text-white"
+            variant="success"
             onClick={() => setModalShow(true)}
           >
             Crear Paciente
@@ -56,22 +67,28 @@ const Pacientes = () => {
         </div>
       </div>
       <hr />
+      {isLoading ? (
+            <div className="d-flex justify-content-center">
+            <Spinner size="lg" variant="primary" />
+            </div>
+          ) :
       <Table responsive striped bordered hover className="mt-3">
         <thead>
           <tr>
-            <th>N° Mascotas</th>
+            <th className="col-1">N° Mascotas</th>
             <th>Dueño</th>
             <th>Teléfono</th>
-            <th>Opciones</th>
+            <th className="col-1"> Opciones</th>
           </tr>
         </thead>
         <tbody>
-          {pacientes.map((paciente) => (
+          {data && filteredData.map((paciente) => (
             <RowPaciente paciente={paciente} key={paciente.id} refetchData={refetchData}></RowPaciente>
           ))}
         </tbody>
       </Table>
-    </section>
+}
+    </Container>
   );
 };
 
