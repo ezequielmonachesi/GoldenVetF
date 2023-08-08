@@ -12,7 +12,7 @@ const Productos = () => {
         <hr />
         <p className="text-center plan-description">
           Desde alimentos de alta calidad hasta juguetes entretenidos, pasando
-          por productos de higiene y cuidado, GoldenVet tiene todo lo que
+          por productos de higiene y cuidado, Golden Vet tiene todo lo que
           necesitas para mantener a tu querido amigo feliz y saludable en cada
           etapa de su vida.
         </p>

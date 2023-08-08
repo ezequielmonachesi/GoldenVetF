@@ -28,8 +28,20 @@ const Servicios = () => {
 
   return (
     <>
+        <div className="container bg-light rounded shadow p-sm-2 p-md-5">
+          <h1 className="text-center">Nuestros servicios</h1>
+          <hr />
+          <p className="text-center plan-description">
+            En Golden Vet, nos enorgullece ofrecer una amplia gama de servicios
+            veterinarios de alta calidad para cuidar de tus queridas mascotas.
+            Nuestro equipo de profesionales altamente capacitados está
+            comprometido con el bienestar y la salud de tus compañeros peludos.
+            Desde exámenes médicos exhaustivos hasta tratamientos
+            especializados, brindamos una atención compasiva y personalizada
+            para satisfacer las necesidades individuales de cada animal.
+          </p>
+        </div>
       <section className="container text-center bg-container-servicios position-relative p-3 my-5 rounded shadow">
-        <h2 className="display-4">Nuestros Servicios</h2>
         <hr />
         <div className="row justify-content-center">
           {isLoading ? (
