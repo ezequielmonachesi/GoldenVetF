@@ -5,14 +5,23 @@ import { useState } from "react";
 import EditarProducto from "./EditarProducto";
 
 const ListaProductos = ({
-  producto,
-  index,
+  producto,  
   actualizarProductos,
 }) => {
   const [modalShowEditar, setModalShowEditar] = useState(false);
 
   const eliminarProducto = (id) => {
     borrarProducto(id).then((respuesta) => {
+      Swal.fire({
+        title: "Esta seguro?",
+        text: "No podrás ser capaz de revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borralo!",
+      }).then((result) => {
+        if (result.isConfirmed) {
       if (respuesta && respuesta.status === 200) {
         Swal.fire(
           "Producto Eliminado!",
@@ -20,24 +29,28 @@ const ListaProductos = ({
           "success"
         );
         actualizarProductos();
-      } else
-        Swal.fire("Ocurrio un error", "No logro eliminar el producto", "error");
-    });
-  };
+      } else {
+        Swal.fire("Ocurrio un error", 
+        "No logro eliminar el producto", 
+        "error"
+        );
+      }
+    }
+  });
+});
+};
   return (
     <>
-      <td>{index + 1}</td>
       <td className="truncarTexto">{producto.nombreProducto}</td>
       <td>{producto.precio}</td>
       <td className={producto.stock <= 5 ? "text-danger fw-bold" : ""}>
         {producto.stock}
       </td>
-      <td className="truncarTexto">{producto.descripcion}</td>
-      <td className="truncarTexto">{producto.imagen}</td>
-      <td>
+      <td className="text-truncate truncarTexto">{producto.descripcion}</td>
+      <td className="text-truncate truncarTexto">{producto.imagen}</td>
+      <td className="d-flex justify-content-end">
         <Button
-          variant="warning"
-          className="me-2 my-2"
+          variant="warning"         
           onClick={() => setModalShowEditar(true)}
         >
           Editar

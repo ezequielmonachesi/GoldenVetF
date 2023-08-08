@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Col, Button, Modal } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import "./Servicios.css";
 import { Link } from "react-router-dom";
 const CardServicio = ({ descripcion, nombreServicio, imagen, id }) => {
