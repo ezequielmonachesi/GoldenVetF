@@ -9,7 +9,6 @@ body {
   background-attachment: fixed;
 }
 
-
 .mainSection {
   flex-grow: 1;
 }
@@ -38,27 +37,27 @@ body {
 .registro {
   color: #e5ba73;
 }
-.hoverEffect{
+.hoverEffect {
   transition: all 0.5s;
 }
 
-.hoverEffect:hover{
+.hoverEffect:hover {
   color: #e5ba73 !important;
   text-shadow: black 1px 0px 5px !important;
   transition: all 0.5s;
   transform: scale(1.03);
 }
 
-.italic{
+.italic {
   font-family: italic;
 }
 
-.btn-dorado{
+.btn-dorado {
   background-color: #c58940 !important;
   color: white !important;
 }
 
-.imgBanner{
+.imgBanner {
   background-image: url(../src/assets/Banner.png);
 }
 
@@ -95,11 +94,11 @@ body {
   .logo {
     height: 65px;
   }
-.truncarTexto {
-  max-width: 150px;
-  max-height: 150px;
-  overflow-x: auto;
-}
+  .truncarTexto {
+    max-width: 150px;
+    max-height: 150px;
+    overflow-x: auto;
+  }
 
   /* Footer */
   .bg-footer {
@@ -107,20 +106,20 @@ body {
   }
 }
 
-.boton-verMas-producto{
+.boton-verMas-producto {
   text-decoration: none;
   background-color: #e5ba73;
   padding: 10px 15px;
   width: 120px;
-  color:black
+  color: black;
 }
-.boton-verMas-productoInicio{
+.boton-verMas-productoInicio {
   text-decoration: none;
-  color:#c99e58;
+  color: #c99e58;
   font-weight: bold;
   font-size: 18px;
 }
-.boton-verMas-producto:hover{
+.boton-verMas-producto:hover {
   background-color: #caa467;
   color: white;
 }
@@ -131,15 +130,15 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.texto-productos{
-color: #caa467;
+.texto-productos {
+  color: #caa467;
 }
-.img-productos{
-object-fit: contain;
+.img-productos {
+  object-fit: contain;
 }
 
-.text-area-turnos{
-resize: none;
+.text-area-turnos {
+  resize: none;
 }
 
 .detalle-producto {

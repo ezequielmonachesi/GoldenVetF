@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { obtenerComentarios } from "../helpers/queriesComentarios";
@@ -79,19 +79,19 @@ const TestimoniosPaginaInicio = () => {
       >
         {testimonios.map((testimonio) => {
           return (
-            <div style={{ padding: "0 5px" }} key={testimonio.id}>
-              <Card className="mx-3" style={{ width: "100%" }}>
-                <Card.Body>
-                  <Card.Title>{testimonio.nombre}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    {testimonio.creado}
-                  </Card.Subtitle>
-                  <Card.Text>
-                    {testimonio.comentario}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </div>
+            <Row key={testimonio.id}>
+              <Col md={11}>
+                <Card className="mx-3">
+                  <Card.Body>
+                    <Card.Title>{testimonio.nombre}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      {testimonio.creado}
+                    </Card.Subtitle>
+                    <Card.Text>{testimonio.comentario}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           );
         })}
       </Carousel>
