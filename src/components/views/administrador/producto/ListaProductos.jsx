@@ -5,14 +5,23 @@ import { useState } from "react";
 import EditarProducto from "./EditarProducto";
 
 const ListaProductos = ({
-  producto,
-  index,
+  producto,  
   actualizarProductos,
 }) => {
   const [modalShowEditar, setModalShowEditar] = useState(false);
 
   const eliminarProducto = (id) => {
     borrarProducto(id).then((respuesta) => {
+      Swal.fire({
+        title: "Esta seguro?",
+        text: "No podrás ser capaz de revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borralo!",
+      }).then((result) => {
+        if (result.isConfirmed) {
       if (respuesta && respuesta.status === 200) {
         Swal.fire(
           "Producto Eliminado!",
@@ -20,10 +29,16 @@ const ListaProductos = ({
           "success"
         );
         actualizarProductos();
-      } else
-        Swal.fire("Ocurrio un error", "No logro eliminar el producto", "error");
-    });
-  };
+      } else {
+        Swal.fire("Ocurrio un error", 
+        "No logro eliminar el producto", 
+        "error"
+        );
+      }
+    }
+  });
+});
+};
   return (
     <>
       <td className="truncarTexto">{producto.nombreProducto}</td>

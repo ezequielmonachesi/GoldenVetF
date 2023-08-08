@@ -1,6 +1,5 @@
 import { useFetchData } from "../../../hooks/useFetchData";
 import { Button, Container, Table, Modal, Spinner } from "react-bootstrap";
-import { Clipboard2PlusFill } from "react-bootstrap-icons";
 import { useState } from "react";
 import ListaProductos from "./ListaProductos";
 import CrearProducto from "./CrearProducto";
@@ -27,7 +26,7 @@ const Productos = () => {
       />
 
       <div className="p-3 d-flex justify-content-end">
-        <Button variant="success" onClick={() => handleShow(true)}>
+        <Button variant="success" onClick={() => setModalShow(true)}>
           Crear Producto
         </Button>
       </div>
