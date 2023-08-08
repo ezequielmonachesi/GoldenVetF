@@ -29,6 +29,11 @@ body {
   background-color: #b5925b;
   color: white;
 }
+.truncarTexto {
+  max-width: 200px;
+  max-height: 150px;
+  overflow-x: auto;  
+}
 
 .inicia-sesion {
   color: #e5ba73;
@@ -98,6 +103,7 @@ background: rgba(206, 159, 3, 0.603) !important;
   .logo {
     height: 65px;
   }
+  
   .truncarTexto {
     max-width: 150px;
     max-height: 150px;

@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "./sobreNosotros.css";
 import silvior from "../../assets/silvior.jpg";

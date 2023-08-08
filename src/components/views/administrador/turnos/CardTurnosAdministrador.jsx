@@ -65,12 +65,12 @@ const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
         <td>{turno.fechaYHora}</td>
         <td>{turno.veterinario}</td>
         <td>{turno.detalleVisita}</td>
-        <td>
+        <td className="d-flex justify-content-end">
           <Button variant="warning" onClick={handleShow}>
-            Editar Turno
+            Editar
           </Button>
           <Button variant="danger" onClick={eliminarTurno}>
-            Borrar turno
+            Borrar
           </Button>
         </td>
       <ModalEditarTurno turno={turno} actualizarTurnos={actualizarTurnos}/>

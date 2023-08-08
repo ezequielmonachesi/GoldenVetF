@@ -47,12 +47,12 @@ const ListaComentarios = ({ comentario, actualizarComentarios }) => {
     <>
       <tr>
         <td>{comentario.nombre}</td>
-        <td className="truncarTexto">{comentario.comentario}</td>
+        <td className='text-truncate truncarTexto'>{comentario.comentario}</td>
         <td className="text-center">{comentario.puntuacion}</td>
         <td>{formatoFecha(comentario.creado)}</td>
-        <td>
-          <Button variant="danger" onClick={eliminarComentario} className="mt-2 mt-lg-0">
-            Borrar Comentario
+        <td className="d-flex justify-content-end">
+          <Button variant="danger" onClick={eliminarComentario}>
+            Borrar
           </Button>
         </td>
       </tr>
