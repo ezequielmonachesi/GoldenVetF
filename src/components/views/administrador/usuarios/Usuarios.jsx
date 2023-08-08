@@ -14,6 +14,10 @@ const Usuarios = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalShowEditar, setModalShowEditar] = useState(false);
   const [id, setId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((usuario) =>
+  usuario.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   const handleBorrarUsuario = (usuario) => {
     borrarUsuario(usuario.id).then((respuesta) => {
@@ -60,6 +64,15 @@ const Usuarios = () => {
 
   return (
     <Container>
+
+<input
+  type="text"
+  placeholder="Buscar usuario..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
+
       <div className="p-3 d-flex justify-content-end">
         <Button
           variant="success"         
@@ -104,7 +117,7 @@ const Usuarios = () => {
         </thead>
         <tbody>
           {data &&
-            data?.map((usuario, index) => (
+            filteredData?.map((usuario, index) => (
               <tr key={index}>                
                 <td>{usuario.nombreUsuario}</td>
                 <td>{usuario.email}</td>

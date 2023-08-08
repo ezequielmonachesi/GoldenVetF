@@ -14,6 +14,10 @@ const Servicios = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalShowEditar, setModalShowEditar] = useState(false);
   const [id, setId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((servicio) =>
+  servicio.nombreServicio.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   const handleBorrarServicio = (servicio) => {
     borrarServicio(servicio.id).then((respuesta) => {
@@ -60,6 +64,14 @@ const Servicios = () => {
 
   return (
     <Container>
+
+<input
+  type="text"
+  placeholder="Buscar servicio..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
       <div className="container p-3 d-flex justify-content-end">
         <Button
           variant="success"
@@ -103,7 +115,7 @@ const Servicios = () => {
         </thead>
         <tbody>
           {data &&
-            data?.map((servicio,key) => (
+            filteredData?.map((servicio,key) => (
               <tr key={key}>
                 
                 <td>{servicio.nombreServicio}</td>

@@ -14,6 +14,11 @@ const Productos = () => {
     const handleShow = () => setShow(true);
     const [productos, setProductos] = useState([]);
     const [nomProdPrev, setNomProdPrev]= useState('');
+    const [searchTerm, setSearchTerm] = useState('');
+    const filteredData = data.filter((producto) =>
+  producto.nombreProducto.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
     const {
         register,
         handleSubmit,
@@ -124,6 +129,15 @@ const Productos = () => {
     
     return (
         <Container>
+
+<input
+  type="text"
+  placeholder="Buscar producto..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
+
       <div className="p-3 d-flex justify-content-end">
         <Button
           variant="success"
@@ -152,7 +166,8 @@ const Productos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((prod, index)=>(
+                    {data &&
+            filteredData?.map((prod, index)=>(
                             <tr key={index}>
                                 
                                 <td className='truncarTexto'>{prod.nombreProducto}</td>

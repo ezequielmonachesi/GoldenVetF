@@ -11,6 +11,10 @@ const Turnos = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredData = data.filter((turno) =>
+  turno.paciente.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -50,7 +54,15 @@ const Turnos = () => {
 
   return (
     <>
-      <Container>
+      <Container>      
+
+      <input
+  type="text"
+  placeholder="Buscar paciente..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
         <div className="container p-3 d-flex justify-content-end">
           <Button variant='success' onClick={handleShow}>Crear Turno</Button>
         </div>
@@ -70,7 +82,7 @@ const Turnos = () => {
       </tr>
     </thead>
     <tbody>
-      {data && data
+      {data && filteredData
         .slice(startIndex, endIndex)
         .sort((a, b) => new Date(a.fechaYHora) - new Date(b.fechaYHora))
         ?.map((turno) => (
