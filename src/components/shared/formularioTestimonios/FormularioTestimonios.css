@@ -1,0 +1,14 @@
+
+.estrella-testimonio {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+.radiobuton-formTestimonios{
+    display: none;
+}
+
+.formulario-testimonios .form-control {
+    border: 2px solid black;
+    resize: none;
+  }
