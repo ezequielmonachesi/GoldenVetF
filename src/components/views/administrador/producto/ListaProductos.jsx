@@ -26,18 +26,16 @@ const ListaProductos = ({
   };
   return (
     <>
-      <td>{index + 1}</td>
       <td className="truncarTexto">{producto.nombreProducto}</td>
       <td>{producto.precio}</td>
       <td className={producto.stock <= 5 ? "text-danger fw-bold" : ""}>
         {producto.stock}
       </td>
-      <td className="truncarTexto">{producto.descripcion}</td>
-      <td className="truncarTexto">{producto.imagen}</td>
-      <td>
+      <td className="text-truncate truncarTexto">{producto.descripcion}</td>
+      <td className="text-truncate truncarTexto">{producto.imagen}</td>
+      <td className="d-flex justify-content-end">
         <Button
-          variant="warning"
-          className="me-2 my-2"
+          variant="warning"         
           onClick={() => setModalShowEditar(true)}
         >
           Editar
