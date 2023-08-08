@@ -24,12 +24,12 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
         <Navbar.Toggle aria-controls="navBarGoldenVet" />
         <Navbar.Collapse id="navBarGoldenVet">
           <Nav className="ms-auto">
-            <NavLink end to={'/'} className={'nav-item nav-link'}>Inicio</NavLink>
-            <NavLink end to={'/planes'} className={'nav-item nav-link'}>Planes</NavLink>
-            <NavLink end to={'/productos'} className={'nav-item nav-link'}>Productos</NavLink>
-            <NavLink end to={'/servicios'} className={'nav-item nav-link'}>Servicios</NavLink>
+            <NavLink end to={'/'} className={'nav-item nav-link hoverEffect'}>Inicio</NavLink>
+            <NavLink end to={'/planes'} className={'nav-item nav-link hoverEffect'}>Planes</NavLink>
+            <NavLink end to={'/productos'} className={'nav-item nav-link hoverEffect'}>Productos</NavLink>
+            <NavLink end to={'/servicios'} className={'nav-item nav-link hoverEffect'}>Servicios</NavLink>
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'administrador' && (
-              <NavLink end to={'/admin'} className={'nav-item nav-link'}>Administrador</NavLink>
+              <NavLink end to={'/admin'} className={'nav-item nav-link hoverEffect'}>Administrador</NavLink>
             )}
 
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'usuario' && (
@@ -38,8 +38,8 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
 
             {!usuarioLogueado.nombreUsuario && (
               <>
-                <NavLink end to={'/registro'} className={'nav-item nav-link'}>Registro</NavLink>
-                <NavLink end to={'/login'} className={'nav-item nav-link'}>Login</NavLink>
+                <NavLink end to={'/registro'} className={'nav-item nav-link hoverEffect'}>Registro</NavLink>
+                <NavLink end to={'/login'} className={'nav-item nav-link hoverEffect'}>Login</NavLink>
               </>
             )}
 

@@ -35,7 +35,6 @@ const CrearPaciente = () => {
 
   useEffect(() => {
     if (usuarioSeleccionado.id) {
-      console.log(usuarioSeleccionado.id);
       obtenerUsuario(usuarioSeleccionado.id).then((respuesta) => {
         setValue("nombreDuenio", respuesta.nombreUsuario);
         setValue("email", respuesta.email);
@@ -45,12 +44,9 @@ const CrearPaciente = () => {
 
   const handleUsuarioChange = (e) => {
     const usuarioIdSeleccionado = e.target.value;
-    // Buscar el usuario correspondiente al usuarioIdSeleccionado
     const usuarioIdElegido = usuariosSinPaciente.find(
       (usuario) => usuario.id === usuarioIdSeleccionado
     );
-    // Actualizar el estado con el usuario seleccionado
-    console.log(usuarioIdElegido.id);
     setUsuarioSeleccionado(usuarioIdElegido);
   };
 
@@ -64,12 +60,10 @@ const CrearPaciente = () => {
         return usuario.nombreUsuario.toLowerCase().includes(usuarioBuscado);
       });
       setUsuarioEncontrado(usuarioEncontrado);
-      console.log(usuarioEncontrado);
     } 
   };
 
   const onSubmit = (pacienteNuevo) => {
-    console.log(pacienteNuevo);
     crearPaciente(pacienteNuevo).then((respuesta) => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
@@ -90,7 +84,6 @@ const CrearPaciente = () => {
   };
 
   return (
-    // <section className="container mainSection">
     <Row className="justify-content-center">
       <Col md={12} className="rounded-3">
         <h1 className="display-4">Crear Paciente</h1>
@@ -241,7 +234,6 @@ const CrearPaciente = () => {
         </Form>
       </Col>
     </Row>
-    // </section>
   );
 };
 

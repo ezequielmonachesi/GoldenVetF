@@ -56,7 +56,6 @@ const EditarPaciente = ({ paciente, refetchData, onFormEditarPacienteSubmit }) =
   }, [paciente]);
 
   return (
-    // <section className="container mainSection">
     <Row className="justify-content-center">
       <Col md={12} className="rounded-3">
         <h1 className="display-4">Editar Paciente</h1>
@@ -166,7 +165,6 @@ const EditarPaciente = ({ paciente, refetchData, onFormEditarPacienteSubmit }) =
         {listadoMascotas}
       </Col>
     </Row>
-    // </section>
   );
 };
 
