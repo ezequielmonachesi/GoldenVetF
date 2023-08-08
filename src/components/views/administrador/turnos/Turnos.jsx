@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Table, Button, Spinner, Modal } from 'react-bootstrap';
 import CardTurnosAdministrador from './CardTurnosAdministrador';
 import { useFetchData } from '../../../hooks/useFetchData';

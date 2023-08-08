@@ -77,7 +77,7 @@ const Login = ({ setUsuarioLogueado }) => {
                         <div className="d-flex justify-content-end contenedor-inicia-sesion">
                             <p>
                                 ¿No tienes cuenta?{" "}
-                                <Link to={'/registro'} className="inicia-sesion fw-semibold">Inicia sesión</Link>
+                                <Link to={'/registro'} className="inicia-sesion fw-semibold">Registrate</Link>
                             </p>
                         </div>
                     </Form>

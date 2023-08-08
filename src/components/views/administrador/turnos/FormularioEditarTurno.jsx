@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button, Card, Form } from "react-bootstrap";
 import DatePicker, { registerLocale } from "react-datepicker";
