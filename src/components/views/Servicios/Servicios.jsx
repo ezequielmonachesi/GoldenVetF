@@ -26,15 +26,6 @@ const Servicios = () => {
 
   const chunksOfThree = chunkArray(listado || [], 3);
 
-  const serviciosContainers = chunksOfThree.map((chunk, index) => (
-    <div
-      className="row position-relative mb-lg-5 pb-lg-5 mb-md-2 pb-md-2 "
-      key={index}
-    >
-      {chunk}
-    </div>
-  ));
-
   return (
     <>
       <section className="container text-center bg-container-servicios position-relative p-3 my-5 rounded shadow">

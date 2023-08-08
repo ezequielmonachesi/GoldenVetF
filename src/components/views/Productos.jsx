@@ -18,20 +18,20 @@ const Productos = () => {
         </p>
       </div>
       <Row className="d-flex justify-content-center my-5">
-        {isLoading ? (
+      {isLoading ? (
           <div className="my-5 text-center">
             <Spinner animation="border" variant="primary" />
           </div>
+        ) : data && data.length > 0 ? (
+          data.map((producto) => (
+            <CardProducto producto={producto} key={producto.id} />
+          ))
         ) : (
           <h3 className="text-danger p-3">
             Hubo un error al cargar los productos. Por favor, inténtalo de nuevo
             más tarde.
           </h3>
         )}
-        {data?.length > 0 &&
-          data.map((producto) => (
-            <CardProducto producto={producto} key={producto.id} />
-          ))}
       </Row>
     </Container>
   );
