@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { obtenerComentarios } from "../helpers/queriesComentarios";
 import Swal from "sweetalert2";
+import { Quote, StarFill } from "react-bootstrap-icons";
 
 const TestimoniosPaginaInicio = () => {
   const [testimonios, setTestimonios] = useState([]);
@@ -30,8 +31,10 @@ const TestimoniosPaginaInicio = () => {
   }, []);
 
   return (
-    <div className="bg-white py-2">
-      <h5 className="text-start text-secondary">Testimonios</h5>
+    <div className="bg-white bg-opacity-75 shadow my-5 py-4">
+      <h5 className="text-start text-secondary ps-5 display-6">
+        <Quote className="fs-1 estrella-dorada plan-description"></Quote>Testimonios
+      </h5>
       <Carousel
         additionalTransfrom={0}
         arrows
@@ -92,16 +95,61 @@ const TestimoniosPaginaInicio = () => {
           return (
             <Row key={testimonio.id}>
               <Col md={12}>
-                <Card className="mx-3 border-card-testimonios">
-                  <Card.Body>
-                    <Card.Title className="d-flex justify-content-between">
+                <Card className="mx-3 border-card-testimonios shadow">
+                  <Card.Body className="cuerpo-comentario">
+                    <Card.Title className="d-flex flex-column flex-md-row justify-content-between">
                       <span>{testimonio.nombre}</span>
-                      <span>{testimonio.puntuacion}</span>
+                      <span>
+                        {(() => {
+                          switch (testimonio.puntuacion) {
+                            case 1:
+                              return (
+                                <StarFill className="estrella-dorada"></StarFill>
+                              );
+                            case 2:
+                              return (
+                                <>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                </>
+                              );
+                            case 3:
+                              return (
+                                <>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                </>
+                              );
+                            case 4:
+                              return (
+                                <>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                </>
+                              );
+                            case 5:
+                              return (
+                                <>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                  <StarFill className="estrella-dorada"></StarFill>
+                                </>
+                              );
+                            default:
+                              return "";
+                          }
+                        })()}
+                      </span>
                     </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
+                    <Card.Subtitle className="mb-2 text-muted small mt-3 mt-md-0">
                       {formatoFecha(testimonio.creado)}
                     </Card.Subtitle>
-                    <Card.Text className="limite-texto">
+                    <Card.Text className="limite-texto fs-5">
                       {testimonio.comentario}
                     </Card.Text>
                   </Card.Body>
