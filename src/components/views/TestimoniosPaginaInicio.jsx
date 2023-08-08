@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useFetchData } from "../hooks/useFetchData";
+import { obtenerComentarios } from "../helpers/queriesComentarios";
+import Swal from "sweetalert2";
 
 const TestimoniosPaginaInicio = () => {
+  const [testimonios, setTestimonios] = useState([]);
+
+  useEffect(() => {
+    obtenerComentarios().then((respuesta) => {
+      if (respuesta) {
+        setTestimonios(respuesta);
+        console.log(respuesta);
+      } else {
+        Swal.fire("Ocurrio un error", "Intente más tarde por favor", "error");
+      }
+    });
+  }, []);
+
   return (
     <div>
       <Carousel
@@ -61,62 +78,23 @@ const TestimoniosPaginaInicio = () => {
         swipeable
         transitionDuration={1000}
       >
-        <div style={{ padding: "0 5px" }}>
-          <Card className="mx-3" style={{ width: "100%" }}>
-            <Card.Body>
-              <Card.Title>Silvio Ruiz</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">xxxx</Card.Subtitle>
-              <Card.Text>
-                Muy buena atención siempre llevo a mi perrito y son geniales
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div style={{ padding: "0 5px" }}>
-          <Card className="mx-3" style={{ width: "100%" }}>
-            <Card.Body>
-              <Card.Title>Silvio Ruiz</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">xxxx</Card.Subtitle>
-              <Card.Text>
-                Muy buena atención siempre llevo a mi perrito y son geniales
-                kjhkjhkjhkjhkh
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div style={{ padding: "0 5px" }}>
-          <Card className="mx-3" style={{ width: "100%" }}>
-            <Card.Body>
-              <Card.Title>Silvio Ruiz</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">xxxx</Card.Subtitle>
-              <Card.Text>Muy buena atención</Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div style={{ padding: "0 5px" }}>
-          <Card className="mx-3" style={{ width: "100%" }}>
-            <Card.Body>
-              <Card.Title>Silvio Ruiz</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">xxxx</Card.Subtitle>
-              <Card.Text>Muy buena atención siempre llevo</Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div style={{ padding: "0 5px" }}>
-          <Card className="mx-3" style={{ width: "100%" }}>
-            <Card.Body>
-              <Card.Title>Silvio Ruiz</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">xxxx</Card.Subtitle>
-              <Card.Text>
-                Muy buena atención siempre llevo a mi perrito y son geniales
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
+        {testimonios.map((testimonio) => {
+          return (
+            <div style={{ padding: "0 5px" }} key={testimonio.id}>
+              <Card className="mx-3" style={{ width: "100%" }}>
+                <Card.Body>
+                  <Card.Title>{testimonio.nombre}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    xxxx
+                  </Card.Subtitle>
+                  <Card.Text>
+                    Muy buena atención siempre llevo a mi perrito y son geniales
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
       </Carousel>
     </div>
   );
