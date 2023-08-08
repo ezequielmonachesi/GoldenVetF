@@ -8,6 +8,16 @@ import Swal from "sweetalert2";
 const TestimoniosPaginaInicio = () => {
   const [testimonios, setTestimonios] = useState([]);
 
+  const formatoFecha = (fecha) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour12: false,
+    };
+    return new Date(fecha).toLocaleString(undefined, options);
+  };
+
   useEffect(() => {
     obtenerComentarios().then((respuesta) => {
       if (respuesta) {
@@ -20,14 +30,15 @@ const TestimoniosPaginaInicio = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-white py-2">
+      <h5 className="text-start text-secondary">Testimonios</h5>
       <Carousel
         additionalTransfrom={0}
         arrows
         autoPlay
-        autoPlaySpeed={1000}
+        autoPlaySpeed={3000}
         centerMode={true}
-        className=""
+        className="mt-4"
         containerClass="container-with-dots"
         customTransition="all 1s linear"
         dotListClass=""
@@ -80,14 +91,19 @@ const TestimoniosPaginaInicio = () => {
         {testimonios.map((testimonio) => {
           return (
             <Row key={testimonio.id}>
-              <Col md={11}>
-                <Card className="mx-3">
+              <Col md={12}>
+                <Card className="mx-3 border-card-testimonios">
                   <Card.Body>
-                    <Card.Title>{testimonio.nombre}</Card.Title>
+                    <Card.Title className="d-flex justify-content-between">
+                      <span>{testimonio.nombre}</span>
+                      <span>{testimonio.puntuacion}</span>
+                    </Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
-                      {testimonio.creado}
+                      {formatoFecha(testimonio.creado)}
                     </Card.Subtitle>
-                    <Card.Text>{testimonio.comentario}</Card.Text>
+                    <Card.Text className="limite-texto">
+                      {testimonio.comentario}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
