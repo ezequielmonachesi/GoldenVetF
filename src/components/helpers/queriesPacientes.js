@@ -1,5 +1,6 @@
 const URL_PACIENTES = import.meta.env.VITE_API_PACIENTES;
 
+
 export const obtenerPacientes = async () => {
   const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
@@ -14,7 +15,7 @@ export const obtenerPacientes = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+
 
 export const obtenerPaciente = async (id) => {
   const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
@@ -56,6 +57,7 @@ export const borrarPaciente = async (id) => {
   }
 };
 
+
 export const editarPaciente = async (paciente, id) => {
   const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario"));
   try {
@@ -72,3 +74,4 @@ export const editarPaciente = async (paciente, id) => {
     console.log(error);
   }
 };
+

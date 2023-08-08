@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "./DetallesServicios.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useParams } from "react-router";
@@ -20,7 +20,7 @@ const DetalleServicios = () => {
         <h1 className="text-center titulo-detalle-servicio">
           {servicio.nombreServicio}
         </h1>
-        <p>{servicio.descripcion}</p>
+        <p className="text-center plan-description">{servicio.descripcion}</p>
         <h2 className="text-center">Servicios</h2>
         {servicio.subservicios &&
           servicio.subservicios.map((subservicio, index) => (

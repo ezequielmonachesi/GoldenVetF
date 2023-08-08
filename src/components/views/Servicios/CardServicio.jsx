@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Button, Modal } from "react-bootstrap";
 import "./Servicios.css";
 import { Link } from "react-router-dom";
 const CardServicio = ({ descripcion, nombreServicio, imagen, id }) => {
@@ -22,7 +22,11 @@ const CardServicio = ({ descripcion, nombreServicio, imagen, id }) => {
           onMouseEnter={handleShow}
           onMouseLeave={handleClose}
         >
-          <Card.Img src={imagen} placeholder={nombreServicio} />
+          <Card.Img
+            className="imagen-card-servicio"
+            src={imagen}
+            placeholder={nombreServicio}
+          />
           <Card.Body>
             <Card.Title>{nombreServicio}</Card.Title>
             <div className={`description ${show ? "active" : ""}`}>
