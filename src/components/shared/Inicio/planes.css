@@ -9,6 +9,8 @@
 .bg-boton-planes{
     background-color: #c58940;
     border-color: #c58940;
+    height: 100%;
+    text-align: center;
 }
 
 .bg-boton-planes:hover{
