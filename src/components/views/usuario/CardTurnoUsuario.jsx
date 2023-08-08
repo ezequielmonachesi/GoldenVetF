@@ -1,15 +1,37 @@
 import { Button, Card } from 'react-bootstrap';
+import { borrarTurno } from '../../helpers/queriesTurnos';
+import Swal from 'sweetalert2';
 
-const CardTurnoUsuario = () => {
+const CardTurnoUsuario = ({ paciente, veterinario, fechaYHora, detalleVisita, id, refetchData }) => {
+    const eliminarTurno = () => {
+        borrarTurno(id).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+                refetchData();
+                Swal.fire(
+                    "Turno eliminado",
+                    `El turno fue eliminado correctamente`,
+                    "success"
+                );
+            } else {
+                Swal.fire(
+                    "Ocurrió un error",
+                    `El turno no pudo ser eliminado`,
+                    "error"
+                );
+            }
+        });
+    };
+
     return (
         <Card className='my-3'>
-            <Card.Header as="h5">Viernes 27, 17:30hs</Card.Header>
+            <Card.Header as="h5">{fechaYHora}</Card.Header>
             <Card.Body>
-                <Card.Title>Marley</Card.Title>
+                <Card.Title>{paciente}</Card.Title>
                 <Card.Text>
-                    Esta con perdida de apetito y vomitos
+                    {detalleVisita}
+                    {veterinario}
                 </Card.Text>
-                <Button variant="danger">Eliminar turno</Button>
+                <Button variant="danger" onClick={eliminarTurno}>Eliminar turno</Button>
             </Card.Body>
         </Card>
     );

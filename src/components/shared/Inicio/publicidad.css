@@ -1,6 +1,6 @@
 .img-altura {
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .carousel-control-next-icon,
 .carousel-control-prev-icon {

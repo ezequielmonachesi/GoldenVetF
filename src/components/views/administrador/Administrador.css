@@ -1,10 +1,11 @@
 .layout {
   box-sizing: border-box;
   border-top: 2px solid #c68940;
-  min-height: 100vh;
+   min-height: 100vh;
 }
+
 
 .sidebar-wrapper {
  background-color: #c68940;
-  min-height: 100%;
+  min-height: 100%;  
 }

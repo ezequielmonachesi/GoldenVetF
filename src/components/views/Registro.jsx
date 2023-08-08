@@ -1,4 +1,4 @@
-import { Container, Form } from "react-bootstrap";
+import { Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { crearUsuario } from "../helpers/queriesUsuarios";
 import { useState } from "react";
@@ -37,15 +37,16 @@ const Registro = () => {
       }
     });
   };
+
   return (
-    <Container className="mt-5">
-      <div className="row justify-content-center">
-        <div className="col-12 col-sm-8 col-md-6 col-xl-4">
+    <Container className="login-container my-5">
+      <Card className="border shadow rounded my-5 login-card">
+        <Card.Header className="text-dark card-header-bg" as="h4">Registro</Card.Header>
+        <Card.Body className="bg-light">
           <Form
-            className="mx-auto p-2 border shadow p-3 mb-5 bg-body-tertiary rounded"
+            className=""
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h3 className="text-center registro">Registro</h3>
             <Form.Group className="mb-2">
               <Form.Control
                 type="text"
@@ -122,7 +123,7 @@ const Registro = () => {
               <Form.Text className="text-danger">{errores}</Form.Text>
             )}
             <div className="row w-75 d-flex justify-content-center text-center ms-5 ps-lg-5 mt-2">
-              <button className="btn-registro mb-2 rounded" type="submit">
+              <button className="btn-registro my-2 rounded p-2" type="submit">
                 Registrar
               </button>
             </div>
@@ -133,8 +134,8 @@ const Registro = () => {
               </p>
             </div>
           </Form>
-        </div>
-      </div>
+        </Card.Body>
+      </Card>
     </Container>
   );
 };

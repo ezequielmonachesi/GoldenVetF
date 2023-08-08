@@ -1,8 +1,14 @@
 const URL_TURNOS = import.meta.env.VITE_API_TURNOS;
 
 export const obtenerTurnos = async ()=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try {
-        const respuesta = await fetch(URL_TURNOS);
+        const respuesta = await fetch(URL_TURNOS,{
+            method: "GET",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
+        });
         const listadoTurnos = await respuesta.json();
         return listadoTurnos;
     } catch (error) {
@@ -10,9 +16,16 @@ export const obtenerTurnos = async ()=>{
     }
 };
 
-export const obtenerTurno = async (id)=>{
+
+export const obtenerTurno = async (id) =>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
-        const respuesta = await fetch(URL_TURNOS+'/'+id);
+        const respuesta = await fetch(URL_TURNOS+'/'+id,{
+            method: "GET",
+            headers: {
+                "x-token": usuarioLogueado.token
+            }
+        });
         const turno = await respuesta.json();
         return turno;
     }catch (error){
@@ -21,11 +34,13 @@ export const obtenerTurno = async (id)=>{
 }
 
 export const crearTurno = async (turno)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS,{
             method: "POST",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token":usuarioLogueado.token
             },
             body: JSON.stringify(turno)
         });
@@ -36,9 +51,14 @@ export const crearTurno = async (turno)=>{
 }
 
 export const borrarTurno = async (id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
-            method: "DELETE"
+            method: "DELETE",
+            headers:{
+            "Content-Type":"application/json",
+            "x-token":usuarioLogueado.token
+            }
         });
         return respuesta;
     }catch (error){
@@ -47,11 +67,13 @@ export const borrarTurno = async (id)=>{
 }
 
 export const editarTurno = async (turno, id)=>{
+    const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuario'));
     try{
         const respuesta = await fetch(URL_TURNOS+'/'+id,{
             method: "PUT",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "x-token":usuarioLogueado.token
             },
             body: JSON.stringify(turno)
         });
