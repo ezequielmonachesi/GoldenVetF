@@ -26,7 +26,7 @@ const Usuario = ({usuarioLogueado}) => {
                     <h2 className="text-center display-5 mb-4">Antes de comenzar</h2>
                     <hr />
                     <p className="plan-description text-center">Para tu mejor atención, antes de comenzar a gestionar tus mascotas, necesitamos tus datos de contacto</p>
-                    <FormularioNuevoUsuario idUsuario={id}/>
+                    <FormularioNuevoUsuario idUsuario={usuarioLogueado.id}/>
                 </div>
             );
         } else {
