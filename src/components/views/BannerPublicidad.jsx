@@ -2,12 +2,13 @@ import { Card, Container, Image } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import images from "../../exports/images";
+import { height } from "@mui/system";
 
 const BannerPublicidad = () => {
   return (
-    <div className="bg-white py-3 my-5">
-      <Container fluid className="px-md-5">
-        <h5 className="text-secondary">Marcas con las que trabajamos</h5>
+    <div className="bg-white bg-opacity-75 shadow pt-2 my-5">
+      <Container fluid>
+        <p className="lead m-0">Marcas con las que trabajamos</p>
         <Carousel
           additionalTransfrom={0}
           arrows
@@ -67,8 +68,8 @@ const BannerPublicidad = () => {
           {images.map((image, i) => {
             return (
               <div style={{ padding: "0 5px" }} key={i}>
-                <Card className="h-100 align-items-center">
-                  <Card.Img src={image} alt={image}></Card.Img>
+                <Card className="align-items-center border-0">
+                  <Card.Img src={image} alt={image} style={{height: "5rem", width: "10rem"}}></Card.Img>
                 </Card>
               </div>
             );

@@ -32,7 +32,7 @@ body {
 .truncarTexto {
   max-width: 200px;
   max-height: 150px;
-  overflow-x: auto;  
+  overflow-x: auto;
 }
 
 .inicia-sesion {
@@ -43,13 +43,13 @@ body {
   color: #e5ba73;
 }
 .hoverEffect {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .hoverEffect:hover {
   color: #e5ba73 !important;
   text-shadow: black 1px 0px 5px !important;
-  transition: all 0.5s;
+  transition: all 0.3s;
   transform: scale(1.03);
 }
 
@@ -67,15 +67,15 @@ body {
 }
 
 .react-multiple-carousel__arrow {
-  background: rgba(206, 159, 3, 0.603) !important;
+  display: none;
 }
 .border-card-testimonios {
-  border: 1px solid rgba(206, 159, 3, 0.603) !important;
+  border: 1px solid rgba(206, 159, 3, 0.603);
 }
-.estrella-dorada{
+.estrella-dorada {
   color: #e5ba73;
 }
-.cuerpo-comentario{
+.cuerpo-comentario {
   min-height: 12rem;
 }
 
@@ -123,7 +123,7 @@ body {
   .bg-footer {
     background-color: #c58940;
   }
-  .cuerpo-comentario{
+  .cuerpo-comentario {
     min-height: 14rem;
   }
 }

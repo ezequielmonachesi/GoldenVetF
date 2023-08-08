@@ -36,17 +36,13 @@ const Publicidad = () => {
             </Carousel>
           </Col>
           <Col lg={4} className="mt-4 mt-md-0">
-            <h2>
+            <h2 className="display-6">
               <span className="border-up">Los mejores</span> alimentos
             </h2>
-            <p className="m-0">
+            <p className="m-0 plan-description">
               En nuestra veterinaria, cuidamos el bienestar de tus adorables
               compañeros peludos. Por eso, te ofrecemos una selección
               cuidadosamente elegida de los mejores alimentos para animales.
-              Brinda a tus mascotas una nutrición premium que fortalezca su
-              salud y vitalidad. ¡Ven y descubre una amplia gama de opciones
-              para satisfacer las necesidades específicas de cada amigo de
-              cuatro patas! Confía en nosotros para proporcionarles lo mejor.
               🐾🥇
             </p>
           </Col>

@@ -18,8 +18,6 @@ const FormularioAgregarHistoriaMedica = ({paciente, mascota, refetchData}) => {
         mascota.historialMedico = historiaMedicaDeHoy;
 
         const datosFormulario = { ...paciente, mascota };
-
-        console.log(datosFormulario);
         
         editarPaciente(datosFormulario, paciente.id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
