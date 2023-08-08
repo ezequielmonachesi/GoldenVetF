@@ -29,6 +29,11 @@ body {
   background-color: #b5925b;
   color: white;
 }
+.truncarTexto {
+  max-width: 200px;
+  max-height: 150px;
+  overflow-x: auto;  
+}
 
 .inicia-sesion {
   color: #e5ba73;
@@ -60,6 +65,7 @@ body {
 .imgBanner {
   background-image: url(../src/assets/Banner.png);
 }
+
 .react-multiple-carousel__arrow {
   background: rgba(206, 159, 3, 0.603) !important;
 }
@@ -72,6 +78,7 @@ body {
 .cuerpo-comentario{
   min-height: 12rem;
 }
+
 @media all and (min-width: 768px) and (max-width: 991px) {
   .width-button-responsive {
     width: 100%;
@@ -105,6 +112,7 @@ body {
   .logo {
     height: 65px;
   }
+
   .truncarTexto {
     max-width: 150px;
     max-height: 150px;

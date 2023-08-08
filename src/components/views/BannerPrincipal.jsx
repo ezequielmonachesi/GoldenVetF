@@ -1,4 +1,3 @@
-import React from "react";
 import BannerSmall from "../../assets/Banner2.png";
 import Banner from "../../assets/Banner.png";
 import { Image } from "react-bootstrap";
