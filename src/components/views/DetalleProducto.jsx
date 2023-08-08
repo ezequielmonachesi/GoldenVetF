@@ -16,7 +16,7 @@ const DetalleProducto = () => {
   return (
     <Container className="bg-light my-5 border shadow rounded p-sm-3 p-md-5">
       <Row className="justify-content-between text-center text-md-start mt-2 pb-4 pb-md-0 mx-2">
-        <Col sm={6}>
+        <Col sm={6} className="mt-md-5">
           <Image src={producto.imagen} className="img-fluid"></Image>
         </Col>
         <Col sm={4} className="py-2 py-md-1 py-lg-5">
