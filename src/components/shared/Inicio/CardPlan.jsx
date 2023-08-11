@@ -13,7 +13,7 @@ const CardPlan = ({id, nombrePlan, rangoEdad, descripcion, serviciosPlan, imagen
                     <Card.Body>
                         <Card.Title>{nombrePlan}</Card.Title>
                         <p className='plan-description'>{rangoEdad}</p>
-                        <Button as={Link} to={"/planes/"+id} className='bg-boton-planes btn'>Ver mas</Button>
+                        <Button onClick={() => window.scrollTo(0, 0)} as={Link} to={"/planes/"+id} className='bg-boton-planes btn'>Ver mas</Button>
                     </Card.Body>
                 </Card>
             </Col>

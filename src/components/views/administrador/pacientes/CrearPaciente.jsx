@@ -68,7 +68,7 @@ const CrearPaciente = () => {
       if (respuesta && respuesta.status === 201) {
         Swal.fire(
           "Paciente creado",
-          `El paciente ${pacienteNuevo.nombrePaciente} fue creado correctamente`,
+          `El paciente ${pacienteNuevo.nombreDuenio} fue creado correctamente`,
           "success"
           );
           recargarData();
@@ -76,13 +76,21 @@ const CrearPaciente = () => {
       } else {
         Swal.fire(
           "Ocurrio un error",
-          `El paciente ${pacienteNuevo.nombrePaciente} no pudo ser creado, intente en unos minutos`,
+          `El paciente ${pacienteNuevo.nombreDuenio} no pudo ser creado, intente en unos minutos`,
           "error"
         );
       }
     });
   };
 
+  const usuariosConRolUsuario = usuariosSinPaciente.filter(
+    (usuario) => usuario.rol === 'usuario'
+  );
+
+  const handleFilterChange = (e) => {
+    const usuarioBuscado = e.target.value.toLowerCase();
+    setUsuarioBuscado(usuarioBuscado);
+  };
   return (
     <Row className="justify-content-center">
       <Col md={12} className="rounded-3">
@@ -119,12 +127,12 @@ const CrearPaciente = () => {
                 onChange={handleUsuarioChange}
               >
                 <option value="">Elegir usuario</option>
-                {usuarioEncontrado.length > 0 ? (
-                  usuarioEncontrado.map((usuario) => (
-                    <option value={usuario.id} key={usuario.id}>
-                      {usuario.nombreUsuario}
-                    </option>
-                  ))
+                {usuariosConRolUsuario.length > 0 ? (
+              usuariosConRolUsuario.map((usuario) => (
+                <option value={usuario.id} key={usuario.id}>
+                  {usuario.nombreUsuario}
+                </option>
+              ))
                 ) : (
                   <option value="">No se encontraron usuarios</option>
                 )}

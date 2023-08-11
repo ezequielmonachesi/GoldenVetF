@@ -19,7 +19,7 @@ const Footer = ({ path }) => {
           <Row className="gy-4">
             <Col md={3}>
               <div className="hoverEffect">
-                <Link to={"/"}>
+                <Link onClick={() => window.scrollTo(0, 0)} to={"/"}>
                   <Image src={Logo}></Image>
                 </Link>
               </div>
@@ -27,10 +27,10 @@ const Footer = ({ path }) => {
             <Col md={3}>
               <h5>Nosotros</h5>
               <div className="d-flex flex-column">
-                <Link to={"/sobre-nosotros"} className="text-white hoverEffect">
+                <Link onClick={() => window.scrollTo(0, 0)} to={"/sobre-nosotros"} className="text-white hoverEffect">
                   Sobre Nosotros
                 </Link>
-                <Link to={"/contacto"} className="text-white hoverEffect">
+                <Link onClick={() => window.scrollTo(0, 0)} to={"/contacto"} className="text-white hoverEffect">
                   Contacto
                 </Link>
               </div>
@@ -45,6 +45,7 @@ const Footer = ({ path }) => {
                 <a
                   href="https://www.instagram.com/rollingcodeschool/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Instagram className="fs-6 mx-2" />
@@ -54,13 +55,14 @@ const Footer = ({ path }) => {
                 <a
                   href="https://www.facebook.com/RollingCodeSchool"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Facebook className="fs-6 mx-2" />
                     <p className="m-0">Facebook</p>
                   </div>
                 </a>
-                <a href="https://twitter.com/rollingcodeok" target="_blank">
+                <a href="https://twitter.com/rollingcodeok" rel="noreferrer" target="_blank">
                   <div className="d-flex align-items-center text-white hoverEffect mx-1">
                     <Twitter className="fs-6 mx-2" />
                     <p className="m-0">
@@ -72,7 +74,7 @@ const Footer = ({ path }) => {
             </Col>
             <Col md={3}>
               <h5>Ubicación</h5>
-              <a href="https://goo.gl/maps/Zfzw6vLcxR2r1QPN7" target="_blank">
+              <a rel="noreferrer" href="https://goo.gl/maps/Zfzw6vLcxR2r1QPN7" target="_blank">
                 <p className="text-md-start text-white hoverEffect">
                   Gral. Paz 576, T4000 San Miguel de Tucumán, Tucumán
                 </p>
@@ -96,7 +98,7 @@ const Footer = ({ path }) => {
                   </p>
                 </Col>
                 <Col md={4}>
-                  <Link to={"pagina-no-encontrada"}>
+                  <Link onClick={() => window.scrollTo(0, 0)} to={"pagina-no-encontrada"}>
                     <p className="mb-0 mx-2 text-white small hoverEffect">
                       Términos y condiciones
                     </p>

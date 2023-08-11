@@ -11,6 +11,8 @@ const FormularioNuevaMascota = ({ dataPaciente, onFormSubmit, refetchData }) => 
         delete dataPaciente.mascotas;
         const datosFormulario = { ...dataPaciente, mascota };
 
+        if(mascota.imagen === "") delete mascota.imagen
+
         editarPaciente(datosFormulario, dataPaciente.id).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
                 Swal.fire('Mascota agregada', `La mascota ${mascota.nombre} fue agregada correctamente`, 'success');
@@ -112,7 +114,7 @@ const FormularioNuevaMascota = ({ dataPaciente, onFormSubmit, refetchData }) => 
                             placeholder="Ingrese la url de la imagen"
                             {...register("imagen", {
                                 pattern: {
-                                    value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)$/,
+                                    value:/^(https?:\/\/)?(?:www\.)?[\w-]+\.[\w.-]+(?:\/[\w-./?%&=]*)?\.(?:jpg|jpeg|png|gif|bmp|jpeg\?[\w=&.]*)?$/,
                                     message: "La URL de la imagen no es válida. Asegúrate de que esté correctamente escrita y que termine con una extensión de imagen válida. Ejemplo de formato válido: 'https://www.ejemplo.com/imagen.jpg' ",
                                 },
                             })}
