@@ -52,7 +52,7 @@ const DetallePlan = () => {
             <p className="plan-description">
               Podés acercarte a nuestra veterinaria, también contactarnos a
               través de nuestro{" "}
-              <Link to={"/contacto"}>formulario de contacto</Link> o solicitar
+              <Link to={"/contacto"} onClick={() => window.scrollTo(0, 0)}>formulario de contacto</Link> o solicitar
               un turno desde <Link to={"/usuario"}>aquí</Link>.
             </p>
           </div>
