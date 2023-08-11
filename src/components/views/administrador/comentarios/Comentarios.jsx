@@ -8,8 +8,7 @@ const Comentarios = () => {
   const { data, isLoading, refetchData } = useFetchData("comentarios");
   const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [modalShow, setModalShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const filteredData = data.filter((comentario) =>
   comentario.nombre.toLowerCase().includes(searchTerm.toLowerCase())
@@ -32,22 +31,7 @@ const Comentarios = () => {
     await refetchData();
   };
 
-  const ModalCrearComentario = ({actualizarComentarios}) => {
-    return (
-        <Modal
-          show={show}
-          onHide={handleClose}
-          aria-labelledby="contained-modal-title-vcenter" centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Crear Comentario</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <CrearComentario actualizarComentarios={actualizarComentarios}/>
-          </Modal.Body>
-        </Modal>
-    );
-  };
+
 
   return (
     <>
@@ -62,10 +46,18 @@ const Comentarios = () => {
 
 
         <div className="d-flex justify-content-end my-3">
-          <Button onClick={()=>setShow(true)} variant="success">
+          <Button onClick={()=>setModalShow(true)} variant="success">
             Crear Comentario
           </Button>
         </div>
+        <VentanaModalCrearComentarios
+        actualizarComentarios={actualizarComentarios}
+        show={modalShow}
+        className="modal-crud"
+        onHide={() => {
+          setModalShow(false);
+        }}
+      ></VentanaModalCrearComentarios>
         {data.length > 0 ? (
           <Table responsive striped bordered hover>
             <thead>
@@ -123,9 +115,31 @@ const Comentarios = () => {
           </div>
         )}
       </Container>
-      <ModalCrearComentario actualizarComentarios={actualizarComentarios}/>
+
     </>
   );
 };
+
+function VentanaModalCrearComentarios(props) {
+  const { actualizarComentarios, ...restProps } = props;
+  return (
+    <Modal
+      {...restProps}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <Modal.Body>
+        <CrearComentario actualizarComentarios={actualizarComentarios} />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="danger" onClick={props.onHide}>
+          Salir
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 
 export default Comentarios;
