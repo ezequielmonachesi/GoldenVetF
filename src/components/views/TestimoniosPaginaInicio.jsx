@@ -27,7 +27,7 @@ const TestimoniosPaginaInicio = () => {
         Swal.fire("Ocurrio un error", "Intente más tarde por favor", "error");
       }
     });
-  }, []);
+  }, [testimonios]);
 
   return (
     <div className="bg-white bg-opacity-75 shadow my-5 py-4">
