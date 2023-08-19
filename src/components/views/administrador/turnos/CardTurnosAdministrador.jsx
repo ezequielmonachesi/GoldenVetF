@@ -69,7 +69,7 @@ const CardTurnosAdministrador = ({ turno, actualizarTurnos }) => {
           <Button variant="warning" onClick={handleShow}>
             Editar
           </Button>
-          <Button variant="danger" onClick={eliminarTurno}>
+          <Button variant="danger" onClick={eliminarTurno} className="mx-2">
             Borrar
           </Button>
         </td>

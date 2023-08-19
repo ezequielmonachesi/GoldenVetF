@@ -55,7 +55,7 @@ const ListaProductos = ({
         >
           Editar
         </Button>
-        <Button variant="danger" onClick={() => eliminarProducto(producto.id)}>
+        <Button variant="danger" className="mx-2" onClick={() => eliminarProducto(producto.id)}>
           Borrar
         </Button>
       </td>
