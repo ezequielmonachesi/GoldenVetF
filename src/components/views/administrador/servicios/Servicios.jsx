@@ -132,6 +132,7 @@ const Servicios = () => {
                   <Button
                     onClick={() => handleBorrarServicio(servicio)}
                     variant="danger"
+                    className="mx-2"
                   >
                     Borrar
                   </Button>

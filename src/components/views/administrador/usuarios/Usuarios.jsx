@@ -132,6 +132,7 @@ const Usuarios = () => {
                   <Button
                     onClick={() => handleBorrarUsuario(usuario)}
                     variant="danger"
+                    className="mx-2"
                   >
                     Borrar
                   </Button>
