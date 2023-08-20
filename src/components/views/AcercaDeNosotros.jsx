@@ -67,6 +67,7 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://www.linkedin.com/in/silvioruiz/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
                           <i class="bi bi-linkedin fs-5 iconColor"></i>
@@ -76,9 +77,10 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://github.com/silviojrcc"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-github fs-5 iconColor"></i>
+                          <i className="bi bi-github fs-5 iconColor"></i>
                         </span>
                       </a>
                     </div>
@@ -103,18 +105,20 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://www.linkedin.com/in/c%C3%A9sar-ezequiel-monachesi-a95a38213/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-linkedin fs-5 iconColor"></i>
+                          <i className="bi bi-linkedin fs-5 iconColor"></i>
                         </span>
                       </a>
                       <a
                         className="text-decoration-none mx-1"
                         href="https://github.com/ezequielmonachesi"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-github fs-5 iconColor"></i>
+                          <i className="bi bi-github fs-5 iconColor"></i>
                         </span>
                       </a>
                     </div>
@@ -139,18 +143,20 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://www.linkedin.com/in/rodrigueznahuelfederico/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-linkedin fs-5 iconColor"></i>
+                          <i className="bi bi-linkedin fs-5 iconColor"></i>
                         </span>
                       </a>
                       <a
                         className="text-decoration-none mx-1"
                         href="https://github.com/NahuFed"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-github fs-5 iconColor"></i>
+                          <i className="bi bi-github fs-5 iconColor"></i>
                         </span>
                       </a>
                     </div>
@@ -175,18 +181,20 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://www.linkedin.com/in/fdmercado/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-linkedin fs-5 iconColor"></i>
+                          <i className="bi bi-linkedin fs-5 iconColor"></i>
                         </span>
                       </a>
                       <a
                         className="text-decoration-none mx-1"
                         href="https://github.com/Diego2997"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-github fs-5 iconColor"></i>
+                          <i className="bi bi-github fs-5 iconColor"></i>
                         </span>
                       </a>
                     </div>
@@ -211,6 +219,7 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://github.com/carabajal-facundo/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
                           <i class="bi bi-linkedin fs-5 iconColor"></i>
@@ -220,9 +229,10 @@ const AcercaDeNosotros = () => {
                         className="text-decoration-none mx-1"
                         href="https://github.com/carabajal-facundo/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="circle">
-                          <i class="bi bi-github fs-5 iconColor"></i>
+                          <i className="bi bi-github fs-5 iconColor"></i>
                         </span>
                       </a>
                     </div>

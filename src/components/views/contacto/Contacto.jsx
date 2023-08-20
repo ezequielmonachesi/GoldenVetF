@@ -11,6 +11,7 @@ const Contacto = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset
   } = useForm();
 
   const formRef = useRef(null);
@@ -29,6 +30,7 @@ const Contacto = () => {
           "Se ha enviado el mensaje exitosamente! Nos comunicaremos a la brevedad",
           "success"
         );
+        reset()
       });
   };
   return (

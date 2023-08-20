@@ -11,7 +11,7 @@ const ProductosInicio = () => {
     <Container className="shadow-lg p-3 my-5 bg-white rounded">
       <div className="d-flex justify-content-between">
         <h4>Ofertas</h4>
-        <Link to={"/productos"} className="boton-verMas-productoInicio">
+        <Link onClick={() => window.scrollTo(0, 0)} to={"/productos"} className="boton-verMas-productoInicio">
           Ver más <ArrowRight />
         </Link>
       </div>
